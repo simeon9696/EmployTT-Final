@@ -240,6 +240,6 @@ function showTab(tabNum, color){
   });
   content[tabNum].style.display="block";
   content[tabNum].style.backgroundColor=color;
-}showTab(0,'#f44336')
+}showTab(0,'#b6b4b4')
 
 
