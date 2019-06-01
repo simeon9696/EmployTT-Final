@@ -128,7 +128,7 @@ function fetchApplicants(doc, docid,about){
     });
 
 }
-
+var c = 1;
 
 firestore.collection('Jobs').get().then((snapshot)=>{
     var c = 1;
