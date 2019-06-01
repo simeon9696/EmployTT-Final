@@ -288,6 +288,11 @@ html {
   opacity: 1;
   right: 0;}
   
+  footer{
+  position:relative;
+  z-index:5;
+  width:100%;
+  height:20vw;}
 
   .footer-distributed{
 
@@ -349,6 +354,11 @@ html {
     line-height: 1.8;
     text-decoration: none;
     color:  inherit;
+  }
+  
+    
+  .footer-distributed .footer-links a:hover{
+ color:#ff3300;
   }
   
   .footer-distributed .footer-company-name{
