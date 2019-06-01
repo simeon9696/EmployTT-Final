@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=,chrome=1">
+    <title>User Profile | employtt</title>
+        <!--The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" type="text/javascript"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js" type="text/javascript"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js" type="text/javascript"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js"></script>
+        <link href="../styles/testingsignupstyle.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+  <h1>Create User Profile</h1>
+
+  <form id="signup-form">
+    <label for ="firstName" id="profile-labels">First Name: </label>
+    <input type="text" name="firstName" placeholder="First Name" class="profilefield fname" required><br><br><br>
+
+    <label for ="lastName" id="profile-labels">Last Name: </label>
+    <input type="text" name="lastName" placeholder="Last Name" class="profilefield lName" required><br><br><br>
+
+    <label for ="email" id="profile-labels">Email: </label>
+    <input type="email" name="email" placeholder="Email Address" class="profilefield email" id="signup-email" required><br><br><br>
+
+    <label for ="password" id="profile-labels">Password: </label>
+    <input type="password" name="password" placeholder="Email Address" class="profilefield password" id="signup-password" required><br><br><br>
+
+
+    <input type="submit" value="Submit" id="submitButton" href="#" action="#"><br><br>
+    <input type="submit" value="Google Sign in" id="googleSignIn" href="#" action="#"><br><br>
+    <input type="submit" value="Update" id="updateButton" href="#" action="#"><br><br>
+    <input type="submit" value="Remove" id="removeButton" href="#" action="#"><br><br>
+    <!--TODO: Password verification and alert if passwords do not match. Client side. privacy policy-->
+ </form>
+
+
+
+  <script src="../scripts/testingsignup.js"></script>
+</body>
+</html>

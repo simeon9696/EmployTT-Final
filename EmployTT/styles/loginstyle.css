@@ -1,0 +1,494 @@
+@charset "UTF-8";
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;}
+    
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  	background-color:#ffffff;
+  background-size: 100vw 100vw;}
+#username{
+	color:#ff3300;
+	font-weight:500;
+    text-decoration: underline;
+}
+.preloader{
+	background-color:white;
+	width: 100vw;
+	height: 100vw;
+	position:relative;
+	z-index:-3;
+}
+.preloader img{
+	width:40%;
+	background-color:white;
+	top:40%;
+	left:32%;
+	position:fixed;
+	z-index:-2;
+}
+
+.topnav {
+  position: -webkit-sticky;
+  position: sticky;
+  background:#ffffff; 
+  overflow: hidden;
+  height:5vw;
+  top: 0;
+  z-index: 10;
+}
+
+.topnav a {
+  position: relative;
+  display: block;
+  float: right;
+  color: #333333;
+  text-align: center;
+  padding: 14px 16px;
+  padding-top:1.5vw;
+  text-decoration: none;
+  font-size: 1.5em;}
+
+ .topnav a:hover {
+  display: inline;
+  transition:0.3s;
+  color: #ffffff !important; 
+  border-radius:26px;
+  background-color:#ff3300;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1.5em;
+  padding-top:1.2vw;}
+  
+.nav-word{
+	color:#000000;
+	margin-top:0.5vw;}
+	
+.login-background{
+	min-height: 100%;
+
+	background-repeat: no-repeat;
+    background-size:cover;
+    position: fixed;
+    left: 0;
+    width:100vw;
+    height:auto;
+ 	position:absolute;
+ 	z-index:0;
+ 	overflow:hidden;
+}
+.profilefield:valid{
+    border: 1px solid rgb(7, 230, 7);
+}
+
+.profilefield:invalid{
+    border: 1px solid rgb(240, 56, 56);
+}
+
+#submitButton{
+    display: block;
+}
+
+#updateButton{
+    display: none;
+}
+
+#removeButton{
+    display: none;
+}
+
+.login-container{
+	margin-top:4vw;
+	height:60vw;
+	width:40vw;
+    margin-right:auto;
+    margin-left:auto;
+	border-radius:8px;
+	position:relative;
+ 	z-index:1;}
+	
+.login-logo img{
+	width:18vw;
+    padding-top:5vw;
+	height:auto;
+	display:block;
+	margin:auto;
+	position:relative;
+ 	z-index:2;
+}
+.login-quote{
+	color:black;
+	text-align:center;
+    display:block;
+	margin-left:auto;
+	padding-bottom:2vw;
+    margin-right:auto;
+ 	font-size:3.6em;
+ 	font-weight: bold;
+ 	position:relative;
+ 	z-index:2;
+}
+#signup-email{
+	height:2.4vw;
+	width:23vw;
+	border-radius:6px;
+	border:1px solid rgba(128, 128, 128, 0.25);
+    box-shadow: 1px 1px 3px #cccccc inset;
+    display:block;
+    font-size:1.2em;
+	margin-left:auto;
+    margin-right:auto;
+ 	position:relative;
+ 	z-index:2;
+    padding:0.5vw;
+}
+
+#signup-email:focus{
+	  border: 2px solid #ff3300;
+ 	  outline: none !important;
+}
+	
+#signup-password{
+	height:2.4vw;
+	width:23vw;
+	border-radius:6px;
+	border:1px solid rgba(128, 128, 128, 0.25);
+    box-shadow: 1px 1px 3px #cccccc inset;
+    display:block;
+    font-size:1.2em;
+	margin-left:auto;
+    margin-right:auto;
+    padding:0.5vw;
+ 	position:relative;
+ 	z-index:2;
+}
+
+#signup-password:focus{
+	  border: 2px solid #ff3300;
+ 	  outline: none !important;
+
+	}
+	
+
+#signup-form label{
+    font-size:1.3em;
+    padding-bottom:0.4vw;
+    text-align:center;
+    display:block;
+    font-weight:550;
+	margin-left:auto;
+    margin-right:auto;
+ 	position:absolute;
+ 	z-index:2;
+}
+
+.submitButton{
+  background-color:#ff3300;
+  display: inline-block;
+  height:3.2vw;
+  border-radius: 4px;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1vw;
+  padding:0.5vw;
+  width: 13vw;
+  transition:0.5s;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top:1vw;
+  margin-left:14vw;
+ position:absolute;
+ z-index:2;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.submitButton span:after{
+  content: '\00bb';
+  position: relative;
+  opacity: 0;
+  top: 1vw;
+  left:5vw;
+  right: -4vw;
+  transition: 0.5s;
+  font-size:1.5em;}
+
+.submitButton:hover span {
+  padding-right: 2.5vw;}
+  
+ .submitButton:hover  {
+  border-radius:29px;}
+  
+.submitButton:hover span:after {
+  opacity: 1;
+  right: 0;}
+  
+    span.label {
+      font-family: serif;
+      font-weight: normal;
+    }
+.icon {
+      display: inline-block;
+      position:relative;
+      vertical-align: middle;
+      padding-right:0.2vw;
+      width: 1.5vw;
+      height: 1.5vw;
+      
+
+    }
+
+    
+ .google-signin{
+ background-color:#ffffff;
+  display: inline-block;
+  height:3.2vw;
+  border-radius: 4px;
+  border: none;
+  color: rgba(100,100,100,1);
+  text-align: center;
+  font-size: 1vw;
+  padding:0.5vw;
+  width: 13vw;
+  transition:0.5s;
+  font-weight: 500;
+  position: relative;
+  z-index:2;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  margin-top:4vw;
+  margin-left:14vw;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+ }
+ 
+ .google-signin span:after{
+  content: '\00bb';
+  position: relative;
+  opacity: 0;
+  top: 1vw;;
+  left:5vw;
+  right: -4vw;
+  transition: 0.5s;
+  font-size:1.5em;}
+
+ .google-signin:hover span {
+  padding-right: 2.5vw;}
+  
+ .google-signin:hover  {
+  border-radius:29px;}
+  
+ .google-signin:hover span:after {
+  opacity: 1;
+  right: 0;}
+  
+
+  .footer-distributed{
+
+
+    /* Set a specific height */
+    background-color: #292c2f;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+  
+    padding: 55px 50px;
+    padding-bottom:50px;
+    margin-top: 80px;
+  }
+  
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right{
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  /* Footer left */
+  
+  .footer-distributed .footer-left{
+    width: 40%;
+  }
+  
+  /* The company logo */
+  
+  .footer-distributed h3{
+    color:  #ffffff;
+    font: normal 36px 'Cookie', cursive;
+    margin: 0;
+  }
+  
+  .footer-distributed h3 span{
+    color:  #5383d3;
+  }
+  
+  /* Footer links */
+  
+  .footer-distributed .footer-links{
+    color:  #ffffff;
+    margin: 20px 0 12px;
+    padding: 0;
+  }
+  
+  .footer-distributed .footer-links a{
+    display:inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color:  inherit;
+  }
+  
+  .footer-distributed .footer-company-name{
+    color:  #8f9296;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+  }
+  
+  /* Footer Center */
+  
+  .footer-distributed .footer-center{
+    width: 35%;
+  }
+  
+  .footer-distributed .footer-center i{
+    background-color:  #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+  }
+  
+  .footer-distributed .footer-center i.fa-envelope{
+    font-size: 17px;
+    line-height: 38px;
+  }
+  
+  .footer-distributed .footer-center p{
+    display: inline-block;
+    color: #ffffff;
+    vertical-align: middle;
+    margin:0;
+  }
+  
+  .footer-distributed .footer-center p span{
+    display:block;
+    font-weight: normal;
+    font-size:14px;
+    line-height:2;
+  }
+  
+  .footer-distributed .footer-center p a{
+    color:  #5383d3;
+    text-decoration: none;
+  }
+  
+  
+  /* Footer Right */
+  
+  .footer-distributed .footer-right{
+    width: 20%;
+  }
+  
+  .footer-distributed .footer-company-about{
+    line-height: 20px;
+    color:  #92999f;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+  }
+  
+  .footer-distributed .footer-company-about span{
+    display: block;
+    color:  #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .footer-distributed .footer-icons{
+    margin-top: 25px;
+  }
+  
+  .footer-distributed .footer-icons a{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color:  #33383b;
+    border-radius: 2px;
+  
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+  
+    margin-right: 3px;
+    margin-bottom: 5px;
+  }
+  .fa-facebook {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+  }
+  .fa-facebook:hover {
+    background-color: #3d5b99;
+  }
+  
+  .fa-instagram {
+    padding:10px 14px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition: .5s;
+    background-color: #322f30;
+  }
+  
+  .fa-instagram:hover {
+    background-color: #832711;
+  }
+  /* If you don't want the footer to be responsive, remove these media queries */
+  
+  @media (max-width: 880px) {
+  
+    .footer-distributed{
+      font: bold 14px sans-serif;
+    }
+  
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right{
+      display: block;
+      width: 100%;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+  
+    .footer-distributed .footer-center i{
+      margin-left: 0;
+    }
+  
+  }
