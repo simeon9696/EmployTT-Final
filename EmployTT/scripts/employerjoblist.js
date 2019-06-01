@@ -82,43 +82,32 @@ logOutBtn.addEventListener('click',(btnPressListener)=>{
 
 function fetchUser(doc3, userid, about){
   if(doc3.id == userid){
-    let mainNode = document.createElement('tr');
-    let info = document.createElement('td');
-    let button = document.createElement('td');
-    let acceptButton = document.createElement('button');
-    let div = document.createElement('div');
-    let ul = document.createElement('ul');
     let node = document.createElement('li');
     let jobid = document.createElement('span');
     let app = document.createElement('span');
     let userfname= document.createElement('span');
     let userlname = document.createElement('span');
+    let email = document.createElement('span');
 
-    acceptButton.setAttribute("id",c);
-    // var userid = doc3.id;
-    acceptButton.setAttribute("name",userid );
-    acceptButton.setAttribute("onClick","clickedButton(this.id, this.name)");
-    div.setAttribute("class", "empJobList");
-    ul.setAttribute("id", "emp-job-list");
-    var texts = document.createTextNode("Accept");
-    acceptButton.appendChild(texts);
-
+    let profile = document.createElement('button');
+    profile.setAttribute("id",c);
+    var userid = doc3.id;
+    profile.setAttribute("name",userid );
+    profile.setAttribute("onClick","clickedButton(this.id, this.name)");
     jobid.textContent = " About Job: " + about;
     app.textContent = "Applicant: ";
     userfname.textContent = " First Name: " + doc3.data().firstName;;
     userlname.textContent = " Last Name: " + doc3.data().lastName;;
-    jobid.appendChild(app);
-    jobid.appendChild(userfname);
-    jobid.appendChild(userlname);
+    email.textContent = "Email: " + doc3.data().email;
+   
     node.appendChild(jobid);
-    button.appendChild(acceptButton);
-    ul.appendChild(node);
-    div.appendChild(ul);
-    info.appendChild(div)
-    mainNode.appendChild(info);
-    mainNode.appendChild(button);
-
-    jobTable.append(mainNode);
+    node.appendChild(app);
+    node.appendChild(userfname);
+    node.appendChild(userlname);
+    node.appendChild(email);
+    
+    jobList.append(node);
+    c = c+1;
   }
 }
 
