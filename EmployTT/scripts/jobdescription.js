@@ -105,6 +105,8 @@ addJob.addEventListener('click',(e)=>{
      
     }).then(function() {
       console.log('Job added successfully');
+      added = document.querySelector('#invisible');
+      added.classList.toggle("show");
 
     }).catch(function(error) {
       console.log(error);
