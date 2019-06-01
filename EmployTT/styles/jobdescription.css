@@ -234,7 +234,12 @@ textarea:focus{
 #submitButton:hover span:after {
   opacity: 1;
   right: 0;}
-
+.hide{
+  display: none;
+}
+.show{
+  display:block;
+}
   .footer-distributed{
 
 
