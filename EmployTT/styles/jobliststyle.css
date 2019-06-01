@@ -10,7 +10,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
     background: transparent;
 }
-
+#username{
+	text-decoration:underline;
+	color:#ff3300;
+	font-weight:500;}
 html {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
