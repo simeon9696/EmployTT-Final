@@ -12,13 +12,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 html {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
-  	background-color:#ffffff;
+  	background-color:#fbfaf9;
   background-size: 100vw 100vw;}
-#username{
-	color:#ff3300;
-	font-weight:500;
-    text-decoration: underline;
-}
+  #username{
+    color:#ff3300;
+    font-weight:525;
+  }
 .preloader{
 	background-color:white;
 	width: 100vw;
@@ -72,15 +71,14 @@ html {
 	color:#000000;
 	margin-top:0.5vw;}
 	
-.login-background{
+.login-container{
 	min-height: 100%;
-
-	background-repeat: no-repeat;
-    background-size:cover;
+    background: rgb(249,168,147);
+    background: linear-gradient(90deg, rgba(249,168,147,0.48) 0%, rgba(148,187,233,0.48) 100%);
     position: fixed;
     left: 0;
     width:100vw;
-    height:auto;
+    height:60vw;
  	position:absolute;
  	z-index:0;
  	overflow:hidden;
@@ -107,12 +105,13 @@ html {
 
 .login-container{
 	margin-top:4vw;
-	height:60vw;
+	height:50vw;
 	width:40vw;
     margin-right:auto;
     margin-left:auto;
-	border-radius:8px;
+	border-radius:16px;
 	position:relative;
+	box-shadow: 0px 6px 16px 0px rgba(0,0,0,0.4);
  	z-index:1;}
 	
 .login-logo img{

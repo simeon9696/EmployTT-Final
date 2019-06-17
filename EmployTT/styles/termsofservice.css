@@ -16,11 +16,7 @@ html {
   font-size: 12px;
   	background-color:whitesmoke;
   background-size: 100vw 100vw;}
-  #username{
-	color:#ff3300;
-	font-weight:500;
-    text-decoration: underline;
-}
+
 .topnav {
   position: -webkit-sticky;
   position: sticky;
@@ -115,7 +111,10 @@ html {
     font-size:1em;
     padding-bottom:1vw;}
 
-
+    #username{
+      color:#ff3300;
+      font-weight:525;
+    }
  .job-quote{
  text-align: center;
  font-size:4em;
