@@ -1,5 +1,4 @@
 $(window).on("load", function() {
-   $('.preloader').slideUp(600);
    $(".employer-quote").hide();
    $(".employer-logo img").hide();
    $(".postjob-button").hide();
