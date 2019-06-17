@@ -16,11 +16,10 @@ html {
   font-size: 12px;
   	background-color:#ffffff;
   background-size: 100vw 100vw;}
-#username{
-	color:#ff3300;
-	font-weight:500;
-    text-decoration: underline;
-}
+  #username{
+    color:#ff3300;
+    font-weight:525;
+  }
 
 body {
   background-color:white;
@@ -58,11 +57,10 @@ body {
   text-decoration: none;
   font-size: 1.5em;
   padding-top:1.2vw;}
- #username{
-	color:#ff3300;
-	font-weight:500;
-  text-decoration: underline;
-} 
+  #username{
+    color:#ff3300;
+    font-weight:525;
+  }
 .nav-word{
 	color:#000000;
 	margin-top:0.5vw;}
@@ -372,9 +370,6 @@ textarea:focus{
   border: 2px solid #ff3300;
  outline: none !important;}
 
-body{
-
-}
 
 #drop_zone {
     border: 2px dashed #ccc;

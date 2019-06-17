@@ -42,16 +42,18 @@
           		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           			<span class="navbar-toggler-icon"></span>
 				</button>         
-				<a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>       <!--User's name goes here once logged in--> 
+				<a class="nav-word displayname" id="username" href="./pages/userprofileinfo.html"></a>       <!--User's name goes here once logged in--> 
 				<a class="nav-word" id="logged-in"  href="#"></a>	
 				<a class="nav-word" id="regBtn" href="./pages/userprofileregister.html">Register</a>
 				<a class="nav-word" id="logInBtn" href="./pages/login.html">Log in</a>	
-				<a class="nav-word" id="employers" href="./pages/employers.html">Employers</a>    
+				<a class="nav-word" id="employers" href="./pages/employers.html">Employers</a> 
+				<a class="nav-word" id="logged-in"  href="./pages/joblist.html">All Jobs</a>
+				<a class="nav-word" id="logged-out" href="../index.html" style="color:#ff3300;">Find Jobs</a>   			
 				<a class="nav-word" id="logged-out" href="./pages/aboutus.html">About Us</a>
 				<a class="nav-word" id="logged-out" href="./pages/termsofservice.html">Terms of Service</a>
 				<a class="nav-word" id="logged-out" href="./pages/privacypolicy.html">Privacy Policy</a>
-				<a class="nav-word" id="logged-in"  href="./pages/joblist.html">All Jobs</a>
-				<a class="nav-word" id="logged-out" href="./index.html" style="color:#ff3300;">Home</a>
+
+
           		
 			   </div>
 
@@ -70,10 +72,11 @@
 	</div>	 
 	<div class = "tabCont">
 		<div class = "butCont">
-			<button onclick = "showTab(0, '#b6b4b4')">Find a Job</button>
-			<button onclick = "showTab(1, '#b6b4b4')">Why EmployTT</button>
-			<button onclick = "showTab(2, '#b6b4b4')">Steps</button>
-			<button onclick = "showTab(3, '#b6b4b4')">About Us</button>
+			<button onclick = "showTab(0, '#ffffff')" id="find-a-job">Find a Job</button>
+			<button onclick = "showTab(1, '#ffffff')">Why EmployTT</button>
+			<button onclick = "showTab(2, '#ffffff')">Steps</button>
+			<button onclick = "showTab(3, '#ffffff')">About Us</button>
+	
 	</div>
 	<div class = "content">  
  	 <div class="boxes">
@@ -206,8 +209,8 @@
 		   </div>
 		<!-- about us -->
 		<div class = "content">
-				<h1 class="aboutus">About Us</h1>
-				<p>
+
+				<p class="about-words">
 					This service was handcrafted with the welfare of every Trinbagonian in mind. 
 					From design to implementation we thought about the dynamics that shape the job application process in T&T. 
 					With us you're sure that the job listings are 100% legitimate. The MDAs directly add or remove jobs from our servers
@@ -216,15 +219,16 @@
 					Our personal profiles enable you to apply for jobs more quickly. 
 					We allow you to save information and use it in applications. CVs, Birth Certificates and other documents do not have to be reuploaded. All data is encrypted and 
 					all connections are secured to ensure that privacy remains uncompromised. Stay employed with employTT!
-				</p>
+				</p><br><br>
 			
 				<!--None of these fields are real. Use lifelike but not actual data to complete -->
-				<h1>Contact Us</h1>
-				<p>We would be delighted to hear from you!</p>
-				<p class="employTT-address"> Address: #32 I hope we win</p>
-				<p class="employTT-phone">Phone Number: 1-868-000-0000</p>
-				<p class="employTT-email">Email: employTT@employtt.gov.tt</p> 			
+				<h1 style="font-size:2.4em;margin-left:20vw; font-weight:600;">Contact Us</h1><br>
+				<p id="contact-words">We would be delighted to hear from you!</p>
+				<p id="contact-words" class="employTT-address"> Address: #32 I hope we win</p>
+				<p id="contact-words" class="employTT-phone">Phone Number: 1-868-000-0000</p>
+				<p id="contact-words" class="employTT-email">Email: employTT@employtt.gov.tt</p> 			
 			</div>
+					</div>
 			   <script src="./index.js" asynch defer></script>	
 
 	</body>
@@ -286,6 +290,7 @@
 			</div>
 
 		</div>
+
 		
 	</footer>
 </html>
