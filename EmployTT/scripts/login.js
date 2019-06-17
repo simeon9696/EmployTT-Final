@@ -1,11 +1,6 @@
-  /*
-  Project Name: EmployTT Government Recruitment Application
 
-  */
-  
-  
   // Your web app's Firebase configuration
-  var firebaseConfig = {
+  const firebaseConfig = {
     apiKey: "AIzaSyD3rzcDvo74D7siPasdB6TyRFQtxsKgHSc",
     authDomain: "igovtt-employtt.firebaseapp.com",
     databaseURL: "https://igovtt-employtt.firebaseio.com",
@@ -15,58 +10,58 @@
     appId: "1:583940496531:web:52655eb0b4f3f53c"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const functions = firebase.functions();
+firebase.initializeApp(firebaseConfig);
+const functions = firebase.functions();
 
 const firestore = firebase.firestore(); //Grab reference to database
 const auth = firebase.auth();
 
-//const email = document.querySelector("#email");  // gone
-//const password  = document.querySelector("#password"); //gone
-const subBtnRef = document.querySelector("#emailSubmitButton"); 
-const signupForm = document.querySelector('#signup-form');
 
-/*
-auth.onAuthStateChanged(user => {
-  //let user = firebase.auth().currentUser; 
-  if (user) {
-    window.location.assign("../index.html");
-  } else {
-    console.log('No user logged in');
-  }
-})
-*/
+
 //Handle Account Status
 firebase.auth().onAuthStateChanged(user => {
   if(user) {
     user.getIdTokenResult().then(idTokenResult => {
       user.admin = idTokenResult.claims.admin;
-      user.mda = idTokenResult.claims.admin;
-      console.log(user.admin);
-      console.log(user.mda);
+      user.mda = idTokenResult.claims.mda;
+      user.civilian = idTokenResult.claims.civilian;
+      console.log(user.email+' is an admin: '+user.admin);
+      console.log(user.email+' is an mda: '+user.mda);
+      console.log(user.email+' is a civilian: '+user.civilian);
+
+
+      if(user.admin){
+        console.log('I am an admin');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "Employer";
+        employArea.style.display = "block";
+        window.location.assign("../index.html");
+      } else if(user.mda){
+        console.log('I am a mda');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "Employer";
+        employArea.style.display  = "block";
+        window.location.assign("../index.html");
+      }else if(user.civilian){
+        console.log('I am a civilian');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "";
+        employArea.style.display  = "none";
+        window.location.assign("../index.html");
+      } else if (!user.civilian || !user.mda || !user.admin){
+        //window.location.assign("./userprofileinfo.html");
+        console.log("You're not anything");
+      }
+      
     });
 
-     if(user.admin){
-      console.log('I am an admin');
-      let employArea =document.querySelector('#employers');
-      employArea.innerHTML = "Employer";
-      employArea.style.display = "block";
 
-    } else if(user.mda){
-      console.log('I am a mda');
-      let employArea =document.querySelector('#employers');
-      employArea.innerHTML = "Employer";
-      employArea.style.display  = "block";
-    }else{
-      console.log('I am neither mda nor admin');
-      let employArea =document.querySelector('#employers');
-      employArea.innerHTML = "";
-      employArea.style.display  = "none";
-    } 
-    window.location = '../index.html';
+
   }
 });
 
+const subBtnRef = document.querySelector("#emailSubmitButton"); 
+const signupForm = document.querySelector('#signup-form');
 
 subBtnRef.addEventListener('click',(btnPressListener)=>{
     btnPressListener.preventDefault();
@@ -88,22 +83,29 @@ subBtnRef.addEventListener('click',(btnPressListener)=>{
     });
 });
 
-const provider = new firebase.auth.GoogleAuthProvider();
-firebase.auth().useDeviceLanguage();
-provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-provider.setCustomParameters({
-    'login_hint': 'user@example.com'
-  });
+
 
 
 const googleBtnRef = document.querySelector("#googleSubmitButton"); 
 googleBtnRef.addEventListener('click',(btnPressListener)=>{
     btnPressListener.preventDefault();
-    firebase.auth().signInWithPopup(provider).then(()=>{
-
-          //console.log("We're here");
-          window.location.assign("../index.html");  //USE DOUBLE QUOTES WHEN USING THIS FUNCTION
-          
-    })
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().useDeviceLanguage();
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    provider.setCustomParameters({
+        'login_hint': 'user@example.com'
+      });
+    firebase.auth().signInWithPopup(provider).then((googleUser)=>{
+          console.log(googleUser.additionalUserInfo.isNewUser);
+          if(googleUser.additionalUserInfo.isNewUser === false){
+            //window.location.assign("../index.html");
+          }else if(googleUser.additionalUserInfo.isNewUser === true){
+            //window.location.assign("./userprofileinfo.html");
+          }
+              
+   }).catch(error=>{
+     console.log(error);
+   });
 })
+
 

@@ -28,9 +28,12 @@ const setupAcc = document.querySelector('#setup-continue');
 auth.onAuthStateChanged(user => {
   if(user){
     user.getIdTokenResult().then(idTokenResult => {
-      console.log(idTokenResult.claims.admin);
       user.admin = idTokenResult.claims.admin;
       user.mda = idTokenResult.claims.mda;
+      user.civilian = idTokenResult.claims.civilian;
+      console.log(user.email+' is an admin: '+user.admin);
+      console.log(user.email+' is an mda: '+user.mda);
+      console.log(user.email+' is a civilian: '+user.civilian);
 
       if(user.admin){
         console.log('I am an admin');
@@ -130,9 +133,8 @@ auth.onAuthStateChanged(user => {
     const docRef = firestore.collection('Users');
     
     let display = document.querySelector('#username');
-      //display.innerHTML = user.displayName;
-      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
-      display.style = "in-line block";
+    display.innerHTML = user.displayName;
+    display.style = "inline-block";
 
     let logOut= document.querySelector("#logged-in");
     logOut.innerHTML = "Log Out";
@@ -151,6 +153,7 @@ auth.onAuthStateChanged(user => {
  
           //console.log(doc.data().firstName);
           //console.log(doc.id);
+          console.log(doc.data().firstName);
           firstNameLabel.innerHTML = `First Name: ${doc.data().firstName}`;
           lastNameLabel.innerHTML = `Last Name: ${doc.data().lastName}`;
           dateOfBirth.innerHTML = `Date of birth: ${doc.data().dateOfBirth}`;
@@ -191,44 +194,43 @@ auth.onAuthStateChanged(user => {
 
     document.body.innerHTML ="Unauthorized Access. Please log in or sign up to view this page";
     console.log("You shouldn't be here!");
+    window.location.assign("../index.html");
   }
 });
-
 
 
 
 const removeProfile = document.querySelector('#removeButton');
 removeProfile.addEventListener('click',(e)=>{
   e.preventDefault();
-  alert('This will delete all your data. Are you sure you want to continue?');
-  let user = firebase.auth().currentUser;
-  firestore.collection('Users').doc(user.uid).delete().then(function() {
-    console.log("Document successfully deleted!");
-    user.delete().then(function() {
-      console.log(`Profile deleted`);
-      window.location.assign("../index.html");
-    }).catch(function(error) {
-      console.log('Error deleting profile',error)
-      alert(error);
+  if (confirm("This will delete all your data. \nYou will need to re-enter your credentials. \nAre you sure you want to continue?")) {
+    firebase.auth().currentUser.reauthenticateWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then(function(userCredential) {
+      let user = firebase.auth().currentUser;
+      firestore.collection('Users').doc(user.uid).delete().then(function() {
+        console.log("Document successfully deleted!");
+        user.delete().then(function() {
+          console.log(`Profile deleted`);
+          window.location.assign("../index.html");
+        }).catch(function(error) {
+          console.log('Error deleting profile',error)
+          alert(error);
+        });
+      }).catch(function(error) {
+          console.error("Error removing document: ", error);
+          alert(error);
+      });
+      return firebase.auth().currentUser.delete();
+    })
+    .catch(function(error) {
+      // Credential mismatch or some other error.
     });
-  }).catch(function(error) {
-      console.error("Error removing document: ", error);
-      alert(error);
-  });
-})
-  /*
-    // Create a reference to the file to delete
-  let storage = firebase.storage(); 
-  var storageRef = storage.ref();
-  var userRef = storageRef.child('Users/'+user.uid);
 
-  // Delete the file
-  userRef.delete().then(function() {
-    console.log("All user files removed");
-  }).catch(function(error) {
-    console.error("Error removing files: ", error);
-  });
-  */
+  } else {
+    //Do nothing
+  }
+})
+
 
 
 

@@ -10,42 +10,38 @@
     <meta name="keywords" lang="en" content="employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt">
     <!--The core Firebase JS SDK is always required and must be listed first -->
 
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js" type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js" type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js" type="text/javascript"></script>
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
     <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    
     <script type="text/javascript">
     (function(){
         emailjs.init("user_TFNhLKi7ZXa8aNarxVUbP");
     })();
     </script>
     <link href="../styles/jobliststyle.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="../images/icons/icon-96x96.png">
 </head>
 <body>
 	<div class="topnav">  	         		
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>    
-          <!--User's name goes here once logged in-->      
-          <a class="nav-word displayname" id="username" href="./pages/userprofileinfo.html"></a> 
-          <a class="nav-word" id="logged-in"  href="#">    </a>	
+      <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>       <!--User's name goes here once logged in--> 
+      <a class="nav-word" id="logged-in"  href="#"></a>	
       <a class="nav-word" id="regBtn" href="./userprofileregister.html" >Register</a>
       <a class="nav-word" id="logInBtn" href="./login.html" >Log in</a>	
       <a class="nav-word" id="employers" href="./employers.html">Employers</a>  
       <a class="nav-word" id="logged-in"  href="./joblist.html" style="color:#ff3300;">All Jobs</a>
-      <a class="nav-word" id="employers" href="./employers.html"> Employers</a> 
       <a class="nav-word" id="logged-out" href="../index.html">Find Jobs</a>
       <a class="nav-word" id="logged-out" href="./aboutus.html">About Us</a>
       <a class="nav-word" id="logged-out" href="./termsofservice.html">Terms of Service</a>
       <a class="nav-word" id="logged-out" href="./privacypolicy.html">Privacy Policy</a>
-       </div>
+    </div>
 <div class="container">
 <a class="logo" href="../index.html"><img src="http://i64.tinypic.com/r9234h.png"></img></a>	
-    <div class = "joblists">
+    <div class = joblists>
         <h1 class = "h1job"> Job Listings </h1>
         <p> Log in to apply. </p>
 
@@ -56,11 +52,10 @@
                     <th> Category </th>
                     <th> Employer </th>
                     <th> Required Skills</th>
-                    <th> Job Status </th>
+                    <th> Jobstatus </th>
                     <th> Deadline </th>
                     <th> About </th>
-                    <th> Press to Apply</th>
-                    <th> Download Job Description </th>
+                    <th> Press to Apply or Download Job Description </th>
                 </tr>
             </table>
         </div>
@@ -127,6 +122,6 @@
         </div>
 
     </div>
-    <script src="../scripts/joblist.js"></script>
+    <script defer src="../scripts/joblist.js"></script>
 </footer>
 </html>

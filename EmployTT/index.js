@@ -13,49 +13,107 @@
   const firestore = firebase.firestore();
   const auth = firebase.auth();
   const jobTable = document.querySelector('#job-table');
-  var c = 0;
+  let c = 0;
   let table = document.createElement('table');
   let body = document.createElement('tbody');
   const div = document.querySelector('#job-table');
   auth.onAuthStateChanged(user => {
     //let user = firebase.auth().currentUser; 
     if (user) {
-      //console.log('user logged in: ', user.email);
-      //console.log('user logged in: ', user.displayName);
+      user.getIdTokenResult().then(idTokenResult => {
+        user.admin = idTokenResult.claims.admin;
+        user.mda = idTokenResult.claims.mda;
+        user.civilian = idTokenResult.claims.civilian;
+        console.log(user.email+' is an admin: '+user.admin);
+        console.log(user.email+' is an mda: '+user.mda);
+        console.log(user.email+' is a civilian: '+user.civilian);
+
+        if (user.admin){
+          let display = document.querySelector('#username');
+          display.innerHTML = user.displayName;
+          display.style = "block";
+    
+          let logOut= document.querySelector("#logged-in");
+          logOut.innerHTML = "Log Out";
+          display.style = "block";
+    
+          let logIn= document.querySelector("#logInBtn");
+          logIn.innerHTML = "";
+          logIn.style.display = "none";
+    
+          let registerBtn = document.querySelector("#regBtn");
+          registerBtn.innerHTML ="";
+          registerBtn.style.display = "none";
+
+          let employArea =document.querySelector('#employers');
+          employArea.innerHTML = "Employer";
+          employArea.style.display  = "block";
+
+        /*           
+         auth.fetchSignInMethodsForEmail(user.email).then(providers =>{
+            console.log(providers);
+        }).catch(error=>{
+          console.log(error);
+        })*/
+
+    
+        }else if(user.mda){
+
+          console.log("I am an MDA");
+          let display = document.querySelector('#username');
+          display.innerHTML = user.displayName;
+          display.style = "block";
+    
+          let logOut= document.querySelector("#logged-in");
+          logOut.innerHTML = "Log Out";
+          display.style = "block";
+    
+          let logIn= document.querySelector("#logInBtn");
+          logIn.innerHTML = "";
+          logIn.style.display = "none";
+    
+          let registerBtn = document.querySelector("#regBtn");
+          registerBtn.innerHTML ="";
+          registerBtn.style.display = "none";
+
+          let employArea =document.querySelector('#employers');
+          employArea.innerHTML = "Employers";
+          employArea.style.display  = "block";
+
+        }else if(user.civilian){
+          console.log("I am a civilian");
+          let display = document.querySelector('#username');
+          display.innerHTML = user.displayName;
+          display.style = "block";
+    
+          let logOut= document.querySelector("#logged-in");
+          logOut.innerHTML = "Log Out";
+          display.style = "block";
+    
+          let logIn= document.querySelector("#logInBtn");
+          logIn.innerHTML = "";
+          logIn.style.display = "none";
+    
+          let registerBtn = document.querySelector("#regBtn");
+          registerBtn.innerHTML ="";
+          registerBtn.style.display = "none";
+
+          let employArea =document.querySelector('#employers');
+          employArea.innerHTML = "";
+          employArea.style.display  = "none";
+        }
+      });
      
-
-      let display = document.querySelector('#username');
-      //display.innerHTML = user.displayName;
-      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
-      display.style = "block ";
-
-      let logOut= document.querySelector("#logged-in");
-      logOut.innerHTML = "Log Out";
-      display.style = "inline-block";
-
-      let logIn= document.querySelector("#logInBtn");
-      logIn.innerHTML = "";
-      logIn.style.display = "none";
-
-      let registerBtn = document.querySelector("#regBtn");
-      registerBtn.innerHTML ="";
-      registerBtn.style.display = "none";
-
-      auth.fetchSignInMethodsForEmail(user.email).then(providers =>{
-        console.log(providers);
-    }).catch(error=>{
-      console.log(error);
-    })
     } else {
       console.log('No user logged in');
+      let employersBtn = document.querySelector('#employers');
+      employersBtn.style.display = "none";
 
       let display = document.querySelector('#username');
-      display.innerHTML = "";
-      display.style = "none";
+      display.style.display = "none";
 
       let logOut= document.querySelector("#logged-in");
-      logOut.innerHTML = "";
-      logOut.style = "none";
+      logOut.style.display = "none";
 
       let logIn= document.querySelector("#logInBtn");
       logIn.innerHTML = "Log In";
@@ -244,3 +302,4 @@ function showTab(tabNum, color){
 }showTab(0,'#b6b4b4')
 
 
+console.log(window.performance.now());

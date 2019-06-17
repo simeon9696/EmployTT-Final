@@ -1,11 +1,5 @@
 // Your web app's Firebase configuration
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-    //https://firebase.google.com/docs/web/setup#config-web-app -->
-
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
+  const firebaseConfig = {
     apiKey: "AIzaSyD3rzcDvo74D7siPasdB6TyRFQtxsKgHSc",
     authDomain: "igovtt-employtt.firebaseapp.com",
     databaseURL: "https://igovtt-employtt.firebaseio.com",
@@ -17,15 +11,123 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
  
-  const functions = firebase.functions();
+const functions = firebase.functions();
 const firestore = firebase.firestore(); //Grab reference to database
 const auth = firebase.auth(); //Grab reference to firebase objects
-const prgBarRef = document.getElementById('resumeFile');
-const fileBtnRef = document.getElementById('fileButton');
-const userData = firestore.doc('/');
 
 const cnfmPassword = document.querySelector('#cnfm-password');
 const origPassword = document.querySelector('#signup-password');
+
+auth.onAuthStateChanged(user => {
+  //let user = firebase.auth().currentUser; 
+  if (user) {
+    user.getIdTokenResult().then(idTokenResult => {
+      user.admin = idTokenResult.claims.admin;
+      user.mda = idTokenResult.claims.mda;
+      user.civilian = idTokenResult.claims.civilian;
+      console.log(user.email+' is an admin: '+user.admin);
+      console.log(user.email+' is an mda: '+user.mda);
+      console.log(user.email+' is a civilian: '+user.civilian);
+
+      if (user.admin){
+        let display = document.querySelector('#username');
+        display.innerHTML = user.displayName;
+        display.style = "block";
+  
+        let logOut= document.querySelector("#logged-in");
+        logOut.innerHTML = "Log Out";
+        display.style = "block";
+  
+        let logIn= document.querySelector("#logInBtn");
+        logIn.innerHTML = "";
+        logIn.style.display = "none";
+  
+        let registerBtn = document.querySelector("#regBtn");
+        registerBtn.innerHTML ="";
+        registerBtn.style.display = "none";
+
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "Employer";
+        employArea.style.display  = "block";
+
+      /*           
+       auth.fetchSignInMethodsForEmail(user.email).then(providers =>{
+          console.log(providers);
+      }).catch(error=>{
+        console.log(error);
+      })*/
+
+  
+      }else if(user.mda){
+
+        console.log("I am an MDA");
+        let display = document.querySelector('#username');
+        display.innerHTML = user.displayName;
+        display.style = "block";
+  
+        let logOut= document.querySelector("#logged-in");
+        logOut.innerHTML = "Log Out";
+        display.style = "block";
+  
+        let logIn= document.querySelector("#logInBtn");
+        logIn.innerHTML = "";
+        logIn.style.display = "none";
+  
+        let registerBtn = document.querySelector("#regBtn");
+        registerBtn.innerHTML ="";
+        registerBtn.style.display = "none";
+
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "Employers";
+        employArea.style.display  = "block";
+
+      }else if(user.civilian){
+        console.log("I am a civilian");
+        let display = document.querySelector('#username');
+        display.innerHTML = user.displayName;
+        display.style = "block";
+  
+        let logOut= document.querySelector("#logged-in");
+        logOut.innerHTML = "Log Out";
+        display.style = "block";
+  
+        let logIn= document.querySelector("#logInBtn");
+        logIn.innerHTML = "";
+        logIn.style.display = "none";
+  
+        let registerBtn = document.querySelector("#regBtn");
+        registerBtn.innerHTML ="";
+        registerBtn.style.display = "none";
+
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "";
+        employArea.style.display  = "none";
+      }
+    });
+   
+  } else {
+    console.log('No user logged in');
+    let employersBtn = document.querySelector('#employers');
+    employersBtn.style.display = "none";
+
+    let display = document.querySelector('#username');
+    display.style.display = "none";
+
+    let logOut= document.querySelector("#logged-in");
+    logOut.style.display = "none";
+
+    let logIn= document.querySelector("#logInBtn");
+    logIn.innerHTML = "Log In";
+    logIn.style.display = "block";
+
+    let registerBtn = document.querySelector("#regBtn");
+    registerBtn.innerHTML ="Register";
+    registerBtn.style.display = "block";
+
+  }
+})
+
+
 
 cnfmPassword.addEventListener("change",(e)=>{
     e.preventDefault();
@@ -34,7 +136,6 @@ cnfmPassword.addEventListener("change",(e)=>{
 
     if(initPassword !=cnfmdPassword){
         e.target.setCustomValidity('Passwords do not match. Ensure that the same password is in both fields');
-        alert('Passwords do not match. Ensure that the same password is in both fields');
     }
 })
 
@@ -114,9 +215,14 @@ subBtnRef.addEventListener('click',(btnPressListener)=>{
     let task =0;
     let totalBytesTransferred =0;
 
+
     auth.createUserWithEmailAndPassword(email, password)
     .then(cred =>{  	                                          //After account has been created chain promises
-
+      const civilianEmail = signupForm['signup-email'].value;  // gone
+      const addCivilianRole = functions.httpsCallable('addCivilianRole');
+      addCivilianRole({ email: civilianEmail }).then(result => {
+        console.log(result);
+      });
        firestore.collection('Users').doc(cred.user.uid).set({
         firstName    : signupForm['firstName'].value,
         lastName     : signupForm['lastName'].value,
@@ -159,7 +265,7 @@ subBtnRef.addEventListener('click',(btnPressListener)=>{
                         console.log(error);
                       },
                       function complete(){
-                        console.log("File uploaded successfully!");
+                        console.log("Files uploaded successfully!");
                         setTimeout(locate, 1500);
                         function locate(){window.location = "./userprofileinfo.html";}
                     })
@@ -181,25 +287,26 @@ subBtnRef.addEventListener('click',(btnPressListener)=>{
 
     });
 
-    
 });
 
 /* 
 
 */
 
-const provider = new firebase.auth.GoogleAuthProvider();
 
-firebase.auth().useDeviceLanguage();
-provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-provider.setCustomParameters({
-    'login_hint': 'user@example.com'
-  });
 
 const googleBtnRef = document.querySelector("#googleSignIn"); 
 googleBtnRef.addEventListener('click',(btnPressListener)=>{
     btnPressListener.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
 
+    firebase.auth().useDeviceLanguage();
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+    
+    provider.setCustomParameters({
+        'login_hint': 'user@example.com'
+      });
     firebase.auth().signInWithPopup(provider).then((googleUser)=>{
           console.log(googleUser.additionalUserInfo.isNewUser);
           if(googleUser.additionalUserInfo.isNewUser === false){
@@ -207,15 +314,23 @@ googleBtnRef.addEventListener('click',(btnPressListener)=>{
             alert('Email address in use. Please try logging in');
             firebase.auth().signOut().then(function() {
               console.log('Sign out successful');
+              window.location.assign("./login.html");
             }).catch(function(error) {
               // An error happened.
               alert(error);
             });
-            window.location.assign("./login.html");
+          }else{
+            let user = firebase.auth().currentUser;  //Grab current user
+            const civilianEmail = user.email;
+            const addCivilianRole = functions.httpsCallable('addCivilianRole');
+            addCivilianRole({ email: civilianEmail }).then(result => {
+            console.log(result);
+            });
           }
           
     })
 })
+
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -228,11 +343,15 @@ firebase.auth().onAuthStateChanged(function(user) {
       document.querySelector('#password-star').style.display="none";
       document.querySelector('#cnfm-password-star').style.display="none";
 
+     
+        user.providerData.forEach(function (profile) {
+          console.log(profile);
+        });
+      
 
       let display = document.querySelector('#username');
-      //display.innerHTML = user.displayName;
-      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
-      display.style = "block";
+      display.innerHTML = user.displayName;
+      display.style = "block ";
 
       let logOut= document.querySelector("#logged-in");
       logOut.innerHTML = "Log Out";
@@ -277,15 +396,13 @@ firebase.auth().onAuthStateChanged(function(user) {
       let updateBtn= document.querySelector("#updateButton");
       updateBtn.innerHTML = "";
       updateBtn.style.display = "none";
-
-
   }
 });
 
 const updateButton = document.querySelector("#updateButton"); 
 updateButton.addEventListener('click',(btnPressListener)=>{
 
-  let prgBar = document.querySelector('#progressBar');
+  let prgBar = document.querySelector('#progress2-bar');
   let totalUploadSize =0;
   let task =0;
   let totalBytesTransferred =0;

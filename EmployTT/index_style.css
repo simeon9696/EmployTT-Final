@@ -1,4 +1,3 @@
-    
 @charset "UTF-8";
 
 /* -------CSS RESET---------*/
@@ -42,7 +41,7 @@ header{
   width:100%;
   display:block;
   position:relative;
-  z-index: 1;
+
   height: 25vw; /* You must set a specified height */
   background-position: center;
   background-repeat: no-repeat;
@@ -664,7 +663,7 @@ width:100%;
 
 #progress-bar{
 	margin-left:5vw;
-	width:80%;x
+	width:80%;
 	color:#ff3300;
 }
 .tabCont{
@@ -761,7 +760,7 @@ footer{
 
 
   /* Set a specific height */
-	background-color: #292c2f;
+	background-image: url("./images/landingimage.jpg");
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;

@@ -13,76 +13,124 @@
   const jobTable = document.querySelector('#job-table');
   const firestore = firebase.firestore();
   const auth = firebase.auth();
+
+  firestore.collection('Jobs').get().then((snapshot)=>{
+    var c = 1;
+    snapshot.docs.forEach(doc =>{
+        renderJobTable(doc, c);
+        c++;
+    });
+});
+
+
   auth.onAuthStateChanged(user => {
-  if (user) {
-        user.getIdTokenResult().then(idTokenResult => {
-            user.admin = idTokenResult.claims.admin;
-            user.mda = idTokenResult.claims.admin;
-            console.log(user.admin);
-            console.log(user.mda);
-          });
-      
-           if(user.admin){
-            console.log('I am an admin');
-            let employArea =document.querySelector('#employers');
-            employArea.innerHTML = "Employer";
-            employArea.style.display = "block";
-      
-          } else if(user.mda){
-            console.log('I am a mda');
-            let employArea =document.querySelector('#employers');
-            employArea.innerHTML = "Employer";
-            employArea.style.display  = "block";
-          }else{
-            console.log('I am neither mda nor admin');
-            let employArea =document.querySelector('#employers');
-            employArea.innerHTML = "";
-            employArea.style.display  = "none";
-          } 
-   
+    //let user = firebase.auth().currentUser; 
+    if (user) {
+      user.getIdTokenResult().then(idTokenResult => {
+        user.admin = idTokenResult.claims.admin;
+        user.mda = idTokenResult.claims.mda;
+        user.civilian = idTokenResult.claims.civilian;
+        console.log(user.email+' is an admin: '+user.admin);
+        console.log(user.email+' is an mda: '+user.mda);
+        console.log(user.email+' is a civilian: '+user.civilian);
 
-    let display = document.querySelector('#username');
-      //display.innerHTML = user.displayName;
-      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
-      display.style = "block";
+        if (user.admin){
+            let userName = document.querySelector('#username');
+            userName.innerHTML = user.displayName;
+            userName.style.display = "block";
+        
+            let logOut= document.querySelector("#logged-in");
+            logOut.innerHTML = "Log Out";
+            logOut.style.display = "block";
+    
+          let logIn= document.querySelector("#logInBtn");
+          logIn.innerHTML = "";
+          logIn.style.display = "none";
+    
+          let registerBtn = document.querySelector("#regBtn");
+          registerBtn.innerHTML ="";
+          registerBtn.style.display = "none";
 
-    let logOut= document.querySelector("#logged-in");
-    logOut.innerHTML = "Log Out";
-    display.style = "block";
+          let employArea =document.querySelector('#employers');
+          employArea.innerHTML = "Employers";
+          employArea.style.display  = "block";
 
-    let logIn= document.querySelector("#logInBtn");
-    logIn.innerHTML = "";
-    logIn.style.display = "none";
+        /*           
+         auth.fetchSignInMethodsForEmail(user.email).then(providers =>{
+            console.log(providers);
+        }).catch(error=>{
+          console.log(error);
+        })*/
 
-    let registerBtn = document.querySelector("#regBtn");
-    registerBtn.innerHTML ="";
-    registerBtn.style.display = "none";
+    
+        }else if(user.mda){
 
-    auth.fetchSignInMethodsForEmail(user.email).then(providers =>{
-      console.log(providers);
-  }).catch(error=>{
-    console.log(error);
+          console.log("I am an MDA");
+          let userName = document.querySelector('#username');
+          userName.innerHTML = user.displayName;
+          userName.style.display = "block";
+    
+          let logOut= document.querySelector("#logged-in");
+          logOut.innerHTML = "Log Out";
+          logOut.style.display = "block";
+    
+          let logIn= document.querySelector("#logInBtn");
+          logIn.innerHTML = "";
+          logIn.style.display = "none";
+    
+          let registerBtn = document.querySelector("#regBtn");
+          registerBtn.innerHTML ="";
+          registerBtn.style.display = "none";
+
+          let employArea =document.querySelector('#employers');
+          employArea.innerHTML = "Employers";
+          employArea.style.display  = "block";
+
+        }else if(user.civilian){
+          console.log("I am a civilian");
+          let userName = document.querySelector('#username');
+          userName.innerHTML = user.displayName;
+          userName.style.display = "block";
+    
+          let logOut= document.querySelector("#logged-in");
+          logOut.innerHTML = "Log Out";
+          logOut.style.display = "block";
+    
+          let logIn= document.querySelector("#logInBtn");
+          logIn.innerHTML = "";
+          logIn.style.display = "none";
+    
+          let registerBtn = document.querySelector("#regBtn");
+          registerBtn.innerHTML ="";
+          registerBtn.style.display = "none";
+
+          let employArea =document.querySelector('#employers');
+          employArea.innerHTML = "";
+          employArea.style.display  = "none";
+        }
+      });
+     
+    } else {
+      console.log('No user logged in');
+      let employersBtn = document.querySelector('#employers');
+      employersBtn.style.display = "none";
+
+      let display = document.querySelector('#username');
+      display.style.display = "none";
+
+      let logOut= document.querySelector("#logged-in");
+      logOut.style.display = "none";
+
+      let logIn= document.querySelector("#logInBtn");
+      logIn.innerHTML = "Log In";
+      logIn.style.display = "block";
+
+      let registerBtn = document.querySelector("#regBtn");
+      registerBtn.innerHTML ="Register";
+      registerBtn.style.display = "block";
+
+    }
   })
-  } else {
-    console.log('No user logged in');
-
-    let display = document.querySelector('#username');
-    display.innerHTML = "";
-    display.style = "none";
-
-    let logOut= document.querySelector("#logged-in");
-    logOut.innerHTML = "";
-    logOut.style = "none";
-
-    let logIn= document.querySelector("#logInBtn");
-    logIn.innerHTML = "Log In";
-    logIn.style.display = "block";
-
-    let registerBtn = document.querySelector("#regBtn");
-    registerBtn.innerHTML ="Register";
-    registerBtn.style.display = "block";
-  }
-})
 
 const logout = document.querySelector('#logged-in');
 logout.addEventListener('click', (e) => {
@@ -99,7 +147,7 @@ function renderJobTable(doc, c){
     let status = document.createElement('td');
     let deadline = document.createElement('td');
     let about = document.createElement('td');
-    let presstoapply = document.createElement('td');
+
     let applyButton = document.createElement('button');
     let pdfButton = document.createElement('button');
 
@@ -200,26 +248,13 @@ function pdfDownload(id, jobid){
             pdfFile.text('Job Opened: ' +snapshot.data().opened,   10, 140);
             pdfFile.text('Job Closing: '+snapshot.data().deadline, 10, 150);
             pdfFile.text('Salary: '     +snapshot.data().salary,   10, 160);
-            pdfFile.text('Job Skills: '  +snapshot.data().skills,   10, 170);
+            pdfFile.text('Job Skils: '  +snapshot.data().skills,   10, 170);
             pdfFile.save(snapshot.data().employer+snapshot.data().jobstatus+'.pdf');
-
-
-           // alert("You are already applied for this job");
-            //console.log(snapshot.employerID);
 
     });
 
 }
 
-
-
-firestore.collection('Jobs').get().then((snapshot)=>{
-    var c = 1;
-    snapshot.docs.forEach(doc =>{
-        renderJobTable(doc, c);
-        c++;
-    });
-});
 
 
 
