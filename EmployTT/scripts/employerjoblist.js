@@ -15,13 +15,36 @@ const auth = firebase.auth();
 auth.onAuthStateChanged(user => {
     //let user = firebase.auth().currentUser; 
     if (user) {
-      console.log('user logged in: ', user.email);
-      console.log('user logged in: ', user.displayName);
+      user.getIdTokenResult().then(idTokenResult => {
+        user.admin = idTokenResult.claims.admin;
+        user.mda = idTokenResult.claims.admin;
+        console.log(user.admin);
+        console.log(user.mda);
+      });
+  
+       if(user.admin){
+        console.log('I am an admin');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "Employer";
+        employArea.style.display = "block";
+  
+      } else if(user.mda){
+        console.log('I am a mda');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "Employer";
+        employArea.style.display  = "block";
+      }else{
+        console.log('I am neither mda nor admin');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "";
+        employArea.style.display  = "none";
+      } 
      
 
       let display = document.querySelector('#username');
-      display.innerHTML = user.displayName;
-      display.style = "block ";
+      //display.innerHTML = user.displayName;
+      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
+      display.style = "block";
 
       let logOut= document.querySelector("#logged-in");
       logOut.innerHTML = "Log Out";

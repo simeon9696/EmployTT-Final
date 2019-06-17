@@ -15,13 +15,36 @@
   const auth = firebase.auth();
   auth.onAuthStateChanged(user => {
   if (user) {
-    console.log('user logged in: ', user.email);
-    console.log('user logged in: ', user.displayName);
+        user.getIdTokenResult().then(idTokenResult => {
+            user.admin = idTokenResult.claims.admin;
+            user.mda = idTokenResult.claims.admin;
+            console.log(user.admin);
+            console.log(user.mda);
+          });
+      
+           if(user.admin){
+            console.log('I am an admin');
+            let employArea =document.querySelector('#employers');
+            employArea.innerHTML = "Employer";
+            employArea.style.display = "block";
+      
+          } else if(user.mda){
+            console.log('I am a mda');
+            let employArea =document.querySelector('#employers');
+            employArea.innerHTML = "Employer";
+            employArea.style.display  = "block";
+          }else{
+            console.log('I am neither mda nor admin');
+            let employArea =document.querySelector('#employers');
+            employArea.innerHTML = "";
+            employArea.style.display  = "none";
+          } 
    
 
     let display = document.querySelector('#username');
-    display.innerHTML = user.displayName;
-    display.style = "block ";
+      //display.innerHTML = user.displayName;
+      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
+      display.style = "block";
 
     let logOut= document.querySelector("#logged-in");
     logOut.innerHTML = "Log Out";
@@ -76,7 +99,7 @@ function renderJobTable(doc, c){
     let status = document.createElement('td');
     let deadline = document.createElement('td');
     let about = document.createElement('td');
-
+    let presstoapply = document.createElement('td');
     let applyButton = document.createElement('button');
     let pdfButton = document.createElement('button');
 
@@ -132,7 +155,22 @@ function clickedButton(id, jobid){
                             user_id: auth.currentUser.uid,
                             job_id: jobid 
                         });
-                        alert("Applied for")
+                        alert("Applied for job");
+                        var template_params = {
+                            "user_email": user.email,
+                            "reply_to": "noreply",
+                            "to_name": user.displayName
+                         }
+                         var service_id = "default_service";
+                         var template_id = "template_FNuLCybl";
+                     
+                        
+                         emailjs.send(service_id, template_id, template_params)
+                        .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        }, function(error) {
+                        console.log('FAILED...', error);
+                        });
                     }
                 });
             });
@@ -162,7 +200,7 @@ function pdfDownload(id, jobid){
             pdfFile.text('Job Opened: ' +snapshot.data().opened,   10, 140);
             pdfFile.text('Job Closing: '+snapshot.data().deadline, 10, 150);
             pdfFile.text('Salary: '     +snapshot.data().salary,   10, 160);
-            pdfFile.text('Job Skils: '  +snapshot.data().skills,   10, 170);
+            pdfFile.text('Job Skills: '  +snapshot.data().skills,   10, 170);
             pdfFile.save(snapshot.data().employer+snapshot.data().jobstatus+'.pdf');
 
 

@@ -39,6 +39,30 @@ auth.onAuthStateChanged(user => {
 //Handle Account Status
 firebase.auth().onAuthStateChanged(user => {
   if(user) {
+    user.getIdTokenResult().then(idTokenResult => {
+      user.admin = idTokenResult.claims.admin;
+      user.mda = idTokenResult.claims.admin;
+      console.log(user.admin);
+      console.log(user.mda);
+    });
+
+     if(user.admin){
+      console.log('I am an admin');
+      let employArea =document.querySelector('#employers');
+      employArea.innerHTML = "Employer";
+      employArea.style.display = "block";
+
+    } else if(user.mda){
+      console.log('I am a mda');
+      let employArea =document.querySelector('#employers');
+      employArea.innerHTML = "Employer";
+      employArea.style.display  = "block";
+    }else{
+      console.log('I am neither mda nor admin');
+      let employArea =document.querySelector('#employers');
+      employArea.innerHTML = "";
+      employArea.style.display  = "none";
+    } 
     window.location = '../index.html';
   }
 });

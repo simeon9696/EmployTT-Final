@@ -27,11 +27,112 @@ const cityOrTown = document.querySelector('#cityOrTown');
 const setupAcc = document.querySelector('#setup-continue');
 auth.onAuthStateChanged(user => {
   if(user){
+    user.getIdTokenResult().then(idTokenResult => {
+      console.log(idTokenResult.claims.admin);
+      user.admin = idTokenResult.claims.admin;
+      user.mda = idTokenResult.claims.mda;
+
+      if(user.admin){
+        console.log('I am an admin');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "Employer";
+        employArea.style.display = "block";
+  
+        let fieldLabelAdmin = document.querySelector('#profile-labels-admin');
+        fieldLabelAdmin.innerHTML = "Enter desired Administrator email here:";
+        fieldLabelAdmin.style = "block";
+  
+        let adminEmail = document.querySelector('#admin-email');
+        adminEmail.innerHTML = "";
+        adminEmail.style.display  = "block";
+  
+        let adminBtn = document.querySelector('#adminSubmitButton');
+        adminBtn.innerHTML = "Make Administrator";
+    
+
+        let fieldLabelMda = document.querySelector('#profile-labels-mda');
+        fieldLabelMda.innerHTML = "Enter desired MDA email here:";
+        fieldLabelMda.style.display  = "block";
+  
+        let mdaEmail = document.querySelector('#mda-email');
+        mdaEmail.innerHTML = "";
+        mdaEmail.style.display  = "inline-block";
+        
+        let mdaBtn = document.querySelector('#mdaSubmitButton');
+        mdaBtn.innerHTML = "Make MDA";
+        
+  
+      } else if(user.mda){
+        console.log('I am a mda');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "Employer";
+ 
+  
+        let fieldLabelAdmin = document.querySelector('#profile-labels-admin');
+        fieldLabelAdmin.innerHTML = "";
+        fieldLabelAdmin.style.display  = "none";
+  
+        let adminEmail = document.querySelector('#admin-email');
+        adminEmail.innerHTML = "";
+        adminEmail.style.display  = "none";
+  
+        let adminBtn = document.querySelector('#adminSubmitButton');
+        adminBtn.innerHTML = "";
+        adminBtn.style.display  = "none";
+  
+  
+        let fieldLabelMda = document.querySelector('#profile-labels-mda');
+        fieldLabelMda.innerHTML = "";
+        fieldLabelMda.style.display  = "none";
+  
+        let mdaEmail = document.querySelector('#mda-email');
+        mdaEmail.innerHTML = "";
+        mdaEmail.style.display  = "none";
+        
+        let mdaBtn = document.querySelector('#mdaSubmitButton');
+        mdaBtn.innerHTML = "";
+        mdaBtn.style.display  = "none";
+
+      }else{
+        console.log('I am neither mda nor admin');
+        let employArea =document.querySelector('#employers');
+        employArea.innerHTML = "";
+        employArea.style.display  = "none";
+  
+        let fieldLabelAdmin = document.querySelector('#profile-labels-admin');
+        fieldLabelAdmin.innerHTML = "";
+        fieldLabelAdmin.style.display  = "none";
+  
+        let adminEmail = document.querySelector('#admin-email');
+        adminEmail.innerHTML = "";
+        adminEmail.style.display  = "none";
+  
+        let adminBtn = document.querySelector('#adminSubmitButton');
+        adminBtn.innerHTML = "";
+        adminBtn.style.display  = "none";
+  
+  
+        let fieldLabelMda = document.querySelector('#profile-labels-mda');
+        fieldLabelMda.innerHTML = "";
+        fieldLabelMda.style.display  = "none";
+  
+        let mdaEmail = document.querySelector('#mda-email');
+        mdaEmail.innerHTML = "";
+        mdaEmail.style.display  = "none";
+        
+        let mdaBtn = document.querySelector('#mdaSubmitButton');
+        mdaBtn.innerHTML = "";
+        mdaBtn.style.display  = "none";
+      } 
+    });
+
+
     const docRef = firestore.collection('Users');
     
     let display = document.querySelector('#username');
-    display.innerHTML = user.displayName;
-    display.style = "inline-block";
+      //display.innerHTML = user.displayName;
+      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
+      display.style = "in-line block";
 
     let logOut= document.querySelector("#logged-in");
     logOut.innerHTML = "Log Out";
@@ -130,14 +231,9 @@ removeProfile.addEventListener('click',(e)=>{
   */
 
 
- const submitButton = document.querySelector('#submitButton');
- submitButton.addEventListener('click',(e)=>{
-      e.preventDefault();
-      window.location.assign("../index.html");
- })
 
 
- const logOutBtn = document.querySelector('#logged-in');
+const logOutBtn = document.querySelector('#logged-in');
 logOutBtn.addEventListener('click', (e) => {
   e.preventDefault();
   firebase.auth().signOut().then(function() {

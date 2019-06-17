@@ -25,8 +25,9 @@
      
 
       let display = document.querySelector('#username');
-      display.innerHTML = user.displayName;
-      display.style = "inline-block";
+      //display.innerHTML = user.displayName;
+      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
+      display.style = "block ";
 
       let logOut= document.querySelector("#logged-in");
       logOut.innerHTML = "Log Out";

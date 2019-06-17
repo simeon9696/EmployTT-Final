@@ -109,7 +109,7 @@ subBtnRef.addEventListener('click',(btnPressListener)=>{
     const email = signupForm['signup-email'].value;  // gone
     const password  = signupForm['signup-password'].value; //gone - don't give to firebase in plaintext
 
-    let prgBar = document.querySelector('#progressBar');
+    let prgBar = document.querySelector('#progress2-bar');
     let totalUploadSize =0;
     let task =0;
     let totalBytesTransferred =0;
@@ -230,8 +230,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
       let display = document.querySelector('#username');
-      display.innerHTML = user.displayName;
-      display.style = "block ";
+      //display.innerHTML = user.displayName;
+      display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
+      display.style = "block";
 
       let logOut= document.querySelector("#logged-in");
       logOut.innerHTML = "Log Out";
