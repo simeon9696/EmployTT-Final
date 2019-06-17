@@ -3,11 +3,11 @@
   "short_name": "EmployTT",
   "theme_color": "#2196f3",
   "background_color": "#ff3300",
-  "display": "browser",
+  "display": "minimal-ui",
   "orientation": "portrait",
   "Scope": "/",
   
-  "start_url": "http://127.0.0.1:5500/index.html",
+  "start_url": "https://employtt.netlify.com/index.html",
   "comments":" // https://employtt.netlify.com/index.html",
   "icons": [
     {

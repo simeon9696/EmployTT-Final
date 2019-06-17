@@ -110,8 +110,8 @@ auth.onAuthStateChanged(user => {
     let employersBtn = document.querySelector('#employers');
     employersBtn.style.display = "none";
 
-    let display = document.querySelector('#username');
-    display.style.display = "none";
+    let userName = document.querySelector('#username');
+    userName.style.display = "none";
 
     let logOut= document.querySelector("#logged-in");
     logOut.style.display = "none";

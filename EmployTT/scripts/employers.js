@@ -121,7 +121,6 @@
     }
   })
 
-
 const logout = document.querySelector('#logged-in');
 logout.addEventListener('click', (e) => {
   e.preventDefault();

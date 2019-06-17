@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=,chrome=1">
-    <title>Post a Job | EmployTT</title>
-    <meta name="msapplication-TileColor" content="#da532c">
-		<meta name="theme-color" content="#ff3300">
-		<meta name="description" content="jobs for citizens of trinidad and tobago">
-		<meta name="keywords" lang="en" content="employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt">
-    <!--The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" type="text/javascript"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js" type="text/javascript"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
-    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" charset="utf-8"></script>
-    <script src="../scripts/employers.jquery.js"></script>	
-    <link href="../styles/employersstyle.css" type="text/css" rel="stylesheet">
-    <link rel="icon" href="../images/icons/icon-96x96.png">
-</head>
-<body> 
-      <div class="topnav">
-        <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>       <!--User's name goes here once logged in--> 
-        <a class="nav-word" id="logged-in"  href="#"></a>	
-        <a class="nav-word" id="regBtn" href="./userprofileregister.html" >Register</a>
-        <a class="nav-word" id="logInBtn" href="./login.html" >Log in</a>	
-        <a class="nav-word" id="employers" href="./employers.html"  style="color:#330099">Employers</a> 
-        <a class="nav-word" id="logged-in"  href="./joblist.html">All Jobs</a>
-        <a class="nav-word" id="logged-out" href="../index.html" >Find Jobs</a>
-        <a class="nav-word" id="logged-out" href="./aboutus.html">About Us</a>
-        <a class="nav-word" id="logged-out" href="./termsofservice.html"  >Terms of Service</a>
-        <a class="nav-word" id="logged-out" href="./privacypolicy.html">Privacy Policy</a>
-      </div>
+  <head>
+      <meta charset="UTF-8">
+      <title>Job Opportunities in TT| EmployTT</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=,chrome=1">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="theme-color" content="#ff3300">
+      <meta name="description" content="jobs for citizens of trinidad and tobago">
+      <meta name="keywords" lang="en" content="employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt, igovtt">
+      <meta name="viewport" content="width=device-width, initial-scale=1">  
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <!-- Scripts are deferred to improve page performance -->
+      <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" 	      type="text/javascript"></script>
+      <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"	type="text/javascript"></script>
+      <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js" 		type="text/javascript"></script>
+      <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" 			type="text/javascript"></script>
+      <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" 	type="text/javascript"></script>
+      <script defer src="../scripts/employers.js" 													              type="text/javascript"></script>
+      <!-- jQuery Dependencies -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" 			type="text/javascript"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"type = "text/javascript"  charset="utf-8"></script>
+      <script src="../scripts/employers.jquery.js"></script>
+      <!-- Links to manifest and style files -->
+      <link href="../styles/employersstyle.css" type="text/css" rel="stylesheet" />	
+  </head>
+  <body>
+    <div class="topnav">    
+      <!--User's name goes here once logged in-->
+      <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
+      <a class="nav-word" id="logged-in"  href="#"></a>	
+      <a class="nav-word" id="regBtn" 	  href="./userprofileregister.html" >Register</a>
+      <a class="nav-word" id="logInBtn" 	href="./login.html" >Log in</a>	
+      <a class="nav-word" id="employers"  href="./employers.html" style="color:#330099">Employers</a> 
+      <a class="nav-word" id="all-jobs"   href="./joblist.html">All Jobs</a>
+      <a class="nav-word" id="find-jobs"  href="../index.html" ">Find Jobs</a>
+      <a class="nav-word" id="about-us"   href="./aboutus.html">About Us</a>
+      <a class="nav-word" id="terms-of-service" href="./termsofservice.html"  >Terms of Service</a>
+      <a class="nav-word" id="privacy-policy"   href="./privacypolicy.html">Privacy Policy</a>
+    </div>
    	<div class="employer-container">
    	<img class="employer-background" src="../images/stoney.jpg"></img>
 	    <a class="employer-logo" href="../index.html"><img src="http://i63.tinypic.com/141s506.png"></img></a>
@@ -52,8 +56,6 @@
  	 	</table>
 
    </div>	 
-  
- 	 <script src= "../scripts/employers.js"></script>
 </body>
 
 <footer class="footer-distributed">
