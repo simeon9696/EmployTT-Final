@@ -1,8 +1,14 @@
 var employTTcache = 'employTTCache';
 var urlsToCache = [
-  '/',
-  '/pages/login.html',
-  '/styles/loginstyle.css',
+  '/_headers',
+  '/.firebasesrc',
+  '/.htaccess',
+  '/index.js',
+  '/index.html',
+  '/index_style.css',
+  '/styles/',
+  '/pages/',
+  '/scripts/',
 ];
 
 self.addEventListener('install', function(event) {
