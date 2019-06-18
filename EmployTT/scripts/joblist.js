@@ -36,7 +36,8 @@
 
         if (user.admin){
             let userName = document.querySelector('#username');
-            userName.innerHTML = user.displayName;
+            //userName.innerHTML = user.displayName;
+            userName.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
             userName.style.display = "block";
         
             let logOut= document.querySelector("#logged-in");
