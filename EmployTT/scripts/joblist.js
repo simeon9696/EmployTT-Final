@@ -36,7 +36,7 @@
 
         if (user.admin){
             let userName = document.querySelector('#username');
-            userName.innerHTML = user.displayName;
+	           userName.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.userName;
             userName.style.display = "block";
         
             let logOut= document.querySelector("#logged-in");
@@ -67,7 +67,8 @@
 
           console.log("I am an MDA");
           let userName = document.querySelector('#username');
-          userName.innerHTML = user.displayName;
+          //display.innerHTML = user.displayName;
+	         userName.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.userName;
           userName.style.display = "block";
     
           let logOut= document.querySelector("#logged-in");
@@ -89,7 +90,8 @@
         }else if(user.civilian){
           console.log("I am a civilian");
           let userName = document.querySelector('#username');
-          userName.innerHTML = user.displayName;
+          //display.innerHTML = user.displayName;
+	         userName.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.userName;
           userName.style.display = "block";
     
           let logOut= document.querySelector("#logged-in");
