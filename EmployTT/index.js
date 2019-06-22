@@ -1,4 +1,4 @@
- // Your web app's Firebase configuration
+// Your web app's Firebase configuration
  const firebaseConfig = {
   apiKey: "AIzaSyD3rzcDvo74D7siPasdB6TyRFQtxsKgHSc",
   authDomain: "igovtt-employtt.firebaseapp.com",
@@ -8,6 +8,13 @@
   messagingSenderId: "583940496531",
   appId: "1:583940496531:web:52655eb0b4f3f53c"
 };
+
+// load google analytics
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-142588895-1');
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const firestore = firebase.firestore();
