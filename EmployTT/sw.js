@@ -1,21 +1,13 @@
-var employTTcache = 'employTTCache';
-var urlsToCache = [
-  '/_headers',
-  '/.firebasesrc',
-  '/.htaccess',
-  '/index.js',
-  '/index.html',
-  '/index_style.css',
-  '/styles/',
-  '/pages/',
-  '/scripts/',
+let employTTcache = 'employTTCache';
+let urlsToCache = [
+  '/',
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', event => {
   // Perform install steps
   event.waitUntil(
     caches.open(employTTcache)
-      .then(function(cache) {
+      .then(cache=> {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
       }).catch(error =>{

@@ -24,14 +24,13 @@
         console.log(user.email+' is a civilian: '+user.civilian);
 
         if (user.admin){
-          let display = document.querySelector('#username');
-          //display.innerHTML = user.displayName;
-	         display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
-          display.style = "block";
-    
+          let userName = document.querySelector('#username');
+          userName.style.display = "block";
+          userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" width="13" height="auto">&nbsp;'+user.displayName;
+
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
-          display.style = "block";
+          logOut.style.display = "block";
     
           let logIn= document.querySelector("#logInBtn");
           logIn.innerHTML = "";
@@ -57,8 +56,7 @@
 
           console.log("I am an MDA");
           let display = document.querySelector('#username');
-          //display.innerHTML = user.displayName;
-	         display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
+          display.innerHTML = user.displayName;
           display.style = "block";
     
           let logOut= document.querySelector("#logged-in");
@@ -80,8 +78,7 @@
         }else if(user.civilian){
           console.log("I am a civilian");
           let display = document.querySelector('#username');
-          //display.innerHTML = user.displayName;
-	         display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
+          display.innerHTML = user.displayName;
           display.style = "block";
     
           let logOut= document.querySelector("#logged-in");

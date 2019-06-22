@@ -23,214 +23,215 @@
 		<script src="./index.jquery.js"></script>
 		<!-- CSS and Text Font Dependencies -->
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" 		rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 	rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed&display=swap" rel="stylesheet" type="text/css">
 		<!-- Links to manifest and style files -->
 		<link href="./site.json" rel="manifest">
 		<link href="./index_style.css" type="text/css" rel="stylesheet" />	
+		<link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
 		<!--Link address bar icon file-->
 		<link href="./images/icons/icon-72x72.png" type="image/png" rel="icon">
 	</head>
 	<body>
 
-		<!-- Navigation -->
-		<!-- <div class="preloader">	<img src="./images/newpre3.gif"/></div> -->
-        <div class="landing-container">
-			<img class="login-background" src="./images/landingimageshort.jpg"></img>
-			<p id="landing-words">employment. simplified.</p>
-			<p class="credit-text">Image - DDI Fishing Trip, Rico Dass</p>
-			<div class="img-separator"></div>
-		</div>	
-		
-		<nav role="navigation">
-            <div id="menuToggle">
-              <input type="checkbox"/>
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul id="mobile-menu">
-				<li id="mobile-li"><a href="./pages/joblist.html" data-page="1" >All Jobs</a></li>
-				<li id="mobile-li"><a href="../index.html" style="color:#ff3300;" data-page="2" class="active"  >Find Jobs</a></li>
-				<li id="mobile-li"><a  href="./pages/login.html" data-page="3" >Log In</a></li>
-				<li id="mobile-li"><a href="./pages/employers.html" data-page="4" >Employers</a></li>
-				<li id="mobile-li"><a href="./pages/aboutus.html" data-page="5" >About Us</a></li>
-				<li id="mobile-li"><a href="./pages/termsofservice.html" data-page="6" >Terms of Service</a></li>
-				<li id="mobile-li"><a href="./pages/privacypolicy.html" data-page="7">Privacy Policy</a></li>
-				<li id="mobile-li"><a href="./pages/userprofileregister.html" data-page="8" >Register</a></li>
-            </ul>
-           </div>
-          </nav>
-
-		<div class="topnav">  
-			<!--Removed the button tag that was here-->
-			<!--User's name goes here once logged in-->
-			<a class="nav-word displayname" id="username" href="./pages/userprofileinfo.html"></a>        
-			<a class="nav-word" id="logged-in"  href="#"></a>	
-			<a class="nav-word" id="regBtn" href="./pages/userprofileregister.html">Register</a>
-			<a class="nav-word" id="logInBtn" href="./pages/login.html">Log in</a>	
-			<a class="nav-word" id="employers" href="./pages/employers.html">Employers</a> 
-			<a class="nav-word" id="all-jobs"  href="./pages/joblist.html">All Jobs</a>
-			<a class="nav-word" id="find-jobs" href="../index.html" style="color:#ff3300;">Find Jobs</a>   			
-			<a class="nav-word" id="about-us" href="./pages/aboutus.html">About Us</a>
-			<a class="nav-word" id="terms-of-service" href="./pages/termsofservice.html">Terms of Service</a>
-			<a class="nav-word" id="privacy-policy" href="./pages/privacypolicy.html">Privacy Policy</a>
-         </div>
-
-<!-- Page Content -->
-  	
-
-
-	<div class="quote">
-	    <a class="logo" href="./index.html"><img src="./images/logo.png"></img></a>  <!--Made the logo local-->
-		<h1 class="job-quote">Need a <p class="word-highlight"> job</p> today?</h1>
-		<!-- Come this way for a job today, come in for a job today-->
-	</div>	 
-
-	<div class = "content">  
- 	 <div class="boxes">
- 	 <form action="/action_page.php" method="get">
-  			<input class="search-bar" id = "searchBar" type="text" name="job" placeholder="Enter job title, keyword or company" required>  				  				
-  					<input class="location-bar" type="search" id="location-filter" name="location" placeholder="Enter location" list="locations-list" autocomplete="off" />		
-  					<label for="location-filter"></label>	
-  					<datalist id="locations-list">	
-  						<option value="All"></option>	
-  						<option value="North"></option>
-    					<option value="Central"></option>
-    					<option value="South"></option>					 					
-    					<option value="Borough of Arima"></option>
-    					<option value="Borough of Chaguanas"></option>
-    					<option value="Couva-Tabaquite-Talparo"></option>
-    					<option value="Diego Martin Region"></option>
-    					<option value="Gasparillo"></option>
-    					<option value="Penal-Debe"></option>
-    					<option value="Borough of Point Fortin"></option>
-    					<option value="Port of Spain"></option>
-    					<option value="Princes Town Region"></option>
-    					<option value="Rio Claro-Mayaro"></option>
-    					<option value="San Juan-Laventille"></option>
-    					<option value="Sangre Grande Region"></option>
-    					<option value="City of San Fernando"></option>
-    					<option value="Siparia Region"></option>
-    					<option value="Tunapuna-Piarco"></option>
-    					<option value="Tobago"></option>					
-  					</datalist>  			
-   				<input class="category-bar" type="search" name="category" id = "category-filter" placeholder="Enter Category" list="category-list" autocomplete="off" > 
-   				<label for="category-filter"></label>	
-  					<datalist id="category-list">	
-  						<option value="All"></option>						 					
-    					<option value="Accounting"></option>
-    					<option value="Admin & Clerical"></option>
-    					<option value="Automotive"></option>
-    					<option value="Banking"></option>
-    					<option value="Broadcast - Journalism, Radio"></option>
-    					<option value="Business Development"></option>
-    					<option value="Construction"></option>
-    					<option value="Consultant"></option>
-    					<option value="Contract, Freelance"></option>
-    					<option value="Customer Service"></option>
-    					<option value="Design"></option>
-    					<option value="Distribution, Shipping"></option>
-    					<option value="Education - Teaching"></option>
-    					<option value="Engineering"></option>
-    					<option value="Entry level/Graduate"></option>
-    					<option value="Executive"></option>	
-    					<option value="Facilities"></option>						 					
-    					<option value="Finance"></option>
-    					<option value="Health Care"></option>
-    					<option value="General Labour"></option>
-    					<option value="Human Resources"></option>
-    					<option value="Information Technology"></option>
-    					<option value="Installation, Maintenance, Repair"></option>
-    					<option value="Internships"></option>
-    					<option value="Legal"></option>
-    					<option value="Management"></option>
-    					<option value="Media"></option>
-    					<option value="Marketing"></option>
-    					<option value="Nonprofit, Social Services"></option>
-    					<option value="Other"></option>
-    					<option value="Part Time"></option>
-    					<option value="Pharmaceutical"></option>
-    					<option value="Purchasing, Procurement"></option>
-    					<option value="Research"></option>
-    					<option value="Food Service"></option>
-    					<option value="Science"></option>
-    					<option value="Skilled Labour, Trades"></option>	
-    					<option value="Strategy, Planning"></option>
-    					<option value="Telecommunications"></option>
-    					<option value="Transportation"></option>
-    					<option value="Work from Home"></option>    					   									
-  					</datalist>  			 
-   				<input type="submit" value="Find Jobs" class="findjobs-button" id = "findJobs">
-   				</form>
-   				<br>
-   			<br>
-   			<br>
-   			<br>
-   			<br>
-   			<br>
-   			</div> 	
-			<br>
-			<div class="jobTable" id = "job-table">
-
+			<!-- Navigation -->
+			<!-- <div class="preloader">	<img src="./images/newpre3.gif"/></div> -->
+			<div class="landing-container">
+				<img class="login-background" src="./images/webpImages/landingimageshort.webp"></img>
+				<p id="landing-words">employment. simplified.</p>
+				<p class="credit-text">Image - DDI Fishing Trip, Rico Dass</p>
+				<div class="img-separator"></div>
 			</div>	
-
-			</div>
-		<!-- Whyemploytt -->
-		<div class="separator"></div>
-		<div class = "content">
-   			<div class="whyemploytt">   			
-   				<h1 class="why-quote">Why use<p class="word-highlight"> employtt </p>?</h1>			
-   				<table class="why-table">
-   				 <tr>
-   				 	<td class="why-secondaryquote">Quick</td>
-   				 	<td class="why-secondaryquote" id="middle">Easy</td>
-   				 	<td class="why-secondaryquote">Trackable</td>
-   				 	
-   				 </tr>
-   				 <tr>
-   				 	<td class="why-words">Apply for your job in under <p class="word-highlight">60s</p>. </td>
-   				 	<td class="why-words" id="middle"><p class="word-highlight">Search</p> and <p class="word-highlight">follow</p> various job categories. </td>
-   				 	<td class="why-words"><p class="word-highlight">Track</p> your job applications.<br><p class="word-highlight">View</p> jobs you previously applied for.</td>
-   				 </tr>
-   			</table>
-   			</div>
-		</div>
-		
-				<!-- steps -->
-		<div class="separator"></div>
-		<div class = "content">
-   			<div class="steps"> 
-   				<h1 class="step-quote">How does it work?<p class="word-highlight"> </p></h1>	
-   			<table class="steps-table">
-   				 <tr>
-   				 	<td class="step-number">1.</td>
-   				 	<td class="step-words" ><p class="word-highlight"><a href="./pages/userprofileregister.html">Create</a></p> an account.</td>  				 	
-   				 </tr>
-   				 <tr>
-   				 	<td class="step-number">2.</td>
-   				 	<td class="step-words" ><p class="word-highlight">Search</p> for a job by title, location or category. &nbsp;<p class="word-highlight">Follow</p> job categories of interest.</td>
-   				 </tr>
-   				 <tr>
-   				 	<td class="step-number">3. </td>
-   				 	<td class="step-words" > <p class="word-highlight">Apply</p> for a job. </td>
-   				 </tr>
-   			</table>
+			
+			<nav role="navigation">
+				<div id="menuToggle">
+				  <input type="checkbox"/>
+					<span></span>
+					<span></span>
+					<span></span>
+					<ul id="mobile-menu">
+					<li id="mobile-li"><a href="./pages/joblist.html" data-page="1" >All Jobs</a></li>
+					<li id="mobile-li"><a href="../index.html" style="color:#ff3300;" data-page="2" class="active"  >Find Jobs</a></li>
+					<li id="mobile-li"><a  href="./pages/login.html" data-page="3" >Log In</a></li>
+					<li id="mobile-li"><a href="./pages/employers.html" data-page="4" >Employers</a></li>
+					<li id="mobile-li"><a href="./pages/aboutus.html" data-page="5" >About Us</a></li>
+					<li id="mobile-li"><a href="./pages/termsofservice.html" data-page="6" >Terms of Service</a></li>
+					<li id="mobile-li"><a href="./pages/privacypolicy.html" data-page="7">Privacy Policy</a></li>
+					<li id="mobile-li"><a href="./pages/userprofileregister.html" data-page="8" >Register</a></li>
+				</ul>
 			   </div>
-		   </div>
-
-					</div>
-			  
-
-	</body>
+			  </nav>
+	
+			<div class="topnav">  
+				<!--Removed the button tag that was here-->
+				<!--User's name goes here once logged in-->
+				<a class="nav-word displayname" id="username" href="./pages/userprofileinfo.html"></a>        
+				<a class="nav-word" id="logged-in"  href="#"></a>	
+				<a class="nav-word" id="regBtn" href="./pages/userprofileregister.html">Register</a>
+				<a class="nav-word" id="logInBtn" href="./pages/login.html">Log in</a>	
+				<a class="nav-word" id="employers" href="./pages/employers.html">Employers</a> 
+				<a class="nav-word" id="all-jobs"  href="./pages/joblist.html">All Jobs</a>
+				<a class="nav-word" id="find-jobs" href="../index.html" style="color:#ff3300;">Find Jobs</a>   			
+				<a class="nav-word" id="about-us" href="./pages/aboutus.html">About Us</a>
+				<a class="nav-word" id="terms-of-service" href="./pages/termsofservice.html">Terms of Service</a>
+				<a class="nav-word" id="privacy-policy" href="./pages/privacypolicy.html">Privacy Policy</a>
+			 </div>
+	
+	<!-- Page Content -->
+		  
+	
+	
+		<div class="quote">
+			<a class="logo" href="./index.html"><img src="./images/webpImages/logo.webp"></img></a>  <!--Made the logo local-->
+			<h1 class="job-quote">Need a <p class="word-highlight"> job</p> today?</h1>
+			<!-- Come this way for a job today, come in for a job today-->
+		</div>	 
+	
+		<div class = "content">  
+		  <div class="boxes">
+		  <form action="/action_page.php" method="get">
+				  <input class="search-bar" id = "searchBar" type="text" name="job" placeholder="Enter job title, keyword or company" required>  				  				
+						  <input class="location-bar" type="search" id="location-filter" name="location" placeholder="Enter location" list="locations-list" autocomplete="off" />		
+						  <label for="location-filter"></label>	
+						  <datalist id="locations-list">	
+							  <option value="All"></option>	
+							  <option value="North"></option>
+							<option value="Central"></option>
+							<option value="South"></option>					 					
+							<option value="Borough of Arima"></option>
+							<option value="Borough of Chaguanas"></option>
+							<option value="Couva-Tabaquite-Talparo"></option>
+							<option value="Diego Martin Region"></option>
+							<option value="Gasparillo"></option>
+							<option value="Penal-Debe"></option>
+							<option value="Borough of Point Fortin"></option>
+							<option value="Port of Spain"></option>
+							<option value="Princes Town Region"></option>
+							<option value="Rio Claro-Mayaro"></option>
+							<option value="San Juan-Laventille"></option>
+							<option value="Sangre Grande Region"></option>
+							<option value="City of San Fernando"></option>
+							<option value="Siparia Region"></option>
+							<option value="Tunapuna-Piarco"></option>
+							<option value="Tobago"></option>					
+						  </datalist>  			
+					   <input class="category-bar" type="search" name="category" id = "category-filter" placeholder="Enter Category" list="category-list" autocomplete="off" > 
+					   <label for="category-filter"></label>	
+						  <datalist id="category-list">	
+							  <option value="All"></option>						 					
+							<option value="Accounting"></option>
+							<option value="Admin & Clerical"></option>
+							<option value="Automotive"></option>
+							<option value="Banking"></option>
+							<option value="Broadcast - Journalism, Radio"></option>
+							<option value="Business Development"></option>
+							<option value="Construction"></option>
+							<option value="Consultant"></option>
+							<option value="Contract, Freelance"></option>
+							<option value="Customer Service"></option>
+							<option value="Design"></option>
+							<option value="Distribution, Shipping"></option>
+							<option value="Education - Teaching"></option>
+							<option value="Engineering"></option>
+							<option value="Entry level/Graduate"></option>
+							<option value="Executive"></option>	
+							<option value="Facilities"></option>						 					
+							<option value="Finance"></option>
+							<option value="Health Care"></option>
+							<option value="General Labour"></option>
+							<option value="Human Resources"></option>
+							<option value="Information Technology"></option>
+							<option value="Installation, Maintenance, Repair"></option>
+							<option value="Internships"></option>
+							<option value="Legal"></option>
+							<option value="Management"></option>
+							<option value="Media"></option>
+							<option value="Marketing"></option>
+							<option value="Nonprofit, Social Services"></option>
+							<option value="Other"></option>
+							<option value="Part Time"></option>
+							<option value="Pharmaceutical"></option>
+							<option value="Purchasing, Procurement"></option>
+							<option value="Research"></option>
+							<option value="Food Service"></option>
+							<option value="Science"></option>
+							<option value="Skilled Labour, Trades"></option>	
+							<option value="Strategy, Planning"></option>
+							<option value="Telecommunications"></option>
+							<option value="Transportation"></option>
+							<option value="Work from Home"></option>    					   									
+						  </datalist>  			 
+					   <input type="submit" value="Find Jobs" class="findjobs-button" id = "findJobs">
+					   </form>
+					   <br>
+				   <br>
+				   <br>
+				   <br>
+				   <br>
+				   <br>
+				   </div> 	
+				<br>
+				<div class="jobTable" id = "job-table">
+	
+				</div>	
+	
+				</div>
+			<!-- Whyemploytt -->
+			<div class="separator"></div>
+			<div class = "content">
+				   <div class="whyemploytt">   			
+					   <h1 class="why-quote">Why use<p class="word-highlight"> employtt </p>?</h1>			
+					   <table class="why-table">
+						<tr>
+							<td class="why-secondaryquote">Quick</td>
+							<td class="why-secondaryquote" id="middle">Easy</td>
+							<td class="why-secondaryquote">Trackable</td>
+							
+						</tr>
+						<tr>
+							<td class="why-words">Apply for your job in under <p class="word-highlight">60s</p>. </td>
+							<td class="why-words" id="middle"><p class="word-highlight">Search</p> and <p class="word-highlight">follow</p> various job categories. </td>
+							<td class="why-words"><p class="word-highlight">Track</p> your job applications.<br><p class="word-highlight">View</p> jobs you previously applied for.</td>
+						</tr>
+				   </table>
+				   </div>
+			</div>
+			
+					<!-- steps -->
+			<div class="separator"></div>
+			<div class = "content">
+				   <div class="steps"> 
+					   <h1 class="step-quote">How does it work?<p class="word-highlight"> </p></h1>	
+				   <table class="steps-table">
+						<tr>
+							<td class="step-number">1.</td>
+							<td class="step-words" ><p class="word-highlight"><a href="./pages/userprofileregister.html">Create</a></p> an account.</td>  				 	
+						</tr>
+						<tr>
+							<td class="step-number">2.</td>
+							<td class="step-words" ><p class="word-highlight">Search</p> for a job by title, location or category. &nbsp;<p class="word-highlight">Follow</p> job categories of interest.</td>
+						</tr>
+						<tr>
+							<td class="step-number">3. </td>
+							<td class="step-words" > <p class="word-highlight">Apply</p> for a job. </td>
+						</tr>
+				   </table>
+				   </div>
+			   </div>
+	
+						</div>
+				  
+	
+		</body>
 
 	<footer class="footer-distributed">
 
 		<div class="footer-left">
 
 			
-			<img src="./images/footer-logo.png" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+			<img src="./images/webpImages/footer-logo.webp" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
 
 			<p class="footer-links">
 				<a href="./index.html">Home</a>
@@ -278,6 +279,5 @@
 				<a href="https://www.instagram.com/hacktt19/"><i class="fa fa-instagram"></i></a>
 			</div>
 		</div>
-
 	</footer>
 </html>

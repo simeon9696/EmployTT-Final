@@ -133,8 +133,7 @@ auth.onAuthStateChanged(user => {
     const docRef = firestore.collection('Users');
     
     let display = document.querySelector('#username');
-    //display.innerHTML = user.displayName;
-	  display.innerHTML = '<img src="../images/user-icon.png" width="13" height="auto">&nbsp;'+user.displayName;
+    display.innerHTML = user.displayName;
     display.style = "inline-block";
 
     let logOut= document.querySelector("#logged-in");
