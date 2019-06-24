@@ -7,7 +7,7 @@ footer{
     position:relative;
     height:auto;
           /* Set a specific height */
-      background-image: url('../images/webpImages/landingimage-copy.webp');
+      background-image: url('../images/webpImages/landingimage copy.webp'),url('../images/landingimage copy.jpg') ;
       /* Create the parallax scrolling effect */
       background-attachment: fixed;
       background-position: center;
@@ -82,13 +82,13 @@ footer{
   
   .footer-distributed .footer-center{
       width: 35%;
-      font-weight:200;
+      font-weight:500;
       font-size:13px;
   }
   
   .footer-distributed .footer-center i{
-      background-color:  #33383b;
-      color: #ff3300;
+      background-color: #ff3300;
+      color:  #ffffff;
       font-size: 25px;
       width: 38px;
       height: 38px;
@@ -119,7 +119,7 @@ footer{
   }
   
   .footer-distributed .footer-center p a{
-      color:  #5383d3;
+      color:  #90b1eb;
   
       text-decoration: none;;
   }
@@ -156,7 +156,7 @@ footer{
       width: 35px;
       height: 35px;
       cursor: pointer;
-      background-color:  #33383b;
+      background-color:  #ff3300;
       border-radius: 2px;
       font-size: 20px;
       color: #ffffff;

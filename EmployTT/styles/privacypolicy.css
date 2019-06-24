@@ -21,6 +21,11 @@ html {
 	color:#ff3300;
 	font-weight:525;
 }
+
+#menuToggle{
+  display:none;
+}
+
 .topnav {
   position: -webkit-sticky;
   position: sticky;
@@ -41,7 +46,7 @@ html {
   padding: 14px 16px;
   padding-top:1.5vw;
   text-decoration: none;
-  font-size: 1.5em;}
+  font-size: 18px;}
 
 .topnav a:hover {
   display: inline;
@@ -52,7 +57,7 @@ html {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 18px;
   padding-top:1.2vw;}
   
 .priv-container{
@@ -65,7 +70,7 @@ html {
 
 .title{
     margin-top:4vw;
-	margin-left:15vw;
+   	margin-left:15vw;
     margin-right:20vw;
     font-size:3.6em;
     font-weight:600;
@@ -77,14 +82,22 @@ html {
 }
 
 
-h2{
+.hi{
 	font-size:2.6em;
 	margin-left:16vw;
 	margin-right:10vw;
 	padding-bottom:2vw;
 }
 
-p{
+@media (max-width: 880px) {
+
+  .title{
+    margin-top:14vw;
+  }
+
+}
+
+.description{
 	font-size:1.4em;
 	margin-left:16vw;
     margin-right:20vw;
