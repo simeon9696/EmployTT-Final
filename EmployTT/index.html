@@ -33,16 +33,16 @@
 		<!-- Links to manifest and style files -->
 		<link href="./site.json" rel="manifest">
 		<link href="./index_style.css" type="text/css" rel="stylesheet" />	
-		<link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
+		<link href="./styles/footerstyle.css" type="text/css" rel="stylesheet" />	
+		<link href="./styles/mobilenavstyle.css" type="text/css" rel="stylesheet" />	
 		<!--Link address bar icon file-->
 		<link href="./images/icons/icon-72x72.png" type="image/png" rel="icon">
 	</head>
 	<body>
 
 			<!-- Navigation -->
-			<!-- <div class="preloader">	<img src="./images/newpre3.gif"/></div> -->
 			<div class="landing-container">
-				<img class="login-background" src="./images/webpImages/landingimageshort.webp"></img>
+				<img class="login-background" src="./images/webpImages/landingimageshort.webp" onerror="this.onerror=null; this.src='./images/landingimageshort.jpg'"></img>
 				<p id="landing-words">employment. simplified.</p>
 				<p class="credit-text">Image - DDI Fishing Trip, Rico Dass</p>
 				<div class="img-separator"></div>
@@ -50,7 +50,7 @@
 			
 			<nav role="navigation">
 				<div id="menuToggle">
-				  <input type="checkbox"/>
+				  <input type="checkbox" class="menu-clicker"/>
 					<span></span>
 					<span></span>
 					<span></span>
@@ -87,9 +87,8 @@
 	
 	
 		<div class="quote">
-			<a class="logo" href="./index.html"><img src="./images/webpImages/logo.webp"></img></a>  <!--Made the logo local-->
+			<a class="logo" href="./index.html"><img src="./images/webpImages/logo.webp" onerror="this.onerror=null; this.src='./images/logo.png'"></img></a>  <!--Made the logo local-->
 			<h1 class="job-quote">Need a <p class="word-highlight"> job</p> today?</h1>
-			<!-- Come this way for a job today, come in for a job today-->
 		</div>	 
 	
 		<div class = "content">  
@@ -214,7 +213,7 @@
 						</tr>
 						<tr>
 							<td class="step-number">2.</td>
-							<td class="step-words" ><p class="word-highlight">Search</p> for a job by title, location or category. &nbsp;<p class="word-highlight">Follow</p> job categories of interest.</td>
+							<td class="step-words" ><p class="word-highlight">Search</p> for a job by title, location or category. &nbsp;<p class="word-highlight"><br>Follow</p> job categories of interest.</td>
 						</tr>
 						<tr>
 							<td class="step-number">3. </td>
@@ -232,9 +231,9 @@
 	<footer class="footer-distributed">
 
 		<div class="footer-left">
+
 			
-			<!--Footer logo removed till it's downsized to improve performance-->
-			<!--<img src="./images/webpImages/footer-logo.webp" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">-->
+			<img src="./images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='./images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
 
 			<p class="footer-links">
 				<a href="./index.html">Home</a>
