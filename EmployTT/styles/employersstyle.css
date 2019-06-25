@@ -9,10 +9,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
     background: transparent;
 }
-html {
+ html {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
-  	background-color:#ffffff;
+  background-color:#ffffff;
   background-size: 100vw 100vw;}
   
   #username{
@@ -20,20 +20,8 @@ html {
 	font-weight:525;
 }
 
-.preloader{
-	background-color:white;
-	width: 100vw;
-	height: 100vw;
-	position:relative;
-	z-index:-2;
-}
-.preloader img{
-	width:40%;
-	background-color:white;
-	top:40%;
-	left:32%;
-	position:fixed;
-	z-index:-1;
+#menuToggle{
+  display:none;
 }
 
 .topnav {
@@ -41,37 +29,36 @@ html {
   position: sticky;
   background:#ffffff; 
   overflow: hidden;
-  height:5vw;
-  top: 0;
+  height:70px;
+  top: 0px;
   z-index: 10;
 }
 
 .topnav a {
+  margin-top:12px;
   position: relative;
   display: block;
   float: right;
   color: #333333;
   text-align: center;
   padding: 14px 16px;
-  padding-top:1.5vw;
+  padding-bottom:1vw;
+  padding-top:15px;
   text-decoration: none;
-  font-size: 1.5em;}
+  font-size: 18px;}
 
- .topnav a:hover {
+.topnav a:hover {
   display: inline;
   transition:0.3s;
   color: #ffffff !important; 
   border-radius:26px;
   background-color:#330099;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 1.5em;
-  padding-top:1.2vw;}
+  font-size: 18px;
+}
   
 .nav-word{
 	color:#000000;
-	margin-top:0.3vw;}
+  margin-top:0.5vw;}
 	
 .employer-logo img{
   width: 30%;
@@ -79,71 +66,41 @@ html {
   margin-right:auto;
   display:block;
   margin-left:auto;
-   position:relative;
-   padding-top:1vw;
-   z-index:9;
+  position:relative;
+  padding-top:4vw;
+  z-index:9;
  }
+
+ @media (max-width: 880px) {
+
+  .employer-logo img{
+    padding-top:8vw;
+    width:40%;
+   }
+  
+  }
  
-ul{
-  list-style-type: none;
-  padding: 0;
-}
-
-li{
-    padding: 16px;
-    background: #f6f6f6;
-    font-size: 16px;
-    color: #555;
-    position: relative;
-    border-bottom: 1px solid #e6e6e6;
-    height: 100%;
-}
-
-li:nth-child(even){
-    padding: 16px;
-    background: #f2f2f2;
-    text-align: left;
-}
-
-li span{
-    display: block;
-}
-
-li span:nth-child(1){
-    font-size: 14px;
-    margin-top: 6px;
-    color: rgb(78, 76, 76);
-}
-
-li div{
-    position: absolute;
-    top: 0;
-    right: 0px;
-    background: rgba(255,255,255,0.6);
-    width: 40px;
-    text-align: center;
-    padding: 10px 0;
-    font-weight:  bold;
-    cursor:  pointer;
-}
 
 .employer-background{
-	min-height: 100%;
+	  min-height: 100%;
     min-width: 1024px;
-	background-repeat: no-repeat;
-    background-size:cover;
+	  background-repeat: no-repeat;
     position: fixed;
     top: 3;
     left: 0;
     width:100%;
     height:auto;
- 	position:absolute;
- 	z-index:0;
- 	overflow:hidden;
-	opacity:0.5;
+ 	  position:absolute;
+   	z-index:0;
+  	overflow:hidden;
+  	opacity:0.5;
 }
 
+@media (max-width: 880px) {
 
+  .employer-background{
+    opacity:0.35 !important;
+  }}
    
  .employer-quote{
 	text-align: left;
@@ -160,8 +117,8 @@ li div{
  	 	
  .employer-subquote{
 
-    color:#ffffff;
-    line-height:-10px;
+  color:#ffffff;
+  line-height:-10px;
  	margin-top:-3vw;
 	text-align: left;
 	padding:1vw;
@@ -172,7 +129,22 @@ li div{
   .employer-quote br{
  	line-height:0px;
 }
- 
+@media (max-width: 880px) {
+
+  .employer-quote{
+    text-align: left;
+     font-size:4.5em;
+     line-height:61px;
+     padding-left:1vw;
+     margin-left:5vw;
+     font-weight: bold;
+     color:#000000;
+     position:absolute;
+     z-index:5;
+     margin-top:3vw;
+     text-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+  
+  }
 .postjob-button{
   z-index:5;
   margin-left:6vw;
@@ -213,6 +185,32 @@ li div{
 .postjob-button:hover span:after {
   opacity: 1;
   right: 0;}
+
+  @media (max-width: 880px) {
+
+    .postjob-button{
+      z-index:5;
+      margin-left:6vw;
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #330099;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 15px;
+      padding: 1.25vw;
+      margin-bottom:1vw;
+      width: 180px;
+      height:50px;
+      transition: all 0.5s;
+      cursor: pointer;
+      font-weight: 600;
+      position:absolute;
+      margin-top:225px;
+      cursor: pointer;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+    
+    }
   
 .viewjob-button{
   z-index:5;
@@ -234,6 +232,32 @@ li div{
   margin-top:200px;
   cursor: pointer;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+
+  @media (max-width: 880px) {
+
+    .viewjob-button{
+      z-index:5;
+      margin-left:6vw;
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #330099;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 15px;
+      padding: 1.25vw;
+      margin-bottom:1vw;
+      width: 180px;
+      height:50px;
+      transition: all 0.5s;
+      cursor: pointer;
+      font-weight: 600;
+      position:absolute;
+      margin-top:290px;
+      cursor: pointer;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+    
+    }
 
 .viewjob-button span:after{
   content: '\00bb';
@@ -277,3 +301,219 @@ li div{
 
 }
 
+footer{
+  height:100%;
+  font-weight:400;
+  top:210px;
+  position:relative;
+  height:auto;
+  /* Set a specific height */
+  background-image: url('../images/webpImages/landingimage copy.webp'),url('../images/landingimage copy.jpg') ;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.footer-distributed{
+
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 55px 50px;
+    margin-top: 80px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+    width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+    color:  #ffffff;
+    font: normal 36px 'Cookie', cursive;
+    margin: 0;
+}
+
+.footer-distributed h3 span{
+    color:  #5383d3;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+    color:  #ffffff;
+    margin: 20px 0 12px;
+    padding: 0;
+}
+
+.footer-distributed .footer-links a{
+    display:inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color:  inherit;
+    font-size:17px;
+}
+
+.footer-distributed .footer-links a:hover{
+    color:  #ff3300;
+
+}
+
+.footer-distributed .footer-company-name{
+    color:  #8f9296;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+    width: 35%;
+    font-weight:500;
+    font-size:13px;
+}
+
+.footer-distributed .footer-center i{
+    background-color: #ff3300;
+    color:  #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+    font-size: 17px;
+    line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+    display: inline-block;
+    color: #ffffff;
+    vertical-align: middle;
+    margin:0;
+}
+
+.footer-distributed .footer-center p span{
+    display:block;
+    font-weight: normal;
+    font-size:14px;
+    line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+    color:  #90b1eb;
+
+    text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+    width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+    line-height: 20px;
+    color:  #ffffff;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+    display: block;
+    color:  #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+    margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color:  #ff3300;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+.footer-distributed .footer-icons a:hover{
+
+    color: #ff3300;
+    width: 40px;
+    height: 40px;
+
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+ 
+    footer{
+        top:340px;
+    }
+
+    .footer-distributed{
+        font: bold 14px sans-serif;
+        bottom:-370px;
+        text-align: center;
+    }
+
+    .footer-distributed .footer-links{
+        font-size:15px;
+        text-align: center;
+    }
+
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right{
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+        font-size:12px;
+    }
+    .footer-distributed .footer-company-name{
+        text-align:center;
+    }
+    .footer-distributed .footer-center i{
+        margin-left: 0;
+    }
+    .footer-distributed .footer-company-about{
+        text-align:center;
+    }
+    
+    .footer-distributed .footer-company-about span{
+        text-align:center;
+    }
+}

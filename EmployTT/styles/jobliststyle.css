@@ -19,24 +19,32 @@ html {
   font-size: 12px;
   background-size: 100vw 100vw;}
 
-.topnav {
-  background: white;;
-  overflow: hidden;
-  height:5vw;}
-
-body{
-	background-color:whitesmoke;
+#menuToggle{
+  display:none;
 }
+
+.topnav {
+  position: -webkit-sticky;
+  position: sticky;
+  background:#ffffff; 
+  overflow: hidden;
+  height:70px;
+  top: 0px;
+  z-index: 10;
+}
+
 .topnav a {
- 
+  margin-top:12px;
+  position: relative;
   display: block;
   float: right;
   color: #333333;
   text-align: center;
   padding: 14px 16px;
-  padding-top:1.5vw;
+  padding-bottom:1vw;
+  padding-top:15px;
   text-decoration: none;
-  font-size: 1.5em;}
+  font-size: 18px;}
 
 .topnav a:hover {
   display: inline;
@@ -44,15 +52,16 @@ body{
   color: #ffffff !important; 
   border-radius:26px;
   background-color:#ff3300;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 1.5em;
-  padding-top:1.2vw;}
+  font-size: 18px;
+}
   
 .nav-word{
 	color:#000000;
   margin-top:0.5vw;}
+
+body{
+	background-color:whitesmoke;
+}
   
 .findjobs-button{
   color:#ff3300;
@@ -86,6 +95,26 @@ body{
   position:relative;
   padding-top:4vw;
   margin-left: 40%;}
+
+@media (max-width: 880px) {
+
+  .logo img{
+    width: 40%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:6vw;}
+
+  .h1job{
+    text-align: center;
+    font-size:8vw;
+    padding-top: 4vw;
+    padding-bottom: 9vw;
+    font-weight: bold;
+    color:#000000;}
+
+}
 
 li a {
   display:block;
@@ -141,14 +170,12 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   display:block;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left:10%;
   border:none;
-
   border-radius:16px;
   -moz-border-radius:16px;
   -webkit-border-radius: 16px;
-  width:60%;
+  width:80%;
   /* table-layout: fixed; */
   align-content: center;
 
