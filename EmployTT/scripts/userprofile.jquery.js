@@ -11,55 +11,69 @@ $(document).ready(function () {
     
     var id = "#drop_zone";
     var progress=$("#progress-bar")
+    var progress2=$("#progress2-bar")
     //Logic that runs after counting every time
     if (inputforms == 0) {
         progress.attr("value", "0");
+        progress2.attr("value", "0");
     }
     if (inputforms == 1) {
         progress.attr("value", "10");
+        progress2.attr("value", "10");
     }
     if (inputforms == 2) {
         progress.attr("value", "20");
+        progress2.attr("value", "20");
     }
     if (inputforms == 3) {
         progress.attr("value", "30");
+        progress2.attr("value", "30");
     }
     if (inputforms == 4) {
         progress.attr("value", "40");
+        progress2.attr("value", "40");
     }
     if (inputforms == 5) {
         progress.attr("value", "50");
+        progress2.attr("value", "50");
 
     }
     if (inputforms == 6) {
         progress.attr("value", "60");
+        progress2.attr("value", "60");
 
     }
     if (inputforms == 7) {
         progress.attr("value", "70");
+        progress2.attr("value", "70");
 
     }
     if (inputforms == 8) {
         progress.attr("value", "80");
+        progress2.attr("value", "80");
 
     }
     if (inputforms == 9) {
         progress.attr("value", "90");
+        progress2.attr("value", "90");
     
     }
     if (inputforms == 10) {
         progress.attr("value", "100");
+        progress2.attr("value", "100");
         
     }
     });
     
     var filedrop=0;
     var progress=$("#progress-bar")
+    var progress2=$("#progress2-bar")
     
     
     $("#drop_zone").on("drop",function(){	
         filedrop++;
         progress.attr("value", "100");
+        progress2.attr("value", "100");
    
     });
     $("#phoneNumber").keypress(function(e){
