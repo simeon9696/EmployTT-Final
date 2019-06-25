@@ -81,10 +81,21 @@ form label{
 }
 
 .levels{
-	font-size:1.1em;
+	  font-size:1.1em;
     padding-bottom:5px;
     font-weight:550;
     padding-right:5vw;
+}
+
+.jobName{
+	font-size:1.1em;
+  padding-bottom:5px;
+  font-weight:550;
+  padding-right:5vw;	
+  height:2.4vw;	
+  margin-left:10vw;	
+  margin-bottom:3vw;
+  margin-top:3vw;
 }
 
 .location{
