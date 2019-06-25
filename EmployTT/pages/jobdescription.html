@@ -41,8 +41,13 @@
 		</div>
    	<div class="employer-container">
    	<a class="employer-logo" href="../index.html"><img src="../images/logo-employer.png"></img></a>			
-    <p class="employer-quote"> Edit Job Description</p>
+	<p class="employer-quote"> Edit Job Description</p>
+	<br>
   <form id="job-form">
+	<div class="jobName">
+		<label for ="jobName" id="describe-labels">Job Name</label><br>
+		<input type="text" name="jobName" placeholder="" id="jobName" required><br><br><br>
+	</div>
     <label for ="about" id="describe-labels" class="about-label">About</label><br>
     <textarea type="text" name="about" placeholder="Describe job..." id="aboutJob" class="aboutfield" required></textarea><br><br><br>
     <label for ="skills" id="describe-labels" class="skills">Skills Required</label><br>
@@ -59,7 +64,7 @@
     					<option value="Entry Level"></option> 
   				        <option value="Junior"></option>
      					<option value="Supervisory"></option> 	
-  					<option value="Senior"></option>				 					
+  						<option value="Senior"></option>				 					
     					<option value="Manager"></option>		
      					<option value="Admin"></option>	
      					<option value="Other"></option>	
