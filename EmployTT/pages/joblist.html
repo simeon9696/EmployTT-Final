@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Job Description| EmployTT</title>
+        <title>Job Description | EmployTT</title>
         <meta http-equiv="X-UA-Compatible" content="IE=,chrome=1">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ff3300">
@@ -26,24 +26,44 @@
         <!-- Link style files -->
         <link href="../styles/jobliststyle.css" type="text/css" rel="stylesheet" />	
         <link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
+        <link href="../styles/mobilenavstyle.css" type="text/css" rel="stylesheet" />	
         <!--Link address bar icon file-->
         <link href="../images/icons/icon-72x72.png"  type="image/png" rel="shortcut icon"/>
     </head>
+    <body>
+     <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox" class="menu-clicker"/>
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="mobile-menu">
+                <li id="mobile-li"><a href="./joblist.html" style="color:#ff3300;"  class="active">All Jobs</a></li>
+                <li id="mobile-li"><a href="../index.html"  >Find Jobs</a></li>
+                <li id="mobile-li"><a  href="./login.html">Log In</a></li>
+                <li id="mobile-li"><a href="./employers.html">Employers</a></li>
+                <li id="mobile-li"><a href="./termsofservice.html">Terms of Service</a></li>
+                <li id="mobile-li"><a href="./aboutus.html">About Us</a></li>
+                <li id="mobile-li"><a href="./privacypolicy.html" >Privacy Policy</a></li>
+                <li id="mobile-li"><a href="./userprofileregister.html" >Register</a></li>
+                </ul>
+            </div>
+        </nav>
     <div class="topnav">    
             <!--User's name goes here once logged in-->
             <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
             <a class="nav-word" id="logged-in"  href="#"></a>	
             <a class="nav-word" id="regBtn" 	href="./userprofileregister.html" >Register</a>
             <a class="nav-word" id="logInBtn" 	href="./login.html" >Log in</a>	
-            <a class="nav-word" id="employers" 	href="./employers.html" style="color:#330099">Employers</a> 
-            <a class="nav-word" id="all-jobs"  	href="./joblist.html" >All Jobs</a>
-            <a class="nav-word" id="find-jobs" 	href="../index.html" ">Find Jobs</a>
+            <a class="nav-word" id="employers" 	href="./employers.html">Employers</a> 
+            <a class="nav-word" id="all-jobs"  	href="./joblist.html"  style="color:#ff3300">All Jobs</a>
+            <a class="nav-word" id="find-jobs" 	href="../index.html" >Find Jobs</a>
             <a class="nav-word" id="about-us" 	href="./aboutus.html" >About Us</a>
             <a class="nav-word" id="terms-of-service" href="./termsofservice.html"  >Terms of Service</a>
             <a class="nav-word" id="privacy-policy"   href="./privacypolicy.html">Privacy Policy</a>
         </div>
         <div class="container">
-            <a class="logo" href="../index.html"><img src="../images/webpImages/logo.webp"></img></a>	
+            <a class="logo" href="../index.html"><img src="../images/webpImages/logo.webp" onerror="this.onerror=null; this.src='../images/logo.png'"></img></a>	
             <div class = joblists>
                 <h1 class = "h1job"> Job Listings </h1>
                 <p> Log in to apply. </p>
@@ -70,8 +90,8 @@
     <div class="footer-left">
 
         
-			<!--Footer logo removed till it's downsized to improve performance-->
-			<!--<img src="./images/webpImages/footer-logo.webp" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">-->        <p class="footer-links">
+        <img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">       
+        <p class="footer-links">
             <a href="./index.html">Home</a>
             ·
             <a href="./termsofservice.html">Terms Of Service</a>
