@@ -4,7 +4,6 @@
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
     margin: 0;
     padding: 0;
-    border: 0;
     outline: 0;
     font-size: 100%;
     vertical-align: baseline;
@@ -17,7 +16,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 html {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
-  background-size: 100vw 100vw;}
+  background-size: 100vw 100vw;
+}
 
 #menuToggle{
   display:none;
@@ -26,7 +26,7 @@ html {
 .topnav {
   position: -webkit-sticky;
   position: sticky;
-  background:#ffffff; 
+  background-color:#ffffff;
   overflow: hidden;
   height:70px;
   top: 0px;
@@ -60,7 +60,7 @@ html {
   margin-top:0.5vw;}
 
 body{
-	background-color:whitesmoke;
+  background-color:white; 
 }
   
 .findjobs-button{
@@ -76,12 +76,17 @@ body{
 }
 
 .h1job{
-    color: #333333;
-    font-size: 4.6em;
+    color: #ffffff;
+    background-color:#ff3300;
+    font-size: 3.6em;
     font-weight: bold; 
-    margin: 0;  
-    text-align: center;
-    padding: 20px 20px 20px 20px;
+    width:50vw;
+    margin-left:20vw;
+    border-radius:28px;
+    padding-top:10px;
+    padding-left:3vw;
+    padding-right:80px;
+    padding-bottom:10px;
 }
 	
 .quote{
@@ -89,12 +94,13 @@ body{
 
   
 .logo img{
-  width: 20%;
-  display:block;
+  width: 10%;
+  display: block;
   height: auto;
   position:relative;
-  padding-top:4vw;
-  margin-left: 40%;}
+  padding-top:2vw;
+  margin-left: 20vw;
+ }
 
 @media (max-width: 880px) {
 
@@ -126,7 +132,6 @@ form input{
     float: left;
     width: 38%;
     margin: 0;
-    border: 0;
     border-bottom: 1px solid #eee;
     margin: 0 1%;
     padding: 10px;
@@ -155,81 +160,107 @@ button{
     padding: 13px;
     box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
     font-weight: bold;
-    font-family: ubuntu;
     letter-spacing: 1px;
-    color: #999;
+    color: #ff3300;
 }
-.joblists p{
-	text-align:center;
-	padding-bottom:4vw;
-	font-size:1.5em;
-	color:#999999;
-}
-table {
-  font-family: arial, sans-serif;
-  border-collapse: separate;
-  border-spacing: 0;
+
+
+.jobTable {
+  font-family: Helvetica, sans-serif;        
   display:block;
-  margin-left:10%;
-  border:none;
+  margin-top:-1vw;
+  margin-left:auto;
+  margin-right:auto;
   border-radius:16px;
   -moz-border-radius:16px;
   -webkit-border-radius: 16px;
-  width:80%;
-  /* table-layout: fixed; */
-  align-content: center;
+  width:60%;
 
 }
 
-th {
-  font-size: 16px;
-  border-left:solid #666666 1px;
-  border-top:solid #666666 1px;
-  text-align: left;
-  word-wrap: break-word;
-  padding: 10px;
-  font-weight:600;
-  color:white;
-  background-color:rgba(51,51,51,0.8);
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+.jobTable p{
+  text-align:left;
+  padding-left:2vw;
+  padding-top:1vw;
+  margin-bottom:2vw;
+  padding-right:1vw;
+	font-size:1.2em;
+  color:#494949;
+}
+
+.log-in{
+  text-align:left;
+  padding-left:22vw;
+  padding-top:2vw;
+  display:none;
+  padding-bottom:4vw;
+	font-size:1.2em;
+	color:#666464; 
+}
+
+.jobTable h4{
+  background-color:#ff3300;
+  background: linear-gradient(90deg, rgba(51,0,153,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  font-size:2px;
+  border-radius:16px;
+}
+
+.jobTable h1{
+  text-align:left;
+  padding-top:3vw;
+  padding-right:1vw;
+  padding-left:2vw;
+	padding-bottom:0vw;
+	font-size:1.8em;
+	color:#ff3300;
+}
+
+.jobTable h2{
+  text-align:left;
+  padding-top:1vw;
+  padding-right:1vw;
+  padding-left:2vw;
+  padding-bottom:0vw;
+  font-weight:bold;
+	font-size:1.4em;
+	color:#000000;
+}
+
+.jobTable h3{
+  text-align:left;
+  padding-top:1vw;
+  padding-right:1vw;
+  padding-left:2vw;
+  font-weight:500;
+	font-size:1.2em;
+	color:#494949;
+}
+
+table{
+  border-collapse: separate;
+  border:2 px solid black;
+  border-spacing:15px;
+  }
+
+table th {
+  display:none;
   	
 }
 
-tr{
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+table td{
+  background-color:red;
+  border:2px solid orange;
+  border-radius:0px 26px 0px 0px;
 }
 
-td{
-  border-left:solid #dddddd 1px;
-  border-top:solid #dddddd 1px;
-  font-size: 16px;
-  text-align: left;
-  word-wrap: break-word;
-  padding: 10px;
+table tr:hover{
+  font-size:1vw;
 }
 
-td:first-child, th:first-child {
-     border-left: none;
-}
-
-table tr:first-child th:first-child {
-  border-top-left-radius: 16px;
-}
-
-table tr:first-child th:last-child {
-  border-top-right-radius: 16px;
-}
-
-table tr:last-child td:last-child {
-  border-bottom-right-radius: 16px;
-}
-
-table tr:last-child td:first-child {
-  border-bottom-left-radius: 16px;}
-
-tr:nth-child(even) {
-  background-color: rgba(204,204,204,0.2);
-}
 tr:nth-child(odd) {
   background-color: white;
+  border:2px solid red;
 }
+
+
+
