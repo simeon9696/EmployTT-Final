@@ -26,8 +26,8 @@
 
         if (user.admin){
           let display = document.querySelector('#username');
-          display.innerHTML = user.displayName;
-          display.style = "block";
+          userName.style.display = "block";
+          userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'./images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName; 
     
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
@@ -57,8 +57,8 @@
 
           console.log("I am an MDA");
           let display = document.querySelector('#username');
-          display.innerHTML = user.displayName;
-          display.style = "block";
+          userName.style.display = "block";
+          userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'./images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName; 
     
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
@@ -79,8 +79,8 @@
         }else if(user.civilian){
           console.log("I am a civilian");
           let display = document.querySelector('#username');
-          display.innerHTML = user.displayName;
-          display.style = "block";
+          userName.style.display = "block";
+          userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'./images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName; 
     
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";

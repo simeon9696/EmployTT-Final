@@ -36,8 +36,8 @@
 
         if (user.admin){
             let userName = document.querySelector('#username');
-            userName.innerHTML = user.displayName;
             userName.style.display = "block";
+            userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null;this.src=\'./images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName; 
         
             let logOut= document.querySelector("#logged-in");
             logOut.innerHTML = "Log Out";
@@ -67,8 +67,8 @@
 
           console.log("I am an MDA");
           let userName = document.querySelector('#username');
-          userName.innerHTML = user.displayName;
           userName.style.display = "block";
+          userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'./images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName; 
     
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
@@ -89,8 +89,8 @@
         }else if(user.civilian){
           console.log("I am a civilian");
           let userName = document.querySelector('#username');
-          userName.innerHTML = user.displayName;
           userName.style.display = "block";
+          userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'./images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName; 
     
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
@@ -141,12 +141,14 @@ auth.signOut();
 
 function renderJobTable(doc, c){
     let node = document.createElement('tr');
-    let employer = document.createElement('td');
-    let category= document.createElement('td');
-    let required = document.createElement('td');
-    let status = document.createElement('td');
-    let deadline = document.createElement('td');
-    let about = document.createElement('td');
+    let tableElement = document.createElement('td');
+    let separator = document.createElement('h4');
+    let jobName = document.createElement('h1');
+    let employer = document.createElement('h2');
+    let location = document.createElement('h3');
+    let date = document.createElement('p');
+ 
+
 
     let applyButton = document.createElement('button');
     let pdfButton = document.createElement('button');
@@ -164,25 +166,25 @@ function renderJobTable(doc, c){
 
     node.setAttribute('doc-id',doc.id);
     employer.textContent = doc.data().employer;
-    category.textContent = doc.data().category;
-    required.textContent = doc.data().skills;
-    status.textContent = doc.data().jobstatus;
-    deadline.textContent = doc.data().deadline;
-    about.textContent = doc.data().about;
+    jobName.textContent = doc.data().jobName;
+    date.textContent = ("Posted: "+doc.data().opened+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0"+"Deadline: "+doc.data().deadline);
+    location.textContent = doc.data().location;
+    separator.textContent="\xa0\xa0\ ";
+   
     var texts = document.createTextNode("Apply");
     applyButton.appendChild(texts);
     
     var downloadtext = document.createTextNode("PDF");
     pdfButton.appendChild(downloadtext);
     
-    node.append(category);
+  
+    node.append(jobName);
     node.append(employer);
-    node.append(required);  
-    node.append(status);
-    node.append(deadline);
-    node.append(about);
-    node.append(applyButton);
-    node.append(pdfButton);
+    node.append(location);
+    node.append(date);
+    node.append(separator);
+
+  
     jobTable.append(node);
 }   
 
@@ -227,6 +229,7 @@ function clickedButton(id, jobid){
         }
     });
 }
+
 
 
 function pdfDownload(id, jobid){
