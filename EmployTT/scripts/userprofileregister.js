@@ -162,9 +162,11 @@ const fileDrop          = document.querySelector('#drop_zone');
 const fileNames         = document.querySelector('#file-names');
 let   fileNameArr       = [];
 
+var uploader = document.getElementById('uploader');
+var fileButton = document.getElementById('fileButton');
 
-
-
+const picDrop          = document.querySelector('#employer-picture');
+const picNames         = document.querySelector('#employer-pic-words');
 
 fileDrop.addEventListener('drop',(dropListener)=>{
     console.log('File(s) dropped');
