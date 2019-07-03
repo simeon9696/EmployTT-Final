@@ -40,6 +40,7 @@ firebase deploy --only functions
 - Sasha Singh - @sashajsingh
 - Darrin Jogie - @wetcrix
 - Ria Rambaran - @riarenuka
+- Simeon Ramjit - @simeon9696
 
 
 # Acknowledgments
