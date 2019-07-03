@@ -91,3 +91,9 @@ p{
   padding-bottom:12vw;
 }
 
+
+.youtube-video { 
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
