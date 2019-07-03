@@ -7,7 +7,7 @@ footer{
     position:relative;
     height:auto;
           /* Set a specific height */
-      background-image: url('../images/webpImages/landingimage copy.webp'),url('../images/landingimage copy.jpg') ;
+      background-image: url('../images/webpImages/landingimage-copy.webp'),url('../images/landingimage-copy.jpg') ;
       /* Create the parallax scrolling effect */
       background-attachment: fixed;
       background-position: center;

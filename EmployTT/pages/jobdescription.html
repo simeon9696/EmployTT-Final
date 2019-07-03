@@ -16,6 +16,7 @@
 		<script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js" 	type="text/javascript"></script>
 		<script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" 		type="text/javascript"></script>
 		<script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" 	type="text/javascript"></script>
+		<script defer src="../scripts/authui.js" 											type="text/javascript"></script>
 		<script defer src="../scripts/jobdescription.js" 									type="text/javascript"></script>
 		<!--Footer CSS Dependencies-->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
@@ -23,187 +24,193 @@
 		<!-- Link style files -->
 		<link href="../styles/jobdescription.css" type="text/css" rel="stylesheet" />	
 		<link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
-		<!--Link address bar icon file-->
-		<link href="../images/icons/icon-72x72.png"  type="image/png" rel="shortcut icon"/>
+		<!--Link address bar icon file for any browser-->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="/favicon.ico"/>
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
 	</head>
-	<div class="topnav">    
-			<!--User's name goes here once logged in-->
-			<a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
-			<a class="nav-word" id="logged-in"  href="#"></a>	
-			<a class="nav-word" id="regBtn" 	href="./userprofileregister.html" >Register</a>
-			<a class="nav-word" id="logInBtn" 	href="./login.html" >Log in</a>	
-			<a class="nav-word" id="employers" 	href="./employers.html" style="color:#330099">Employers</a> 
-			<a class="nav-word" id="all-jobs"  	href="./joblist.html" >All Jobs</a>
-			<a class="nav-word" id="find-jobs" 	href="../index.html" ">Find Jobs</a>
-			<a class="nav-word" id="about-us" 	href="./aboutus.html" >About Us</a>
-			<a class="nav-word" id="terms-of-service" href="./termsofservice.html"  >Terms of Service</a>
-			<a class="nav-word" id="privacy-policy"   href="./privacypolicy.html">Privacy Policy</a>
-		</div>
-   	<div class="employer-container">
-   	<a class="employer-logo" href="../index.html"><img src="../images/logo-employer.png"></img></a>			
-	<p class="employer-quote"> Edit Job Description</p>
-	<br>
-  <form id="job-form">
-	<div class="jobName">
-		<label for ="jobName" id="describe-labels">Job Name</label><br>
-		<input type="text" name="jobName" placeholder="" id="jobName" required><br><br><br>
-	</div>
-    <label for ="about" id="describe-labels" class="about-label">About</label><br>
-    <textarea type="text" name="about" placeholder="Describe job..." id="aboutJob" class="aboutfield" required></textarea><br><br><br>
-    <label for ="skills" id="describe-labels" class="skills">Skills Required</label><br>
-    <textarea type="text" name="skills" placeholder="" id="jobSkills" required></textarea><br><br><br>
-    <div class="label-container">  
-    </div>
-    <div class="flex-container">
-    <div class='levels'>
-    <label for ="levels" id="describe-labels">Level</label><br>
-    <input type="search" name="levels" placeholder="" id="jobLevel" list="levels-list" autocomplete="on" required><br><br><br>
-      		<datalist id="levels-list">	
-      					<option value="None"></option>
-    					<option value="Trainee"></option>
-    					<option value="Entry Level"></option> 
-  				        <option value="Junior"></option>
-     					<option value="Supervisory"></option> 	
-  						<option value="Senior"></option>				 					
-    					<option value="Manager"></option>		
-     					<option value="Admin"></option>	
-     					<option value="Other"></option>	
-  					</datalist>  
-   </div>
-   <div class='location'>
-   <label for="location-filter">Location </label>	<br>
-  	<input  id="jobLocation" type="search" class="location-filter" name="location" placeholder="" list="locations-list" autocomplete="off" /><br><br><br>		
-  					<datalist id="locations-list">	
-  					<option value="All"></option>	
-  					<option value="North"></option>
-    					<option value="Central"></option>
-    					<option value="South"></option>					 					
-    					<option value="Borough of Arima"></option>
-    					<option value="Borough of Chaguanas"></option>
-    					<option value="Couva-Tabaquite-Talparo"></option>
-    					<option value="Diego Martin Region"></option>
-    					<option value="Gasparillo"></option>
-    					<option value="Penal-Debe"></option>
-    					<option value="Borough of Point Fortin"></option>
-    					<option value="Port of Spain"></option>
-    					<option value="Princes Town Region"></option>
-    					<option value="Rio Claro-Mayaro"></option>
-    					<option value="San Juan-Laventille"></option>
-    					<option value="Sangre Grande Region"></option>
-    					<option value="City of San Fernando"></option>
-    					<option value="Siparia Region"></option>
-    					<option value="Tunapuna-Piarco"></option>
-    					<option value="Tobago"></option>					
-  					</datalist>  		    
-  		</div>			
-    <div class='category'>
-    <label for="category-filter" id="describe-labels"> Category</label>	 <br>  
-    <input type="search" id="jobCategory" name="category" placeholder="" list="category-list" autocomplete="off" > <br><br><br>
-  					<datalist id="category-list">	
-  					<option value="All"></option>						 					
-    					<option value="Accounting"></option>
-    					<option value="Admin & Clerical"></option>
-    					<option value="Automotive"></option>
-    					<option value="Banking"></option>
-    					<option value="Broadcast - Journalism, Radio"></option>
-    					<option value="Business Development"></option>
-    					<option value="Construction"></option>
-    					<option value="Consultant"></option>
-    					<option value="Contract, Freelance"></option>
-    					<option value="Customer Service"></option>
-    					<option value="Design"></option>
-    					<option value="Distribution, Shipping"></option>
-    					<option value="Education - Teaching"></option>
-    					<option value="Engineering"></option>
-    					<option value="Entry level/Graduate"></option>
-    					<option value="Executive"></option>	
-    					<option value="Facilities"></option>						 					
-    					<option value="Finance"></option>
-    					<option value="Health Care"></option>
-    					<option value="General Labour"></option>
-    					<option value="Human Resources"></option>
-    					<option value="Information Technology"></option>
-    					<option value="Installation, Maintenance, Repair"></option>
-    					<option value="Internships"></option>
-    					<option value="Legal"></option>
-    					<option value="Management"></option>
-    					<option value="Media"></option>
-    					<option value="Marketing"></option>
-    					<option value="Nonprofit, Social Services"></option>
-    					<option value="Other"></option>
-    					<option value="Part Time"></option>
-    					<option value="Pharmaceutical"></option>
-    					<option value="Purchasing, Procurement"></option>
-    					<option value="Research"></option>
-    					<option value="Food Service"></option>
-    					<option value="Science"></option>
-    					<option value="Skilled Labour, Trades"></option>	
-    					<option value="Strategy, Planning"></option>
-    					<option value="Telecommunications"></option>
-    					<option value="Transportation"></option>
-    					<option value="Work from Home"></option>    					   									
-  					</datalist>  	
-  	</div>		 
-  	<div class='employer'>
-    	<label for ="employer" id="describe-labels">Employer</label><br>
-    	<input type="text" name="employer" placeholder="Company, Agency, Ministry, etc" id="jobEmployer" required><br><br><br>
-    </div>
-    </div>
-    <div class="flex-container2">    
-    <div class="jobstatus">
-    <label for ="jobstatus" id="describe-labels">Job Status</label><br>
-  	<input  id="jobStatus"  type="search" id="jobstatus-filter" name="jobstatus" placeholder="" list="jobstatus-list" autocomplete="off" /><br><br><br>		
-  					<datalist id="jobstatus-list">	
-  					<option value="Full-time"></option>	
-  					<option value="Part-time"></option>
-    					<option value="Contract"></option>
-    					<option value="Internship"></option>					 					
-    					<option value="Other"></option>			
-  					</datalist>  
-    </div>
-    <div class="age">
-    <label for ="age" id="describe-labels">Age Requirement</label><br>
-    <input type="text" name="age" placeholder="" id="jobAge" required><br><br><br>
-    </div>
-    <div class="gender">
-    <label for ="gender" id="describe-labels">Gender</label><br>
-     <input  id="jobGender"  type="search" id="gender-filter" name="gender" placeholder="" list="gender-list" autocomplete="on" /><br><br><br>		
-  					<datalist id="gender-list">	
-  					<option value="Male"></option>	
-  					<option value="Female"></option>
-    					<option value="Other"></option>
-    					<option value="All"></option>					 						
-  					</datalist>  
-    </div>
-    <div class="salary">
-   	 	<label for ="salary" id="describe-labels">Salary</label><br>
-   	 	<input type="text" name="salary" placeholder="" id="jobSalary" required><br><br><br>
-    </div>
-    </div>
-    <div class="flex-container">
-    <div class="open">
-   	 	<label for ="opened" id="describe-labels">Opened</label><br>
-    	<input type="date" name="opened" placeholder="May 31st, 2019" id="jobOpened" required><br><br><br>
-    </div>
-     <div class="close">
-    <label for ="deadline" id="describe-labels">Closes</label><br>
-    <input type="date" name="deadline" placeholder="May 31st, 2019" id="jobClosed" required><br><br><br>
-    </div>
-    </div>
-    <!--TODO: Password verification and alert if passwords do not match. Client side. privacy policy-->
- </form>
- 		
- </div>
- <input type="submit" value="Submit" id="submitButton" href="#" action="#">  <br><br>
-<p id = "invisible" class = "hide"> Job added </p>
 
+	<body>
+			<div class="topnav">    
+					<!--User's name goes here once logged in-->
+					<a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
+					<a class="nav-word" id="logged-in"  href="#"></a>	
+					<a class="nav-word" id="regBtn" 	href="./userprofileregister.html" >Register</a>
+					<a class="nav-word" id="logInBtn" 	href="./login.html" >Log in</a>	
+					<a class="nav-word" id="employers" 	href="./employers.html" style="color:#330099">Employers</a> 
+					<a class="nav-word" id="all-jobs"  	href="./joblist.html" >All Jobs</a>
+					<a class="nav-word" id="find-jobs" 	href="../index.html" ">Find Jobs</a>
+					<a class="nav-word" id="about-us" 	href="./aboutus.html" >About Us</a>
+					<a class="nav-word" id="terms-of-service" href="./termsofservice.html"  >Terms of Service</a>
+					<a class="nav-word" id="privacy-policy"   href="./privacypolicy.html">Privacy Policy</a>
+				</div>
+			   <div class="employer-container">
+			   <a class="employer-logo" href="../index.html"><img src="../images/logo-employer.png"></img></a>			
+			<p class="employer-quote"> Edit Job Description</p>
+			<br>
+		  <form id="job-form">
+			<div class="jobName">
+				<label for ="jobName" id="describe-labels">Job Name</label><br>
+				<input type="text" name="jobName" placeholder="" id="jobName" required><br><br><br>
+			</div>
+			<label for ="about" id="describe-labels" class="about-label">About</label><br>
+			<textarea type="text" name="about" placeholder="Describe job..." id="aboutJob" class="aboutfield" required></textarea><br><br><br>
+			<label for ="skills" id="describe-labels" class="skills">Skills Required</label><br>
+			<textarea type="text" name="skills" placeholder="" id="jobSkills" required></textarea><br><br><br>
+			<div class="label-container">  
+			</div>
+			<div class="flex-container">
+			<div class='levels'>
+			<label for ="levels" id="describe-labels">Level</label><br>
+			<input type="search" name="levels" placeholder="" id="jobLevel" list="levels-list" autocomplete="on" required><br><br><br>
+					  <datalist id="levels-list">	
+								  <option value="None"></option>
+								<option value="Trainee"></option>
+								<option value="Entry Level"></option> 
+								  <option value="Junior"></option>
+								 <option value="Supervisory"></option> 	
+								  <option value="Senior"></option>				 					
+								<option value="Manager"></option>		
+								 <option value="Admin"></option>	
+								 <option value="Other"></option>	
+							  </datalist>  
+		   </div>
+		   <div class='location'>
+		   <label for="location-filter">Location </label>	<br>
+			  <input  id="jobLocation" type="search" class="location-filter" name="location" placeholder="" list="locations-list" autocomplete="off" /><br><br><br>		
+							  <datalist id="locations-list">	
+							  <option value="All"></option>	
+							  <option value="North"></option>
+								<option value="Central"></option>
+								<option value="South"></option>					 					
+								<option value="Borough of Arima"></option>
+								<option value="Borough of Chaguanas"></option>
+								<option value="Couva-Tabaquite-Talparo"></option>
+								<option value="Diego Martin Region"></option>
+								<option value="Gasparillo"></option>
+								<option value="Penal-Debe"></option>
+								<option value="Borough of Point Fortin"></option>
+								<option value="Port of Spain"></option>
+								<option value="Princes Town Region"></option>
+								<option value="Rio Claro-Mayaro"></option>
+								<option value="San Juan-Laventille"></option>
+								<option value="Sangre Grande Region"></option>
+								<option value="City of San Fernando"></option>
+								<option value="Siparia Region"></option>
+								<option value="Tunapuna-Piarco"></option>
+								<option value="Tobago"></option>					
+							  </datalist>  		    
+				  </div>			
+			<div class='category'>
+			<label for="category-filter" id="describe-labels"> Category</label>	 <br>  
+			<input type="search" id="jobCategory" name="category" placeholder="" list="category-list" autocomplete="off" > <br><br><br>
+							  <datalist id="category-list">	
+							  <option value="All"></option>						 					
+								<option value="Accounting"></option>
+								<option value="Admin & Clerical"></option>
+								<option value="Automotive"></option>
+								<option value="Banking"></option>
+								<option value="Broadcast - Journalism, Radio"></option>
+								<option value="Business Development"></option>
+								<option value="Construction"></option>
+								<option value="Consultant"></option>
+								<option value="Contract, Freelance"></option>
+								<option value="Customer Service"></option>
+								<option value="Design"></option>
+								<option value="Distribution, Shipping"></option>
+								<option value="Education - Teaching"></option>
+								<option value="Engineering"></option>
+								<option value="Entry level/Graduate"></option>
+								<option value="Executive"></option>	
+								<option value="Facilities"></option>						 					
+								<option value="Finance"></option>
+								<option value="Health Care"></option>
+								<option value="General Labour"></option>
+								<option value="Human Resources"></option>
+								<option value="Information Technology"></option>
+								<option value="Installation, Maintenance, Repair"></option>
+								<option value="Internships"></option>
+								<option value="Legal"></option>
+								<option value="Management"></option>
+								<option value="Media"></option>
+								<option value="Marketing"></option>
+								<option value="Nonprofit, Social Services"></option>
+								<option value="Other"></option>
+								<option value="Part Time"></option>
+								<option value="Pharmaceutical"></option>
+								<option value="Purchasing, Procurement"></option>
+								<option value="Research"></option>
+								<option value="Food Service"></option>
+								<option value="Science"></option>
+								<option value="Skilled Labour, Trades"></option>	
+								<option value="Strategy, Planning"></option>
+								<option value="Telecommunications"></option>
+								<option value="Transportation"></option>
+								<option value="Work from Home"></option>    					   									
+							  </datalist>  	
+			  </div>		 
+			  <div class='employer'>
+				<label for ="employer" id="describe-labels">Employer</label><br>
+				<input type="text" name="employer" placeholder="Company, Agency, Ministry, etc" id="jobEmployer" required><br><br><br>
+			</div>
+			</div>
+			<div class="flex-container2">    
+			<div class="jobstatus">
+			<label for ="jobstatus" id="describe-labels">Job Status</label><br>
+			  <input  id="jobStatus"  type="search" id="jobstatus-filter" name="jobstatus" placeholder="" list="jobstatus-list" autocomplete="off" /><br><br><br>		
+							  <datalist id="jobstatus-list">	
+							  <option value="Full-time"></option>	
+							  <option value="Part-time"></option>
+								<option value="Contract"></option>
+								<option value="Internship"></option>					 					
+								<option value="Other"></option>			
+							  </datalist>  
+			</div>
+			<div class="age">
+			<label for ="age" id="describe-labels">Age Requirement</label><br>
+			<input type="text" name="age" placeholder="" id="jobAge" required><br><br><br>
+			</div>
+			<div class="gender">
+			<label for ="gender" id="describe-labels">Gender</label><br>
+			 <input  id="jobGender"  type="search" id="gender-filter" name="gender" placeholder="" list="gender-list" autocomplete="on" /><br><br><br>		
+							  <datalist id="gender-list">	
+							  <option value="Male"></option>	
+							  <option value="Female"></option>
+								<option value="Other"></option>
+								<option value="All"></option>					 						
+							  </datalist>  
+			</div>
+			<div class="salary">
+					<label for ="salary" id="describe-labels">Salary</label><br>
+					<input type="text" name="salary" placeholder="" id="jobSalary" required><br><br><br>
+			</div>
+			</div>
+			<div class="flex-container">
+			<div class="open">
+					<label for ="opened" id="describe-labels">Opened</label><br>
+				<input type="date" name="opened" placeholder="May 31st, 2019" id="jobOpened" required><br><br><br>
+			</div>
+			 <div class="close">
+			<label for ="deadline" id="describe-labels">Closes</label><br>
+			<input type="date" name="deadline" placeholder="May 31st, 2019" id="jobClosed" required><br><br><br>
+			</div>
+			</div>
+			<!--TODO: Password verification and alert if passwords do not match. Client side. privacy policy-->
+		 </form>
+				 
+		 </div>
+		 <input type="submit" value="Submit" id="submitButton" href="#" action="#">  <br><br>
+		<p id = "invisible" class = "hide"> Job added </p>
+	</body>
 <footer class="footer-distributed">
-
 	<div class="footer-left">
-
 		
-        <img src="../images/webpImages/footer-logo.webp" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">       
-		<p class="footer-links">
+			<img src="./images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='./images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+			<p class="footer-links">
 			<a href="./index.html">Home</a>
 			·
 			<a href="./termsofservice.html">Terms Of Service</a>
@@ -214,44 +221,31 @@
 			·
 			<a href="./aboutus.html">Contact</a>
 		</p>
-
 		<p class="footer-company-name">EmployTT &copy; 2019</p>
 	</div>
-
 	<div class="footer-center">
-
 		<div>
 			<i class="fa fa-map-marker"></i>
 			<p><span>Pembroke St</span> Port of Spain, Trinidad and Tobago</p>
 		</div>
-
 		<div>
 			<i class="fa fa-phone"></i>
 			<p>+1 (868) 627-5600</p>
 		</div>
-
 		<div>
 			<i class="fa fa-envelope"></i>
 			<p><a href="mailto:support@company.com">hackttdecepticons@gmail.com</a></p>
 		</div>
-
 	</div>
-
 	<div class="footer-right">
-
 		<p class="footer-company-about">
 			<span>About the company</span>
 			Dedicated to helping you become employed as fast as possible
 		</p>
-
 		<div class="footer-icons">
-
 			<a href="https://www.facebook.com/iGovTT/"><i class="fa fa-facebook"></i></a>
 			<a href="https://www.instagram.com/hacktt19/"><i class="fa fa-instagram"></i></a>
-
-
 		</div>
-
 	</div>
 </footer>
 </html>

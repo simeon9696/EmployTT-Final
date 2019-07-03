@@ -16,15 +16,26 @@
     <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"   type="text/javascript"></script>
     <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" 	   type="text/javascript"></script>
     <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" type="text/javascript"></script>
+    <script defer src="../scripts/authui.js" 											type="text/javascript"></script>
     <script defer src="../scripts/userprofileinfo.js" 								   type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!--Footer CSS Dependencies-->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
     <!-- Link style files -->
     <link href="../styles/userprofileinfostyle.css" type="text/css" rel="stylesheet" />	
     <link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
-    <!--Link address bar icon file-->
-    <link href="../images/icons/icon-72x72.png"  type="image/png" rel="shortcut icon"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--Link address bar icon file for any browser-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
         <div class="topnav">    
@@ -65,21 +76,56 @@
         <input type="button" value ="Make MDA" id="mdaSubmitButton" class="submitButton" href="#" action="#">
 
         
-        <input type="button" id="updateButton" value="Update">
-        <input type="button" id="removeButton" value="Remove">
+        <input type="button" id="updateButton" value="Update Profile">
+        <input type="button" id="removeButton" value="Delete Profile">
         <input type="button" id="findButton" value="Find Jobs">
        </div>
 
 
-  
+
+        
+
+                
+       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           
+            <div class="modal-dialog role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Reauthenticate to delete account</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                 <div class="container-fluid">
+                    <form class="form-group">
+                        <div class="form-group mb-2">   
+                            <input type="text" readonly class="form-control-plaintext col-md-auto align-items-center " id="staticEmail2" value="email@example.com" autocomplete="email">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+            
+                            <input type="text" class="form-control is-invalid  align-items-center" id="inputPassword2" placeholder="Password" autocomplete="current-password" required>
+                            <div class="invalid-feedback  align-items-center" id="error-message">Please provide your Password </div><br>
+                            <button type="submit" class="btn btn-danger align-items-center" id="confirm-delete-btn">Confirm deletion</button>&nbsp;&nbsp;&nbsp;<br>
+
+                        </div>
+
+
+                    </form>
+                 </div>
+              </div>  
+              </div>
+            </div>
+          </div>
+          
     </body>
 
     <footer class="footer-distributed">
 
         <div class="footer-left">
 
-            
-            <img src="../images/webpImages/footer-logo.webp" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">       
+             <img src="./images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='./images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+          
             <p class="footer-links">
                 <a href="./index.html">Home</a>
                 ·
