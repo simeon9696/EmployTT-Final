@@ -97,14 +97,18 @@ p{
   display: block;
   margin: 0 auto;
   border: 3px solid rgb(0, 0, 0);
+  bottom:-20px;
 }
 
 
 @media (max-width: 880px) {
   .youtube-video { 
+    display: block;
     position: relative;
-    top: 45vh;
+    max-width:100%;
+    height: auto;
     border: 3px solid rgb(0, 0, 0);
+    bottom:-420px;
   }
 
 }
