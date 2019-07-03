@@ -6,15 +6,15 @@ GoRTT is seeking to implement an online recruitment system which will aid citize
 
 
 # Getting Started
-  1.) For local testing a live server is necessary. To install a live server on your machine using VS Code, go to 
-      Extensions, search "Live Server" and install the extension.
-  2.) Clone or download the repository 
-  3.) Install all the pre-requistes listed below. 
-  4.) Right click on "index. html" in VS Code and select "Launch with Live Server".
+  1.)  For local testing a live server is necessary. To install a live server on your machine using VS Code, go to 
+       Extensions, search "Live Server" and install the extension.
+  2.)  Clone or download the repository 
+  3.)  Install all the pre-requistes listed below. 
+  4.)  Right click on "index. html" in VS Code and select "Launch with Live Server".
 
 # Prerequisites
-  -Firebase Functions
-  -Sendgrid API
+  - Firebase Functions
+  - Sendgrid API
 
 To install firebase-functions follow these steps: 
 
@@ -25,8 +25,8 @@ npm install -g firebase-tools
 
 
 # Built With
-  -Firebase
-  -PDF.js
+  - Firebase
+  - PDF.js
   
 
 # Authors
