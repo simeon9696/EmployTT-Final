@@ -5,56 +5,35 @@
 GoRTT is seeking to implement an online recruitment system which will aid citizens to conveniently access job vacancies within MDAs, making applying for these positions simple, quick and trackable while lessening the cost of marketing these positions to the general public. This solution will improve citizen satisfaction and quicken the rate at which MDAs can complete the hiring process. EmployTT is expected to be developed in multiple phases with Phase 1 being implemented via this Hackathon.
 
 
-Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+# Getting Started
+  1.) For local testing a live server is necessary. To install a live server on your machine using VS Code, go to 
+      Extensions, search "Live Server" and install the extension.
+  2.) Clone or download the repository 
+  3.) Install all the pre-requistes listed below. 
+  4.) Right click on "index. html" in VS Code and select "Launch with Live Server".
 
-Prerequisites
-What things you need to install the software and how to install them
+# Prerequisites
+  -Firebase Functions
+  -Sendgrid API
 
-Give examples
-Installing
-A step by step series of examples that tell you how to get a development env running
+To install firebase-functions follow these steps: 
 
-Say what the step will be
+```
+npm install firebase-functions@latest firebase-admin@latest --save
+npm install -g firebase-tools
+```
 
-Give the example
-And repeat
 
-until finished
-End with an example of getting some data out of the system or using it for a little demo
+# Built With
+  -Firebase
+  -PDF.js
+  
 
-Running the tests
-Explain how to run the automated tests for this system
+# Authors
+Sasha Singh - @sashajsingh
+Darrin Jogie - @wetcrix
+Ria Rambaran
 
-Break down into end to end tests
-Explain what these tests test and why
 
-Give an example
-And coding style tests
-Explain what these tests test and why
-
-Give an example
-Deployment
-Add additional notes about how to deploy this on a live system
-
-Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
-
-Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
-
-Authors
-Billie Thompson - Initial work - PurpleBooth
-See also the list of contributors who participated in this project.
-
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details
-
-Acknowledgments
-Hat tip to anyone whose code was used
-Inspiration
-etc
+# Acknowledgments
+Gillan Morris, Mentor - @geverett
