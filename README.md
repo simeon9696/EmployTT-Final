@@ -30,10 +30,11 @@ npm install -g firebase-tools
   
 
 # Authors
-Sasha Singh - @sashajsingh
-Darrin Jogie - @wetcrix
-Ria Rambaran
+- Sasha Singh - @sashajsingh
+- Darrin Jogie - @wetcrix
+- Ria Rambaran
 
 
 # Acknowledgments
-Gillan Morris, Mentor - @geverett
+- Gillan Morris, Mentor - @geverett
+
