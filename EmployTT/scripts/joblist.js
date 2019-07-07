@@ -1,4 +1,3 @@
-
 const jobTable = document.querySelector('#job-table');
 firestore.collection('Jobs').get().then((snapshot)=>{
   var c = 1;
@@ -79,20 +78,13 @@ function clickedButton(id, jobid){
                             job_id: jobid 
                         });
                         alert("Applied for job");
-                        var template_params = {
-                            "user_email": user.email,
-                            "reply_to": "noreply",
-                            "to_name": user.displayName
-                         }
-                         var service_id = "default_service";
-                         var template_id = "template_FNuLCybl";
-                     
-                        
-                         emailjs.send(service_id, template_id, template_params)
-                        .then(function(response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        }, function(error) {
-                        console.log('FAILED...', error);
+                        //Send confirmation email for user that they've applied for the job
+                        const userEmail = auth.currentUser.email;
+                        const sendJobEmail = functions.httpsCallable('sendJobEmailApplicationSuccess');
+                        sendJobEmail({ jobName: doc.jobName, email : userEmail}).then(result => {
+                          console.log(result);
+                        }).catch(error=>{
+                          console.log(error);
                         });
                     }
                 });
