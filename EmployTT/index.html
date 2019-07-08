@@ -7,23 +7,26 @@
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ff3300">
 		<meta name="description" content="jobs for citizens of trinidad and tobago">
-		<meta name="keywords" lang="en" content="employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt, igovtt">
+		<meta name="keywords" lang="en" content="government, hiring, employ tt,employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt, igovtt">
 		<meta name="viewport" content="width=device-width, initial-scale=1">  
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<!-- Scripts are deferred to improve page performance -->
-        <script  src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" 	   		type="text/javascript"></script>
-        <script  src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"		type="text/javascript"></script>
-        <script  src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js" 		type="text/javascript"></script>
-        <script  src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" 			type="text/javascript"></script>
-		<script  src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" 		type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" 	   		type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"		type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js" 		type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" 			type="text/javascript"></script>
+		<script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" 		type="text/javascript"></script>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-142588895-1"></script>
 		<script defer src="./scripts/authui.js" 												type="text/javascript"></script>
 		<script defer src="./index.js" 															type="text/javascript"></script>
 		<!-- jQuery Dependencies -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" 			type="text/javascript"></script>
+		<!--
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" 			type="text/javascript"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" 	type = "text/javascript"  charset="utf-8"></script>
 		<script src="./index.jquery.js"></script>
+		-->
+
 		<!-- CSS and Text Font Dependencies -->
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" 		rel="stylesheet" type="text/css">
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 	rel="stylesheet" type="text/css">
@@ -33,9 +36,14 @@
 		<link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
 		<!-- Links to manifest and style files -->
 		<link href="./site.json" rel="manifest">
-		<link href="./index_style.css" type="text/css" rel="stylesheet" />	
-		<link href="./styles/mobilenavstyle.css" type="text/css" rel="stylesheet" />	
-		<link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
+		<link rel="preload"  href="./index_style.css" as="style" />	
+		<link rel="stylesheet" href="./index_style.css">
+
+		<link href="./styles/mobilenavstyle.css" rel="preload" as="style" />	
+		<link rel="stylesheet" href="./styles/mobilenavstyle.css">
+
+		<link href="./styles/footerstyle.css" rel="preload" as="style" />	
+		<link rel="stylesheet" href="./styles/footerstyle.css">
 		<!--Link address bar icon file for any browser-->
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -63,6 +71,7 @@
 				<span></span>
 				<span></span>
 				<ul id="mobile-menu">
+					
 				<li id="mobile-li"><a href="./pages/joblist.html" data-page="1" >All Jobs</a></li>
 				<li id="mobile-li"><a href="../index.html" style="color:#ff3300;" data-page="2" class="active"  >Find Jobs</a></li>
 				<li id="mobile-li"><a  href="./pages/login.html" data-page="3" >Log In</a></li>
@@ -71,6 +80,8 @@
 				<li id="mobile-li"><a href="./pages/termsofservice.html" data-page="6" >Terms of Service</a></li>
 				<li id="mobile-li"><a href="./pages/privacypolicy.html" data-page="7">Privacy Policy</a></li>
 				<li id="mobile-li"><a href="./pages/userprofileregister.html" data-page="8" >Register</a></li>
+				<li id="mobile-li"><a href="./faqs.html" data-page="9" >FAQs</a></li>
+				
 			</ul>
 		   </div>
 		  </nav>
@@ -88,6 +99,7 @@
 			<a class="nav-word" id="about-us" href="./pages/aboutus.html">About Us</a>
 			<a class="nav-word" id="terms-of-service" href="./pages/termsofservice.html">Terms of Service</a>
 			<a class="nav-word" id="privacy-policy" href="./pages/privacypolicy.html">Privacy Policy</a>
+			<a class="nav-word" id="privacy-policy" href="./pages/faqs.html">FAQs</a>
 		 </div>
 
 <!-- Page Content -->
