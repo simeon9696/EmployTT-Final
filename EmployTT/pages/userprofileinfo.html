@@ -117,6 +117,45 @@
               </div>
             </div>
           </div>
+
+          <div class="modal fade" id="customClaimError" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                      <h5 class="modal-title text-white" id="exampleModalCenterTitle">Aw shucks, there was an error</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center">
+                      You do not have the necessary privilege to execute this function. If you think this 
+                      is an error please contact an administrator via our email or phone.
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal fade" id="customClaimSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header bg-success">
+                          <h5 class="modal-title text-white" id="exampleModalCenterTitle">Success!</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center" id="userSuccessMessage">
+                          The user is now an admin/mda
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
           
     </body>
 
@@ -124,7 +163,7 @@
 
         <div class="footer-left">
 
-             <img src="./images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='./images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+             <img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
           
             <p class="footer-links">
                 <a href="./index.html">Home</a>
