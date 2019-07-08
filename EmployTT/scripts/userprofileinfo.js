@@ -202,6 +202,19 @@ auth.onAuthStateChanged(user => {
   }
 });
 
+const updateProfile = document.querySelector('#updateButton');
+updateProfile.addEventListener('click',(e)=>{
+  e.preventDefault();
+  //Send confirmation email for user that they've applied for the job
+  const userEmail = auth.currentUser.email;
+  const sendJobEmail = functions.httpsCallable('sendJobEmailApplicationSuccess');
+  sendJobEmail({ jobName: 'Potatoness', email : userEmail}).then(result => {
+    console.log(result);
+  }).catch(error=>{
+    console.log(error);
+  });
+
+})
 
 
 const removeProfile = document.querySelector('#removeButton');
@@ -284,7 +297,13 @@ adminForm.addEventListener('click', (e) => {
   const adminEmail = document.querySelector('#admin-email').value;
   const addAdminRole = functions.httpsCallable('addAdminRole');
   addAdminRole({ email: adminEmail }).then(result => {
-    console.log(result);
+    if(result.data.message !== undefined){
+      $('#customClaimSuccess').modal('show');
+      const successMessage = document.querySelector('#userSuccessMessage');
+      successMessage.innerHTML = `${adminEmail} is now an administrator!`
+    }else if (result.data.error !== undefined){
+      $('#customClaimError').modal('show');
+    }
   });
 });
 
@@ -297,6 +316,63 @@ mdaForm.addEventListener('click', (e) => {
   const addMdaRole = functions.httpsCallable('addMdaRole');
   addMdaRole({ email: mdaEmail }).then(result => {
     console.log(result);
+    console.log(result.message);
+    console.log(result.data.error);
+    if(result.data.message !== undefined){
+      $('#customClaimSuccess').modal('show');
+      const successMessage = document.querySelector('#userSuccessMessage');
+      successMessage.innerHTML = `${mdaEmail} is now an MDA!`
+    }else if (result.data.error !== undefined){
+      $('#customClaimError').modal('show');
+    }
+
   });
 });
 
+
+//-------------------------Testing a thing, ignore-------------------------------
+/*
+
+function storeStuff(){
+
+  const emailTransport = {
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, 
+
+};
+
+const APP_NAME = 'EmployTT';
+const displayName = 'Simeon'; // The display name of the user.
+const emailOptions = {
+    from: `${APP_NAME} <noreply@firebase.com>`,
+    to: 'simeonramjit',
+  };
+
+const mailConfig ={
+    mailTransport : emailTransport,
+    mailOptions : emailOptions,
+};
+
+  return mailConfig;
+}
+
+function printStuff(){
+
+  const info = storeStuff();
+
+ 
+  const mailConfig = storeStuff();
+  const APP_NAME = 'EmployTT';
+  const displayName = 'Simeon'; // The display name of the user.
+  mailConfig.mailOptions.subject = `${APP_NAME} - Application for ${displayName} succesful!`;
+  mailConfig.mailOptions.text = `Hey ${displayName || ''}! Welcome to ${APP_NAME}. I hope you will enjoy our service.`;
+
+  console.log(mailConfig.mailOptions.subject);
+  console.log(mailConfig.mailTransport);
+}
+
+printStuff();
+
+*/
