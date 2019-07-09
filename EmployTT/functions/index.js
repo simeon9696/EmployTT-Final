@@ -1,10 +1,8 @@
-
 "use strict";
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const nodemailer = require("nodemailer");
-//const sgMail = require('@sendgrid/mail');
-//sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 admin.initializeApp();
 const db=admin.firestore();
@@ -55,7 +53,8 @@ exports.addMdaRole = functions.https.onCall((data,context)=>{
 
 
 exports.addCivilianRole = functions.https.onCall((data)=>{
-    //get user and add custom claim
+
+
     return admin.auth().getUserByEmail(data.email).then(user => {
         return admin.auth().setCustomUserClaims(user.uid, {
             admin : false,
@@ -72,7 +71,60 @@ exports.addCivilianRole = functions.https.onCall((data)=>{
 }) 
 
 exports.writeNumberOfUsersToDatabase = functions.https.onCall(()=>{
-    return db.collection('DatabaseInfo').doc('UserProfiles').set({
+
+    /*
+          return  db.collection('DatabaseInfo').doc('numberOfAccounts').get().then(snapshot=>{
+
+            return {
+                message: snapshot.data()
+            }
+        }).catch(error =>{
+            return {
+                message: error
+            }
+        });
+    */
+
+
+
+
+})
+
+exports.increaseUserCount = functions.firestore.document('Users/{userId}').onCreate(() => {
+    return db.collection('DatabaseInfo').doc('numberOfAccounts').get().then(snapshot=>{
+        let numberOfAccountsCreated = snapshot.data().totalNumberOfAccountCreations+1;
+        let numberOfAccountsNow = snapshot.data().totalNumberOfAccounts+1;
+        return db.collection('DatabaseInfo').doc('numberOfAccounts').update({
+            totalNumberOfAccountCreations : numberOfAccountsCreated,
+            totalNumberOfAccounts : numberOfAccountsNow
+        });
+      }).then(()=>{
+        return;
+      }).catch(err =>{
+        return err;
+      });
+});
+
+
+exports.decreaseUserCount = functions.firestore.document('Users/{userID}').onDelete(() => {
+    return db.collection('DatabaseInfo').doc('numberOfAccounts').get().then(snapshot=>{
+        let numberOfAccountsDeleted = snapshot.data().totalNumberOfAccountDeletions+1;
+        let numberOfAccountsNow = snapshot.data().totalNumberOfAccounts-1;
+        return db.collection('DatabaseInfo').doc('numberOfAccounts').update({
+            totalNumberOfAccountDeletions : numberOfAccountsDeleted,
+            totalNumberOfAccounts : numberOfAccountsNow
+        });
+      }).then(()=>{
+        return;
+      }).catch(err =>{
+        return err;
+      });
+});
+
+
+/*
+
+    return db.collection('DatabaseInfo').doc('NumberOfUsers').set({
         numberOfProfiles : '1000',
     }).then(()=>{
         return{
@@ -81,7 +133,8 @@ exports.writeNumberOfUsersToDatabase = functions.https.onCall(()=>{
     }).catch(error =>{
         return error;
     })
-}) 
+    */
+ 
 
 /*
 exports.sendJobEmailApplicationSuccess = functions.https.onCall((data)=>{
