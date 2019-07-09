@@ -43,7 +43,7 @@ npm install nodemailer
 ```
 # Built With
   - Firebase
-  - PDF.js
+  - Nodemailer,
   - Email.js
 
 # Authors
