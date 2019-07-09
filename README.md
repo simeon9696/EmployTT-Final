@@ -14,6 +14,8 @@ GoRTT is seeking to implement an online recruitment system which will aid citize
 
 # Prerequisites
   - Firebase Functions
+  - Firebase Admin SDK
+  - Nodemailer
   
 This assumes that you have access to the firebase project for this repository already. If you do not, please contact one of the authors for authentication. To install firebase-functions follow these steps.
 
