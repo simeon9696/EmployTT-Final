@@ -13,11 +13,16 @@ GoRTT is seeking to implement an online recruitment system which will aid citize
   4. Right click on "index. html" in VS Code and select "Launch with Live Server".
 
 # Prerequisites
+  - Firebase CLI
   - Firebase Functions
   - Firebase Admin SDK
   - Nodemailer
   
-This assumes that you have access to the firebase project for this repository already. If you do not, please contact one of the authors for authentication. To install firebase-functions follow these steps.
+This assumes that you have access to the firebase project for this repository already. If you do not, please contact one of the authors for authentication. 
+
+To install the Firebase CLI,firebase-functions and firebase-admin follow these steps. 
+- Make sure that your terminal is pointing to the root of your project. 
+- If you've already cloned the repository, the firebase commands will ask to overwrite file. Select yes for every file except **index.js** so that you will preserve the functions from the repository.
 
 ```
 npm install firebase-functions@latest firebase-admin@latest --save
@@ -32,7 +37,10 @@ If you do make edits to the cloud functions use this commmand to deploy the chan
 ```
 firebase deploy --only functions
 ```
-
+Next to install Nodemailer
+```
+npm install nodemailer
+```
 # Built With
   - Firebase
   - PDF.js
