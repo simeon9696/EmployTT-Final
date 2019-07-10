@@ -7,8 +7,7 @@
   "orientation": "portrait",
   "Scope": "/",
   
-  "start_url": "https://employtt.netlify.com/index.html",
-  "comments":" // https://employtt.netlify.com/index.html",
+  "start_url": "https://employtt.netlify.com/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
