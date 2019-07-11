@@ -63,27 +63,33 @@ header{
 .employtt-slogan {
   font-family: 'Exo',Arial, sans-serif;
   font-size: 10vh;
-  line-height:100px;
   font-weight: bold;
   color: white;
-  margin-left:8vw;
-  margin-top:18vw;
-  text-shadow:2px 2px 6px  rgb(32, 32, 32);
-  background-blend-mode: darken;
+  margin-left:3vw;
+  margin-top:8vh;
 }
 .cta-words{
   font-family: 'Exo',Arial, sans-serif;
   font-size: 4vh;
   font-weight: italic;
   color: white;
-  margin-left:9vw;
-  text-shadow:2px 2px 6px  rgb(32, 32, 32);
+  margin-left:3vw;
 }
 .signup-words{
   display: flex;
   justify-content: center;
   font-size: 5vh;
-  text-shadow:2px 2px 6px  rgb(32, 32, 32);
+}
+
+.agree-words{
+  display:block;
+  font-size: 1.3vh;
+  margin-top:-2.8vh;
+  margin-left:11vh;
+  margin-right:9vh;
+  font-weight:normal;
+ 
+
 }
 
 .landing-reg-form{
@@ -98,10 +104,9 @@ header{
   border: 0.1vh solid none;
   border-radius:4px;
   margin-left: 65vw;
-  margin-top:15vh;
-  text-shadow:2px 2px 6px  rgb(32, 32, 32);
-  width:20vw;
-  height: 70vh;
+  margin-top:10vh;
+  width:23vw;
+  height: 80vh;
   background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) );
   background-position: center top;
 
@@ -130,6 +135,11 @@ header{
   border-color: transparent;
   border-bottom: 0.1vh solid #46C016;;
 }
+
+.landing-reg-form input[type=checkbox]{
+  margin-left: -6.4vh;
+}
+ 
 
 .landing-reg-form input[type=submit] {
   border-radius: 4px;
