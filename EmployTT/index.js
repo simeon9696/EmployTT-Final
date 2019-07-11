@@ -1,9 +1,13 @@
 
-// load google analytics
+
+
+//Load Google Analytics on Team Email
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'UA-142588895-1');
+gtag('config', 'UA-143704383-1');
+
+
 
 
 const jobTable = document.querySelector('#job-table');

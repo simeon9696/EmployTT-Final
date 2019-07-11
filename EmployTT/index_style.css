@@ -1,6 +1,6 @@
 @charset "UTF-8";
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
 
-/* -------CSS RESET---------*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
   margin: 0;
   padding: 0;
@@ -11,60 +11,229 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   background: transparent;
 }
 
+
 html {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   background-color:#ffffff;
   background-size: 100vw 100vw;
+  height: 100%
 }
 header{
 	background-color:black;
 }
-.preloader{
-	background-color:white;
-	width: 100vw;
-	height: 100vw;
-	position:relative;
-	z-index:-2;
-}
-.preloader img{
-	width:40%;
-	background-color:white;
-	top:40%;
-	left:32%;
-	position:fixed;
-	z-index:-1;
 
+@font-face {
+  font-family: 'Exo';
+  src:url('./fonts/Exo/Exo-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
-.landing-container img{
-  width:100%;
-  display:block;
-  position:relative;
-  height: 25vw; /* You must set a specified height */
-  background-position: center;
-  background-repeat: no-repeat;
+/* width */
+::-webkit-scrollbar {
+  width:5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff3300; 
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d33e43; 
+}
+
+.full-bg-img {
   background-size: cover;
-  filter: brightness(30%);	
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 100vh; /* vh = viewport height */
+  display: flex;
+  flex-direction: column;
 }
 
-.landing-container img:hover{
-  filter: brightness(80%);	
-  transition:all 1s ease;
+.employtt-slogan {
+  font-family: 'Exo',Arial, sans-serif;
+  font-size: 10vh;
+  font-weight: bold;
+  color: white;
+  margin-left:3vw;
+  margin-top:15vh;
+}
+.cta-words{
+  font-family: 'Exo',Arial, sans-serif;
+  font-size: 4vh;
+  font-weight: italic;
+  color: white;
+  margin-left:3vw;
+}
+.signup-words{
+  display: flex;
+  justify-content: center;
+  font-size: 5vh;
+  
 }
 
-.landing-container{
-	height:25vw;
+.landing-reg-form{
+  position: absolute;
+  font-family: 'Exo',Arial, sans-serif;
+  font-weight: bold;
+  color: white;
+  background-color: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.1vh solid none;
+  border-radius:4px;
+  margin-left: 65vw;
+  margin-top:15vh;
+  width:20vw;
+  height: 70vh;
+  background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) );
+  background-position: center top;
 
 }
+
+.landing-reg-form input{
+ 
+ background: transparent;
+ border-color: transparent;
+ color:white;
+ border-bottom: 0.1vh solid white;
+ width: 15vw;
+}
+
+
+.landing-reg-form input:focus{
+  outline: none;
+  color:white;
+  border-color: transparent;
+  border-bottom: 0.1vh solid #46C016;;
+}
+
+.landing-reg-form input[type=text]:focus {
+  outline: none;
+  color:white;
+  border-color: transparent;
+  border-bottom: 0.1vh solid #46C016;;
+}
+
+.landing-reg-form input[type=submit] {
+  border-radius: 4px;
+  background-color: #ff3300;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1.25em;
+  padding: 1.5vw;
+  width: 12vw;
+  transition: all 0.5s;
+  cursor: pointer;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+  left:44vw;
+  top: 10vw;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+  
+
+input[type="date"]::-webkit-datetime-edit{ color: transparent; }
+input:focus::-webkit-datetime-edit{ color: #ffffff; }
+input[type="date"]:valid::-webkit-datetime-edit{ color: #ffffff; }
+
+::-webkit-datetime-edit { 
+  padding: 0.3em; 
+}
+::-webkit-inner-spin-button {
+  display: none;
+}
+::-webkit-clear-button {
+  display: none;
+  -webkit-appearance: none;
+}
+::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  height: 14px;
+  width: 15vw;
+  border: 1px solid green;
+  z-index: 2;
+  position: absolute;
+  left: 9px;
+  top: 8px;
+}
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+
+
+@-webkit-keyframes autofill {
+  to {
+      color: #ffffff;
+      background: transparent;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
+
+.input-field-div {
+  position: relative; /*  make label relate to div  */
+  padding-top: 10px;  /*  make space for label      */
+  opacity: 1;
+}
+.inputText {
+  font-size: 14px;
+  width: 200px;
+  height: 25px;
+  border-bottom: 0.1vh solid #46C016;;
+}
+
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 14px;
+  transition: 0.1s ease all;
+}
+
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label {
+  top: -6px;
+  left: 2px;
+}
+
+
 #username{
   color:#ff3300;
   font-weight:525;
 }
-#landing-words{
+
+.landing-words{
   height:100%;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-family: 'Fira Sans Extra Condensed', sans-serif;
+
   font-weight:100;
   font-size: 6vw;
   color: white !important;
@@ -595,6 +764,9 @@ input[type=search]:focus {
 
 }
 
+
+
+
 @media (max-width: 880px) {
 
   .step-words{
@@ -622,4 +794,3 @@ input[type=search]:focus {
     width:100%;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) !important;
   }}
-

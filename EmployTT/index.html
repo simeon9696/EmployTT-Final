@@ -57,13 +57,80 @@
 	<body>
 
 		<!-- Navigation -->
-		<div class="landing-container">
-			<img class="login-background" src="./images/webpImages/landingimageshort.webp" onerror="this.onerror=null; this.src='./images/landingimageshort.jpg'"></img>
-			<p id="landing-words">employment. simplified.</p>
+		<!--
+					<div class = "landing-image">
+			<img src="./images/webpImages/landingimage.webp" onerror="this.onerror=null; this.src='./images/landingimageshort.jpg'"></img>
+			<p class="landing-words">employment. simplified.</p>
 			<p class="credit-text">Image - DDI Fishing Trip, Rico Dass</p>
-			<div class="img-separator"></div>
+			
 		</div>	
-		
+		-->
+
+		<div class="full-bg-img" style="background-image:url('../images/webpImages/landingimage.webp'), url('../images/landingimage.jpg');"> 
+			<div class = "employtt-slogan">employment.<br> simplified.</div><br>
+
+			<div class = "cta-words">Your government is hiring! <br> Do <span style="color:#ff3300;">you</span> want to be a part of it?</div>
+			<form  id="reg-form" class="landing-reg-form">
+					
+				<div class="signup-words">Let's Get Started!</div><br>
+
+				<div class="input-field-div">
+					<span class='blocking-span'>
+						<input type="text" class="inputText" placeholder="" id="firstName" required autocomplete="given-name">
+						<span class="floating-label">First Name</span>
+					</span>
+				</div><br>
+
+				<div class="input-field-div">
+					<span class='blocking-span'>
+						<input type="text" class="inputText" placeholder="" id="lastName" required autocomplete="family-name">
+						<span class="floating-label">Last Name</span>
+					</span>
+				</div><br>
+
+				
+				<div class="input-field-div">	
+					<span class='blocking-span'>
+						<input type="email" class="inputText" placeholder="" id="emailAddress" required autocomplete="email">
+						<span class="floating-label">Email Address</span>
+					</span>
+				</div><br>
+
+				<div class="input-field-div">	
+					<span class='blocking-span'>
+						<input type="password" class="inputText" placeholder="" id="origPassword" required autocomplete="off">
+						<span class="floating-label">Password</span>
+					</span>
+				</div><br>
+
+				<div class="input-field-div">	
+					<span class='blocking-span'>
+						<input type="password" class="inputText"  placeholder="" id="cnfmPassword" required autocomplete="off">
+						<span class="floating-label">Confirm Password</span>
+					</span>
+				</div><br>
+
+
+
+
+				<div class="input-field-div">	
+					<span class='blocking-span'>
+						<input type="date" name="dob" autocomplete="on" id="dateofbirth"  max="2003-01-01" required>
+						<span class="floating-label">Date of Birth</span>
+					</span>
+				</div><br>
+
+			
+				
+				<div class="input-field-div">	
+						<span class='blocking-span'>
+							 <input type="submit" value="Get Me Employed!" id="landingImgSubmit">
+						</span>
+				</div><br>
+			
+			</form>
+		</div>
+
 		<nav role="navigation">
 			<div id="menuToggle">
 			  <input type="checkbox" class="menu-clicker"/>
@@ -80,7 +147,7 @@
 				<li id="mobile-li"><a href="./pages/termsofservice.html" data-page="6" >Terms of Service</a></li>
 				<li id="mobile-li"><a href="./pages/privacypolicy.html" data-page="7">Privacy Policy</a></li>
 				<li id="mobile-li"><a href="./pages/userprofileregister.html" data-page="8" >Register</a></li>
-				<li id="mobile-li"><a href="./faqs.html" data-page="9" >FAQs</a></li>
+				<li id="mobile-li"><a href="./pages/faqs.html" data-page="9" >FAQs</a></li>
 				
 			</ul>
 		   </div>
