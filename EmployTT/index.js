@@ -5,7 +5,7 @@ gtag('js', new Date());
 gtag('config', 'UA-143704383-1');
 
 
-/*Sign up form handler */
+/*Sign up form handler - work in progress*/
 const landingFormSubmit = document.querySelector('#landingImgSubmit');
 const fieldValidity=[];
 landingFormSubmit.addEventListener('click', e =>{
