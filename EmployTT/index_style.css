@@ -28,27 +28,7 @@ header{
   src:url('./fonts/Exo/Exo-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
-/* width */
-::-webkit-scrollbar {
-  width:5px;
-}
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #ff3300; 
-  border-radius: 4px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #d33e43; 
-}
 
 .full-bg-img {
   background-size: cover;
@@ -70,7 +50,7 @@ header{
 }
 .cta-words{
   font-family: 'Exo',Arial, sans-serif;
-  font-size: 4vh;
+  font-size: 5vh;
   font-weight: italic;
   color: white;
   margin-left:3vw;
@@ -79,6 +59,7 @@ header{
   display: flex;
   justify-content: center;
   font-size: 5vh;
+  margin-top:2vh;
 }
 
 .agree-words{
@@ -113,7 +94,7 @@ header{
 }
 
 .landing-reg-form input{
- 
+ outline: none;
  background: transparent;
  border-color: transparent;
  color:white;
@@ -123,17 +104,26 @@ header{
 
 
 .landing-reg-form input:focus{
-  outline: none;
+  
   color:white;
   border-color: transparent;
-  border-bottom: 0.1vh solid #46C016;;
+  border-bottom: 0.1vh solid #F7FF00;
 }
+
+
 
 .landing-reg-form input[type=text]:focus {
   outline: none;
   color:white;
   border-color: transparent;
-  border-bottom: 0.1vh solid #46C016;;
+  border-bottom: 0.1vh solid #F7FF00;
+}
+
+.landing-reg-form input[type=email]:focus {
+  outline: none;
+  color:white;
+  border-color: transparent;
+  border-bottom: 0.1vh solid #F7FF00;
 }
 
 .landing-reg-form input[type=checkbox]{
@@ -157,7 +147,7 @@ header{
   transition: 0.5s;
   left:44vw;
   top: 10vw;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
 }
   
 
@@ -222,7 +212,6 @@ input:-webkit-autofill {
   font-size: 14px;
   width: 200px;
   height: 25px;
-  border-bottom: 0.1vh solid #46C016;;
 }
 
 .floating-label {
@@ -299,6 +288,7 @@ input:not(:focus):valid ~ .floating-label {
   height:80px;
   top: 0px;
   z-index: 10;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .topnav a {

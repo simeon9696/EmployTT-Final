@@ -66,7 +66,9 @@
 		</div>	
 		-->
 
-		<div class="full-bg-img" style="background-image:url('../images/webpImages/sunnylanding.webp'), url('../images/sunnylanding.jpg');"> 			<div class = "employtt-slogan">employment.<br> simplified.</div><br>
+		<div class="full-bg-img" style="background-image:url('../images/webpImages/sunnylanding.webp'), url('../images/sunnylanding.jpg');" id="signupform"> 			
+			
+			<div class = "employtt-slogan">employment.<br> simplified.</div><br>
 
 			<div class = "cta-words">Your government is hiring! <br> Do <span style="color:#ff3300;">you</span> want to be a part of it?</div>
 			<form  id="reg-form" class="landing-reg-form">
@@ -98,7 +100,7 @@
 				<div class="input-field-div">	
 					<span class='blocking-span'>
 						<input type="password" class="inputText" placeholder="" id="origPassword" required autocomplete="off">
-						<span class="floating-label">Password</span>
+						<span class="floating-label" id="warn">Password</span>
 					</span>
 				</div><br>
 
@@ -122,9 +124,9 @@
 				<div class="input-field-div">	
 					<span class='blocking-span'>
 						<input type="checkbox" value="accepted" id="termsAccept"> 
-						<span class="agree-words">Check here to indicate that you have read and agree to 
-							the <a style ="color:white; text-decoration: underline;"href="./pages/termsofservice.html">terms of service</a> 
-							and <a style ="color:white; text-decoration: underline;"href="./pages/privacypolicy.html">privacy policy</a> 
+						<span class="agree-words" id ="agreement-clause">Check here to indicate that you have read and agree to 
+							the <a id ="agreement-word-1" style ="color:white; text-decoration: underline;"href="./pages/termsofservice.html">terms of service</a> 
+							and <a id ="agreement-word-2" style ="color:white; text-decoration: underline;"href="./pages/privacypolicy.html">privacy policy</a> 
 							of EmployTT
 						</span>
 					</span>

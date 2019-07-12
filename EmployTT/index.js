@@ -1,6 +1,3 @@
-
-
-
 //Load Google Analytics on Team Email
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -8,6 +5,160 @@ gtag('js', new Date());
 gtag('config', 'UA-143704383-1');
 
 
+/*Sign up form handler */
+const landingFormSubmit = document.querySelector('#landingImgSubmit');
+const fieldValidity=[];
+landingFormSubmit.addEventListener('click', e =>{
+  e.preventDefault();
+  console.log("Button clicked");
+  const termAccept = document.querySelector('#termsAccept');
+  function makeTextWhite(){
+    
+    let warning = document.querySelector('#agreement-clause');
+    warning.style.color = "white";
+    warning = document.querySelector('#agreement-word-1');
+    warning.style.color = "white";
+    warning = document.querySelector('#agreement-word-2');
+    warning.style.color = "white";
+  }
+
+  if(termAccept.checked===false){
+    let warning = document.querySelector('#agreement-clause');
+    warning.style.color = "red";
+    warning = document.querySelector('#agreement-word-1');
+    warning.style.color = "red";
+    warning = document.querySelector('#agreement-word-2');
+    warning.style.color = "red";
+    setTimeout(makeTextWhite, 1000);
+    
+  }else if(termAccept.checked===true){
+    console.log("let it through");
+    const firstName = document.querySelector('#firstName');
+    const lastName = document.querySelector('#lastName');
+    const emailAddress = document.querySelector('#emailAddress');
+    const origPassword = document.querySelector('#origPassword');
+    const cnfmPassword = document.querySelector('#cnfmPassword');
+    const dateOfBirth = document.querySelector('#dateofbirth');
+
+    console.log(firstName.value);
+    console.log(lastName.value);
+    console.log(emailAddress.value);
+    console.log(origPassword.value);
+    console.log(cnfmPassword.value);
+    console.log(dateOfBirth.value);
+    console.log(fieldValidity);
+    let formValid=false;
+    signUpFields.forEach(field =>{
+      console.log(fieldValidity[field]);
+      formValid = fieldValidity[field] && fieldValidity["password"];
+    });
+    console.log(formValid);
+
+  }
+});
+
+
+/*Listen for password change and notify user if no match occurs before submission */
+const origPswd = document.querySelector('#origPassword');
+const cnfmPswd = document.querySelector('#cnfmPassword');
+const warning  = document.querySelector('#warn');
+
+origPswd.addEventListener("input", e => {
+  e.preventDefault();
+  const initPassword = origPswd.value;
+   const cnfmdPassword = cnfmPswd.value;
+  if(initPassword ===""){
+    warning.innerHTML="Password";
+    origPswd.style.borderBottomColor ="";
+    cnfmPswd.style.borderBottomColor ="white";
+  }else if (initPassword === cnfmdPassword && initPassword === "" && cnfmdPassword === ""){
+    origPswd.style.borderBottomColor ="";
+    warning.innerHTML ="Password";
+  }
+});
+
+cnfmPswd.addEventListener("input", e => {
+  e.preventDefault();
+   const cnfmdPassword = cnfmPswd.value;
+  if(cnfmdPassword ===""){
+    cnfmPswd.style.borderBottomColor ="";
+  }
+});
+
+origPswd.addEventListener("change", e => {
+  e.preventDefault();
+  const initPassword = origPswd.value;
+   const cnfmdPassword = cnfmPswd.value;
+   if (initPassword === cnfmdPassword && initPassword === "" && cnfmdPassword === ""){
+    origPswd.style.borderBottomColor ="";
+    cnfmPswd.style.borderBottomColor ="";
+    warning.innerHTML ="Password";
+   }
+});
+
+cnfmPassword.addEventListener("change", e => {
+  e.preventDefault();
+  const initPassword = origPswd.value;
+  const cnfmdPassword = cnfmPswd.value;
+  
+  if (initPassword != cnfmdPassword) {
+    if(cnfmdPassword === ""){
+      cnfmPswd.style.borderBottomColor ="";
+      warning.innerHTML ="Passwords do not match";
+      fieldValidity["password"]=false;
+    }else{
+      origPswd.style.borderBottomColor ="red";
+      cnfmPswd.style.borderBottomColor ="red";
+      warning.innerHTML ="Passwords do not match";
+      fieldValidity["password"]=false;
+
+    }
+  } else if (initPassword === cnfmdPassword && initPassword != "" && cnfmdPassword != ""){
+    origPswd.style.borderBottomColor ="#46C016";
+    cnfmPswd.style.borderBottomColor ="#46C016";
+    warning.innerHTML ="Passwords match!";
+    fieldValidity["password"]=true;
+  } else if (initPassword === cnfmdPassword && initPassword === "" && cnfmdPassword === ""){
+  origPswd.style.borderBottomColor ="";
+  cnfmPswd.style.borderBottomColor ="";
+  warning.innerHTML ="Password";
+  fieldValidity["password"]=false;
+
+}
+});
+
+const signUpFields = ["firstName","lastName","emailAddress","dateofbirth"];
+signUpFields.forEach(field =>{
+  fieldValidity[field] = false;
+  let fieldName =document.querySelector(`#${field}`);
+  fieldName.addEventListener("focusin",e=>{
+    e.preventDefault();
+    fieldName.style.borderBottomColor ="#F7FF00";
+  });
+  
+  fieldName.addEventListener("focusout",e=>{
+    e.preventDefault();
+    if(fieldName.value != ""){
+      fieldName.style.borderBottomColor ="#46C016";
+      fieldValidity[field] = true;
+      console.log(fieldValidity[field]);
+    }else if(fieldName.value ==""){
+      fieldName.style.borderBottomColor ="#FFFFFF";
+    }
+  });
+  
+  fieldName.addEventListener("change",e=>{
+    e.preventDefault();
+    if(fieldName.value != ""){
+      fieldName.style.borderBottomColor ="#46C016";
+      fieldValidity[field] = true;
+      console.log(fieldValidity[field]);
+    }else if(fieldName.value ==""){
+      fieldName.style.borderBottomColor ="#FFFFFF";
+    }
+  });
+  
+});
 
 
 const jobTable = document.querySelector('#job-table');
