@@ -90,73 +90,171 @@ html {
 li a {
   display:block;
   text-align:left;}
+button{
+    border: 1px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 9px;
+    height: 40%;
+    box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ff3300;
+    cursor: pointer;
+    display:inline-block;
+}
+button:hover{
+  box-shadow: inset 0 0 10px rgb(177, 177, 177);;
+}
 
-/* ul{
-    list-style-type: none;
-    padding: 10px 10px;
+.jobTable {
+  font-family: Helvetica, sans-serif;        
+  display:block;
+  margin-top:-1vw;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius:16px;
+  -moz-border-radius:16px;
+  -webkit-border-radius: 16px;
+  width:60%;
+
 }
-ul{
-    list-style-type: none;
-    padding: 0;
+
+.jobTable .normalButton{
+  border: 1px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 9px;
+  height: 40%;
+  box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #ff3300;
+  cursor: pointer;
+  /* display:inline-block; */
+  float: right;
 }
-li{
-    padding: 20px;
-    background: #f6f6f6;
-    font-size: 20px;
-    color: #555;
-    position: relative;
-    border-bottom: 1px solid #e6e6e6;
-    height: 46px;
+.jobTable .normalButton:hover{
+  box-shadow: inset 0 0 10px rgb(177, 177, 177);
 }
-li:nth-child(even){
-    padding: 20px;
-    background: #f2f2f2;
+.jobTable .applied{
+  border: 1px;
+  background: rgb(0, 255, 21);
+  border-radius: 10px;
+  padding: 9px;
+  height: 40%;
+  box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #ff3300;
+  cursor: pointer;
+  /* display:inline-block; */
+  float: right
 }
-li p{
-  display: inline-block;
-  font-size: 22px; 
-  font-weight: normal; 
-  line-height: 20px; 
-  width: 12%; 
+.jobTable .applied:hover{
+  box-shadow: inset 0 0 10px rgb(177, 177, 177);
 }
-li button{
-  display: inline-block;
-  position: relative;
-  width: 10%;
-  height: 80%;
+
+
+
+.jobTable p{
+  text-align:left;
+  padding-left:2vw;
+  padding-top:5px;
+  margin-bottom:5px;
+  padding-right:1vw;
+	font-size:1.2em;
+  color:#494949;
+}
+
+.jobTable div{
+  background-color: rgb(233, 233, 233); 
+  width: 750px;
+  /* border: 1px dashed rgb(119, 119, 119); */
+  border: 2px;
   padding: 5px;
-  border: none;
-  outline: none;
-  font-size: 18px;
-  text-align: right;
+  margin: 5px;
+  box-shadow: 2px 2px 3px 3px rgb(177, 177, 177);
 }
-li h3{
-  display: inline-block;
-  font-size: 20px; 
-  font-weight: bold; 
-  line-height: 20px; 
-  width: 12%;
+.modal{
+  display: none;
+  position: fixed;
+  /* align-self: center; */
+  z-index: 1;
+  /* opacity: 0; */
+  top: 0;
+  left: 0%;
+  padding-top: 100px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* background-color: rgb(212, 212, 212); */
+  background-color: rgb(7, 7, 7, 0.4);
+  transition: 0.25s;
 }
-li span:nth-child(2){
+
+.modal_content{
+  /* position: absolute;
+  top: 50%;
+  left: 50%; */
+  /* position: absolute; */
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  width: 60%;
   padding: 20px;
-  background: #f6f6f6;
-  font-size: 20px;
-  color: #555;
-  position: relative;
-  border-bottom: 1px solid #e6e6e6;
-  height: 46px;
+  border: 2px solid #ff3300;
 }
-li div{
-    position: absolute;
-    top: 0;
-    right: 0px;
-    background: rgba(255,255,255,0.6);
-    width: 40px;
-    text-align: center;
-    padding: 10px 0;
-    font-weight:  bold;
-    cursor:  pointer;
-} */
+
+.close{
+  color: rgb(80, 80, 80);
+  float: right;
+  font-size: 20px;
+  font-weight: bolder
+}
+
+.close:hover,.close:focus{
+  cursor: pointer;
+}
+
+
+.jobTable h4{
+  background-color:#ff3300;
+  background: linear-gradient(90deg, rgba(51,0,153,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  font-size:2px;
+  border-radius:16px;
+}
+
+.jobTable h1{
+  text-align:left;
+  display:inline;
+  padding-top:10px;
+  padding-right:1vw;
+  padding-left:2vw;
+	padding-bottom:0vw;
+	font-size:1.8em;
+	color:#ff3300;
+}
+
+.jobTable h2{
+  text-align:left;
+  padding-top:1vw;
+  padding-right:1vw;
+  padding-left:2vw;
+  padding-bottom:0vw;
+  font-weight:bold;
+	font-size:1.4em;
+	color:#000000;
+}
+
+.jobTable h3{
+  text-align:left;
+  padding-top:1vw;
+  padding-right:1vw;
+  padding-left:2vw;
+  font-weight:500;
+	font-size:1.2em;
+	color:#494949;
+}
 
 form input{
     float: left;
