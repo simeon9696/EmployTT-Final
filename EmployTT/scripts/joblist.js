@@ -1,66 +1,271 @@
 const jobTable = document.querySelector('#job-table');
+function checkApplied(job_id, userid){
+  var user = userid;
+  var jobs = job_id
+    auth.onAuthStateChanged(user => {
+      if (user) {
+          const docRef = firestore.collection('Users');
+          docRef.doc(user.uid).get().then(function(doc) {
+              var user_id = doc.id;
+              firestore.collection('Applicants').where('user_id','==',user_id).where('job_id','==',job_id).get().then((snapshot)=>{
+                  if(snapshot.docs.length > 0){
+                    applyButton.setAttribute("class","applied");
+                      return;
+                  }
+                  else{
+                    applyButton.setAttribute("class","normalButton");
+                    return;
+                  }
+                });
+              });
+            }
+          });       
+  // });
+}
+// console.log(window.appliedJobs.length);
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Start call to database to render jobs~~~~~~~~~~~~~~~~~~~~
 firestore.collection('Jobs').get().then((snapshot)=>{
   var c = 1;
-  snapshot.docs.forEach(doc =>{
-      renderJobTable(doc, c);
-      c++;
+  auth.onAuthStateChanged(user => {
+    snapshot.docs.forEach(doc =>{
+        renderJobTable(doc, c, user);
+        c++;
+    });
   });
 });
 
+function renderJobTable(doc, c, user){
 
-
-
-function renderJobTable(doc, c){
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CREATE ELEMENTS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
     let node = document.createElement('tr');
     let tableElement = document.createElement('td');
+    let box = document.createElement('div');
     let separator = document.createElement('h4');
-    let jobName = document.createElement('h1');
-    let employer = document.createElement('h2');
-    let location = document.createElement('h3');
-    let date = document.createElement('p');
- 
+    let separator_1 = document.createElement('hr');
+    let separator_2 = document.createElement('span');
+    let separator_3 = document.createElement('span');
+    let breakln = document.createElement('br');
 
+    let titlediv = document.createElement('span');
+    let title = document.createElement('p');
+    let jobName = document.createElement('h1');
+    let title_align = document.createElement('hr');
+    let employer = document.createElement('span');
+    let employer_p = document.createElement('p');
+    let employer_icon = document.createElement('i');
+    
+    let about_p = document.createElement('p');
+    let about = document.createElement('span');
+    let bold5 = document.createElement('strong');
+    
+    let date = document.createElement('p');
+
+    let location = document.createElement('span');
+    let location_p = document.createElement('p');
+    let location_icon = document.createElement('i');
+
+    let allinfo = document.createElement('p');
+    let bold1 = document.createElement('strong');
+    let bold2 = document.createElement('strong');
+    let bold3 = document.createElement('strong');
+    let jobStatus = document.createElement('span');
+    let levels = document.createElement('span');
+    let category = document.createElement('span');
+
+    let skills_p = document.createElement('p');
+    let bold4 = document.createElement('strong');
+    let skills = document.createElement('span');
 
     let applyButton = document.createElement('button');
     let pdfButton = document.createElement('button');
+    let shareButton = document.createElement('button');
 
-    applyButton.setAttribute("id",c);
-    pdfButton.setAttribute("id",c+1);
 
+  separator_2.textContent = "\u00A0\u00A0\u00A0\u00A0";
+  separator_3.textContent = "\u00A0\u00A0\u00A0\u00A0";
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~Buttons ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     var jobid = doc.id;
-    applyButton.setAttribute("name", jobid);
+
+    //!!!!!!!!!!!!!!!!!!!!APPLY BUTTON!!!!!!!!!!!!
+    var applyButtonID = jobid + "applybutton";
+    applyButton.setAttribute("id",applyButtonID);
+
+    applyButton.setAttribute("name",jobid);
     applyButton.setAttribute("onClick","clickedButton(this.id, this.name)");
 
-    
-    pdfButton.setAttribute("name", jobid);
-    pdfButton.setAttribute("onClick","pdfDownload(this.id, this.name)");
 
+    auth.onAuthStateChanged(user => {
+      if (user) {
+          const docRef = firestore.collection('Users');
+          docRef.doc(user.uid).get().then(function(doc) {
+              var user_id = doc.id;
+              firestore.collection('Applicants').where('user_id','==',user.uid).where('job_id','==',jobid).get().then((snapshot)=>{
+                  if(snapshot.docs.length > 0){
+                    var texts = document.createTextNode("Reapply?");
+                    applyButton.appendChild(texts);
+                    applyButton.setAttribute("class","applied");
+                  }
+                  else{
+                    var texts = document.createTextNode("Apply");
+                    applyButton.appendChild(texts);
+                    applyButton.setAttribute("class","normalButton");
+                  }
+                });
+              });
+            }
+          });     
+
+    //!!!!!!!!!!!!!!!!!!PDF BUTTON!!!!!!!!!!!!!!!!!
+    pdfButton.setAttribute("id",c+1);
+    pdfButton.setAttribute("name", jobid);
+    pdfButton.setAttribute("class","normalButton");
+    pdfButton.setAttribute("onClick","pdfDownload(this.id, this.name)");
+    
+    var downloadtext = document.createTextNode("Download as PDF");
+    pdfButton.appendChild(downloadtext);
+
+    //!!!!!!!!!!!!!!!!!SHARING BUTTON!!!!!!!!!!!!!!
+    shareButton.setAttribute("name", jobid);
+    shareButton.setAttribute("onClick","copyLink(this.id, this.name)");
+    var linktext = document.createTextNode("Share");
+    shareButton.appendChild(linktext);
+    shareButton.setAttribute("class","normalButton");
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~Jobname~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    jobName.textContent = doc.data().jobName;
+    // title.setAttribute("style","clear:all");
+    title.append(jobName);
+    title.append(applyButton);
+    title.append(pdfButton);
+    title.append(shareButton);
+    titlediv.append(title);
+    // title.append(title_align);
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~Dates~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
+    date.textContent = ("Posted: "+doc.data().opened+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0"+"Deadline: "+doc.data().deadline);
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~employer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    separator_1.setAttribute("size",1);
     node.setAttribute('doc-id',doc.id);
     employer.textContent = doc.data().employer;
-    jobName.textContent = doc.data().jobName;
-    date.textContent = ("Posted: "+doc.data().opened+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0"+"Deadline: "+doc.data().deadline);
-    location.textContent = doc.data().location;
-    separator.textContent="\xa0\xa0\ ";
-   
-    var texts = document.createTextNode("Apply");
-    applyButton.appendChild(texts);
-    
-    var downloadtext = document.createTextNode("PDF");
-    pdfButton.appendChild(downloadtext);
-    
-  
-    node.append(jobName);
-    node.append(employer);
-    node.append(location);
-    node.append(date);
-    node.append(separator);
+    employer_icon.setAttribute("class","material-icons");
+    employer_icon.setAttribute("style","font-size:15px;");
+    employer_icon.textContent = ("business");
+    employer.setAttribute("style","font-size:15px;");
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~Location~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    location_icon.setAttribute("class","material-icons");
+    location_icon.setAttribute("style","font-size:15px;");
+    location_icon.textContent = ("location_on");
+    location_p.setAttribute("class","loca");
+    location.textContent = (doc.data().location);
+    location.setAttribute("style","font-size:15px;");
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~All_Info~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    jobStatus.textContent = doc.data().jobstatus;
+    levels.textContent = doc.data().levels;
+    category.textContent = doc.data().category;
+
+    bold1.textContent = "Status: ";
+    bold2.textContent = "Level: ";
+    bold3.textContent = "Category: ";
+    // allinfo.textContent =  "Status: " + doc.data().jobstatus + "\xa0\xa0" + "Level: " + doc.data().levels + "\xa0\xa0" + "Category: " + doc.data().category;
+    allinfo.append(bold1);
+    allinfo.append(jobStatus);
+    allinfo.append(separator_2);
+    allinfo.append(bold2);
+    allinfo.append(levels);
+    allinfo.append(separator_3);
+    allinfo.append(bold3);
+    allinfo.append(category);
+//~~~~~~~~~~~~~~~~~~~~~~~~~~About Job~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    about.textContent = doc.data().about;
+    bold5.textContent = "Description: ";
+    about_p.append(bold5);
+    about_p.append(about);
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~Skills~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    skills.textContent = doc.data().skills;
+    bold4.textContent = "Required Skills: ";
+    skills_p.append(bold4);
+    skills_p.append(skills);
+
 
   
-    jobTable.append(node);
+//~~~~~~~~~~~~~~~~~~~~~~~~~~Append_to_node~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  separator.textContent="\xa0\xa0\ ";
+  box.setAttribute("class","divclass");
+  box.append(titlediv);
+  // box.append(breakln);
+  box.append(separator_1);
+
+  employer_p.append(employer_icon);
+  employer_p.append(employer);
+  box.append(employer_p);
+
+  location_p.appendChild(location_icon);
+  location_p.appendChild(location);
+  box.appendChild(location_p);
+  box.appendChild(allinfo);
+  box.appendChild(date);
+  box.appendChild(skills_p);
+  box.appendChild(about_p);
+  box.appendChild(separator);
+  node.appendChild(box);
+  jobTable.appendChild(node);
 }   
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Sharing Function~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var modal = document.getElementById("modal");
+var close = document.getElementsByClassName("close")[0];
 
+close.onclick = function(){
+  modal.style.display = "none";
+  var link = document.getElementById("link");
+  var content = document.getElementsByClassName("modal_content")[0];
+  content.removeChild(link);
+  while(document.getElementById("link")){
+    link = document.getElementById("link");
+    content.removeChild(link);
+  }
+}
+window.onclick = function(event){
+  if(event.target == modal){
+    modal.style.display = "none";
+    var link = document.getElementById("link");
+    var content = document.getElementsByClassName("modal_content")[0];
+    content.removeChild(link);
+    while(document.getElementById("link")){
+      link = document.getElementById("link");
+      content.removeChild(link);
+    }
+  }
+}
 
+function copyLink(id, name){
+    // var hostname = window.location.origin;
+    var fullPath = window.location.pathname;
+    var path = fullPath.substring(0,fullPath.lastIndexOf("/"));
+    // var query1 = name;
+    var queryString = "?job=" + name;
+    var link = window.location.origin + path + "/jobquery.html" + queryString;
+
+    var modal = document.getElementById("modal");
+    // var close = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
+    var modal_content = document.getElementsByClassName("modal_content")[0];
+    let thelink = document.createElement('p');
+    thelink.setAttribute("id","link");
+    thelink.textContent = link;
+    modal_content.appendChild(thelink);
+    
+    // alert(link);
+
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Application Function~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function clickedButton(id, jobid){
 
     auth.onAuthStateChanged(user => {
@@ -78,13 +283,25 @@ function clickedButton(id, jobid){
                             job_id: jobid 
                         });
                         alert("Applied for job");
-                        //Send confirmation email for user that they've applied for the job
-                        const userEmail = auth.currentUser.email;
-                        const sendJobEmail = functions.httpsCallable('sendJobEmailApplicationSuccess');
-                        sendJobEmail({ jobName: doc.jobName, email : userEmail}).then(result => {
-                          console.log(result);
-                        }).catch(error=>{
-                          console.log(error);
+                        var classChange = document.getElementById(jobid+"applybutton");
+                        if(classChange.textContent == "Apply"){
+                          classChange.textContent = "Reapply?";
+                        }
+                        classChange.classList.toggle("applied");
+                        var template_params = {
+                            "user_email": user.email,
+                            "reply_to": "noreply",
+                            "to_name": user.displayName
+                         }
+                         var service_id = "default_service";
+                         var template_id = "template_FNuLCybl";
+                     
+                        
+                         emailjs.send(service_id, template_id, template_params)
+                        .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        }, function(error) {
+                        console.log('FAILED...', error);
                         });
                     }
                 });
