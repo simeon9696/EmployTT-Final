@@ -16,3 +16,22 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 - #Removed
 
 -joblist.css file ,_,
+
+
+#[1.0.2] - 2019-21-07
+
+#Added
+
+ - No new items added
+
+#Changed
+  @simeon9696
+- Added functionality when a user clicks on share, the link is automatically copied to clipboard  - joblist.js
+- Modified look of PDF file for job description - joblist.js, jobquery.js
+- Added custom fonts for PDF - joblist.html, jobquery.html
+- Added lengthy variable in authui.js for use in joblist and jobquery.js
+- Added dependncies for PDF make and Email in root folder 'node_modules'
+- Added new email cloud function for sending email on job application. - joblist.js
+
+#Removed
+- No items removeed
