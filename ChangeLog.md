@@ -34,4 +34,20 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 - Added new email cloud function for sending email on job application. - joblist.js
 
  # Removed
-- No items removeed
+- No items removed
+
+
+# [1.0.3] - 2019-21-07
+
+ # Added
+
+ - No new items added
+
+ # Changed
+  @simeon9696
+- Added information to privacy policy 
+- Added privacy policy styles
+
+
+ # Removed
+- No items removed
