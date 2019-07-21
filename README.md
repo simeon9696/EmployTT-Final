@@ -41,6 +41,10 @@ Next to install Nodemailer
 ```
 npm install nodemailer
 ```
+And then jsPDF
+```
+npm install jspdf --save
+```
 # Built With
   - Firebase
   - PDF.js
