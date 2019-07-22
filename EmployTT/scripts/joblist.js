@@ -41,7 +41,7 @@ function renderJobTable(doc, c, user){
     let node = document.createElement('tr');
     let tableElement = document.createElement('td');
     let box = document.createElement('div');
-    let separator = document.createElement('h4');
+    //let separator = document.createElement('h4');
     let separator_1 = document.createElement('hr');
     let separator_2 = document.createElement('span');
     let separator_3 = document.createElement('span');
@@ -58,7 +58,7 @@ function renderJobTable(doc, c, user){
     let about_p = document.createElement('p');
     let about = document.createElement('span');
     let bold5 = document.createElement('strong');
-    
+    //let breakln = document.createElement('br');
     let date = document.createElement('p');
 
     let location = document.createElement('span');
@@ -91,7 +91,7 @@ function renderJobTable(doc, c, user){
     //!!!!!!!!!!!!!!!!!!!!APPLY BUTTON!!!!!!!!!!!!
     var applyButtonID = jobid + "applybutton";
     applyButton.setAttribute("id",applyButtonID);
-
+    applyButton.setAttribute("id","applyButton");
     applyButton.setAttribute("name",jobid);
     applyButton.setAttribute("onClick","clickedButton(this.id, this.name)");
 
@@ -119,15 +119,17 @@ function renderJobTable(doc, c, user){
 
     //!!!!!!!!!!!!!!!!!!PDF BUTTON!!!!!!!!!!!!!!!!!
     pdfButton.setAttribute("id",c+1);
+    pdfButton.setAttribute("id","pdfButton");
     pdfButton.setAttribute("name", jobid);
     pdfButton.setAttribute("class","normalButton");
     pdfButton.setAttribute("onClick","pdfDownload(this.id, this.name)");
     
-    var downloadtext = document.createTextNode("Download as PDF");
+    var downloadtext = document.createTextNode("Download");
     pdfButton.appendChild(downloadtext);
 
     //!!!!!!!!!!!!!!!!!SHARING BUTTON!!!!!!!!!!!!!!
     shareButton.setAttribute("name", jobid);
+    shareButton.setAttribute("id","shareButton");
     shareButton.setAttribute("onClick","copyLink(this.id, this.name)");
     var linktext = document.createTextNode("Share");
     shareButton.appendChild(linktext);
@@ -148,7 +150,7 @@ function renderJobTable(doc, c, user){
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~employer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    separator_1.setAttribute("size",1);
+    //separator_1.setAttribute("size",1);
     node.setAttribute('doc-id',doc.id);
     employer.textContent = doc.data().employer;
     employer_icon.setAttribute("class","material-icons");
@@ -187,6 +189,7 @@ function renderJobTable(doc, c, user){
     about_p.append(bold5);
     about_p.append(about);
 
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Skills~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     skills.textContent = doc.data().skills;
     bold4.textContent = "Required Skills: ";
@@ -196,7 +199,7 @@ function renderJobTable(doc, c, user){
 
   
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Append_to_node~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  separator.textContent="\xa0\xa0\ ";
+ // separator.textContent="\xa0\xa0\ ";
   box.setAttribute("class","divclass");
   box.append(titlediv);
   // box.append(breakln);
@@ -213,7 +216,7 @@ function renderJobTable(doc, c, user){
   box.appendChild(date);
   box.appendChild(skills_p);
   box.appendChild(about_p);
-  box.appendChild(separator);
+  //box.appendChild(separator);
   node.appendChild(box);
   jobTable.appendChild(node);
 }   
