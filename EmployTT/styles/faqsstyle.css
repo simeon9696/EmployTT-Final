@@ -18,8 +18,19 @@ html {
   font-family: 'Exo',Helvetica, sans-serif;
   padding-top:5vh;
   padding-bottom: 5vh;
+  margin-left:auto;
+  margin-top:4vw;
+  margin-bottom:4vw;
+  margin-right:auto;
   text-align: center;
   font-size:6vh;
+  font-size:3.6em;
+  font-weight:600;
+  border-radius:16px;
+  padding:12px;
+  color:white;
+  background-color:#ff3300;
+  width:60%;
  }
 
 .questions-and-answers{
@@ -68,7 +79,7 @@ html {
   .accordion:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 2vh;
-    color: #777;
+    color: #ff3300;
     float: right;
    
   }
@@ -76,6 +87,7 @@ html {
   .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
     float: right;
+    color:#ff3300;
   }
 
 
