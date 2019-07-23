@@ -158,15 +158,15 @@ auth.onAuthStateChanged(user => {
           const cityOrTown = document.querySelector('#cityOrTown');
           const setupAcc = document.querySelector('#setup-continue');
 
-          firstNameLabel.innerHTML = `First Name: ${doc.data().firstName}`;
-          lastNameLabel.innerHTML = `Last Name: ${doc.data().lastName}`;
-          dateOfBirth.innerHTML = `Date of birth: ${doc.data().dateOfBirth}`;
-          signupEmail.innerHTML = `Email: ${doc.data().email}`;
-          addressLineOne.innerHTML = `Address Line 1: ${doc.data().addressOne}`;
-          addressLineTwo.innerHTML = `Address Line 2: ${doc.data().addressTwo}`;
-          cityOrTown.innerHTML = `City or Town: ${doc.data().cityortown}`;
-          phoneNumber.innerHTML = `Phone Number: ${doc.data().phoneNumber}`;
-          disabilities.innerHTML = `Disabilites: ${doc.data().disabilites}`;
+          firstNameLabel.innerHTML = `First Name: ${DOMPurify.sanitize(doc.data().firstName)}`;
+          lastNameLabel.innerHTML = `Last Name: ${DOMPurify.sanitize(doc.data().lastName)}`;
+          dateOfBirth.innerHTML = `Date of birth: ${DOMPurify.sanitize(doc.data().dateOfBirth)}`;
+          signupEmail.innerHTML = `Email: ${DOMPurify.sanitize(doc.data().email)}`;
+          addressLineOne.innerHTML = `Address Line 1: ${DOMPurify.sanitize(doc.data().addressOne)}`;
+          addressLineTwo.innerHTML = `Address Line 2: ${DOMPurify.sanitize(doc.data().addressTwo)}`;
+          cityOrTown.innerHTML = `City or Town: ${DOMPurify.sanitize(doc.data().cityortown)}`;
+          phoneNumber.innerHTML = `Phone Number: ${DOMPurify.sanitize(doc.data().phoneNumber)}`;
+          disabilities.innerHTML = `Disabilites: ${DOMPurify.sanitize(doc.data().disabilites)}`;
 
           setupAcc.innerHTML= "";
           firstNameLabel.style.display ="block"
@@ -205,11 +205,33 @@ auth.onAuthStateChanged(user => {
 const updateProfile = document.querySelector('#updateButton');
 updateProfile.addEventListener('click',(e)=>{
   e.preventDefault();
-  //Send confirmation email for user that they've applied for the job
-  const userEmail = auth.currentUser.email;
-  const sendJobEmail = functions.httpsCallable('sendJobEmailApplicationSuccess');
-  sendJobEmail({ jobName: 'Potatoness', email : userEmail}).then(result => {
-    console.log(result);
+  
+  const getJobInfo = functions.httpsCallable('getJobInformation');
+  getJobInfo().then(snapshot =>{
+    console.log(snapshot);
+
+    
+    /*
+        const peopleArray = Object.keys(snapshot).map(i => snapshot[i])
+    let randomArray = {};
+    let keyArray =[];
+    peopleArray.forEach(doc=>{
+      //console.log(doc.cache);
+      console.log(Object.entries(doc.cache));
+      keyArray.push(Object.keys(doc.cache));
+    });
+    console.log(keyArray);
+    keyArray.forEach(key=>{
+      console.log(key[0]); //try to get index out in plaintext
+    })
+    */
+
+ 
+    //const entries = Object.entries(result.data.cache)
+  //  entries.forEach(item=>{
+    //  console.log(item[1])
+    //})
+    
   }).catch(error=>{
     console.log(error);
   });
@@ -375,4 +397,35 @@ function printStuff(){
 
 printStuff();
 
+*/
+
+/* Leave in for demonstration;
+
+firestore.collection('DatabaseInfo').doc('numberOfAccounts').get().then(snapshot=>{
+
+
+     console.log(snapshot.data());
+
+}).catch(error =>{
+
+      console.log(error);
+ });
+
+ */
+
+/* 
+ firestore.collection('DatabaseInfo').doc('numberOfAccounts').get().then(snapshot=>{
+  let numberOfUsersNow = snapshot.data().totalNumberOfAccounts+1;
+  console.log(`Things have been updated ${numberOfUsersNow}`);
+  console.log(snapshot.data());
+  firestore.collection('DatabaseInfo').doc('numberOfAccounts').update({
+      totalNumberOfAccounts : numberOfUsersNow
+  });
+}).then(()=>{
+  
+  //console.log(`Things have been updated ${numberOfUsersNow}`);
+  
+}).catch(err =>{
+  console.log(err);
+});
 */
