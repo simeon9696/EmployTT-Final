@@ -1,4 +1,3 @@
-
 const jobTable = document.querySelector('#job-table');
 function checkApplied(job_id, userid){
   var user = userid;
@@ -95,8 +94,8 @@ function renderJobTable(doc, c, user){
 
     //!!!!!!!!!!!!!!!!!!!!APPLY BUTTON!!!!!!!!!!!!
     var applyButtonID = jobid + "applybutton";
-    applyButton.setAttribute("id",applyButtonID);
-    applyButton.setAttribute("id",applyButton);
+    //applyButton.setAttribute("id",applyButtonID);
+    applyButton.setAttribute("id","applyButton");
     applyButton.setAttribute("name",jobid);
     applyButton.setAttribute("onClick","clickedButton(this.id, this.name)");
 
@@ -125,7 +124,7 @@ function renderJobTable(doc, c, user){
     //!!!!!!!!!!!!!!!!!!PDF BUTTON!!!!!!!!!!!!!!!!!
     pdfButton.setAttribute("id",c+1);
     pdfButton.setAttribute("name", jobid);
-    pdfButton.setAttribute("id",pdfButton);
+    pdfButton.setAttribute("id","pdfButton");
     pdfButton.setAttribute("class","normalButton");
     pdfButton.setAttribute("onClick","pdfDownload(this.id, this.name)");
     
@@ -141,7 +140,7 @@ function renderJobTable(doc, c, user){
     shareButton.setAttribute("class","normalButton");
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Jobname~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    jobName.textContent = DOMPurify.sanitize(doc.data().jobName);
+    jobName.innerHTML = DOMPurify.sanitize(doc.data().jobName);
     // title.setAttribute("style","clear:all");
     title.append(jobName);
     title.append(applyButton);
@@ -151,13 +150,13 @@ function renderJobTable(doc, c, user){
     // title.append(title_align);
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Dates~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
-    date.textContent = ("Posted: "+doc.data().opened+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0"+"Deadline: "+DOMPurify.sanitize(doc.data().deadline));
+    date.innerHTML = ("Posted: "+DOMPurify.sanitize(doc.data().opened)+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0"+"Deadline: "+DOMPurify.sanitize(doc.data().deadline));
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~employer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //separator_1.setAttribute("size",1);
     node.setAttribute('doc-id',doc.id);
-    employer.textContent = DOMPurify.sanitize(doc.data().employer);
+    employer.innerHTML = DOMPurify.sanitize(doc.data().employer);
     
     employer_icon.setAttribute("class","material-icons");
     employer_icon.setAttribute("style","font-size:15px;");
@@ -169,13 +168,13 @@ function renderJobTable(doc, c, user){
     location_icon.setAttribute("style","font-size:15px;");
     location_icon.textContent = ("location_on");
     location_p.setAttribute("class","loca");
-    location.textContent = DOMPurify.sanitize(doc.data().location);
+    location.innerHTML = DOMPurify.sanitize(doc.data().location);
     location.setAttribute("style","font-size:15px;");
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~All_Info~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    jobStatus.textContent = DOMPurify.sanitize(doc.data().jobstatus);
-    levels.textContent = DOMPurify.sanitize(doc.data().levels);
-    category.textContent = DOMPurify.sanitize(doc.data().category);
+    jobStatus.innerHTML = DOMPurify.sanitize(doc.data().jobstatus);
+    levels.innerHTML = DOMPurify.sanitize(doc.data().levels);
+    category.innerHTML = DOMPurify.sanitize(doc.data().category);
 
     bold1.textContent = "Status: ";
     bold2.textContent = "Level: ";
@@ -190,13 +189,13 @@ function renderJobTable(doc, c, user){
     allinfo.append(bold3);
     allinfo.append(category);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~About Job~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    about.textContent = DOMPurify.sanitize(doc.data().about);
+    about.innerHTML = DOMPurify.sanitize(doc.data().about);
     bold5.textContent = "Description: ";
     about_p.append(bold5);
     about_p.append(about);
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Skills~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    skills.textContent = DOMPurify.sanitize(doc.data().skills);
+    skills.innerHTML = DOMPurify.sanitize(doc.data().skills);
     bold4.textContent = "Required Skills: ";
     skills_p.append(bold4);
     skills_p.append(skills);
@@ -423,5 +422,3 @@ function pdfDownload(id, jobid){
     });
 
 }
-
-
