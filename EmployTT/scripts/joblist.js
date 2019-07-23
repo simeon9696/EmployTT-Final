@@ -134,6 +134,7 @@ function renderJobTable(doc, c, user){
 
     //!!!!!!!!!!!!!!!!!SHARING BUTTON!!!!!!!!!!!!!!
     shareButton.setAttribute("name", jobid);
+    shareButton.setAttribute("id","shareButton");
     shareButton.setAttribute("onClick","copyLink(this.id, this.name)");
     var linktext = document.createTextNode("Share");
     shareButton.appendChild(linktext);
