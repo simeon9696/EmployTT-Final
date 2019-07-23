@@ -51,3 +51,18 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 
  # Removed
 - No items removed
+
+# [1.0.3] - 2019-22-07
+
+ # Added
+
+ - No new items added
+
+ # Changed
+  @sashajsingh
+- styled All Jobs page, (mobile screens too)
+- changed FAQ heading style
+
+
+ # Removed
+- No items removed
