@@ -46,7 +46,7 @@ function renderJobTable(doc, c, user){
     let node = document.createElement('tr');
     let tableElement = document.createElement('td');
     let box = document.createElement('div');
-    let separator = document.createElement('h4');
+    //let separator = document.createElement('h4');
     let separator_1 = document.createElement('hr');
     let separator_2 = document.createElement('span');
     let separator_3 = document.createElement('span');
@@ -155,7 +155,7 @@ function renderJobTable(doc, c, user){
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~employer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    separator_1.setAttribute("size",1);
+    //separator_1.setAttribute("size",1);
     node.setAttribute('doc-id',doc.id);
     employer.textContent = DOMPurify.sanitize(doc.data().employer);
     
@@ -204,7 +204,7 @@ function renderJobTable(doc, c, user){
 
   
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Append_to_node~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  separator.textContent="\xa0\xa0\ ";
+  //separator.textContent="\xa0\xa0\ ";
   box.setAttribute("class","divclass");
   box.append(titlediv);
   // box.append(breakln);
@@ -221,7 +221,7 @@ function renderJobTable(doc, c, user){
   box.appendChild(date);
   box.appendChild(skills_p);
   box.appendChild(about_p);
-  box.appendChild(separator);
+ // box.appendChild(separator);
   node.appendChild(box);
   jobTable.appendChild(node);
 }   
