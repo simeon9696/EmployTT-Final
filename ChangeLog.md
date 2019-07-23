@@ -52,7 +52,7 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
  # Removed
 - No items removed
 
-# [1.0.3] - 2019-22-07
+# [1.0.4] - 2019-22-07
 
  # Added
 
@@ -63,6 +63,23 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 - styled All Jobs page, (mobile screens too)
 - changed FAQ heading style
 
+
+ # Removed
+- No items removed
+
+ # Removed
+- No items removed
+
+
+# [1.0.5] - 2019-22-07
+
+ # Added
+ - No new items added
+
+ # Changed
+  @simeon9696
+ - added sanitization capabilities to joblist.js and userprofileinfo.js
+ - changed title tag of privacy policy page to 'Privacy Policy | EmployTT'
 
  # Removed
 - No items removed
