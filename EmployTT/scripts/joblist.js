@@ -96,7 +96,7 @@ function renderJobTable(doc, c, user){
     //!!!!!!!!!!!!!!!!!!!!APPLY BUTTON!!!!!!!!!!!!
     var applyButtonID = jobid + "applybutton";
     applyButton.setAttribute("id",applyButtonID);
-
+    applyButton.setAttribute("id",applyButton);
     applyButton.setAttribute("name",jobid);
     applyButton.setAttribute("onClick","clickedButton(this.id, this.name)");
 
@@ -125,10 +125,11 @@ function renderJobTable(doc, c, user){
     //!!!!!!!!!!!!!!!!!!PDF BUTTON!!!!!!!!!!!!!!!!!
     pdfButton.setAttribute("id",c+1);
     pdfButton.setAttribute("name", jobid);
+    pdfButton.setAttribute("id",pdfButton);
     pdfButton.setAttribute("class","normalButton");
     pdfButton.setAttribute("onClick","pdfDownload(this.id, this.name)");
     
-    var downloadtext = document.createTextNode("Download as PDF");
+    var downloadtext = document.createTextNode("Download");
     pdfButton.appendChild(downloadtext);
 
     //!!!!!!!!!!!!!!!!!SHARING BUTTON!!!!!!!!!!!!!!
