@@ -11,13 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <!-- Scripts are deferred to improve page performance -->
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" 	   type="text/javascript"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js" type="text/javascript"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"   type="text/javascript"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" 	   type="text/javascript"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" type="text/javascript"></script>
-    <script defer src="../scripts/authui.js" 											type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js" 	   type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js" type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-storage.js"   type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js" 	   type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-functions.js" type="text/javascript"></script>
+    <script defer src="../scripts/authui.js" 								type="text/javascript"></script>
     <script defer src="../scripts/userprofileinfo.js" 								   type="text/javascript"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -66,6 +67,12 @@
         <p  class="info-fields" id="cityOrTown">City or Town: </p><br>
         <p  class="info-fields" id="disabilities">Disabilities: </p><br>
         
+        
+        <div class = "file-list-container" id = "potato">
+            <p id = "file-list" class= "file-list-heading">Here are the files you've uploaded!</p>
+            
+          </div>
+          
 
         <label for ="adminEmail" class="adminEmail" id="profile-labels-admin">Enter desired administrator email here: </label>
         <input type="email" name="adminEmail" placeholder="Administrator Email" class="profilefield email" id="admin-email"><br><br>
@@ -81,6 +88,8 @@
         <input type="button" id="updateButton" value="Update Profile">
         <input type="button" id="removeButton" value="Delete Profile">
         <input type="button" id="findButton" value="Find Jobs">
+
+
        </div>
 
 
@@ -168,7 +177,7 @@
              <img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
           
             <p class="footer-links">
-                <a href="./index.html">Home</a>
+                <a href="../index.html">Home</a>
                 ·
                 <a href="./termsofservice.html">Terms Of Service</a>
                 ·
