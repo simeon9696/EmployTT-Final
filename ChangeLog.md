@@ -75,3 +75,16 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 
  # Removed
 - No items removed
+
+# [1.0.6] - 2019-23-07
+
+ # Added
+ - No new items added
+
+ # Changed
+  @simeon9696
+ - fixed error in joblist.js with quotation marks not beinf placed around id's
+ - added the functionality for a user to be able to download files that they have downloaded, userprofileinfo.html and associated css and js files. 
+
+ # Removed
+- No items removed
