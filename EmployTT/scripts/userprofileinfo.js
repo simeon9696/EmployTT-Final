@@ -144,9 +144,7 @@ auth.onAuthStateChanged(user => {
     const docRef = firestore.collection('Users');
     docRef.doc(user.uid).get().then(function(doc) {
  
-          //console.log(doc.data().firstName);
-          //console.log(doc.id);
-          console.log(doc.data().firstName);
+
           const firstNameLabel = document.querySelector('#firstNameLabel');
           const lastNameLabel = document.querySelector('#lastNameLabel');
           const dateOfBirth = document.querySelector('#dateOfBirth');
@@ -280,14 +278,7 @@ removeProfile.addEventListener('click',(e)=>{
           console.log(error);
         });
       }); 
-
-   
-      
     }
-
-
-
-
   } else {
     alert('Profile deletion canceleed');
   }
@@ -350,6 +341,80 @@ mdaForm.addEventListener('click', (e) => {
 
   });
 });
+
+/*
+const downloadFile = document.querySelector('#downloaded-file');
+var storageRef = firebase.storage().ref();
+var storage = firebase.storage();
+var pathReference = storage.ref();
+
+pathReference.child('Users/P5EWTRNKceRecLoukYA8oxV9g7g1/icon-144x144.png').getDownloadURL().then(url=>{
+  console.log(url);
+  var xhr = new XMLHttpRequest();
+  xhr.responseType = 'blob';
+  xhr.onload = function(event) {
+    var blob = xhr.response;
+  };
+  xhr.open('GET', url);
+  xhr.send();
+
+}).catch(error =>{
+  console.log(error);
+})
+
+*/
+// Since you mentioned your images are in a folder,
+// we'll create a Reference to that folder:
+
+auth.onAuthStateChanged(user=>{
+  var storageRef = firebase.storage().ref(`Users/${user.uid}`);
+
+
+  // Now we get the references of these images
+  storageRef.listAll().then(result=> {
+    result.items.forEach(fileRef=> {
+      // And finally display them
+     /// console.log(fileRef.name);
+
+
+      firebase.storage().ref(`Users/${user.uid}/${fileRef.name}`).getDownloadURL().then(urlFile=> {
+        // `url` is the download URL for 'images/stars.jpg'
+       // console.log(urlFile);
+        
+        // This can be downloaded directly:
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = function(event) {
+          var blob = xhr.response;
+          console.log(URL.createObjectURL(blob))
+          let fileListing = document.querySelector("#potato");
+
+          let fileName = document.createElement('a');
+          fileName.href = URL.createObjectURL(blob);
+          fileName.setAttribute("download", fileRef.name);
+          fileName.setAttribute("id",fileRef.name);
+          fileName.setAttribute("class","file-name");
+          fileName.innerHTML = `${fileRef.name} <br>`;
+          fileListing.appendChild(fileName);
+
+          
+        };
+        xhr.open('GET', urlFile);
+        xhr.send();
+      
+       
+      
+        
+      }).catch(function(error) {
+        console.log(error);
+      });
+      
+     
+    })
+
+    });
+  })
+  
 
 
 //-------------------------Testing a thing, ignore-------------------------------
