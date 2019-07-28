@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Job Opportunities in TT| EmployTT</title>
+		<title>Job Opportunities in TT | EmployTT</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=,chrome=1">
 		<meta name="msapplication-TileColor" content="#da532c">
 		<meta name="theme-color" content="#ff3300">
-		<meta name="description" content="jobs for citizens of trinidad and tobago">
-		<meta name="keywords" lang="en" content="government, hiring, employ tt,employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt, igovtt">
+		<meta name="description" content="jobs for citizens of trinidad and tobago, jobs in trinidad government">
+		<meta name="keywords" lang="en" content="government, hiring, employ tt,employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt, igovtt,employtt">
 		<meta name="viewport" content="width=device-width, initial-scale=1">  
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<!-- Scripts are deferred to improve page performance -->
@@ -18,6 +18,8 @@
 		<script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" 		type="text/javascript"></script>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-142588895-1"></script>
+		        <!--HTML Sanitizer-->
+				<script defer src="../node_modules/dompurify/dist/purify.js" type="text/javascript" ></script>    
 		<script defer src="./scripts/authui.js" 												type="text/javascript"></script>
 		<script defer src="./index.js" 															type="text/javascript"></script>
 		<!-- jQuery Dependencies -->
@@ -51,10 +53,9 @@
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 		<link rel="shortcut icon" href="/favicon.ico"/>
 		<meta name="msapplication-TileColor" content="#da532c">
-		<meta name="theme-color" content="#ffffff">
 	
 	</head>
-	<body>
+	<body >
 
 		<!-- Navigation -->
 		<!--
@@ -68,27 +69,30 @@
 
 		<div class="full-bg-img" style="background-image:url('../images/webpImages/sunnylanding.webp'), url('../images/sunnylanding.jpg');" id="signupform"> 			
 			
-			<div class = "employtt-slogan">employment.<br> simplified.</div><br>
+			<div class = "landing-words" id="landing-words-id">
+				<div class = "employtt-slogan" id="slogan">employment.<br> simplified.</div><br>
+				<div class = "cta-words" id = "cta-wrds">Your government is hiring! <br> Do <span style="color:#ff3300;">you</span> want to be a part of it?</div>
+				<div class = "mobile-landing-reg" id = "mobile-reg">
+					<button class="mobile-landing-button" id="mobile-reg-button">Get Me Employed!</button>
+					<span class="separator-form-mobile">
+							<span class = "or-line-separator-left-mobile">_______</span>
+							<span class = "or-word-mobile"> &nbsp OR &nbsp</span>
+							<span class = "or-line-separator-right-mobile">_______</span>
+					</span>
+					<button class="mobile-google-landing-button" id="google-mobile-reg-button">Continue with Google</button>
+				</div>
+			</div>
 
-			<div class = "cta-words">Your government is hiring! <br> Do <span style="color:#ff3300;">you</span> want to be a part of it?</div>
 			<form  id="reg-form" class="landing-reg-form">
 					
 				<div class="signup-words">Let's Get Started!</div><br>
 
 				<div class="input-field-div">
 					<span class='blocking-span'>
-						<input type="text" class="inputText" placeholder="" id="firstName" required autocomplete="given-name">
-						<span class="floating-label">First Name</span>
+						<input type="text" class="inputText" placeholder="" id="fullName" required autocomplete="name">
+						<span class="floating-label">First & Last Name</span>
 					</span>
 				</div><br>
-
-				<div class="input-field-div">
-					<span class='blocking-span'>
-						<input type="text" class="inputText" placeholder="" id="lastName" required autocomplete="family-name">
-						<span class="floating-label">Last Name</span>
-					</span>
-				</div><br>
-
 				
 				<div class="input-field-div">	
 					<span class='blocking-span'>
@@ -123,7 +127,7 @@
 
 				<div class="input-field-div">	
 					<span class='blocking-span'>
-						<input type="checkbox" value="accepted" id="termsAccept"> 
+						<input type="checkbox" class="landing-reg-form" value="accepted" id="termsAccept"> 
 						<span class="agree-words" id ="agreement-clause">Check here to indicate that you have read and agree to 
 							the <a id ="agreement-word-1" style ="color:white; text-decoration: underline;"href="./pages/termsofservice.html">terms of service</a> 
 							and <a id ="agreement-word-2" style ="color:white; text-decoration: underline;"href="./pages/privacypolicy.html">privacy policy</a> 
@@ -131,18 +135,53 @@
 						</span>
 					</span>
 				</div><br>
+
+				<div id="mobile-focus-hide">
 				
-				
-				<div class="input-field-div">	
+					<div class="input-field-div">	
+							<span class='blocking-span'>
+								<input type="submit" value="Get Me Employed!" id="landingImgSubmit">
+							</span>
+					</div><br>
+
+					<div class="input-field-div">	
 						<span class='blocking-span'>
-							 <input type="submit" value="Get Me Employed!" id="landingImgSubmit">
+							<span class="separator-form">
+									<span class = "or-line-separator-left">_________</span>
+									<span class = "or-word"> &nbsp OR &nbsp</span>
+									<span class = "or-line-separator-right">_________</span>
+							</span>
+
 						</span>
-				</div><br>
+					</div><br>
 
+					
 
+					<div class="input-field-div">	
+						<span class='blocking-span'>
+							<span class = "googleSignIn">
+									<input type="submit"  value="Continue with Google" id="landingImgGoogleSubmit">
+							</span>
+							
+						</span>
+					</div><br>
 
+					<div class="input-field-div">	
+						<span class='blocking-span'>
+							<span class = "account">
+									Have an account?&nbsp<a class = "account-words" href="./pages/login.html">Log In!</a>
+							</span>
+							
+						</span>
+					</div><br>
+				</div>
 				
 			</form>
+
+			
+
+		
+			</div>
 		</div>
 
 		<nav role="navigation">

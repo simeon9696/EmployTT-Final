@@ -1,11 +1,4 @@
-//Load Google Analytics on Team Email
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'UA-143704383-1');
-
-
-/*Sign up form handler - work in progress*/
+/*Sign up form handler */
 const landingFormSubmit = document.querySelector('#landingImgSubmit');
 const fieldValidity=[];
 landingFormSubmit.addEventListener('click', e =>{
@@ -22,39 +15,83 @@ landingFormSubmit.addEventListener('click', e =>{
     warning.style.color = "white";
   }
 
-  if(termAccept.checked===false){
+  function makeTextRed(){
     let warning = document.querySelector('#agreement-clause');
     warning.style.color = "red";
     warning = document.querySelector('#agreement-word-1');
     warning.style.color = "red";
     warning = document.querySelector('#agreement-word-2');
     warning.style.color = "red";
-    setTimeout(makeTextWhite, 1000);
-    
+  }
+
+  if(termAccept.checked===false){
+    makeTextRed();
+    setTimeout(makeTextWhite, 500);
   }else if(termAccept.checked===true){
     console.log("let it through");
-    const firstName = document.querySelector('#firstName');
-    const lastName = document.querySelector('#lastName');
+    const civilianName = document.querySelector('#fullName');
     const emailAddress = document.querySelector('#emailAddress');
     const origPassword = document.querySelector('#origPassword');
-    const cnfmPassword = document.querySelector('#cnfmPassword');
     const dateOfBirth = document.querySelector('#dateofbirth');
-
-    console.log(firstName.value);
-    console.log(lastName.value);
-    console.log(emailAddress.value);
-    console.log(origPassword.value);
-    console.log(cnfmPassword.value);
-    console.log(dateOfBirth.value);
-    console.log(fieldValidity);
+    const nameArray = civilianName.value.split(" ");
     let formValid=false;
     signUpFields.forEach(field =>{
-      console.log(fieldValidity[field]);
       formValid = fieldValidity[field] && fieldValidity["password"];
     });
-    console.log(formValid);
+    if(!formValid){
+      console.log('Form not valid');
+    }
+    else if(formValid){
+      console.log('Creating profile...');
+      auth.createUserWithEmailAndPassword(emailAddress.value, origPassword.value).then(cred => {
+        //After account has been created chain promises
+        const civilianEmail = emailAddress.value; // gone
 
+        const addCivilianRole = functions.httpsCallable("addCivilianRole");
+        addCivilianRole({ email: civilianEmail}).then(result => {
+          console.log(result);
+        }); 
+
+        firestore.collection("Users").doc(cred.user.uid).set({
+            firstName: nameArray[0],
+            lastName: nameArray[1],
+            email: emailAddress.value,
+            phoneNumber: "",
+            dateOfBirth: dateOfBirth.value,
+            addressOne: "",
+            addressTwo: "",
+            cityortown: "",
+            disabilites: "",
+            profileCreationDate: new Date(),
+            lastUpdated: new Date(),
+          }).then(()=>{
+            console.log("Firestore updated");
+            let user = auth.currentUser;
+            user.updateProfile({
+              displayName: nameArray[0], //Update profile data
+            }).then(() => {
+                console.log("Profile Updated!");
+                let user = auth.currentUser;
+                user.sendEmailVerification().then(() => {
+                    //send verification email
+                    console.log("Verification Email Sent!");
+                }).catch(error=>{
+                  console.log(error);
+                });
+            }).catch(error=>{
+              console.log(error);
+              alert(error);
+            });
+          }).catch(error=>{
+            console.log(error);
+          });
+    }).catch(error =>{
+      console.log(error);
+    });
+    }
   }
+
+
 });
 
 
@@ -127,13 +164,16 @@ cnfmPassword.addEventListener("change", e => {
 }
 });
 
-const signUpFields = ["firstName","lastName","emailAddress","dateofbirth"];
+const signUpFields = ["fullName","emailAddress","dateofbirth"];
+
 signUpFields.forEach(field =>{
   fieldValidity[field] = false;
   let fieldName =document.querySelector(`#${field}`);
   fieldName.addEventListener("focusin",e=>{
     e.preventDefault();
     fieldName.style.borderBottomColor ="#F7FF00";
+
+    
   });
   
   fieldName.addEventListener("focusout",e=>{
@@ -161,6 +201,82 @@ signUpFields.forEach(field =>{
 });
 
 
+const googleButton = document.querySelector('#landingImgGoogleSubmit');
+googleButton.addEventListener('click',e =>{
+  e.preventDefault();
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  auth.useDeviceLanguage();
+  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+  provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
+
+  provider.setCustomParameters({
+    login_hint: "user@example.com",
+  });
+  auth.signInWithPopup(provider).then(googleUser => {
+    console.log(googleUser.additionalUserInfo.isNewUser);
+    if(googleUser.additionalUserInfo.isNewUser === false){
+      window.location.assign("./index.html");
+     
+    }else if(googleUser.additionalUserInfo.isNewUser === true){
+      
+      let user = auth.currentUser; //Grab current user
+      const civilianEmail = user.email;
+      const addCivilianRole = functions.httpsCallable("addCivilianRole");
+      addCivilianRole({ email: civilianEmail }).then(result => {
+        console.log(result);
+        window.location.assign("./pages/userprofileregister.html");
+      });
+    }
+  });
+})
+
+
+const mobileSubmitButton = document.querySelector('#mobile-reg-button');
+mobileSubmitButton.addEventListener('click',e=>{
+  e.preventDefault();
+
+
+  fadeInRegistrationForm();
+ 
+})
+
+
+
+const googleMobileButton = document.querySelector('#google-mobile-reg-button');
+googleMobileButton.addEventListener('click',e=>{
+  e.preventDefault();
+  //fadeInRegistrationForm();
+})
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+const vh = window.innerHeight * 0.01;
+const vw = window.innerWidth *0.01;
+window.resizeTo(vw,vh);
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+// We listen to the resize event
+window.addEventListener('resize', () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  window.resizeTo(vw,vh);
+});
+
+
+function fadeInRegistrationForm(){
+  const landingSlogan = document.querySelector('#landing-words-id');
+  landingSlogan.setAttribute("class","fade-landing-mobile");
+  const registrationForm =document.querySelector('#reg-form');
+  const fadeTime =2;
+  registrationForm.style.WebkitAnimation =`fadein ${fadeTime}s`; 
+  registrationForm.style.MozAnimation =`fadein ${fadeTime}s`; 
+  registrationForm.style.MsAnimation =`fadein ${fadeTime}s`; 
+  registrationForm.style.OAnimation =`fadein ${fadeTime}s`; 
+  registrationForm.style.Animation =`fadein ${fadeTime}s`; 
+  registrationForm.style.display="flex";
+}
 const jobTable = document.querySelector('#job-table');
 let c = 0;
 let table = document.createElement('table');
