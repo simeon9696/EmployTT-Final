@@ -19,6 +19,8 @@ function checkApplied(job_id, userid){
                 });
               });
             }
+              
+            
           });       
   // });
 }
@@ -118,6 +120,10 @@ function renderJobTable(doc, c, user){
                   }
                 });
               });
+            }else{
+              var texts = document.createTextNode("Apply");       //added this so "apply" shows up when no user is logged in
+              applyButton.appendChild(texts);
+              applyButton.setAttribute("class","normalButton");
             }
           });     
 
@@ -308,9 +314,9 @@ function clickedButton(id, jobid){
                             job_id: jobid 
                         });
                         alert("Applied for job");
-                        var classChange = document.getElementById(jobid+"applybutton");
-                        if(classChange.textContent == "Apply"){
-                          classChange.textContent = "Reapply?";
+                        var classChange = document.getElementById('applyButton');
+                        if(classChange.innerHTML == "Apply"){
+                          classChange.innerHTML = "Reapply?";
                         }
                         classChange.classList.toggle("applied");
                             const userEmail = auth.currentUser.email;
@@ -328,12 +334,13 @@ function clickedButton(id, jobid){
         }
     });
 }
-let pdfFile = new jsPDF();
-pdfFile.getFontList();
+
+
 
 function pdfDownload(id, jobid){
     
     let pdfFile = new jsPDF();
+    
     firestore.collection('Jobs/').doc(jobid).get().then((snapshot)=>{
 
             
