@@ -3,11 +3,23 @@
 
 auth.onAuthStateChanged(user => {
   if(user){
+    /*Change tab title*/
+    if(providerID === "password"){
+      let userTitle = user.displayName;
+      let pageTitle = document.querySelector('#user-title');
+      pageTitle.innerHTML = `${DOMPurify.sanitize(userTitle)} | EmployTT`;
+    }else if (providerID ==="google.com"){
+      let userTitle = user.displayName.split(" ");
+      let pageTitle = document.querySelector('#user-title');
+      pageTitle.innerHTML = `${DOMPurify.sanitize(userTitle[0])} | EmployTT`;
+    }
+
     user.getIdTokenResult().then(idTokenResult => {
       user.admin = idTokenResult.claims.admin;
       user.mda = idTokenResult.claims.mda;
       user.civilian = idTokenResult.claims.civilian;
    
+      
 
       if(user.admin){
  
@@ -122,21 +134,6 @@ auth.onAuthStateChanged(user => {
       }
     });
 
-
-  
-    
-    let display = document.querySelector('#username');
-    display.innerHTML = user.displayName;
-    display.style = "inline-block";
-
-    let logOut= document.querySelector("#logged-in");
-    logOut.innerHTML = "Log Out";
-    display.style = "inline-block";
-
-    let logIn= document.querySelector("#logInBtn");
-    logIn.innerHTML = "";
-    logIn.style.display = "none";
-
     let registerBtn = document.querySelector("#regBtn");
     registerBtn.innerHTML ="";
     registerBtn.style.display = "none";
@@ -168,7 +165,36 @@ auth.onAuthStateChanged(user => {
 
           setupAcc.innerHTML= "";
           firstNameLabel.style.display ="block"
-
+          //Get uploaded files
+          let storageRef = firebase.storage().ref(`Users/${user.uid}`);
+          // Now we get the references of these images
+          storageRef.listAll().then(result=> {
+            result.items.forEach(fileRef=> {
+              //And then get the download url
+              firebase.storage().ref(`Users/${user.uid}/${fileRef.name}`).getDownloadURL().then(urlFile=> {
+                // This can be downloaded directly:
+                let xhr = new XMLHttpRequest();
+                xhr.responseType = 'blob';
+                xhr.open('GET', urlFile);
+                xhr.send();
+                xhr.onload = function(event) {
+                  var blob = xhr.response;
+                  //console.log(URL.createObjectURL(blob))
+                  let fileListing = document.querySelector("#list-container");
+                  let fileName = document.createElement('a');
+                  fileName.href = URL.createObjectURL(blob);
+                  fileName.setAttribute("download", fileRef.name);
+                  fileName.setAttribute("id",fileRef.name);
+                  fileName.setAttribute("class","file-name");
+                  fileName.innerHTML = `${fileRef.name} <br>`;
+                  fileListing.appendChild(fileName);
+                };
+      
+              }).catch(function(error) {
+                console.log(error);
+              });
+            })
+          });
     }).catch(error => {
         console.log("Error getting document:", error);
         setupAcc.innerHTML= `Hey there ${user.displayName}! Continue setting up your account! Click update to get started`;
@@ -178,17 +204,6 @@ auth.onAuthStateChanged(user => {
   }else{
     console.log('No user logged in');
 
-    let display = document.querySelector('#username');
-    display.innerHTML = "";
-    display.style = "none";
-
-    let logOut= document.querySelector("#logged-in");
-    logOut.innerHTML = "";
-    logOut.style = "none";
-
-    let logIn= document.querySelector("#logInBtn");
-    logIn.innerHTML = "Log In";
-    logIn.style.display = "block";
 
     let registerBtn = document.querySelector("#regBtn");
     registerBtn.innerHTML ="Register";
@@ -200,38 +215,40 @@ auth.onAuthStateChanged(user => {
   }
 });
 
+const firstNameEdit = document.querySelector('#addressLineTwo');
+firstNameEdit.addEventListener('focusout',(e)=>{
+  e.preventDefault();
+  let newFirstName = firstNameEdit.innerHTML.split(": ");
+  console.log(newFirstName);
+});
+
+
+//Update data on user profile
 const updateProfile = document.querySelector('#updateButton');
 updateProfile.addEventListener('click',(e)=>{
   e.preventDefault();
+  const elementsToBeHidden =["#removeButton","#findButton","#mdaSubmitButton","#mda-email","#profile-labels-mda","#adminSubmitButton","#admin-email","#profile-labels-admin","#list-container","#file-list"];
+  elementsToBeHidden.forEach(element =>{
+    let elementSelect = document.querySelector(element);
+    elementSelect.style.display = "none";
+  })
+  const updateProfile = document.querySelector('#updateButton');
+  updateProfile.value="Save";
+  //window.scrollTo({ top: 10, behavior: "smooth" });
+  var body = document.body; // Safari
+  var html = document.documentElement; // Chrome, Firefox, IE and Opera places the overflow at the <html> level, unless else is specified. Therefore, we use the documentElement property for these browsers
+
+
+  body.scrollTo({
+    top: 100,
+    left:100,
+    behavior: 'smooth'
+  });
+
+  html.scrollTo({
+    top: 100,
   
-  const getJobInfo = functions.httpsCallable('getJobInformation');
-  getJobInfo().then(snapshot =>{
-    console.log(snapshot);
-
-    
-    /*
-        const peopleArray = Object.keys(snapshot).map(i => snapshot[i])
-    let randomArray = {};
-    let keyArray =[];
-    peopleArray.forEach(doc=>{
-      //console.log(doc.cache);
-      console.log(Object.entries(doc.cache));
-      keyArray.push(Object.keys(doc.cache));
-    });
-    console.log(keyArray);
-    keyArray.forEach(key=>{
-      console.log(key[0]); //try to get index out in plaintext
-    })
-    */
-
- 
-    //const entries = Object.entries(result.data.cache)
-  //  entries.forEach(item=>{
-    //  console.log(item[1])
-    //})
-    
-  }).catch(error=>{
-    console.log(error);
+    behavior: 'smooth'
   });
 
 })
@@ -366,55 +383,6 @@ pathReference.child('Users/P5EWTRNKceRecLoukYA8oxV9g7g1/icon-144x144.png').getDo
 // Since you mentioned your images are in a folder,
 // we'll create a Reference to that folder:
 
-auth.onAuthStateChanged(user=>{
-  var storageRef = firebase.storage().ref(`Users/${user.uid}`);
-
-
-  // Now we get the references of these images
-  storageRef.listAll().then(result=> {
-    result.items.forEach(fileRef=> {
-      // And finally display them
-     /// console.log(fileRef.name);
-
-
-      firebase.storage().ref(`Users/${user.uid}/${fileRef.name}`).getDownloadURL().then(urlFile=> {
-        // `url` is the download URL for 'images/stars.jpg'
-       // console.log(urlFile);
-        
-        // This can be downloaded directly:
-        var xhr = new XMLHttpRequest();
-        xhr.responseType = 'blob';
-        xhr.onload = function(event) {
-          var blob = xhr.response;
-          console.log(URL.createObjectURL(blob))
-          let fileListing = document.querySelector("#potato");
-
-          let fileName = document.createElement('a');
-          fileName.href = URL.createObjectURL(blob);
-          fileName.setAttribute("download", fileRef.name);
-          fileName.setAttribute("id",fileRef.name);
-          fileName.setAttribute("class","file-name");
-          fileName.innerHTML = `${fileRef.name} <br>`;
-          fileListing.appendChild(fileName);
-
-          
-        };
-        xhr.open('GET', urlFile);
-        xhr.send();
-      
-       
-      
-        
-      }).catch(function(error) {
-        console.log(error);
-      });
-      
-     
-    })
-
-    });
-  })
-  
 
 
 //-------------------------Testing a thing, ignore-------------------------------
