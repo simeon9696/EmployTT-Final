@@ -1,3 +1,9 @@
+//Load Google Analytics on Team Email
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-143704383-1');
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyD3rzcDvo74D7siPasdB6TyRFQtxsKgHSc",
@@ -25,6 +31,19 @@ auth.onAuthStateChanged(user => {
         console.log(`Provider service is: ${providerID}`);
     }
 
+    if(providerID === "password"){
+      let userName = document.querySelector('#username');
+      userName.style.display = "block";
+      userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName;
+    }else if (providerID ==="google.com"){
+      let userTitle = user.displayName.split(" ");
+      console.log(userTitle[0]);
+      let userName = document.querySelector('#username');
+      userName.style.display = "block";
+      userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+ userTitle[0];
+    }
+
+    
       user.getIdTokenResult().then(idTokenResult => {
         user.admin = idTokenResult.claims.admin;
         user.mda = idTokenResult.claims.mda;
@@ -34,9 +53,7 @@ auth.onAuthStateChanged(user => {
         console.log(user.email+' is a civilian: '+user.civilian);
 
         if (user.admin){
-          let userName = document.querySelector('#username');
-          userName.style.display = "block";
-          userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName;
+
 
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
@@ -60,9 +77,6 @@ auth.onAuthStateChanged(user => {
         }else if(user.mda){
 
           console.log("I am an MDA");
-          let userName = document.querySelector('#username');
-          userName.style.display = "block";
-userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName;    
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
           logOut.style.display = "block";
@@ -81,9 +95,6 @@ userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="th
 
         }else if(user.civilian){
           console.log("I am a civilian");
-          let userName = document.querySelector('#username');
-          userName.style.display = "block";
-          userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName;    
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
           logOut.style.display = "block";
@@ -104,10 +115,6 @@ userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="th
         }
         else if(!user.admin || !user.mda || !user.civilian){
             console.log('New user!');
-            let userName = document.querySelector('#username');
-            userName.style.display = "block";
-            userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" width="13" height="auto">&nbsp;'+user.displayName;
-      
             let logOut= document.querySelector("#logged-in");
             logOut.innerHTML = "Log Out";
             logOut.style.display = "block";
@@ -153,12 +160,6 @@ userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="th
 
     }
   })
-
-const logout = document.querySelector('#logged-in');
-logout.addEventListener('click', (e) => {
-  e.preventDefault();
-  auth.signOut();
-});
 
 
 const logOutBtn = document.querySelector('#logged-in');
