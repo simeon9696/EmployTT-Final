@@ -83,8 +83,28 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 
  # Changed
   @simeon9696
- - fixed error in joblist.js with quotation marks not beinf placed around id's
+ - fixed error in joblist.js with quotation marks not being placed around id's
  - added the functionality for a user to be able to download files that they have downloaded, userprofileinfo.html and associated css and js files. 
+
+ # Removed
+- No items removed
+
+
+
+
+# [1.0.7] - 2019-28-07
+
+ # Added
+   @simeon9696
+ - adminmetrics.html --displays information about user interaction with the website
+ - adminmetricsstyle.css
+ - adminmetrics.js
+
+ # Changed
+   @simeon9696
+ - fixed error in joblist.js with 'apply' not showing up in button unless a user was logged in 
+ - added functionality to landing page login, able to create account with the form or use a google log in --index.js
+ - added some mobile support to landing page login --index_style.css
 
  # Removed
 - No items removed
