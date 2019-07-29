@@ -77,7 +77,11 @@ header{
   margin-left:5.5vw;
   margin-right:8vh;
   font-weight:normal;
+}
 
+/*remove mobile buttons*/
+.mobile-landing-button,.separator-form-mobile,.or-line-separator-left-mobile,.or-word-mobile,.or-line-separator-right-mobile,.mobile-google-landing-button{
+  display: none;
 }
 
 .landing-reg-form{
@@ -1061,6 +1065,9 @@ input[type=search]:focus {
 
 
 @media screen and (max-width:880px){
+  .mobile-landing-button,.separator-form-mobile,.or-line-separator-left-mobile,.or-word-mobile,.or-line-separator-right-mobile,.mobile-google-landing-button{
+    display: block;
+  }
 
   .fade-landing-mobile{
     margin-left:-9999px;
