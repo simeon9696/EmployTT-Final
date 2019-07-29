@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  background-color:#ffffff;
+  background-size: 100vw 100vw;
+  height: 100%
+}
+
+header{
+	background-color:black;
+}
+
+#username{
+color:#ff3300;
+font-weight:525;
+}
+
+body {
+  background-color:white;
+}
+
+
+.topnav {
+    position: -webkit-sticky;
+    position: sticky;
+    background:#ffffff; 
+    overflow: hidden;
+    height:80px;
+    top: 0px;
+    z-index: 10;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.topnav a {
+  position: relative;
+  display: block;
+  float: right;
+  color: #333333;
+  text-align: center;
+  padding: 14px 16px;
+  padding-top:1.5vw;
+  text-decoration: none;
+  font-size: 1.5em;}
+
+ .topnav a:hover {
+  display: inline;
+  transition:0.3s;
+  color: #ffffff !important; 
+  border-radius:26px;
+  background-color:#ff3300;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1.5em;
+  padding-top:1.2vw;}
+  #username{
+    color:#ff3300;
+    font-weight:525;
+  }
+.nav-word{
+	color:#000000;
+    margin-top:0.5vw;}
+
+@font-face{
+    font-family: 'Avenir';
+    src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
+}
+
+.account-metrics{
+    margin-top: 50px;
+    display: block;
+    text-align:center;
+    font-family: 'Avenir', Helvetica, sans-serif;
+    font-size: 2em;
+    line-height: 1.7em;
+
+
+}
+
