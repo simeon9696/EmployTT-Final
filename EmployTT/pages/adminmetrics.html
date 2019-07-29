@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title id = "user-title">Metrics & Functions| EmployTT</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=,chrome=1">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ff3300">
+        <meta name="description" content="jobs for citizens of trinidad and tobago">
+        <meta name="keywords" lang="en" content="employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt, igovtt">
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <!-- Scripts are deferred to improve page performance -->
+        <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js" 	   type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js" type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-storage.js"   type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js" 	   type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-functions.js" type="text/javascript"></script>
+        <script defer src="../scripts/authui.js" 								           type="text/javascript"></script>
+        <script defer src="../scripts/adminmetrics.js" 								   type="text/javascript"></script>
+
+
+        <!--HTML Sanitizer-->
+        <script defer src="../node_modules/dompurify/dist/purify.js" type="text/javascript" ></script>    
+        <!--Footer CSS Dependencies-->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
+        <!-- Link style files -->
+        <link href="../styles/adminmetricssytle.css" type="text/css" rel="stylesheet" />	
+        <link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--Link address bar icon file for any browser-->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/favicon.ico"/>
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+    <body>
+        <div class="topnav">    
+            <!--User's name goes here once logged in-->
+            <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
+            <a class="nav-word" id="logged-in"  href="#"></a>	
+            <a class="nav-word" id="regBtn" 	href="./userprofileregister.html" style="color:#ff3300" >Register</a>
+            <a class="nav-word" id="logInBtn" 	href="./login.html">Log in</a>	
+            <a class="nav-word" id="employers" 	href="./employers.html" >Employers</a> 
+            <a class="nav-word" id="all-jobs"  	href="./joblist.html" >All Jobs</a>
+            <a class="nav-word" id="find-jobs" 	href="../index.html" ">Find Jobs</a>
+            <a class="nav-word" id="about-us" 	href="./aboutus.html" >About Us</a>
+            <a class="nav-word" id="terms-of-service" href="./termsofservice.html" >Terms of Service</a>
+            <a class="nav-word" id="privacy-policy"   href="./privacypolicy.html"  >Privacy Policy</a>
+        </div>
+
+        <div class="metrics">
+            <div class="account-metrics">
+                    <p>Total number of accounts created</p><p id = "numberOfCreations" class = "metric-number">10</p>
+                    <p>Total number of accounts</p><p id = "numberOfAccounts" class = "metric-number">10</p>
+                    <p>Total number of accounts deleted</p><p id = "numberOfDeletions" class = "metric-number">10</p>
+                   
+            </div>
+        </div>
+
+    </body>
+    <footer class="footer-distributed">
+
+            <div class="footer-left">
+    
+                 <img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+              
+                <p class="footer-links">
+                    <a href="../index.html">Home</a>
+                    ·
+                    <a href="./termsofservice.html">Terms Of Service</a>
+                    ·
+                    <a href="./privacypolicy.html">Privacy Policy</a>
+                    ·
+                    <a href="./aboutus.html">About</a>
+                    ·
+                    <a href="./aboutus.html">Contact</a>
+                  </p>
+    
+                <p class="footer-company-name">EmployTT &copy; 2019</p>
+            </div>
+    
+            <div class="footer-center">
+    
+                <div>
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>Pembroke St</span> Port of Spain, Trinidad and Tobago</p>
+                </div>
+    
+                <div>
+                    <i class="fa fa-phone"></i>
+                    <p>+1 (868) 627-5600</p>
+                </div>
+    
+                <div>
+                    <i class="fa fa-envelope"></i>
+                    <p><a href="mailto:support@company.com">hackttdecepticons@gmail.com</a></p>
+                </div>
+    
+            </div>
+    
+            <div class="footer-right">
+    
+                <p class="footer-company-about">
+                    <span>About the company</span>
+                    Dedicated to helping you become employed as fast as possible
+                </p>
+    
+                <div class="footer-icons">
+    
+                    <a href="https://www.facebook.com/iGovTT/"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/hacktt19/"><i class="fa fa-instagram"></i></a>
+    
+    
+                </div>
+    
+            </div>
+        </footer>
+    </html>
+    
