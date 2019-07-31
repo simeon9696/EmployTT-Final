@@ -108,3 +108,16 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 
  # Removed
 - No items removed
+
+# [1.0.8] - 2019-30-07
+
+ # Added
+   - no items added
+
+ # Changed
+   @sashajsingh
+ - added FAQ, user info to mobile menu
+ - updated authui.js for the mobile menu to show Username and Log Out
+
+ # Removed
+- No items removed
