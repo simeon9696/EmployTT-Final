@@ -104,4 +104,9 @@ html {
     .active:after {
       display: hidden;
     }
+
+    #username{
+      color:#ff3300 !important;
+    }
+    
   }
