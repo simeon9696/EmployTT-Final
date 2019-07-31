@@ -154,15 +154,7 @@ nav {
 		padding-top:5vw;
 		padding-bottom:5vw;
 		font-weight:520;
-
-		}
-	
-		#mobile-li:nth-child(even)
-		{ background-color: #1E1E23;
-		}
-	
-		#mobile-li:nth-child(odd)
-		{ background-color: #19191b;
+        border-bottom: 1px solid rgb(31, 31, 31);
 		}
 	
 		#mobile-li a
@@ -187,5 +179,9 @@ nav {
 			width:100vw !important;
 			height:65px!important;
 		}
+
+		#username{
+			color:#ff3300 !important;
+		  }
 
 }

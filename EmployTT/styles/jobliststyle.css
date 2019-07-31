@@ -126,6 +126,10 @@ body{
     color:#ffffff;
     margin-left:10vw;}
 
+  #username{
+      color:#ff3300 !important;
+  }
+
 }
 
 li a {
