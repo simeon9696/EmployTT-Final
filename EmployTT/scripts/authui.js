@@ -71,7 +71,20 @@ auth.onAuthStateChanged(user => {
           employArea.innerHTML = "Employer";
           employArea.style.display  = "block";
 
-             
+          var styles = `
+                      @media (max-width: 880px) {
+                        .logInBtn2{
+                          display:none;
+                        }
+                        .regBtn2{
+                          display:none;
+                        }
+                      }
+                      `
+          var styleSheet = document.createElement("style")
+          styleSheet.type = "text/css"
+          styleSheet.innerText = styles
+          document.head.appendChild(styleSheet)
 
     
         }else if(user.mda){
@@ -93,6 +106,21 @@ auth.onAuthStateChanged(user => {
           employArea.innerHTML = "Employers";
           employArea.style.display  = "block";
 
+          var styles = `
+                      @media (max-width: 880px) {
+                        .logInBtn2{
+                          display:none;
+                        }
+                        .regBtn2{
+                          display:none;
+                        }
+                      }
+                      `
+          var styleSheet = document.createElement("style")
+          styleSheet.type = "text/css"
+          styleSheet.innerText = styles
+          document.head.appendChild(styleSheet)
+
         }else if(user.civilian){
           console.log("I am a civilian");
           let logOut= document.querySelector("#logged-in");
@@ -110,7 +138,23 @@ auth.onAuthStateChanged(user => {
           let employArea =document.querySelector('#employers');
           employArea.innerHTML = "";
           employArea.style.display  = "none";
-
+          var styles = `
+                      @media (max-width: 880px) {
+                        .logInBtn2{
+                          display:none;
+                        }
+                        .regBtn2{
+                          display:none;
+                        }
+                        .employers2{
+                          display:none;
+                        }
+                      }
+                      `
+          var styleSheet = document.createElement("style")
+          styleSheet.type = "text/css"
+          styleSheet.innerText = styles
+          document.head.appendChild(styleSheet)
           
         }
         else if(!user.admin || !user.mda || !user.civilian){
