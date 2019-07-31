@@ -502,3 +502,7 @@ hr{
     margin-top:2vw;
   }
 }
+.jobTable h1:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
