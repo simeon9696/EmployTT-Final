@@ -18,10 +18,14 @@ function checkApplied(job_id, userid){
                   }
                 });
               });
-            }
-              
+           
+        }else{
+          var texts = document.createTextNode("Apply");       //added this so "apply" shows up when no user is logged in
+          applyButton.appendChild(texts);
+          applyButton.setAttribute("class","normalButton");
+        }  
             
-          });       
+      });       
   // });
 }
 // console.log(window.appliedJobs.length);
