@@ -121,3 +121,20 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 
  # Removed
 - No items removed
+
+
+# [1.0.9] - 2019-04-08
+
+ # Added
+   - no items added
+
+ # Changed
+   @simeon9696
+ - updated admin metric style
+ - fixed error in joblist.js with 'apply' not showing up in button unless a user was logged in (again)
+ - index.html added keywords for SEO
+ - added alt text to img tags in authui.js
+
+
+ # Removed
+- No items removed
