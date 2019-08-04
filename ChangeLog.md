@@ -138,3 +138,16 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 
  # Removed
 - No items removed
+
+# [1.1.0] - 2019-04-08
+
+ # Added
+   - no items added
+
+ # Changed
+   @sashajsingh
+ - job page styling
+
+
+ # Removed
+- No items removed
