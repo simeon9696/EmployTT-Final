@@ -3,6 +3,8 @@ const signupForm = document.querySelector('#signup-form');
 
 subBtnRef.addEventListener('click',(btnPressListener)=>{
     btnPressListener.preventDefault();
+    const passID = document.querySelector('#invalid-password');  // gone
+    passID.style.display="none";
     const email = signupForm['signup-email'].value;  // gone
     const password  = signupForm['signup-password'].value; //gone
     //console.log(email);
@@ -15,7 +17,9 @@ subBtnRef.addEventListener('click',(btnPressListener)=>{
       var errorCode = error.code;
       var errorMessage = error.message;
       if (errorCode === 'auth/wrong-password') {
-        alert('Wrong password.');
+        
+       
+        passID.style.display="flex";
       } else {
         alert(errorMessage);
       }
@@ -50,3 +54,17 @@ googleBtnRef.addEventListener('click',(e)=>{
 })
 
 
+const resetPasswordLink = document.querySelector('#forgotPassword');
+resetPasswordLink.addEventListener('click', e =>{
+  e.preventDefault();
+
+  
+  const email = signupForm['signup-email'].value;  // gone
+  auth.sendPasswordResetEmail(email).then(function() {
+    console.log('success');
+  }).catch(function(error) {
+    alert(error);
+  });
+  
+
+})
