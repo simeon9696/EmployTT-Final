@@ -9,54 +9,63 @@
 
 <url>
   <loc>https://employtt.netlify.com/</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://employtt.netlify.com/pages/userprofileinfo.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://employtt.netlify.com/pages/userprofileregister.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://employtt.netlify.com/pages/login.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://employtt.netlify.com/pages/employers.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://employtt.netlify.com/pages/joblist.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://employtt.netlify.com/pages/aboutus.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://employtt.netlify.com/pages/termsofservice.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://employtt.netlify.com/pages/privacypolicy.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://employtt.netlify.com/index.html</loc>
-  <lastmod>2019-05-31T02:48:47+00:00</lastmod>
+  <loc>https://employtt.netlify.com/pages/login</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
   <priority>0.80</priority>
 </url>
-
+<url>
+  <loc>https://employtt.netlify.com/pages/joblist</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://employtt.netlify.com/pages/employers</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://employtt.netlify.com/pages/aboutus</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://employtt.netlify.com/pages/termsofservice</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://employtt.netlify.com/pages/privacypolicy</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://employtt.netlify.com/pages/userprofileregister</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://employtt.netlify.com/pages/faqs</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://employtt.netlify.com/pages/userprofileinfo</loc>
+  <lastmod>2019-08-03T23:37:07+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
 
 </urlset>
