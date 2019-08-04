@@ -16,12 +16,19 @@
         <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-storage.js"   type="text/javascript"></script>
         <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js" 	   type="text/javascript"></script>
         <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-functions.js" type="text/javascript"></script>
+        <!--Chart.js-->
+        <script defer src="../functions/node_modules/chart.js/dist/Chart.bundle.js" type="text/javascript" ></script>    
+        <script defer src="../functions/node_modules/chart.js/dist/Chart.bundle.min.js" type="text/javascript" ></script>   
+        <script defer src="../functions/node_modules/moment/moment.js" type="text/javascript" ></script>   
+
+        <!--HTML Sanitizer-->
+        <script defer src="../node_modules/dompurify/dist/purify.js" type="text/javascript" ></script>    
+        <!--DOM JS files-->
         <script defer src="../scripts/authui.js" 								           type="text/javascript"></script>
         <script defer src="../scripts/adminmetrics.js" 								   type="text/javascript"></script>
 
 
-        <!--HTML Sanitizer-->
-        <script defer src="../node_modules/dompurify/dist/purify.js" type="text/javascript" ></script>    
+
         <!--Footer CSS Dependencies-->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
@@ -39,6 +46,7 @@
         <meta name="theme-color" content="#ffffff">
     </head>
     <body>
+      
         <div class="topnav">    
             <!--User's name goes here once logged in-->
             <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
@@ -53,22 +61,77 @@
             <a class="nav-word" id="privacy-policy"   href="./privacypolicy.html"  >Privacy Policy</a>
             <a class="nav-word" id="privacy-policy" href="./faqs.html">FAQs</a>
         </div>
-
+        <h1> Website Metrics</h1>
         <div class="metrics">
             <div class="account-metrics">
-                    <p>Total number of accounts created</p><p id = "numberOfCreations" class = "metric-number">10</p>
-                    <p>Total number of accounts</p><p id = "numberOfAccounts" class = "metric-number">10</p>
-                    <p>Total number of accounts deleted</p><p id = "numberOfDeletions" class = "metric-number">10</p>
-                   
+                <div class = "single-metric">
+                        <span class = "metric-account-label">Accounts created</span><br>
+                        <span id = "numberOfCreations" class = "metric-account-number"></span>
+                </div >&nbsp;&nbsp;&nbsp;
+
+                <div class = "single-metric">
+                        <span class = "metric-account-label">Accounts active</span><br>
+                        <span id = "numberOfAccounts" class = "metric-account-number"></span>
+                </div >&nbsp;&nbsp;&nbsp;
+
+                <div  class = "single-metric">
+                        <span class = "metric-account-label">Accounts deleted</span><br>
+                        <span id = "numberOfDeletions" class = "metric-account-number"></span>
+                </div >&nbsp;&nbsp;&nbsp;
             </div>
+
+                <div class="job-metrics">
+                    <p>Job applications made</p><p id = "numberOfAppsMade" class = "metric-number"></p>
+                </div>
         </div>
 
+        <div class="charts">
+
+            <div class = "charts-metric">
+                <div class='chart-title'>Account creation for&nbsp;<span class="currentYear"></span>
+                    <canvas id="accountCreationChart"></canvas>
+                </div><br>
+              
+                <br>
+                
+                <div class='chart-title'>Account deletion for&nbsp;<span class="currentYear"></span>
+                    <canvas id="accountDeletionChart"></canvas>
+                </div>
+            </div><br>
+
+
+            <div class = "charts-metric">
+                    <div class='chart-title'>Job postings for&nbsp;<span class="currentYear"></span>
+                        <canvas id="jobPostingChart"></canvas>
+                    </div><br>
+                    
+                    <div class='chart-title'>Applications made for&nbsp;<span class="currentYear"></span>
+                        <canvas id="jobApplicationChart"></canvas>
+                    </div><br>
+            </div><br>
+
+
+
+        
+            <div class = "charts-metric">
+                <div class='chart-title'>Employers registered&nbsp;<span class="currentYear"></span>
+                    <canvas id="employersRegistered"></canvas>
+                </div><br>
+                
+        
+                <div class='chart-title'>Administrators registered for&nbsp;<span class="currentYear"></span>
+                    <canvas id="adminsRegisteredChart"></canvas>
+                </div><br>
+            </div><br>
+        </div>
+
+        
     </body>
     <footer class="footer-distributed">
 
             <div class="footer-left">
     
-                 <img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+                 <img alt ="Footer Background" src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
               
                 <p class="footer-links">
                     <a href="../index.html">Home</a>
@@ -113,8 +176,8 @@
     
                 <div class="footer-icons">
     
-                    <a href="https://www.facebook.com/iGovTT/"><i class="fa fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/hacktt19/"><i class="fa fa-instagram"></i></a>
+                    <a name = "facebook link" href="https://www.facebook.com/iGovTT/"><i class="fa fa-facebook"></i></a>
+                    <a name = "instagram link" href="https://www.instagram.com/hacktt19/"><i class="fa fa-instagram"></i></a>
     
     
                 </div>
