@@ -82,6 +82,20 @@ html {
     border: 1px solid rgb(240, 56, 56);
 }
 
+.wrong-password{
+  display: none;
+  position: relative;
+  
+  flex-direction: row;
+  padding-left:8.5vw;
+  padding-top: 7px;
+
+  color: #FF0800;
+  font-family: 'Avenir', Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+
 #submitButton{
     display: block;
 }
@@ -499,3 +513,4 @@ span.label {
         color:#ff3300;
       }
 }
+
