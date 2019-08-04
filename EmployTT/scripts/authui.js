@@ -34,13 +34,13 @@ auth.onAuthStateChanged(user => {
     if(providerID === "password"){
       let userName = document.querySelector('#username');
       userName.style.display = "block";
-      userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName;
+      userName.innerHTML = '<img alt="User Icon" src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+user.displayName;
     }else if (providerID ==="google.com"){
       let userTitle = user.displayName.split(" ");
       console.log(userTitle[0]);
       let userName = document.querySelector('#username');
       userName.style.display = "block";
-      userName.innerHTML = '<img src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+ userTitle[0];
+      userName.innerHTML = '<img alt="User Icon" src="../images/webpImages/user-icon.webp" onerror="this.onerror=null; this.src=\'../images/user-icon.png\'" width="13" height="auto">&nbsp;'+ userTitle[0];
     }
 
     
@@ -52,8 +52,12 @@ auth.onAuthStateChanged(user => {
         console.log(user.email+' is an mda: '+user.mda);
         console.log(user.email+' is a civilian: '+user.civilian);
 
+        
+
+
         if (user.admin){
 
+  
 
           let logOut= document.querySelector("#logged-in");
           logOut.innerHTML = "Log Out";
@@ -204,6 +208,8 @@ auth.onAuthStateChanged(user => {
 
     }
   })
+
+
 
 
 const logOutBtn = document.querySelector('#logged-in');
