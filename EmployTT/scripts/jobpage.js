@@ -146,7 +146,7 @@ if(url.get("job")){
           let box2 = document.createElement('div');
 
           let separator = document.createElement('h4');
-          let separator_1 = document.createElement('hr');
+          //let separator_1 = document.createElement('hr');
           let separator_2 = document.createElement('span');
           let separator_3 = document.createElement('span');
           let breakln = document.createElement('br');
@@ -275,7 +275,8 @@ if(url.get("job")){
       
       //~~~~~~~~~~~~~~~~~~~~~~~~~~Jobname~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           jobName.textContent = snapshot.data().jobName;
-          title.setAttribute("style","text-align: center;");
+          title.setAttribute("class","job-name");
+          title.setAttribute("style","text-align: left;");
           // title.setAttribute("style","clear:all");
           title.append(jobName);
 
@@ -285,18 +286,21 @@ if(url.get("job")){
       //~~~~~~~~~~~~~~~~~~~~~~~~~~Dates~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
           date.textContent = ("Posted: "+snapshot.data().opened+"\xa0\xa0\xa0\xa0\xa0\xa0\xa0"+"Deadline: "+snapshot.data().deadline);
           dateo.textContent = (snapshot.data().opened);
+          dateo.setAttribute("style","font-size:15px;");
           dated.textContent = (snapshot.data().deadline);
-          bold8.textContent = "Date Opened";
-          bold9.textContent = "Date Closed";
+          dated.setAttribute("style","font-size:15px;");
+          bold8.textContent = "Posted: ";
+          bold9.textContent = "Deadline: ";
       
 
       //~~~~~~~~~~~~~~~~~~~~~~~~~~employer~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          separator_1.setAttribute("size",1);
+          //separator_1.setAttribute("size",1);
           node.setAttribute('doc-id',jobid);
           employer.textContent = snapshot.data().employer;
 
           employer.setAttribute("style","font-size:15px;");
           bold7.textContent = "Employer: ";
+          bold7.setAttribute("class","grid-items");
 
           
           location.textContent = (snapshot.data().location);
@@ -309,9 +313,11 @@ if(url.get("job")){
       
       //~~~~~~~~~~~~~~~~~~~~~~~~~~All_Info~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           jobStatus.textContent = snapshot.data().jobstatus;
+          jobStatus.setAttribute("style","font-size:15px;");
           levels.textContent = snapshot.data().levels;
+          levels.setAttribute("style","font-size:15px;");
           category.textContent = snapshot.data().category;
-      
+          category.setAttribute("style","font-size:15px;");
           bold1.textContent = "Status: ";
           bold2.textContent = "Level: ";
           bold3.textContent = "Category: ";
@@ -319,15 +325,18 @@ if(url.get("job")){
 
       //~~~~~~~~~~~~~~~~~~~~~~~~~~About Job~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           about.textContent = snapshot.data().about;
+          about.setAttribute("style","font-size:15px;");
           about.setAttribute("class","grid-items");
-          bold5.textContent = "About Job: ";
+          bold5.textContent = "About: ";
           bold5.setAttribute("class","grid-items");
 
       
       //~~~~~~~~~~~~~~~~~~~~~~~~~~Skills~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           skills.textContent = snapshot.data().skills;
+          skills.setAttribute("style","font-size:15px;");
           skills.setAttribute("class","grid-items");
-          bold4.textContent = "Job Skills and Qualifactions: ";
+          bold4.textContent = "Skills & Qualifications: ";
+          bold4.setAttribute("id","skills-heading");
           bold4.setAttribute("class","grid-items");
       
         
@@ -338,7 +347,7 @@ if(url.get("job")){
         separator.textContent="\xa0\xa0\ ";
         box.setAttribute("class","divclass");
         box.appendChild(titlediv);
-        box.append(separator_1);
+        //box.append(separator_1);
 
         box1.appendChild(bold5);
         box1.appendChild(about);
