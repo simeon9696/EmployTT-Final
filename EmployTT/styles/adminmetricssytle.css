@@ -77,16 +77,94 @@ body {
 @font-face{
     font-family: 'Avenir';
     src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
+    font-display: fallback;
 }
 
+.metrics{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
 .account-metrics{
-    margin-top: 50px;
-    display: block;
-    text-align:center;
-    font-family: 'Avenir', Helvetica, sans-serif;
-    font-size: 2em;
-    line-height: 1.7em;
-
-
+  margin-top: 5vw;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Avenir', Helvetica, sans-serif;
+  font-size: 2em;
+  line-height: 1.5em;
+}
+.single-metric{
+  border-radius: 15px;
+  background-color: rgb(250, 250, 250); 
+  box-shadow: 2px 2px 3px 3px rgb(177, 177, 177);
+  
+}
+.metric-account-label{
+  display: flex;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
+.metric-account-number{
+  display: flex;
+  flex-direction: column;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+
+
+.job-metrics{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left:-20px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Avenir', Helvetica, sans-serif;
+  font-size: 2em;
+  line-height: 1.5em;
+  background-color: rgb(250, 250, 250); 
+  box-shadow: 2px 2px 3px 3px rgb(177, 177, 177);
+  border-radius: 15px;
+  text-align: center;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+}
+
+
+.charts{
+  margin-top: 5vw;
+  margin-left: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  text-align: center;
+  font-family: 'Avenir', Helvetica, sans-serif;
+  font-size: 2em;
+  line-height: 1.7em;
+  background-color: rgb(250, 250, 250); 
+  box-shadow: 3px 3px 3px 3px rgb(177, 177, 177);
+  padding-top:3vh;
+  padding-bottom:3vh;
+  border-radius: 15px;
+}
+
+.chart-title{
+  width:40vw;
+  height:30vh;
+  padding-left: 40px;
+}
+
+.charts-metric{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom:100px;
+}
