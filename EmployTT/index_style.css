@@ -79,10 +79,7 @@ header{
   font-weight:normal;
 }
 
-/*remove mobile buttons*/
-.mobile-landing-button,.separator-form-mobile,.or-line-separator-left-mobile,.or-word-mobile,.or-line-separator-right-mobile,.mobile-google-landing-button{
-  display: none;
-}
+
 
 .landing-reg-form{
   position: absolute;
@@ -104,6 +101,9 @@ header{
   
 }
 
+.mobile-landing-button,.separator-form-mobile,.or-line-separator-left-mobile,.or-word-mobile,.or-line-separator-right-mobile,.mobile-google-landing-button{
+  display: none;
+}
 .landing-reg-form input{
 font-family: 'Exo-Regular',Arial, sans-serif;
  outline: none;
@@ -237,6 +237,8 @@ font-family: 'Exo-Regular',Arial, sans-serif;
 .separator-form {
   display:flex;
   margin-top: -2vh;
+  flex-direction: row;
+  justify-content: center;
 }
   
 .or-line-separator-left,.or-line-separator-right{
@@ -252,7 +254,7 @@ font-family: 'Exo-Regular',Arial, sans-serif;
 .account,.account-words{
   display:flex;
   color: white;
-
+  justify-content: center;
 }
 .account{
   margin-top:-2.5vh;
@@ -945,6 +947,9 @@ input[type=search]:focus {
 }
 
 @media screen and (max-width: 1000px){
+  .mobile-landing-reg{
+    display: none;
+  }
 
   .landing-reg-form{
     margin-left: 65vw;
@@ -979,6 +984,10 @@ input[type=search]:focus {
 }
 
 @media screen and (max-width: 1300px){
+  .mobile-landing-reg{
+    display: none;
+  }
+
   .landing-reg-form{
     margin-left: 65vw;
     margin-top:10vh;
@@ -1065,6 +1074,7 @@ input[type=search]:focus {
 
 
 @media screen and (max-width:880px){
+
   .mobile-landing-button,.separator-form-mobile,.or-line-separator-left-mobile,.or-word-mobile,.or-line-separator-right-mobile,.mobile-google-landing-button{
     display: block;
   }
@@ -1131,7 +1141,6 @@ input[type=search]:focus {
     height: 750px;
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) );
     background-position: center top;
-   
   }
 
 
@@ -1237,14 +1246,16 @@ input[type=search]:focus {
     position: absolute;
     color:white;
     display:flex;
+    flex-direction: row;
     justify-content: center;
     margin-top: 30vh;
     margin-left:38.5vw;
-    
+
   }
   
   .or-line-separator-left-mobile,.or-line-separator-right-mobile{
     margin-top:-1vh;
+    flex-direction: row;
   }
 
   

@@ -75,6 +75,7 @@ landingFormSubmit.addEventListener('click', e =>{
                 user.sendEmailVerification().then(() => {
                     //send verification email
                     console.log("Verification Email Sent!");
+                    window.location.assign("./pages/userprofileinfo.html")
                 }).catch(error=>{
                   console.log(error);
                 });
@@ -246,7 +247,28 @@ mobileSubmitButton.addEventListener('click',e=>{
 const googleMobileButton = document.querySelector('#google-mobile-reg-button');
 googleMobileButton.addEventListener('click',e=>{
   e.preventDefault();
-  //fadeInRegistrationForm();
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.useDeviceLanguage();
+  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
+  provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
+  provider.setCustomParameters({
+      'login_hint': 'user@example.com'
+    });
+  firebase.auth().signInWithPopup(provider).then((googleUser)=>{
+        console.log(googleUser.additionalUserInfo.isNewUser);
+        if(googleUser.additionalUserInfo.isNewUser === false){
+          window.location.assign("../index.html");
+        }else if(googleUser.additionalUserInfo.isNewUser === true){
+          window.location.assign("./userprofileregister.html");
+          addCivilianRole({ email: civilianEmail }).then(result => {
+            console.log(result);
+            window.location.assign("./pages/userprofileregister.html");
+          });
+        }
+            
+ }).catch(error=>{
+   console.log(error);
+ });
 })
 
 // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
