@@ -55,43 +55,45 @@
             <a class="nav-word" id="privacy-policy"   href="./privacypolicy.html"  >Privacy Policy</a>
             <a class="nav-word" id="privacy-policy" href="./faqs.html">FAQs</a>
         </div>
-    <div class="profile-container">
-        <h1>User profile</h1>
-        <p id="setup-continue"></p><br>
-        <p  class="info-fields" id="firstNameLabel" contenteditable="true">First Name:</p><br>
-        <p  class="info-fields" id="lastNameLabel">Last Name: </p><br>
-        <p  class="info-fields" id="dateOfBirth">Date Of Birth: </p><br>
-        <p  class="info-fields" id="signup-email">Email: </p><br>
-        <p  class="info-fields" id="phonenumber">Phone Number:</p><br>
-        <p  class="info-fields" id="addressLineOne">Address Line 1: </p><br>
-        <p  class="info-fields" id="addressLineTwo" contenteditable="true">Address Line 2: </p><br>
-        <p  class="info-fields" id="cityOrTown">City or Town: </p><br>
-        <p  class="info-fields" id="disabilities">Disabilities: </p><br>
+        <div class="profile-container">
+            <h1>User profile</h1>
+            <p id="setup-continue"></p><br>
+            <p  class="info-fields" id="firstNameLabel" contenteditable="true">First Name:</p><br>
+            <p  class="info-fields" id="lastNameLabel">Last Name: </p><br>
+            <p  class="info-fields" id="dateOfBirth">Date Of Birth: </p><br>
+            <p  class="info-fields" id="signup-email">Email: </p><br>
+            <p  class="info-fields" id="phonenumber">Phone Number:</p><br>
+            <p  class="info-fields" id="addressLineOne">Address Line 1: </p><br>
+            <p  class="info-fields" id="addressLineTwo" contenteditable="true">Address Line 2: </p><br>
+            <p  class="info-fields" id="cityOrTown">City or Town: </p><br>
+            <p  class="info-fields" id="disabilities">Disabilities: </p><br>
+            
+            
+            <div class = "file-list-container" id = "list-container">
+                <p id = "file-list" class= "file-list-heading">Here are the files you've uploaded!</p>    
+            </div>
+
+            <div class = "file-list-container" id = "list-container">
+              <p id = "file-list" class= "file-list-heading">Here are the jobs you've applied for!</p>    
+          </div>
+              
+
+            <label for ="adminEmail" class="adminEmail" id="profile-labels-admin">Enter desired administrator email here: </label>
+            <input type="email" name="adminEmail" placeholder="Administrator Email" class="profilefield email" id="admin-email"><br><br>
         
-        
-        <div class = "file-list-container" id = "list-container">
-            <p id = "file-list" class= "file-list-heading">Here are the files you've uploaded!</p>    
+            <label for ="mdaEmail" class="mdaEmail" id="profile-labels-mda">Enter desired MDA email here: </label>
+            <input type="email" name="mdaEmail" placeholder="MDA Email" class="profilefield email" id="mda-email"><br><br>
+
+            <input type="button" value="Make Administrator" id="adminSubmitButton" class="submitButton" href="#" action="#">
+
+            <input type="button" value ="Make MDA" id="mdaSubmitButton" class="submitButton" href="#" action="#">
+
+            <input type="button" value ="Metrics"  id="metricButton" class="submitButton">
+            
+            <input type="button" id="updateButton" value="Update Profile">
+            <input type="button" id="removeButton" value="Delete Profile">
+            <input type="button" id="findButton" value="Find Jobs">
         </div>
-          
-
-        <label for ="adminEmail" class="adminEmail" id="profile-labels-admin">Enter desired administrator email here: </label>
-        <input type="email" name="adminEmail" placeholder="Administrator Email" class="profilefield email" id="admin-email"><br><br>
-    
-        <label for ="mdaEmail" class="mdaEmail" id="profile-labels-mda">Enter desired MDA email here: </label>
-        <input type="email" name="mdaEmail" placeholder="MDA Email" class="profilefield email" id="mda-email"><br><br>
-
-        <input type="button" value="Make Administrator" id="adminSubmitButton" class="submitButton" href="#" action="#">
-
-        <input type="button" value ="Make MDA" id="mdaSubmitButton" class="submitButton" href="#" action="#">
-
-        <input type="button" value ="Metrics"  id="metricButton" class="submitButton">
-        
-        <input type="button" id="updateButton" value="Update Profile">
-        <input type="button" id="removeButton" value="Delete Profile">
-        <input type="button" id="findButton" value="Find Jobs">
-
-
-       </div>
 
 
 
