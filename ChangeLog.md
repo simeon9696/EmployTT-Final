@@ -147,6 +147,7 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
  # Changed
    @sashajsingh
  - job page styling
+ 
    @simeon9696
  - added password reset functionality - login.js
  - fixed styling to center content in landing form - index_style.css
@@ -159,4 +160,3 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 - No items removed
 
 
-- No items removed
