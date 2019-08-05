@@ -148,7 +148,7 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
    @sashajsingh
  - job page styling
  
-   @simeon9696
+  @simeon9696
  - added password reset functionality - login.js
  - fixed styling to center content in landing form - index_style.css
  - added new directories when creating an account - index.js
