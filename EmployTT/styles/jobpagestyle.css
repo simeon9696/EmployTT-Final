@@ -13,12 +13,18 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	color:#ff3300;
 	font-weight:525;
 }
+
+@font-face{
+  font-family: 'Avenir';
+  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
+  font-display: 'Avenir';
+}
+
 html {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 12px;
   background-size: 100vw 100vw;
-line-height:1.6;
-
+  line-height:1.6;
 }
 
 
