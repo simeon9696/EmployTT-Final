@@ -123,7 +123,7 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 - No items removed
 
 
-# [1.0.9] - 2019-04-08
+# [1.0.9] - 2019-03-08
 
  # Added
    - no items added
@@ -134,7 +134,7 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
  - fixed error in joblist.js with 'apply' not showing up in button unless a user was logged in (again)
  - index.html added keywords for SEO
  - added alt text to img tags in authui.js
-
+ 
 
  # Removed
 - No items removed
@@ -147,7 +147,16 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
  # Changed
    @sashajsingh
  - job page styling
-
-
+   @simeon9696
+ - added password reset functionality - login.js
+ - fixed styling to center content in landing form - index_style.css
+ - added new directories when creating an account - index.js
+ - added updated dependancies to jobpage.html
+ - gave each page a unique title - .html
+ - fixed issue with email where jobName was 'null'
+ 
  # Removed
+- No items removed
+
+
 - No items removed
