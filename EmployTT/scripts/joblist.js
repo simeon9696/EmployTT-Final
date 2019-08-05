@@ -335,12 +335,18 @@ function clickedButton(id, jobid){
                         }
                         classChange.classList.toggle("applied");
                             const userEmail = auth.currentUser.email;
-                        const sendJobEmail = functions.httpsCallable('sendJobEmailApplicationSuccess');
-                        sendJobEmail({ jobName: doc.jobName, email : userEmail}).then(result => {
-                          console.log(result);
-                        }).catch(error=>{
-                          console.log(error);
-                        });
+
+                            firestore.collection("Jobs").doc(jobid).get().then(snapshot=>{
+                              const sendJobEmail = functions.httpsCallable('sendJobEmailApplicationSuccess');
+                              sendJobEmail({ jobName: snapshot.data().jobName, email : userEmail}).then(result => {
+                                console.log(result);
+                              }).catch(error=>{
+                                console.log(error);
+                              });
+                            }).catch((error)=>{
+                              console.log(error);
+                            });
+ 
                     }
                 });
             });
