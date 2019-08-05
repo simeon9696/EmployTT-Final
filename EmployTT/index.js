@@ -51,6 +51,23 @@ landingFormSubmit.addEventListener('click', e =>{
         addCivilianRole({ email: civilianEmail}).then(result => {
           console.log(result);
         }); 
+        firestore.collection("Users").doc(cred.user.uid).collection("jobsAppliedFor").doc("myApplications").set({
+
+        }).then(()=>{
+
+        }).catch((error)=>{
+           console.log(error);
+        });
+
+                
+        firestore.collection("Users").doc(cred.user.uid).collection("jobsPosted").doc("myPostings").set({
+  
+
+        }).then(()=>{
+
+        }).catch((error)=>{
+          console.log(error);
+        });
 
         firestore.collection("Users").doc(cred.user.uid).set({
             firstName: nameArray[0],
@@ -64,6 +81,8 @@ landingFormSubmit.addEventListener('click', e =>{
             disabilites: "",
             profileCreationDate: new Date(),
             lastUpdated: new Date(),
+  
+
           }).then(()=>{
             console.log("Firestore updated");
             let user = auth.currentUser;
