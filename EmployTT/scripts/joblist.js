@@ -150,6 +150,14 @@ function renderJobTable(doc, c, user){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Jobname~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     jobName.innerHTML = DOMPurify.sanitize(doc.data().jobName);
     // title.setAttribute("style","clear:all");
+      jobName.addEventListener("click",function(){
+      var fullPath = window.location.pathname;
+      var path = fullPath.substring(0,fullPath.lastIndexOf("/"));
+      // var query1 = name;
+      var queryString = "?job=" + doc.id;
+      var link = window.location.origin + path + "/jobpage.html" + queryString;
+      window.open(link);
+    });
     title.append(jobName);
     title.append(applyButton);
     title.append(pdfButton);
