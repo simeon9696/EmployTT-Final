@@ -20,13 +20,31 @@ addJob.addEventListener('click',(e)=>{
         opened    : jobDetails['jobOpened'].value,
         deadline  : jobDetails['jobClosed'].value,
         employerID: user.uid,
-     
-    }).then(function() {
-      console.log('Job added successfully');
-      alert("Job added successfully");
-      window.location.assign("./employerjoblist.html");
-      added = document.querySelector('#invisible');
-      added.classList.toggle("show");
+    }).then(docRef =>{
+      const jobid = docRef.id;
+      console.log('adding to jobsPosted');
+      firestore.collection("Users").doc(auth.currentUser.uid).collection("jobsPosted").add({
+        job_id: docRef.id
+      }).then((docRef)=>{
+        console.log('adding to applicantLists');
+
+          firestore.collection("Jobs").doc(jobid).collection("applicants").doc('applicantIDs').set({
+            applicantid: ""
+          }).then(()=>{
+            alert("Job added successfully");
+            window.location.assign("./employerjoblist.html");
+            added = document.querySelector('#invisible');
+            added.classList.toggle("show");
+          }).catch((error)=>{
+            console.log(error);
+          });
+
+     }).catch(error=>{
+      console.log(error);
+     });
+
+
+
 
     }).catch(function(error) {
       console.log(error);

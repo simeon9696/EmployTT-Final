@@ -18,14 +18,13 @@ function checkApplied(job_id, userid){
                   }
                 });
               });
-           
-        }else{
-          var texts = document.createTextNode("Apply");       //added this so "apply" shows up when no user is logged in
-          applyButton.appendChild(texts);
-          applyButton.setAttribute("class","normalButton");
-        }  
+            }
+          else{  var texts = document.createTextNode("Apply");       //added this so "apply" shows up when no user is logged in
+            applyButton.appendChild(texts);
+            applyButton.setAttribute("class","normalButton");
+          } 
             
-      });       
+          });       
   // });
 }
 // console.log(window.appliedJobs.length);
@@ -105,7 +104,6 @@ function renderJobTable(doc, c, user){
     applyButton.setAttribute("name",jobid);
     applyButton.setAttribute("onClick","clickedButton(this.id, this.name)");
 
-
     auth.onAuthStateChanged(user => {
       if (user) {
           const docRef = firestore.collection('Users');
@@ -151,15 +149,6 @@ function renderJobTable(doc, c, user){
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Jobname~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     jobName.innerHTML = DOMPurify.sanitize(doc.data().jobName);
-    jobName.addEventListener("click",function(){
-      console.log("clicjed" );
-      var fullPath = window.location.pathname;
-      var path = fullPath.substring(0,fullPath.lastIndexOf("/"));
-      // var query1 = name;
-      var queryString = "?job=" + doc.id;
-      var link = window.location.origin + path + "/jobpage.html" + queryString;
-      window.open(link);
-    });
     // title.setAttribute("style","clear:all");
     title.append(jobName);
     title.append(applyButton);
@@ -325,6 +314,19 @@ function clickedButton(id, jobid){
                         firestore.collection('Applicants').add({
                             user_id: auth.currentUser.uid,
                             job_id: jobid 
+                        }).then(()=>{
+                        
+                          firestore.collection("Jobs").doc(jobid).collection("applicants").add({
+                            applicantID : auth.currentUser.uid
+                          }).catch((error)=>{
+                            console.log(error);
+                          });
+
+                            firestore.collection("Users").doc(auth.currentUser.uid).collection("jobsAppliedFor").add({
+                              job_id: jobid
+                            }).catch((error)=>{
+                              console.log(error);
+                            });
                         });
                         alert("Applied for job");
                         var classChange = document.getElementById('applyButton');
@@ -365,11 +367,11 @@ function pdfDownload(id, jobid){
         
         const firstRowHeadingAlign = 65;
         const secondRowHeadingAlign = 80;
-        const thirdRowHeadingAlign = 110;
-        const fourthRowHeadingAlign = 150;
-        const fifthRowHeadingAlign = 180;
-        const sixthRowHeadingAlign = 210;
-        const seventhRowHeadingAlign = 230;
+        const thirdRowHeadingAlign = 120;
+        const fourthRowHeadingAlign = 160;
+        const fifthRowHeadingAlign = 190;
+        const sixthRowHeadingAlign = 230;
+        const seventhRowHeadingAlign = 260;
 
         const rowSpace=10;
         const firstRowValueAlign = firstRowHeadingAlign + rowSpace;
@@ -388,7 +390,10 @@ function pdfDownload(id, jobid){
         pdfFile.setFont("AvenirLTStd-Heavy","bold");
         pdfFile.setFontSize(25);
         /*First Row */
-        pdfFile.text(pdfFile.splitTextToSize(snapshot.data().jobName,170), 85, firstRowHeadingAlign);
+  
+        pdfFile.text(snapshot.data().jobName, pdfFile.internal.pageSize.getWidth() / 2, firstRowHeadingAlign, null, null, 'center');
+
+
         pdfFile.setFontSize(14);
         /*Second Row */
         pdfFile.text('About Job', firstColumnOffset, secondRowHeadingAlign); 
@@ -435,7 +440,8 @@ function pdfDownload(id, jobid){
 
         pdfFile.setFont("AvenirLTStd-Heavy","bold");
         pdfFile.setFontSize(25);
-        pdfFile.text('Happy Hunting!', 75,270);
+        pdfFile.text('Happy Hunting!', pdfFile.internal.pageSize.getWidth() / 2, 285, null, null, 'center');
+  
         /*Save PDF to client*/
         pdfFile.save(`EmployTT-${snapshot.data().jobName} Description.pdf`);
 
