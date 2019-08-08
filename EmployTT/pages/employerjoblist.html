@@ -21,6 +21,7 @@
 	<!--Footer CSS Dependencies-->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
 	<!-- Link style files -->
 	<link href="../styles/employersjoblist.css" type="text/css" rel="stylesheet" />	
 	<link href="../styles/mobilenavstyle.css" type="text/css" rel="stylesheet" />	
@@ -43,15 +44,23 @@
 				<a class="nav-word" id="logInBtn"	href="./login.html" >Log in</a>	
 				<a class="nav-word" id="employers"  href="./employers.html" style="color:#330099">Employers</a> 
 				<a class="nav-word" id="all-jobs"   href="./joblist.html">All Jobs</a>
-				<a class="nav-word" id="find-jobs"  href="../index.html" ">Find Jobs</a>
+				<a class="nav-word" id="find-jobs"  href="../index.html">Find Jobs</a>
 				<a class="nav-word" id="about-us"   href="./aboutus.html">About Us</a>
 				<a class="nav-word" id="terms-of-service" href="./termsofservice.html"  >Terms of Service</a>
 				<a class="nav-word" id="privacy-policy" href="./privacypolicy.html">Privacy Policy</a>
-				<a class="nav-word" id="privacy-policy" href="./faqs.html">FAQs</a>
 			</div>
+
 			<div class = "employerjoblist" id = "emp-list">
-					<h1 class = "h1job"> List of Jobs and Applicants </h1>
-					<ul id = "job-list"></ul>
+				<h1 class = "h1job"> List of Jobs and Applicants </h1>
+					<div class = "jobTable">
+						<br>
+							<table  class="Table">
+								<tbody id = "job-table">
+
+								</tbody>
+								</table>
+					</div>
+				<!-- <ul id = "job-list"></ul> -->
 			</div>
 	</body>
 <footer class="footer-distributed">
