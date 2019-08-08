@@ -62,7 +62,7 @@ html {
 	width:100vw;
 }	
 
-h1{
+.employerjoblist h1{
     margin-top:4vw;
 	margin-left:15vw;
     margin-right:20vw;
@@ -74,9 +74,234 @@ h1{
     background-color:#ff3300;
 }
 
-p{
+/* p{
 	font-size:1.3em;
 	padding-top:1vw;
 	margin-left:17vw;
     margin-right:23vw;
+} */
+
+.jobList{
+  background: #fff;
+  margin: 30px auto;
+  align-self: center;
+  padding:  10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
+}
+
+.Table{
+  width: 80%;
+  table-layout: fixed;
+  margin-left:auto; 
+  margin-right:auto;
+}
+
+.Table .rowone{
+  width: 200px;
+}
+.Table .rowtwo{
+  /* width: 60%; */
+  text-align: left;
+}
+
+.Table .rowtwo p{
+  text-align: left;
+}
+.quote{
+ background-color:#ffffff;}
+
+.logo img{
+width: 22%;
+height: auto;
+display: block;
+margin-left: auto;
+margin-right: auto;
+padding-top:4vw;}
+
+li a {
+display:block;
+text-align:left;}
+button{
+  border: 1px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 9px;
+  height: 40%;
+  box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #ff3300;
+  cursor: pointer;
+  display:inline-block;
+}
+button:hover{
+box-shadow: inset 0 0 10px rgb(177, 177, 177);;
+}
+
+.jobTable {
+font-family: Helvetica, sans-serif;        
+display:block;
+margin-top:-1vw;
+margin-left:auto;
+margin-right:auto;
+border-radius:16px;
+-moz-border-radius:16px;
+-webkit-border-radius: 16px;
+/* table-layout: fixed; */
+align-self: center;
+/* position: center; */
+
+}
+
+.jobTable .normalButton{
+border: 1px;
+background: #fff;
+border-radius: 10px;
+padding: 9px;
+height: 40%;
+box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
+font-weight: bold;
+letter-spacing: 1px;
+color: #ff3300;
+cursor: pointer;
+/* display:inline-block; */
+float: right;
+}
+.jobTable .normalButton:hover{
+box-shadow: inset 0 0 10px rgb(177, 177, 177);
+}
+.jobTable .applied{
+border: 1px;
+background: rgb(0, 255, 21);
+border-radius: 10px;
+padding: 9px;
+height: 40%;
+box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
+font-weight: bold;
+letter-spacing: 1px;
+color: #ff3300;
+cursor: pointer;
+/* display:inline-block; */
+float: right
+}
+.jobTable .applied:hover{
+box-shadow: inset 0 0 10px rgb(177, 177, 177);
+}
+
+
+
+.jobTable p{
+text-align:left;
+padding-left:2vw;
+padding-top:5px;
+margin-bottom:5px;
+padding-right:1vw;
+font-size:1.2em;
+color:#494949;
+}
+
+.jobTable .jobDiv{
+background-color: rgb(233, 233, 233); 
+width: 100%;
+/* border: 1px dashed rgb(119, 119, 119); */
+border: 2px;
+padding: 5px;
+margin: 5px;
+box-shadow: 2px 2px 3px 3px rgb(177, 177, 177);
+}
+.collapse{
+  background-color: #494949;
+  color: #c8c8c8;
+  cursor: pointer;
+  /* width: 0px; */
+  /* border: 1px dashed rgb(119, 119, 119); */
+  border: none;
+  padding: 5px;
+  margin: 5px;
+}
+.active, .collapse:hover{
+  background-color: #d40000;
+  color: #c8c8c8;
+  cursor: pointer;
+  /* width: 0px; */
+  /* border: 1px dashed rgb(119, 119, 119); */
+  border: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.jobs{
+display: none;
+overflow: hidden;
+/* background-color: #fff; */
+transition: max-height 0.3s ease-out;
+}
+.users{
+  width: auto;
+  display: none;
+  overflow: hidden;
+  /* background-color: rgb(180, 180, 180); */
+  transition: max-height 0.3s ease-out;
+  grid-template-columns: auto auto;
+  /* background-color:#b9b9b9; */
+  padding: 5px;
+  padding-left: 10px;
+  border: 2px dotted;
+  margin-left: 10px;
+  }
+.users_head{
+  font-size: 16px;
+  padding: 10px;
+}
+.users_head:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.jobTable h4{
+  background-color:#ff3300;
+  background: linear-gradient(90deg, rgba(51,0,153,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  font-size:2px;
+  border-radius:16px;
+}
+
+.jobTable h1{
+  text-align:left;
+  display:inline;
+  padding-top:10px;
+  padding-right:1vw;
+  padding-left:2vw;
+	padding-bottom:0vw;
+	font-size:1.8em;
+	color:#ff3300;
+}
+
+.jobTable h2{
+  text-align:left;
+  padding-top:1vw;
+  padding-right:1vw;
+  padding-left:2vw;
+  padding-bottom:0vw;
+  font-weight:bold;
+	font-size:1.4em;
+	color:#000000;
+}
+
+.jobTable h3{
+  text-align:left;
+  padding-top:1vw;
+  padding-right:1vw;
+  padding-left:2vw;
+  font-weight:500;
+	font-size:1.2em;
+	color:#494949;
+}
+
+.grid-items{
+  /* background-color: #b9b9b9; */
+  /* border1 1px solid  */
+  padding: 10px;
+  font-size: 20px;
+  /* text-align: left; */
 }
