@@ -27,7 +27,7 @@ This assumes that you have access to the firebase project for this repository al
 To install the Firebase CLI,firebase-functions and firebase-admin follow these steps. 
 - Make sure that your terminal is pointing to the root of your project. 
 - If you've already cloned the repository, the firebase commands will ask to overwrite file. Select yes for every file except **index.js** so that you will preserve the functions from the repository.
-
+- If any installation yields a 'saveError' use `cd functions` and try again
 ```
 npm install firebase-functions@latest firebase-admin@latest --save
 npm install -g firebase-tools
@@ -61,7 +61,7 @@ Then jsZip
 ```
 npm install jszip
 ```
-If any installation yields a 'saveError' use `cd functions` and try again
+
 # Built With
   - Firebase
   - PDF.js
