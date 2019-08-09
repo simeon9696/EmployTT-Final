@@ -51,23 +51,7 @@ landingFormSubmit.addEventListener('click', e =>{
         addCivilianRole({ email: civilianEmail}).then(result => {
           console.log(result);
         }); 
-        firestore.collection("Users").doc(cred.user.uid).collection("jobsAppliedFor").doc("myApplications").set({
 
-        }).then(()=>{
-
-        }).catch((error)=>{
-           console.log(error);
-        });
-
-                
-        firestore.collection("Users").doc(cred.user.uid).collection("jobsPosted").doc("myPostings").set({
-  
-
-        }).then(()=>{
-
-        }).catch((error)=>{
-          console.log(error);
-        });
 
         firestore.collection("Users").doc(cred.user.uid).set({
             firstName: nameArray[0],
@@ -94,7 +78,22 @@ landingFormSubmit.addEventListener('click', e =>{
                 user.sendEmailVerification().then(() => {
                     //send verification email
                     console.log("Verification Email Sent!");
-                    window.location.assign("./pages/userprofileinfo.html")
+                    firestore.collection("Users").doc(cred.user.uid).collection("jobsAppliedFor").doc("myApplications").set({
+
+                    }).then(()=>{
+                      firestore.collection("Users").doc(cred.user.uid).collection("jobsPosted").doc("myPostings").set({
+  
+
+                      }).then(()=>{
+                        window.location.assign("./pages/userprofileregister.html")
+                      }).catch((error)=>{
+                        console.log(error);
+                      });
+                    }).catch((error)=>{
+                       console.log(error);
+                    });
+            
+                    
                 }).catch(error=>{
                   console.log(error);
                 });
@@ -220,10 +219,7 @@ signUpFields.forEach(field =>{
   
 });
 
-
-const googleButton = document.querySelector('#landingImgGoogleSubmit');
-googleButton.addEventListener('click',e =>{
-  e.preventDefault();
+function googleSignIn(){
   const provider = new firebase.auth.GoogleAuthProvider();
 
   auth.useDeviceLanguage();
@@ -236,6 +232,7 @@ googleButton.addEventListener('click',e =>{
   auth.signInWithPopup(provider).then(googleUser => {
     console.log(googleUser.additionalUserInfo.isNewUser);
     if(googleUser.additionalUserInfo.isNewUser === false){
+      
       window.location.assign("./index.html");
      
     }else if(googleUser.additionalUserInfo.isNewUser === true){
@@ -245,11 +242,69 @@ googleButton.addEventListener('click',e =>{
       const addCivilianRole = functions.httpsCallable("addCivilianRole");
       addCivilianRole({ email: civilianEmail }).then(result => {
         console.log(result);
-        window.location.assign("./pages/userprofileregister.html");
       });
+      ;
+      console.log(googleUser.user.uid);
+      console.log(googleUser);
+      firestore.collection("Users").doc(googleUser.user.uid).set({
+        firstName: googleUser.additionalUserInfo.profile.given_name,
+        lastName: googleUser.additionalUserInfo.profile.family_name,
+        email: googleUser.additionalUserInfo.profile.email,
+        phoneNumber: "",
+        dateOfBirth: "",
+        addressOne: "",
+        addressTwo: "",
+        cityortown: "",
+        disabilites: "",
+        profileCreationDate: new Date(),
+        lastUpdated: new Date(),
+      }).then(()=>{
+        console.log("Firestore updated");
+        let user = auth.currentUser;
+        user.updateProfile({
+          //displayName: nameArray[0], //Update profile data
+        }).then(() => {
+            console.log("Profile Updated!");
+            let user = auth.currentUser;
+            user.sendEmailVerification().then(() => {
+                //send verification email
+                console.log("Verification Email Sent!");
+                firestore.collection("Users").doc(googleUser.user.uid).collection("jobsAppliedFor").doc("myApplications").set({
+
+                }).then(()=>{
+                  firestore.collection("Users").doc(googleUser.user.uid).collection("jobsPosted").doc("myPostings").set({
+
+                  }).then(()=>{
+                    window.location.assign("./pages/userprofileregister.html")
+                  }).catch((error)=>{
+                    console.log(error);
+                  });
+                }).catch((error)=>{
+                   console.log(error);
+                });
+        
+                
+            }).catch(error=>{
+              console.log(error);
+            });
+        }).catch(error=>{
+          console.log(error);
+          alert(error);
+        });
+      }).catch(error=>{
+        console.log(error);
+      });
+
     }
   });
+}
+
+const googleButton = document.querySelector('#landingImgGoogleSubmit');
+googleButton.addEventListener('click',e =>{
+  e.preventDefault();
+  googleSignIn();
 })
+
 
 
 const mobileSubmitButton = document.querySelector('#mobile-reg-button');
@@ -266,44 +321,8 @@ mobileSubmitButton.addEventListener('click',e=>{
 const googleMobileButton = document.querySelector('#google-mobile-reg-button');
 googleMobileButton.addEventListener('click',e=>{
   e.preventDefault();
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth.useDeviceLanguage();
-  provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-  provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
-  provider.setCustomParameters({
-      'login_hint': 'user@example.com'
-    });
-  firebase.auth().signInWithPopup(provider).then((googleUser)=>{
-        console.log(googleUser.additionalUserInfo.isNewUser);
-        if(googleUser.additionalUserInfo.isNewUser === false){
-          window.location.assign("../index.html");
-        }else if(googleUser.additionalUserInfo.isNewUser === true){
-          window.location.assign("./userprofileregister.html");
-          addCivilianRole({ email: civilianEmail }).then(result => {
-            console.log(result);
-            window.location.assign("./pages/userprofileregister.html");
-          });
-        }
-            
- }).catch(error=>{
-   console.log(error);
- });
+  googleSignIn();
 })
-
-// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-const vh = window.innerHeight * 0.01;
-const vw = window.innerWidth *0.01;
-window.resizeTo(vw,vh);
-// Then we set the value in the --vh custom property to the root of the document
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-// We listen to the resize event
-window.addEventListener('resize', () => {
-  // We execute the same script as before
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-  window.resizeTo(vw,vh);
-});
 
 
 function fadeInRegistrationForm(){
@@ -318,16 +337,18 @@ function fadeInRegistrationForm(){
   registrationForm.style.Animation =`fadein ${fadeTime}s`; 
   registrationForm.style.display="flex";
 }
+
+
+
+
+
+
+/////////////////////////add above/////////////////////////
 const jobTable = document.querySelector('#job-table');
 let c = 0;
 let table = document.createElement('table');
 let body = document.createElement('tbody');
 const div = document.querySelector('#job-table');
-
-
-
-/////////////////////////add above/////////////////////////
-
 var tabs = document.querySelectorAll(".tabCont .butCont button");
 var content = document.querySelectorAll(".tabCont .content");
 
