@@ -314,18 +314,14 @@ function clickedButton(id, jobid){
             const docRef = firestore.collection('Users');
             docRef.doc(user.uid).get().then(function(doc) {
                 var userid = doc.id;
-                firestore.collection('Applicants').where('user_id','==',userid).where('job_id','==',jobid).get().then((snapshot)=>{
+                firestore.collection('Jobs').doc(jobid).collection("applicants").where('applicantID','==',userid).get().then((snapshot)=>{
                     if(snapshot.docs.length > 0){
                         alert("You are already applied for this job");
                     }
                     else{
-                        firestore.collection('Applicants').add({
-                            user_id: auth.currentUser.uid,
-                            job_id: jobid 
-                        }).then(()=>{
-                        
                           firestore.collection("Jobs").doc(jobid).collection("applicants").add({
-                            applicantID : auth.currentUser.uid
+                            applicantID : auth.currentUser.uid,
+                            applicationStatus : "Pending"
                           }).catch((error)=>{
                             console.log(error);
                           });
