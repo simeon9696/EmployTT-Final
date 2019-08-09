@@ -6,6 +6,8 @@ The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased
 # Added 
  - jobpage.html/css/js (@wetcrix). Added before 1.1.0.
   - Can click on the job's name and view a grid with its details in another tab
+ - joblist.js
+  - Added an applicationStatus to the Jobs/doc/application collection to track application progress
   
 # Changed
   @wetcrix
