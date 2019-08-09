@@ -1,4 +1,4 @@
-//////////////START EMPLOYERJOBLIST/////////////////////////
+/////////////START EMPLOYERJOBLIST/////////////////////////
 const jobLists = document.querySelector('#job-table');
 
 function fetchUser(job, user, applicant, about, numofApps, c, contName){
@@ -6,10 +6,22 @@ function fetchUser(job, user, applicant, about, numofApps, c, contName){
     var userid = user.id;
 
     //~~~~~~~~~~~~~~~~~~~Link to profiles
-    let profile = document.createElement('button');
+    let profile = document.createElement('a');
+    let profile_icon = document.createElement('i');
+    let profile_text = document.createElement('strong');
+    profile.setAttribute("class","button");
+    profile_icon.setAttribute("class","material-icons");
+    profile_icon.setAttribute("style","font-size:14px;");
+    profile_text.textContent = "More Details";
+    profile_icon.textContent = "assignment";
+    // profile.setAttribute("class","profileButton");
+    // var profileText = document.createTextNode(">> More Details");
+    // profile.appendChild(profileText);
     profile.setAttribute("id",c);    
     profile.setAttribute("name",userid );
-    profile.setAttribute("onClick","clickedButton(this.id, this.name)");
+    profile.setAttribute("onClick","clickedProfile(this.id, this.name)");
+    profile.appendChild(profile_icon);
+    profile.appendChild(profile_text);
     
     //~~~~~~~~~~~~~~~~~~~Job and user info
     let user_div = document.createElement('div');
@@ -60,6 +72,7 @@ function fetchUser(job, user, applicant, about, numofApps, c, contName){
     user_div.appendChild(userlname);
     user_div.appendChild(email);
     user_div.appendChild(dob);
+    user_div.appendChild(profile);
     rowtwo.appendChild(user_div);
     c = c+1;
 }
