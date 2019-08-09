@@ -20,6 +20,7 @@ GoRTT is seeking to implement an online recruitment system which will aid citize
   - jsPDF 
   - DOMPurify
   - Chart.js
+  - jsZip
   
 This assumes that you have access to the firebase project for this repository already. If you do not, please contact one of the authors for authentication. 
 
@@ -56,6 +57,11 @@ Then Chart.js
 ```
 npm install chart.js --save
 ```
+Then jsZip
+```
+npm install jszip
+```
+If any installation yields a 'saveError' use `cd functions` and try again
 # Built With
   - Firebase
   - PDF.js
