@@ -67,14 +67,15 @@ auth.onAuthStateChanged(user => {
                           jobPostings[monthsInAYear.indexOf(month)] =(snapshot.data().totaljobsPosted);
                           jobApplications[monthsInAYear.indexOf(month)] =(snapshot.data().applicationsMade);
                           employerRegistrations[monthsInAYear.indexOf(month)] =(snapshot.data().employersRegistered);
-                          adminRegistrations[monthsInAYear.indexOf(month)] =(snapshot.data().accountsCreated);
+                          adminRegistrations[monthsInAYear.indexOf(month)] =(snapshot.data().adminsRegistered);
                       }).then(()=>{
 
                         let index =0;
                                 dataNames.forEach(name=>{
                                    // console.log(dataFields[index])
                                    // console.log(chartDataNames.dataNames[name])
-                                   Chart.defaults.global.animation.duration = 1500; 
+                                   Chart.defaults.global.animation.duration = 1000;
+                                   console.log(chartDataNames.dataNames); 
                                     var ctx = document.getElementById(dataFields[index]).getContext('2d');
                                     var chart = new Chart(ctx, {
                                         // The type of chart we want to create
@@ -99,6 +100,7 @@ auth.onAuthStateChanged(user => {
                                         }
                                     });
                                     index++;
+
                                 })
                                     
                                  
