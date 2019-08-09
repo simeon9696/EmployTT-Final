@@ -331,7 +331,6 @@ function clickedButton(id, jobid){
                             }).catch((error)=>{
                               console.log(error);
                             });
-                        });
                         alert("Applied for job");
                         var classChange = document.getElementById('applyButton');
                         if(classChange.innerHTML == "Apply"){
