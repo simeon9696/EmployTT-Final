@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Employers | EmployTT</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=,chrome=1">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ff3300">
+        <meta name="description" content="jobs for citizens of trinidad and tobago">
+        <meta name="keywords" lang="en" content="employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt, igovtt">
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <!-- Scripts are deferred to improve page performance -->
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" 	   	type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"	type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js" 	type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" 		type="text/javascript"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" 	type="text/javascript"></script>     
+
+        <script defer src="../scripts/authui.js" type="text/javascript"></script>
+        <script defer src="../scripts/employerinstructions.js" 		  type="text/javascript"></script>
+        <!--HTML Sanitizer-->
+        <script defer src="../node_modules/dompurify/dist/purify.js" type="text/javascript" ></script>  
+        <!--HTML to PDF Converter-->   
+        <script defer src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"                      type="text/javascript" ></script>
+        <script defer src="../node_modules/jspdf-customfonts/dist/Exo-Regular-normal.js" type="text/javascript" ></script>
+        <script defer src="../node_modules/jspdf-customfonts/dist/Fabrica-normal.js" type="text/javascript" ></script>
+        <script defer src="../node_modules/jspdf-customfonts/dist/AvenirLTStd-Light-normal.js" type="text/javascript" ></script>
+        <script defer src="../node_modules/jspdf-customfonts/dist/AvenirLTStd-Heavy-bold.js" type="text/javascript" ></script>
+        <!--Footer CSS Dependencies-->
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
+        <!-- Link style files -->
+        <link href="../styles/employerinstructionsstyle.css" type="text/css" rel="stylesheet" />	
+        <link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
+        <link href="../styles/mobilenavstyle.css" type="text/css" rel="stylesheet" />	
+        <!--Link address bar icon file-->
+        <link href="../images/icons/icon-72x72.png"  type="image/png" rel="shortcut icon"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
+    </head>
+    <body>
+     <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox" class="menu-clicker"/>
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="mobile-menu">
+                <li id="mobile-li"><a href="./joblist.html" style="color:#ff3300;"  class="active">All Jobs</a></li>
+                <li id="mobile-li"><a href="../index.html"  >Find Jobs</a></li>
+                <li id="mobile-li"><a href="./login.html">Log In</a></li>
+                <li id="mobile-li"><a href="./employers.html">Employers</a></li>
+                <li id="mobile-li"><a href="./termsofservice.html">Terms of Service</a></li>
+                <li id="mobile-li"><a href="./aboutus.html">About Us</a></li>
+                <li id="mobile-li"><a href="./privacypolicy.html" >Privacy Policy</a></li>
+                <li id="mobile-li"><a href="./userprofileregister.html" >Register</a></li>
+                </ul>
+            </div>
+        </nav>
+    <div class="topnav">    
+            <!--User's name goes here once logged in-->
+            <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
+            <a class="nav-word" id="logged-in"  href="#"></a>	
+            <a class="nav-word" id="regBtn" 	href="./userprofileregister.html" >Register</a>
+            <a class="nav-word" id="logInBtn" 	href="./login.html" >Log in</a>	
+            <a class="nav-word" id="employers" 	href="./employers.html">Employers</a> 
+            <a class="nav-word" id="all-jobs"  	href="./joblist.html"  style="color:#ff3300">All Jobs</a>
+            <a class="nav-word" id="find-jobs" 	href="../index.html" >Find Jobs</a>
+            <a class="nav-word" id="about-us" 	href="./aboutus.html" >About Us</a>
+            <a class="nav-word" id="terms-of-service" href="./termsofservice.html"  >Terms of Service</a>
+            <a class="nav-word" id="privacy-policy"   href="./privacypolicy.html">Privacy Policy</a>
+        </div>
+
+
+        <div class = 'title-heading'> EmployTT for Employers</div>
+        <div class = 'instructions'> EmployTT makes it as simple as ever for a company to post a job description. 
+            <ol>
+                <li>Fill out this <a href="./employerregister.html">form</a></li>
+                <li>Wait 3-5 business days for us to authenicate the application</li>
+                <li>Once your application has been authenicated we'll email you and change the status of your account</li>
+                <li>The email will contain instructions of how to post your first job!</li>
+            </ol>
+        </div>
+</body>
+
+
+<footer class="footer-distributed">
+
+    <div class="footer-left">
+
+        
+        <img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">       
+        <p class="footer-links">
+            <a href="./index.html">Home</a>
+            ·
+            <a href="./termsofservice.html">Terms Of Service</a>
+            ·
+            <a href="./privacypolicy.html">Privacy Policy</a>
+            ·
+            <a href="./aboutus.html">About</a>
+            ·
+            <a href="./aboutus.html">Contact</a>
+          </p>
+        <p class="footer-company-name">EmployTT &copy; 2019</p>
+    </div>
+
+    <div class="footer-center">
+
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Pembroke St</span> Port of Spain, Trinidad and Tobago</p>
+        </div>
+
+        <div>
+            <i class="fa fa-phone"></i>
+            <p>+1 (868) 627-5600</p>
+        </div>
+
+        <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:support@company.com">hackttdecepticons@gmail.com</a></p>
+        </div>
+
+    </div>
+
+    <div class="footer-right">
+
+        <p class="footer-company-about">
+            <span>About the company</span>
+            Dedicated to helping you become employed as fast as possible
+        </p>
+
+        <div class="footer-icons">
+
+            <a href="https://www.facebook.com/iGovTT/"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/hacktt19/"><i class="fa fa-instagram"></i></a>
+
+
+        </div>
+
+    </div>
+</footer>
+</html>
