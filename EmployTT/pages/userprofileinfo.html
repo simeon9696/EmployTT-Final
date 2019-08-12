@@ -16,15 +16,21 @@
     <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-storage.js"   type="text/javascript"></script>
     <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js" 	   type="text/javascript"></script>
     <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-functions.js" type="text/javascript"></script>
+        <!--HTML Sanitizer-->
+    <script defer src="../node_modules/dompurify/dist/purify.js" type="text/javascript" ></script>    
+    <!--File Saver-->
+    <script defer src="../functions/node_modules/file-saver/src/FileSaver.js" type="text/javascript" ></script>  
+
+    <script defer src="../functions/node_modules/file-saver/dist/FileSaver.min.js" type="text/javascript" ></script>  
+    <script defer src="../functions/node_modules/jszip/dist/jszip.min.js" type="text/javascript" ></script>  
     <script defer src="../scripts/authui.js" 								type="text/javascript"></script>
     <script defer src="../scripts/userprofileinfo.js" 								   type="text/javascript"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <!--HTML Sanitizer-->
-        <script defer src="../node_modules/dompurify/dist/purify.js" type="text/javascript" ></script>    
-<!--Footer CSS Dependencies-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!--Footer CSS Dependencies-->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
     <!-- Link style files -->
@@ -75,24 +81,17 @@
 
             <div class = "file-list-container" id = "list-container">
               <p id = "file-list" class= "file-list-heading">Here are the jobs you've applied for!</p>    
-          </div>
+          </div><br><br>
               
 
-            <label for ="adminEmail" class="adminEmail" id="profile-labels-admin">Enter desired administrator email here: </label>
-            <input type="email" name="adminEmail" placeholder="Administrator Email" class="profilefield email" id="admin-email"><br><br>
-        
-            <label for ="mdaEmail" class="mdaEmail" id="profile-labels-mda">Enter desired MDA email here: </label>
-            <input type="email" name="mdaEmail" placeholder="MDA Email" class="profilefield email" id="mda-email"><br><br>
-
-            <input type="button" value="Make Administrator" id="adminSubmitButton" class="submitButton" href="#" action="#">
-
-            <input type="button" value ="Make MDA" id="mdaSubmitButton" class="submitButton" href="#" action="#">
-
-            <input type="button" value ="Metrics"  id="metricButton" class="submitButton">
+          
+          <input type="button" value = "Functions" id ="admin-functions" class = "submitButton">            
+          <input type="button" value ="Metrics"  id="metricButton" class="submitButton">
             
             <input type="button" id="updateButton" value="Update Profile">
             <input type="button" id="removeButton" value="Delete Profile">
             <input type="button" id="findButton" value="Find Jobs">
+            <input type="button" id="downloadZip" value="Download Zip">
         </div>
 
 
@@ -132,44 +131,7 @@
             </div>
           </div>
 
-          <div class="modal fade" id="customClaimError" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header bg-danger">
-                      <h5 class="modal-title text-white" id="exampleModalCenterTitle">Aw shucks, there was an error</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body text-center">
-                      You do not have the necessary privilege to execute this function. If you think this 
-                      is an error please contact an administrator via our email or phone.
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="modal fade" id="customClaimSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header bg-success">
-                          <h5 class="modal-title text-white" id="exampleModalCenterTitle">Success!</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body text-center" id="userSuccessMessage">
-                          The user is now an admin/mda
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
           
     </body>
 

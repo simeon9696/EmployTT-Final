@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id = "user-title">User Profile | EmployTT</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=,chrome=1">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ff3300">
+    <meta name="description" content="jobs for citizens of trinidad and tobago">
+    <meta name="keywords" lang="en" content="employment, jobs, Trinidad, Tobago, Ministry, applications, find, employtt, igovtt">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- Scripts are deferred to improve page performance -->
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js" 	   type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js" type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-storage.js"   type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js" 	   type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-functions.js" type="text/javascript"></script>
+            <!--HTML Sanitizer-->
+    <script defer src="../node_modules/dompurify/dist/purify.js" type="text/javascript" ></script>    
+        <!--File Saver-->
+    <script defer src="../functions/node_modules/file-saver/src/FileSaver.js" type="text/javascript" ></script>  
+
+    <script defer src="../functions/node_modules/file-saver/dist/FileSaver.min.js" type="text/javascript" ></script>  
+    <script defer src="../functions/node_modules/jszip/dist/jszip.min.js" type="text/javascript" ></script>  
+    <script defer src="../scripts/authui.js" 								type="text/javascript"></script>
+    <script defer src="../scripts/adminfunctions.js" 								   type="text/javascript"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!--Footer CSS Dependencies-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
+    <!-- Link style files -->
+    <link href="../styles/adminfunctionsstyle.css" type="text/css" rel="stylesheet" />	
+    <link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--Link address bar icon file for any browser-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    </head>
+    <body>
+        <div class="topnav">    
+            <!--User's name goes here once logged in-->
+            <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
+            <a class="nav-word" id="logged-in"  href="#"></a>	
+            <a class="nav-word" id="regBtn" 	href="./userprofileregister.html" style="color:#ff3300" >Register</a>
+            <a class="nav-word" id="logInBtn" 	href="./login.html">Log in</a>	
+            <a class="nav-word" id="employers" 	href="./employers.html" >Employers</a> 
+            <a class="nav-word" id="all-jobs"  	href="./joblist.html" >All Jobs</a>
+            <a class="nav-word" id="find-jobs" 	href="../index.html" ">Find Jobs</a>
+            <a class="nav-word" id="about-us" 	href="./aboutus.html" >About Us</a>
+            <a class="nav-word" id="terms-of-service" href="./termsofservice.html" >Terms of Service</a>
+            <a class="nav-word" id="privacy-policy"   href="./privacypolicy.html"  >Privacy Policy</a>
+            <a class="nav-word" id="privacy-policy" href="./faqs.html">FAQs</a>
+        </div>
+
+        <div class = page-content>
+
+          <div class=page-title>
+            <h1>Administrator Functions</h1>
+          </div>
+
+          <div class = "email-form">
+              <form autocomplete="off" method="#" action="#" id="admin-form" class="email-form">
+                  <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                  <label for ="adminEmail" class="adminEmail" >Enter administrator email here: </label>&nbsp;
+                  <input type="email" name="adminEmail" placeholder="Administrator Email" class="profilefield email" id="admin-email" autocomplete="off"><br>
+
+                  <label for ="mdaEmail" class="mdaEmail" >Enter MDA email here: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="email" name="mdaEmail" placeholder="MDA Email" class="profilefield email" id="mda-email" autocomplete="off"><br>
+                
+                  <label for ="deleteUserEmail" class="deleteUserEmail" >Enter user email for deletion: </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="email" name="deleteUserEmail" placeholder="User email" class="profilefield email" id="delete-email" autocomplete="off"><br>
+                <div class= "form-buttons">
+                    <input type="button" value="Make Administrator" id="adminSubmitButton" class="submitButton" href="#" action="#" ><br>
+                    <input type="button" value ="Make MDA" id="mdaSubmitButton" class="submitButton" href="#" action="#" ><br>
+                    <input type="button" id = "deleteUser" value="Delete User" class = "submitButton" href="#" action="#" style="background-color: #DC3546;" >
+                </div>
+              
+                </form>
+          </div>
+
+
+      
+
+        </div>
+
+
+
+      <div class="modal fade" id="customClaimError" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header bg-danger">
+                  <h5 class="modal-title text-white" id="exampleModalCenterTitle">Aw shucks, there was an error</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center" id ="errorMessage">
+                  You do not have the necessary privilege to execute this function. If you think this 
+                  is an error please contact an administrator via our email or phone.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="customClaimSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header bg-success">
+                      <h5 class="modal-title text-white" id="exampleModalCenterTitle">Success!</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center" id="userSuccessMessage">
+                      The user is now an admin/mda
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+  
+  </body>
+    <footer class="footer-distributed">
+
+      <div class="footer-left">
+
+          
+          <img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">       
+          <p class="footer-links">
+              <a href="./index.html">Home</a>
+              ·
+              <a href="./termsofservice.html">Terms Of Service</a>
+              ·
+              <a href="./privacypolicy.html">Privacy Policy</a>
+              ·
+              <a href="./aboutus.html">About</a>
+              ·
+              <a href="./aboutus.html">Contact</a>
+            </p>
+
+          <p class="footer-company-name">EmployTT &copy; 2019</p>
+      </div>
+
+      <div class="footer-center">
+
+          <div>
+              <i class="fa fa-map-marker"></i>
+              <p><span>Pembroke St</span> Port of Spain, Trinidad and Tobago</p>
+          </div>
+
+          <div>
+              <i class="fa fa-phone"></i>
+              <p>+1 (868) 627-5600</p>
+          </div>
+
+          <div>
+              <i class="fa fa-envelope"></i>
+              <p><a href="mailto:support@company.com">hackttdecepticons@gmail.com</a></p>
+          </div>
+
+      </div>
+
+      <div class="footer-right">
+
+          <p class="footer-company-about">
+              <span>About the company</span>
+              Dedicated to helping you become employed as fast as possible
+          </p>
+
+          <div class="footer-icons">
+
+              <a href="https://www.facebook.com/iGovTT/"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/hacktt19/"><i class="fa fa-instagram"></i></a>
+
+
+          </div>
+
+      </div>
+  </footer>
+</html>
