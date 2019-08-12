@@ -1,8 +1,14 @@
 "use strict";
 
-
+let fileBlobs = [];
+let fileNames = [];
 auth.onAuthStateChanged(user => {
   if(user){
+
+    let metric= document.querySelector("#metricButton");
+    metric.innerHTML = "";
+    metric.style.display = "none";
+
     /*Change tab title*/
     if(providerID === "password"){
       let userTitle = user.displayName;
@@ -12,6 +18,7 @@ auth.onAuthStateChanged(user => {
       let userTitle = user.displayName.split(" ");
       let pageTitle = document.querySelector('#user-title');
       pageTitle.innerHTML = `${DOMPurify.sanitize(userTitle[0])} | EmployTT`;
+      
     }
 
     user.getIdTokenResult().then(idTokenResult => {
@@ -23,7 +30,10 @@ auth.onAuthStateChanged(user => {
 
       if(user.admin){
  
-  
+        let metric= document.querySelector("#metricButton");
+        metric.innerHTML = "Metrics";
+        metric.style.display = "inline-block";
+
         let fieldLabelAdmin = document.querySelector('#profile-labels-admin');
         fieldLabelAdmin.innerHTML = "Enter desired Administrator email here:";
         fieldLabelAdmin.style.display = "inline-block";
@@ -179,6 +189,8 @@ auth.onAuthStateChanged(user => {
                 xhr.send();
                 xhr.onload = function(event) {
                   var blob = xhr.response;
+                  fileBlobs.push(blob);
+                  fileNames.push(fileRef.name);
                   //console.log(URL.createObjectURL(blob))
                   let fileListing = document.querySelector("#list-container");
                   let fileName = document.createElement('a');
@@ -197,7 +209,6 @@ auth.onAuthStateChanged(user => {
           });
     }).catch(error => {
         console.log("Error getting document:", error);
-        setupAcc.innerHTML= `Hey there ${user.displayName}! Continue setting up your account! Click update to get started`;
         firstNameLabel.innerHTML = ""; 
         firstNameLabel.style.display ="none";
     });
@@ -222,12 +233,31 @@ firstNameEdit.addEventListener('focusout',(e)=>{
   console.log(newFirstName);
 });
 
+const downloadZipFile = document.querySelector('#downloadZip');
+downloadZipFile.addEventListener('click',e=>{
+  e.preventDefault();
+  console.log(fileBlobs);
+  var zip = new JSZip();
+  const folderName =`${auth.currentUser.displayName} User Files - EmployTT`
+  let index =0;
+  fileBlobs.forEach(blob=>{
+    zip.file(fileNames[index], blob);
+    index++;
+  });
+  
+  zip.generateAsync({type:"blob"})
+  .then(function (blob) {
+      saveAs(blob, folderName);
+  });
+  
+})
+
 
 //Update data on user profile
 const updateProfile = document.querySelector('#updateButton');
 updateProfile.addEventListener('click',(e)=>{
   e.preventDefault();
-  const elementsToBeHidden =["#removeButton","#findButton","#mdaSubmitButton","#mda-email","#profile-labels-mda","#adminSubmitButton","#admin-email","#profile-labels-admin","#list-container","#file-list"];
+  const elementsToBeHidden =["#metricButton","#removeButton","#findButton","#mdaSubmitButton","#mda-email","#profile-labels-mda","#adminSubmitButton","#admin-email","#profile-labels-admin","#list-container","#file-list"];
   elementsToBeHidden.forEach(element =>{
     let elementSelect = document.querySelector(element);
     elementSelect.style.display = "none";
@@ -303,162 +333,48 @@ removeProfile.addEventListener('click',(e)=>{
 
 function deleteUser (){
     let user = auth.currentUser;
-    firestore.collection('Users').doc(user.uid).delete().then(function() {
-      console.log("User document successfully deleted!");
-      user.delete().then(function() {
-        console.log(`Profile deleted`);
-        //window.location.assign("../index.html");
-      }).catch(function(error) {
-        console.log('Error deleting profile',error)
-        alert(error);
+    firestore.collection("Users").doc(user.uid).collection("jobsAppliedFor").doc("myApplications").delete().then(()=>{
+      firestore.collection("Users").doc(user.uid).collection("jobsPosted").doc("myPostings").delete().then(()=>{
+        firestore.collection('Users').doc(user.uid).delete().then(()=>{
+          console.log("User document successfully deleted!");
+          user.delete().then(()=> {
+            console.log(`Profile deleted`);
+            //window.location.assign("../index.html");
+          }).catch(function(error) {
+            console.log('Error deleting profile',error)
+            alert(error);
+          });
+        }).catch(function(error) {
+            console.error("Error removing document: ", error);
+            alert(error);
+        });
+       
+      }).catch((error)=>{
+        console.log(error);
       });
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-        alert(error);
+    }).catch((error)=>{
+       console.log(error);
     });
+
   
 }
 
 
-// add admin cloud function
-const adminForm = document.querySelector('#adminSubmitButton');
-adminForm.addEventListener('click', (e) => {
+
+
+//Go to metric page
+const metricButton = document.querySelector('#metricButton')
+metricButton.addEventListener('click', e =>{
   e.preventDefault();
-  const adminEmail = document.querySelector('#admin-email').value;
-  const addAdminRole = functions.httpsCallable('addAdminRole');
-  addAdminRole({ email: adminEmail }).then(result => {
-    if(result.data.message !== undefined){
-      $('#customClaimSuccess').modal('show');
-      const successMessage = document.querySelector('#userSuccessMessage');
-      successMessage.innerHTML = `${adminEmail} is now an administrator!`
-    }else if (result.data.error !== undefined){
-      $('#customClaimError').modal('show');
-    }
-  });
-});
-
-
-// add mda cloud function
-const mdaForm = document.querySelector('#mdaSubmitButton');
-mdaForm.addEventListener('click', (e) => {
-  e.preventDefault();
-  const mdaEmail = document.querySelector('#mda-email').value;
-  const addMdaRole = functions.httpsCallable('addMdaRole');
-  addMdaRole({ email: mdaEmail }).then(result => {
-    console.log(result);
-    console.log(result.message);
-    console.log(result.data.error);
-    if(result.data.message !== undefined){
-      $('#customClaimSuccess').modal('show');
-      const successMessage = document.querySelector('#userSuccessMessage');
-      successMessage.innerHTML = `${mdaEmail} is now an MDA!`
-    }else if (result.data.error !== undefined){
-      $('#customClaimError').modal('show');
-    }
-
-  });
-});
-
-/*
-const downloadFile = document.querySelector('#downloaded-file');
-var storageRef = firebase.storage().ref();
-var storage = firebase.storage();
-var pathReference = storage.ref();
-
-pathReference.child('Users/P5EWTRNKceRecLoukYA8oxV9g7g1/icon-144x144.png').getDownloadURL().then(url=>{
-  console.log(url);
-  var xhr = new XMLHttpRequest();
-  xhr.responseType = 'blob';
-  xhr.onload = function(event) {
-    var blob = xhr.response;
-  };
-  xhr.open('GET', url);
-  xhr.send();
-
-}).catch(error =>{
-  console.log(error);
+  window.location.href='./adminmetrics.html';
 })
 
-*/
-// Since you mentioned your images are in a folder,
-// we'll create a Reference to that folder:
+const adminFuncButton = document.querySelector('#admin-functions')
+adminFuncButton.addEventListener('click', e =>{
+  e.preventDefault();
+  window.location.href='./adminfunctions.html';
+})
 
+//var file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
+//saveAs(file);
 
-
-//-------------------------Testing a thing, ignore-------------------------------
-/*
-
-function storeStuff(){
-
-  const emailTransport = {
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, 
-
-};
-
-const APP_NAME = 'EmployTT';
-const displayName = 'Simeon'; // The display name of the user.
-const emailOptions = {
-    from: `${APP_NAME} <noreply@firebase.com>`,
-    to: 'simeonramjit',
-  };
-
-const mailConfig ={
-    mailTransport : emailTransport,
-    mailOptions : emailOptions,
-};
-
-  return mailConfig;
-}
-
-function printStuff(){
-
-  const info = storeStuff();
-
- 
-  const mailConfig = storeStuff();
-  const APP_NAME = 'EmployTT';
-  const displayName = 'Simeon'; // The display name of the user.
-  mailConfig.mailOptions.subject = `${APP_NAME} - Application for ${displayName} succesful!`;
-  mailConfig.mailOptions.text = `Hey ${displayName || ''}! Welcome to ${APP_NAME}. I hope you will enjoy our service.`;
-
-  console.log(mailConfig.mailOptions.subject);
-  console.log(mailConfig.mailTransport);
-}
-
-printStuff();
-
-*/
-
-/* Leave in for demonstration;
-
-firestore.collection('DatabaseInfo').doc('numberOfAccounts').get().then(snapshot=>{
-
-
-     console.log(snapshot.data());
-
-}).catch(error =>{
-
-      console.log(error);
- });
-
- */
-
-/* 
- firestore.collection('DatabaseInfo').doc('numberOfAccounts').get().then(snapshot=>{
-  let numberOfUsersNow = snapshot.data().totalNumberOfAccounts+1;
-  console.log(`Things have been updated ${numberOfUsersNow}`);
-  console.log(snapshot.data());
-  firestore.collection('DatabaseInfo').doc('numberOfAccounts').update({
-      totalNumberOfAccounts : numberOfUsersNow
-  });
-}).then(()=>{
-  
-  //console.log(`Things have been updated ${numberOfUsersNow}`);
-  
-}).catch(err =>{
-  console.log(err);
-});
-*/
