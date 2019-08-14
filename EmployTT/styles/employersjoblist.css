@@ -393,3 +393,104 @@ button:active {
   position: absolute;
   opacity: 0;
 }
+@keyframes batch{
+  0%{
+    transform: scale(0);
+    opacity: 0;
+  }33%{
+    transform: scale(1);
+    opacity: 1;
+  }100%{
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.batch {
+  position: relative;
+}
+.batch:before,.batch:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,.4);
+    border-radius: 50%;
+    opacity: 0;
+    margin: auto;
+}
+.batch:before {
+    animation: pulse 1.5s infinite linear;
+}
+.batch:after {
+    animation: pulse 2s .4s infinite linear;
+}
+.batch:hover:before, :hover:after {
+    display: none;
+}
+
+.accept{
+  display: inline-flex;
+  align-items: center;
+  background: rgb(10, 129, 16);
+  box-shadow: 0 3px 2px 0 rgba(0,0,0,0.1);
+  text-decoration: inherit;
+  font-family: Lato, Arial, sans-serif;
+  font-size: 14px;
+  border-radius: 5px;
+  height: 35px;
+  padding: 0 20px;
+  color: #adadad;
+  transition: background .3s, transform .3s, box-shadow .3s;
+  will-change: transform;
+}
+.accept:hover{
+  background: darken( rgb(10, 129, 16), 10%);
+  box-shadow: 0 4px 18px 0 rgba(0,0,0,0.2);
+  transform: translate3d(0, -2px, 0);
+}
+.accept:active{
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+  transform: translate3d(0, 1px, 0);
+}
+
+.cancel{
+  display: inline-flex;
+  align-items: center;
+  background: rgb(195, 25, 25);
+  box-shadow: 0 3px 2px 0 rgba(0,0,0,0.1);
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 5px;
+  height: 35px;
+  padding: 0 20px;
+  color: #adadad;
+  transition: background .3s, transform .3s, box-shadow .3s;
+  will-change: transform;
+}
+.cancel:hover{
+  background: darken( rgb(195, 25, 25), 10%);
+  box-shadow: 0 4px 18px 0 rgba(0,0,0,0.2);
+  transform: translate3d(0, -2px, 0);
+}
+.cancel:active{
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+  transform: translate3d(0, 1px, 0);
+}
+
+.statusDivs{
+  display: none;
+  overflow: hidden;
+  background-color: rgb(228, 228, 228);
+  transition: max-height 0.3s ease-out;
+  /* background-color:#b9b9b9; */
+  padding: 5px;
+  /* padding-left: 10px; */
+  /* border: 2px dotted; */
+  margin-left: 20px;
+}
+.statuses{
+  cursor: pointer;
+}
+
