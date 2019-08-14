@@ -109,7 +109,7 @@ function renderJobTable(doc, c, user){
           const docRef = firestore.collection('Users');
           docRef.doc(user.uid).get().then(function(doc) {
               var user_id = doc.id;
-              firestore.collection('Applicants').where('user_id','==',user.uid).where('job_id','==',jobid).get().then((snapshot)=>{
+              firestore.collection('Jobs').doc(jobid).collection('applicants').where('applicantID','==',user.uid).get().then((snapshot)=>{
                   if(snapshot.docs.length > 0){
                     var texts = document.createTextNode("Reapply?");
                     applyButton.appendChild(texts);
