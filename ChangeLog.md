@@ -2,9 +2,18 @@
 The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased]
 
 # [1.1.2] - 2019-08-15
-
+ @(github.com/wetcrix/)
 # Added
-- 
+
+- Batch proceesing of dealing with applications
+ - Radio button for each applicantion
+ - Accept and decline button to accept/decline changes and update database where applicable
+- Applications sorted by Pending, Shortlisted and Declined
+
+# Changed
+
+- Checking database for previous applications for jobs when displaying joblist. Changed to suit new database structure
+
 
 # [1.1.1] - 2019-08-08
 
