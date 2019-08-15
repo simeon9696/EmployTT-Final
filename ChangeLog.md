@@ -1,6 +1,11 @@
 # Changelog 
 The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased]
 
+# [1.1.2] - 2019-08-15
+
+# Added
+- 
+
 # [1.1.1] - 2019-08-08
 
 # Added 
