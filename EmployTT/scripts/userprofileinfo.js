@@ -378,3 +378,63 @@ adminFuncButton.addEventListener('click', e =>{
 //var file = new File(["Hello, world!"], "hello world.txt", {type: "text/plain;charset=utf-8"});
 //saveAs(file);
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Render jobs user has applied for~~~~~~~~~~~~~~~~~~~~
+              
+const applications = document.querySelector('#list-container');
+auth.onAuthStateChanged(user => {
+  if(user){ 
+    firestore.collection('Users').doc(user.uid).collection('jobsAppliedFor').get().then(snapshot=>{
+      // console.log("here");
+      if(snapshot.docs.length > 0){
+        snapshot.docs.forEach(doc=>{
+          // console.log(doc.data().job_id);
+          firestore.collection('Jobs').doc(doc.data().job_id).get().then(snapshot=>{
+            renderJobs(snapshot);
+          });
+        });
+      }else{
+        let nothing = document.createElement('h2');
+        nothing.textContent = "You have not applied for any Jobs";
+        applications.appendChild(nothing);
+      }
+    });
+
+    function renderJobs(job){
+      firestore.collection('Jobs').doc(job.id).collection('applicants').where("applicantID","==",user.uid).get().then(snapshot=>{
+        snapshot.docs.forEach(doc=>{
+          let job_div = document.createElement('div');
+          let jobs_p = document.createElement('p')
+          let job_name = document.createElement('span');
+          let job_status = document.createElement('span');
+          let separator_1 = document.createElement('hr');
+  
+          job_name.textContent = job.data().jobName + ":  ";
+          job_name.setAttribute("class","jobNames");
+          job_name.addEventListener("click",function(){
+            var fullPath = window.location.pathname;
+            var path = fullPath.substring(0,fullPath.lastIndexOf("/"));
+            // var query1 = name;
+            var queryString = "?job=" + job.id;
+            var link = window.location.origin + path + "/jobpage.html" + queryString;
+            window.open(link);
+          });
+          job_status.textContent = doc.data().applicationStatus;
+          if(job_status.textContent == "Shortlisted"){
+            job_status.setAttribute("style","color: #23ac23");
+          }else if(job_status.textContent == "Declined"){
+            job_status.setAttribute("style","color: #ac2323");
+          }
+          jobs_p.appendChild(job_name);
+          jobs_p.appendChild(job_status);
+          job_div.setAttribute("style","padding-left: 20px;")
+          job_div.appendChild(jobs_p);
+          job_div.appendChild(separator_1);
+          applications.appendChild(job_div);
+        });
+
+      });
+    }
+  }
+});
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~END RENDER~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
