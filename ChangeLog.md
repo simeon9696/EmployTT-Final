@@ -1,6 +1,15 @@
 # Changelog 
 The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased]
 
+# [1.1.3] - 2019-08-17
+@(github.com/wetcrix)
+
+# Added
+- Users can now view their applications in the list-container <div>. Linked to jobpage similarly to joblist
+ 
+# Changed
+- Changed ID for div containing the list of files uploaded
+
 # [1.1.2] - 2019-08-15
  @(github.com/wetcrix/)
 # Added
