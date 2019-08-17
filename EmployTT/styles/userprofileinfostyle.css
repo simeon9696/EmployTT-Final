@@ -748,3 +748,8 @@ textarea:focus{
   margin-top:0.5vw;
 }
 
+.jobNames{
+  cursor: pointer;
+  font-weight: 700;
+}
+
