@@ -88,6 +88,92 @@
             </div>
 	    <div class = joblists>
                 <h1 class = "h1job"> Job Listings </h1>
+                <br>
+
+                <div class = "content">  
+                    <div class="boxes">
+                    <form action="/action_page.php" method="get">
+                            <input class="search-bar" id = "searchBar" type="text" name="job" placeholder="Enter job title, keyword or company" onkeyup="searchBarFN()">  				  				
+                                    <input class="location-bar" type="search" id="location-filter" name="location" placeholder="Enter location" list="locations-list" onkeyup="searchBarFN()" autocomplete="off" />		
+                                    <label for="location-filter"></label>	
+                                    <datalist id="locations-list">	
+                                        <option value="All"></option>	
+                                        <option value="North"></option>
+                                      <option value="Central"></option>
+                                      <option value="South"></option>					 					
+                                      <option value="Borough of Arima"></option>
+                                      <option value="Borough of Chaguanas"></option>
+                                      <option value="Couva-Tabaquite-Talparo"></option>
+                                      <option value="Diego Martin Region"></option>
+                                      <option value="Gasparillo"></option>
+                                      <option value="Penal-Debe"></option>
+                                      <option value="Borough of Point Fortin"></option>
+                                      <option value="Port of Spain"></option>
+                                      <option value="Princes Town Region"></option>
+                                      <option value="Rio Claro-Mayaro"></option>
+                                      <option value="San Juan-Laventille"></option>
+                                      <option value="Sangre Grande Region"></option>
+                                      <option value="City of San Fernando"></option>
+                                      <option value="Siparia Region"></option>
+                                      <option value="Tunapuna-Piarco"></option>
+                                      <option value="Tobago"></option>					
+                                    </datalist>  			
+                                 <input class="category-bar" type="search" name="category" id = "category-filter" placeholder="Enter Category" list="category-list"  onkeyup="searchBarFN()" autocomplete="off" > 
+                                 <label for="category-filter"></label>	
+                                    <datalist id="category-list">	
+                                        <option value="All"></option>						 					
+                                      <option value="Accounting"></option>
+                                      <option value="Admin & Clerical"></option>
+                                      <option value="Automotive"></option>
+                                      <option value="Banking"></option>
+                                      <option value="Broadcast - Journalism, Radio"></option>
+                                      <option value="Business Development"></option>
+                                      <option value="Construction"></option>
+                                      <option value="Consultant"></option>
+                                      <option value="Contract, Freelance"></option>
+                                      <option value="Customer Service"></option>
+                                      <option value="Design"></option>
+                                      <option value="Distribution, Shipping"></option>
+                                      <option value="Education - Teaching"></option>
+                                      <option value="Engineering"></option>
+                                      <option value="Entry level/Graduate"></option>
+                                      <option value="Executive"></option>	
+                                      <option value="Facilities"></option>						 					
+                                      <option value="Finance"></option>
+                                      <option value="Health Care"></option>
+                                      <option value="General Labour"></option>
+                                      <option value="Human Resources"></option>
+                                      <option value="Information Technology"></option>
+                                      <option value="Installation, Maintenance, Repair"></option>
+                                      <option value="Internships"></option>
+                                      <option value="Legal"></option>
+                                      <option value="Management"></option>
+                                      <option value="Media"></option>
+                                      <option value="Marketing"></option>
+                                      <option value="Nonprofit, Social Services"></option>
+                                      <option value="Other"></option>
+                                      <option value="Part Time"></option>
+                                      <option value="Pharmaceutical"></option>
+                                      <option value="Purchasing, Procurement"></option>
+                                      <option value="Research"></option>
+                                      <option value="Food Service"></option>
+                                      <option value="Science"></option>
+                                      <option value="Skilled Labour, Trades"></option>	
+                                      <option value="Strategy, Planning"></option>
+                                      <option value="Telecommunications"></option>
+                                      <option value="Transportation"></option>
+                                      <option value="Work from Home"></option>    					   									
+                                    </datalist>  			 
+                                 </form>
+                                 <br>
+                             </div> 	
+                          <br>
+                          <div class="jobTable" id = "job-table">
+              
+                          </div>	
+              
+                    </div>
+                <br>
                 <p class="log-in"> Log in to apply. </p>
                 <div class="jobTable">
                     <table id = "job-table" class="Table">
