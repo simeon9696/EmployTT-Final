@@ -506,3 +506,315 @@ hr{
   text-decoration: underline;
   cursor: pointer;
 }
+
+
+.boxes{
+ margin-left: 15vw;
+ position: relative;
+}
+
+.job-quote{
+  text-align: center;
+  font-size:4em;
+  padding-bottom: 6vw;
+  font-weight: bold;
+  color:#000000;}
+  
+  .word-highlight{
+  color:#ff3300;
+  font-size:1em;
+  display:inline;}
+ 
+ .search-bar {
+   -webkit-transition: width 0.4s ease-in-out;
+   transition: width 0.4s ease-in-out;
+   width: 25vw;
+   padding: 1.25vw 2vw;
+   margin: 1vw 0;
+   margin-top:2vw;
+   box-sizing: border-box;
+   color:black;
+   font-size:1.5em;
+   /* position:absolute; */
+   left:11vw;
+  
+   background-color:#ffffff;
+   border-radius: 15px;
+   border: 2px solid #999999;
+   box-shadow: 1px 1px 4px #cccccc;}
+ 
+ .location-bar {
+   -webkit-transition: width 0.4s ease-in-out;
+   transition: width 0.4s ease-in-out;
+   width: 25vw;
+   padding: 1.25vw 2vw;
+   margin: 1vw 0;
+   margin-top:2vw;
+   box-sizing: border-box;
+   color:black;
+   font-size:1.5em;
+   /* position:absolute; */
+   left:37vw;
+ 
+   background-color:#ffffff;
+   border-radius: 15px;
+   border: 2px solid #999999;
+   box-shadow: 1px 1px 4px #cccccc;}
+   
+ #locations-list{
+   -webkit-transition: width 0.4s ease-in-out;
+   transition: width 0.4s ease-in-out;
+   width: 25vw;
+   padding: 1.25vw 2vw;
+   margin: 1vw 0;
+   box-sizing: border-box;
+   color:black;
+   font-size:1.5em;
+   /* position:absolute; */
+ 
+   left:37vw;
+ 
+   background-color:#ffffff;
+   border-radius: 15px;
+   border: 2px solid #999999;
+   box-shadow: 1px 1px 4px #EBEBEB;
+ 
+ }
+ 
+ #catgeory-list{
+   -webkit-transition: width 0.4s ease-in-out;
+   transition: width 0.4s ease-in-out;
+   width: 25vw;
+   padding: 1.25vw 2vw;
+   margin: 1vw 0;
+   box-sizing: border-box;
+   color:black;
+   font-size:1.5em;
+   /* position:absolute; */
+   left:63vw;
+   background-color:#ffffff;
+   top:25vw;
+   border-radius: 15px;
+   border: 2px solid #999999;
+   box-shadow: 3px 3px 4px #EBEBEB;
+ }
+ 
+ .category-bar {
+   -webkit-transition: width 0.4s ease-in-out;
+   transition: width 0.4s ease-in-out;
+   width: 25vw;
+   padding: 1.25vw 2vw;
+   margin: 1vw 0;
+   margin-top:2vw;
+   box-sizing: border-box;
+   color:black;
+   font-size:1.5em;
+   /* position:absolute; */
+   left:63vw;
+   background-color:#ffffff;
+ 
+   border-radius: 15px;
+   border: 2px solid #999999;
+   box-shadow: 3px 3px 4px #cccccc;}
+   
+ input[type=text]:focus {
+   border: 2px solid #ff3300;
+  outline: none !important;}
+  
+ input[type=search]:focus {
+   border: 2px solid #ff3300;
+  outline: none !important;}
+ 
+ .findjobs-button {
+   display: inline-block;
+   border-radius: 4px;
+   background-color: #ff3300;
+   border: none;
+   color: #FFFFFF;
+   text-align: center;
+   font-size: 1.25em;
+   padding: 1.5vw;
+   width: 12vw;
+   transition: all 0.5s;
+   cursor: pointer;
+   font-weight: bold;
+   /* position: absolute; */
+   cursor: pointer;
+   transition: 0.5s;
+   margin-top:2vw;
+   left:44vw;
+   top: 10vw;
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+ 
+ .findjobs-button span:after{
+   content: '\00bb';
+   /* position: absolute; */
+   opacity: 0;
+   top: 1vw;
+   left:5vw;
+   right: -4vw;
+   transition: 0.5s;
+   font-size:1.5em;}
+ 
+ .findjobs-button:hover span {
+   padding-right: 2.5vw;}
+  
+  .findjobs-button:hover {
+   border-radius:29px;}
+   
+ .findjobs-button:hover span:after {
+   opacity: 1;
+   right: 0;}
+ 
+   @media (max-width: 880px) {
+ 
+     .logo img{
+       width: 40%;
+       height: auto;
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
+       padding-top:4vw;}
+   
+       .job-quote{
+         text-align: center;
+         font-size:6vw;
+         padding-top: 4vw;
+         padding-bottom: 9vw;
+         font-weight: bold;
+         color:#000000;}
+         
+         .word-highlight{
+         color:#ff3300;
+         font-size:1em;
+         display:inline;}
+   
+     .search-bar {
+       -webkit-transition: width 0.4s ease-in-out;
+       transition: width 0.4s ease-in-out;
+       width: 25vw;
+       padding: 1.25vw 2vw;
+       margin: 1vw 0;
+       margin-top:2vw;
+       box-sizing: border-box;
+       color:black;
+       font-size:2vw;
+       /* position:absolute; */
+       left:11vw; 
+       background-color:#ffffff;
+       border-radius: 15px;
+       border: 2px solid #999999;
+       box-shadow: 1px 1px 4px #cccccc;}
+     
+     .location-bar {
+       -webkit-transition: width 0.4s ease-in-out;
+       transition: width 0.4s ease-in-out;
+       width: 25vw;
+       padding: 1.25vw 2vw;
+       margin: 1vw 0;
+       margin-top:2vw;
+       box-sizing: border-box;
+       color:black;
+       font-size:2vw;
+       /* position:absolute; */
+       left:37vw;
+       background-color:#ffffff;
+       border-radius: 15px;
+       border: 2px solid #999999;
+       box-shadow: 1px 1px 4px #cccccc;}
+       
+     #locations-list{
+       -webkit-transition: width 0.4s ease-in-out;
+       transition: width 0.4s ease-in-out;
+       width: 25vw;
+       padding: 1.25vw 2vw;
+       margin: 1vw 0;
+       box-sizing: border-box;
+       color:black;
+       font-size:1.5em;
+       /* position:absolute; */
+       left:37vw;
+       background-color:#ffffff;
+       border-radius: 15px;
+       border: 2px solid #999999;
+       box-shadow: 1px 1px 4px #EBEBEB;
+     }
+     
+     #catgeory-list{
+       -webkit-transition: width 0.4s ease-in-out;
+       transition: width 0.4s ease-in-out;
+       width: 25vw;
+       padding: 1.25vw 2vw;
+       margin: 1vw 0;
+       box-sizing: border-box;
+       color:black;
+       font-size:1.5em;
+       /* position:absolute; */
+       left:63vw;
+       background-color:#ffffff;
+       top:25vw;
+       border-radius: 15px;
+       border: 2px solid #999999;
+       box-shadow: 3px 3px 4px #EBEBEB;
+     }
+     
+     .category-bar {
+       -webkit-transition: width 0.4s ease-in-out;
+       transition: width 0.4s ease-in-out;
+       width: 25vw;
+       padding: 1.25vw 2vw;
+       margin: 1vw 0;
+       margin-top:2vw;
+       box-sizing: border-box;
+       color:black;
+       font-size:2vw;
+       /* position:absolute; */
+       left:63vw;
+       background-color:#ffffff;
+       border-radius: 15px;
+       border: 2px solid #999999;
+       box-shadow: 3px 3px 4px #cccccc;}    
+ 
+       .findjobs-button {
+         display: inline-block;
+         border-radius: 4px;
+         background-color: #ff3300;
+         border: none;
+         color: #FFFFFF;
+         text-align: center;
+         font-size: 1em;
+         padding: 1.9vw;
+         width: 18vw;
+         transition: all 0.5s;
+         cursor: pointer;
+         font-weight: bold;
+         /* position: absolute; */
+         cursor: pointer;
+         transition: 0.5s;
+         margin-top:6vw;
+         margin-bottom:20vw;
+         left:41vw;
+         top: 10vw;
+         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+       
+       .findjobs-button span:after{
+         content: '\00bb';
+         /* position: absolute; */
+         opacity: 0;
+         top: 1vw;
+         left:5vw;
+         right: -4vw;
+         transition: 0.5s;
+         font-size:1.5em;}
+       
+       .findjobs-button:hover span {
+         padding-right: 2.5vw;}
+        
+        .findjobs-button:hover {
+         border-radius:29px;}
+         
+       .findjobs-button:hover span:after {
+         opacity: 1;
+         right: 0;}
+ 
+       }
