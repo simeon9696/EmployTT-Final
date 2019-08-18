@@ -173,6 +173,7 @@ function renderJobTable(doc, c, user){
     //separator_1.setAttribute("size",1);
     node.setAttribute('doc-id',doc.id);
     employer.innerHTML = DOMPurify.sanitize(doc.data().employer);
+    // employer.setAttribute("name","testing");
     
     employer_icon.setAttribute("class","material-icons");
     employer_icon.setAttribute("style","font-size:15px;");
@@ -185,12 +186,14 @@ function renderJobTable(doc, c, user){
     location_icon.textContent = ("location_on");
     location_p.setAttribute("class","loca");
     location.innerHTML = DOMPurify.sanitize(doc.data().location);
+    location.setAttribute("name","location");
     location.setAttribute("style","font-size:15px;");
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~All_Info~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     jobStatus.innerHTML = DOMPurify.sanitize(doc.data().jobstatus);
     levels.innerHTML = DOMPurify.sanitize(doc.data().levels);
     category.innerHTML = DOMPurify.sanitize(doc.data().category);
+    category.setAttribute("name","category");
 
     bold1.textContent = "Status: ";
     bold2.textContent = "Level: ";
@@ -221,6 +224,7 @@ function renderJobTable(doc, c, user){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Append_to_node~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   //separator.textContent="\xa0\xa0\ ";
   box.setAttribute("class","divclass");
+  box.setAttribute("name","jobs");
   box.append(titlediv);
   // box.append(breakln);
   box.append(separator_1);
@@ -359,6 +363,63 @@ function clickedButton(id, jobid){
     });
 }
 
+function searchBarFN(){
+  let search_bar = document.getElementById("searchBar");
+  let location_bar = document.getElementById("location-filter");
+  let category_bar = document.getElementById("category-filter");
+  var search = search_bar.value.toLowerCase();
+  var location = location_bar.value.toLowerCase();
+  var category = category_bar.value.toLowerCase();
+
+
+  let divs = document.getElementsByName('jobs');
+  for(var i = 0; i < divs.length; i++){
+    var hide_keyword = 1;
+    var hide_location = 1;
+    var hide_category = 1;
+
+    if(!search){
+      hide_keyword = 0;
+    }if(!category){
+      hide_category = 0;
+    }if(!location){
+      hide_location = 0;
+    }
+    if(location == "all"){
+      hide_location = 0;
+    }
+
+    let p = divs[i].getElementsByTagName('p');
+    for(var j = 0; j <p.length; j++){
+      var spans = p[j].getElementsByTagName('span');
+      for(var k = 0; k <spans.length; k++){
+        
+        if(spans[k].innerText){
+          if(spans[k].getAttribute("name") == 'location'){
+            var text_l =spans[k].innerText;
+            if(text_l.toLowerCase().lastIndexOf(location)>-1){
+              hide_location = 0;
+            }
+          }else if(spans[k].getAttribute("name") == 'category'){
+            var text_c =spans[k].innerText;
+            if(text_c.toLowerCase().lastIndexOf(category)>-1){
+              hide_category = 0;
+            }
+          }    
+          var text_k = spans[k].innerText;
+          if(text_k.toLowerCase().lastIndexOf(search)> -1){
+            hide_keyword = 0;
+          }
+        }
+      }
+    }
+    if(hide_keyword == 0 && hide_category == 0 && hide_location == 0){
+      divs[i].style.display = "";
+      }else{
+      divs[i].style.display = "none";
+    }
+  }
+}
 
 
 function pdfDownload(id, jobid){
