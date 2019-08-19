@@ -397,7 +397,7 @@ function searchBarFN(){
         if(spans[k].innerText){
           if(spans[k].getAttribute("name") == 'location'){
             var text_l =spans[k].innerText;
-            if(text_l.toLowerCase().lastIndexOf(location)>-1){
+            if(text_l.toLowerCase().lastIndexOf(location)>-1 || text_l.toLowerCase() == "all"){
               hide_location = 0;
             }
           }else if(spans[k].getAttribute("name") == 'category'){
