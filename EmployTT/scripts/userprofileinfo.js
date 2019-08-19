@@ -31,116 +31,37 @@ auth.onAuthStateChanged(user => {
       if(user.admin){
  
         let metric= document.querySelector("#metricButton");
-        metric.innerHTML = "Metrics";
         metric.style.display = "inline-block";
 
-        let fieldLabelAdmin = document.querySelector('#profile-labels-admin');
-        fieldLabelAdmin.innerHTML = "Enter desired Administrator email here:";
-        fieldLabelAdmin.style.display = "inline-block";
-  
-        let adminEmail = document.querySelector('#admin-email');
-        adminEmail.innerHTML = "";
-        adminEmail.style.display  = "block";
-  
-        let adminBtn = document.querySelector('#adminSubmitButton');
-        adminBtn.innerHTML = "Make Administrator";
-        adminBtn.style.display  = "inline-block";
-
-        let fieldLabelMda = document.querySelector('#profile-labels-mda');
-        fieldLabelMda.innerHTML = "Enter desired MDA email here:";
-        fieldLabelMda.style.display  = "block";
-  
-        let mdaEmail = document.querySelector('#mda-email');
-        mdaEmail.innerHTML = "";
-        mdaEmail.style.display  = "inline-block";
+        let adminFunc= document.querySelector("#admin-functions");
+        adminFunc.style.display = "inline-block";
         
-        let mdaBtn = document.querySelector('#mdaSubmitButton');
-        mdaBtn.innerHTML = "Make MDA";
-        mdaBtn.style.display  = "inline-block"
-  
       } else if(user.mda){
  
+        let metric= document.querySelector("#metricButton");
+        metric.style.display = "none";
 
+        let adminFunc= document.querySelector("#admin-functions");
+        adminFunc.style.display = "none";
  
-        let fieldLabelAdmin = document.querySelector('#profile-labels-admin');
-        fieldLabelAdmin.innerHTML = "";
-        fieldLabelAdmin.style.display  = "none";
-  
-        let adminEmail = document.querySelector('#admin-email');
-        adminEmail.innerHTML = "";
-        adminEmail.style.display  = "none";
-  
-        let adminBtn = document.querySelector('#adminSubmitButton');
-        adminBtn.innerHTML = "";
-        adminBtn.style.display  = "none";
-  
-  
-        let fieldLabelMda = document.querySelector('#profile-labels-mda');
-        fieldLabelMda.innerHTML = "";
-        fieldLabelMda.style.display  = "none";
-  
-        let mdaEmail = document.querySelector('#mda-email');
-        mdaEmail.innerHTML = "";
-        mdaEmail.style.display  = "none";
-        
-        let mdaBtn = document.querySelector('#mdaSubmitButton');
-        mdaBtn.innerHTML = "";
-        mdaBtn.style.display  = "none";
+
 
       }else if(user.civilian){
-   
+        let metric= document.querySelector("#metricButton");
+        metric.style.display = "none";
 
-        let fieldLabelAdmin = document.querySelector('#profile-labels-admin');
-        fieldLabelAdmin.innerHTML = "";
-        fieldLabelAdmin.style.display  = "none";
-  
-        let adminEmail = document.querySelector('#admin-email');
-        adminEmail.innerHTML = "";
-        adminEmail.style.display  = "none";
-  
-        let adminBtn = document.querySelector('#adminSubmitButton');
-        adminBtn.innerHTML = "";
-        adminBtn.style.display  = "none";
-  
-  
-        let fieldLabelMda = document.querySelector('#profile-labels-mda');
-        fieldLabelMda.innerHTML = "";
-        fieldLabelMda.style.display  = "none";
-  
-        let mdaEmail = document.querySelector('#mda-email');
-        mdaEmail.innerHTML = "";
-        mdaEmail.style.display  = "none";
-        
-        let mdaBtn = document.querySelector('#mdaSubmitButton');
-        mdaBtn.innerHTML = "";
-        mdaBtn.style.display  = "none";
+        let adminFunc= document.querySelector("#admin-functions");
+        adminFunc.style.display = "none";
+
+
       } else {
+        let metric= document.querySelector("#metricButton");
+        metric.style.display = "none";
 
+        let adminFunc= document.querySelector("#admin-functions");
+        adminFunc.style.display = "none";
   
-        let fieldLabelAdmin = document.querySelector('#profile-labels-admin');
-        fieldLabelAdmin.innerHTML = "";
-        fieldLabelAdmin.style.display  = "none";
-  
-        let adminEmail = document.querySelector('#admin-email');
-        adminEmail.innerHTML = "";
-        adminEmail.style.display  = "none";
-  
-        let adminBtn = document.querySelector('#adminSubmitButton');
-        adminBtn.innerHTML = "";
-        adminBtn.style.display  = "none";
-  
-  
-        let fieldLabelMda = document.querySelector('#profile-labels-mda');
-        fieldLabelMda.innerHTML = "";
-        fieldLabelMda.style.display  = "none";
-  
-        let mdaEmail = document.querySelector('#mda-email');
-        mdaEmail.innerHTML = "";
-        mdaEmail.style.display  = "none";
-        
-        let mdaBtn = document.querySelector('#mdaSubmitButton');
-        mdaBtn.innerHTML = "";
-        mdaBtn.style.display  = "none";
+
       }
     });
 
@@ -257,7 +178,7 @@ downloadZipFile.addEventListener('click',e=>{
 const updateProfile = document.querySelector('#updateButton');
 updateProfile.addEventListener('click',(e)=>{
   e.preventDefault();
-  const elementsToBeHidden =["#metricButton","#removeButton","#findButton","#mdaSubmitButton","#mda-email","#profile-labels-mda","#adminSubmitButton","#admin-email","#profile-labels-admin","#list-container","#file-list"];
+  const elementsToBeHidden =["#metricButton","#removeButton","#findButton","#list-container","#file-list","#list-container-files","#downloadZip","#admin-functions"];
   elementsToBeHidden.forEach(element =>{
     let elementSelect = document.querySelector(element);
     elementSelect.style.display = "none";
@@ -437,4 +358,3 @@ auth.onAuthStateChanged(user => {
   }
 });
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~END RENDER~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
