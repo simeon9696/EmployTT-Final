@@ -165,8 +165,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   transition: all 0.5s;
   cursor: pointer;
   font-weight: bold;
-  position:absolute;
+  position:relative;
   margin-top:200px;
+  margin-bottom:3vh;
   cursor: pointer;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
 
@@ -218,7 +219,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   
 .viewjob-button{
   z-index:5;
-  margin-left:22vw;
+  margin-left:2vw;
   display: inline-block;
   border-radius: 4px;
   background-color: #330099;
@@ -234,6 +235,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font-weight: bold;
   position:absolute;
   margin-top:200px;
+  margin-bottom:3vh;
   cursor: pointer;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
 
