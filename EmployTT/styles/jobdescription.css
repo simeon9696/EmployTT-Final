@@ -20,6 +20,19 @@ html {
     color:#ff3300;
     font-weight:525;
   }
+
+  @font-face{
+    font-family: 'Avenir';
+    src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
+    font-display: 'Avenir';
+  }
+  
+  @font-face{
+    font-family: 'Avenir-Light';
+    src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Medium.otf')  format('opentype'); /* Safari, Android, iOS */
+    font-display: 'Avenir-Light';
+  }
+
 .topnav {
   position: -webkit-sticky;
   position: sticky;
@@ -49,28 +62,62 @@ html {
   text-decoration: none;
   font-size: 1.5em;
   padding-top:1.2vw;}
+
+nav{
+  display:none;
+}
   
+@media screen and (max-width:880px){
+  .topnav{
+      display:none;
+    }
+
+nav{
+  display:block;
+}
+
+  }
 .nav-word{
 	color:#000000;
 	margin-top:0.5vw;}
 	
 .employer-logo img{
-	width:18vw;
-    padding-top:3vw;
-	height:auto;
-	display:block;
-	margin-left:10vw;
+  width: 10vw;;
+  display: block;
+  height: auto;
+  position:absolute;
+  margin-top:-14.5vh;
+  margin-left: 2vw;
+  z-index:10;
+  position:fixed;
 }
 .employer-quote{
-	color:#333333;
-	margin-left:10vw;
+  background-color:#1c0055;
+	color:white;
+  padding-left:10vw;
+  width:90vw;
+  padding-top:4vh;
+  padding-bottom:2vh;
 	text-align: left;
  	font-size:3.6em;
  	font-weight: bold;
- 	margin-top:4vw;	
+   margin-top:4vw;	
+   font-family:'Avenir', Helvetica, sans-serif;
 }
 
-
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family:'Avenir', Helvetica, sans-serif;
+  font-weight:400;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family:'Avenir', Helvetica, sans-serif;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-family:'Avenir', Helvetica, sans-serif;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-family:'Avenir', Helvetica, sans-serif;
+}
 
 
 form label{
@@ -78,6 +125,7 @@ form label{
     padding-bottom:5px;
     font-weight:550;
     padding-right:0vw;
+    font-family:'Avenir', Helvetica, sans-serif;
 }
 
 .levels{
@@ -85,6 +133,7 @@ form label{
     padding-bottom:5px;
     font-weight:550;
     padding-right:5vw;
+    font-family:'Avenir', Helvetica, sans-serif;
 }
 
 .jobName{
@@ -141,7 +190,7 @@ form label{
     padding-bottom:5px;
     font-weight:550;
     padding-right:5vw;
-	height:2.4vw;
+    height:2.4vh;	
 	
 }
 
@@ -150,7 +199,7 @@ form label{
     padding-bottom:5px;
     font-weight:550;
     padding-right:5vw;
-	height:2.4vw;
+    height:2.4vh;	
 }
 
 .age{
@@ -158,21 +207,21 @@ form label{
     padding-bottom:5px;
     font-weight:550;
     padding-right:4vw;	
-	height:2.4vw;
+    height:2.4vh;	
 }
 .gender{
 	font-size:1.1em;
     padding-bottom:5px;
     font-weight:550;
     padding-right:5vw;	
-	height:2.4vw;	
+	height:2.4vh;	
 }
 .open{
 	font-size:1.1em;
     padding-bottom:5px;
     font-weight:550;
     padding-right:5vw;	
-	height:2.4vw;		
+	height:2.4vh;		
 }
 input{
     font-size:1.2em;
@@ -217,16 +266,18 @@ textarea:focus{
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.4em;
   margin-left:10vw;
-  padding: 1.5vw;
-  width: 11vw;
-  height:4.2vw;
+  padding-right: 3vw;
+  padding-left: 3vw;
+  width: auto;
+  height:6.2vh;
+  margin-top:-9vh;
   transition: all 0.5s;
   cursor: pointer;
   font-weight: bold;
   position: relative;
-  cursor: pointer;
+  font-family:'Avenir', Helvetica, sans-serif;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
 
 #submitButton span:after{
