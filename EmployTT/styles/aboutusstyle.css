@@ -17,7 +17,18 @@ html {
   	background-color:whitesmoke;
   background-size: 100vw 100vw;}
 
+  @font-face{
+    font-family: 'Avenir';
+    src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
+    font-display: 'Avenir';
+  }
   
+  @font-face{
+    font-family: 'Avenir-Light';
+    src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
+    font-display: 'Avenir-Light';
+  }
+
   #username{
 	color:#ff3300;
 	font-weight:525;
@@ -70,21 +81,26 @@ html {
 
 h1{
     margin-top:4vw;
-	margin-left:15vw;
+	  padding-left:15vw;
     margin-right:20vw;
     font-size:3.6em;
     font-weight:600;
-    border-radius:16px;
-    padding:12px;
+    padding-top:3vh;
+    padding-bottom:1vh;
+    width:85vw;
     color:white;
     background-color:#ff3300;
+    font-family:'Avenir', Helvetica, sans-serif;
 }
 
 p{
-	font-size:1.3em;
+	font-size:1.6em;
 	padding-top:1vw;
 	margin-left:17vw;
   margin-right:23vw;
+  font-family:'Avenir-Light', Helvetica, sans-serif;
+  text-align:justify;
+  line-height: 1.4em;
 }
 
 .employTT-email{
@@ -98,6 +114,7 @@ p{
   margin: 0 auto;
   border: 3px solid rgb(0, 0, 0);
   bottom:-20px;
+  margin-top:12vh;
 }
 
 
