@@ -70,7 +70,7 @@ auth.onAuthStateChanged(user => {
     registerBtn.style.display = "none";
 
     const docRef = firestore.collection('Users');
-    docRef.doc(user.uid).get().then(function(doc) {
+    docRef.doc(user.uid).get().then(doc=> {
  
 
           const firstNameLabel = document.querySelector('#firstNameLabel');
@@ -178,7 +178,9 @@ downloadZipFile.addEventListener('click',e=>{
 const updateProfile = document.querySelector('#updateButton');
 updateProfile.addEventListener('click',(e)=>{
   e.preventDefault();
-  const elementsToBeHidden =["#metricButton","#removeButton","#findButton","#list-container","#file-list","#list-container-files","#downloadZip","#admin-functions"];
+  window.location.href='./userprofileregister.html';
+  /* 
+    const elementsToBeHidden =["#metricButton","#removeButton","#findButton","#list-container","#file-list","#list-container-files","#downloadZip","#admin-functions"];
   elementsToBeHidden.forEach(element =>{
     let elementSelect = document.querySelector(element);
     elementSelect.style.display = "none";
@@ -201,6 +203,8 @@ updateProfile.addEventListener('click',(e)=>{
   
     behavior: 'smooth'
   });
+  */
+
 
 })
 
