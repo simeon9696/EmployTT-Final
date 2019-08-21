@@ -2,10 +2,22 @@
 The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased]
 
 # [1.1.4] - 2019-08-21
+
 @(github.com/squish9696)
- 
+
 # Changed
 - userprofile .html/js/css and userprofileregister .html/css/js to include skeleton functionality to update user profile.
+
+@(github.com/sashajsingh)
+
+# Changed
+- employerjoblist .html/css styling 
+- index_style.css for placeholder text visibility
+- joblist .html/css styling
+- jobpage .html/css styling 
+- jobdescription .html/css styling and mobile menu
+- privacy policy, terms of service, about us .css styling 
+- userprofileregister .html/css styling 
 
 # [1.1.3] - 2019-08-17
 @(github.com/wetcrix)
