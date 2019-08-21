@@ -93,8 +93,9 @@
                 <div class = "content">  
                     <div class="boxes">
                     <form action="/action_page.php" method="get">
-                            <input class="search-bar" id = "searchBar" type="text" name="job" placeholder="Enter job title, keyword or company" onkeyup="searchBarFN()">  				  				
-                                    <input class="location-bar" type="search" id="location-filter" name="location" placeholder="Enter location" list="locations-list" onkeyup="searchBarFN()" autocomplete="off" />		
+                            <input class="search-bar" id = "searchBar" type="text" name="job" placeholder="Enter Job Title, Keyword." onkeyup="searchBarFN()">  				  				
+                            <label class="filter-results" for="search-bar">Filter Results:</label>	 
+                            <input class="location-bar" type="search" id="location-filter" name="location" placeholder="Enter Location" list="locations-list" onkeyup="searchBarFN()" autocomplete="off" />		
                                     <label for="location-filter"></label>	
                                     <datalist id="locations-list">	
                                         <option value="All"></option>	
