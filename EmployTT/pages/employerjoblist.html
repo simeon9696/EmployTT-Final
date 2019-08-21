@@ -37,6 +37,25 @@
 	<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
+		    <nav role="navigation">
+					<div id="menuToggle">
+					  <input type="checkbox" class="menu-clicker"/>
+						<span></span>
+						<span></span>
+						<span></span>
+						<ul id="mobile-menu">
+				<li id="mobile-li"><a href="./employers.html" style="color:#ff3300;" >Employer</a></li>
+				<li id="mobile-li"><a href="./joblist.html" >All Jobs</a></li>
+				<li id="mobile-li"><a href="../index.html"  class="active"  >Find Jobs</a></li>
+				<li id="mobile-li"><a  href="./login.html">Log In</a></li>
+				<li id="mobile-li"><a href="./aboutus.html"  >About Us</a></li>
+				<li id="mobile-li"><a href="./termsofservice.html"  >Terms of Service</a></li>
+				<li id="mobile-li"><a href="./privacypolicy.html" >Privacy Policy</a></li>
+				<li id="mobile-li"><a href="./userprofileregister.html" >Register</a></li>
+				<li id="mobile-li"><a href="./faqs.html" >FAQs</a></li>	
+					</ul>
+				   </div>
+				  </nav>
 			<div class="topnav">    
 				<!--User's name goes here once logged in-->
 				<a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
@@ -52,6 +71,7 @@
 			</div>
 
 			<div class = "employerjoblist" id = "emp-list">
+			<a class="logo" href="../index.html"><img src="../images/webpImages/logo-employer.webp" onerror="this.onerror=null; this.src='../images/logo-employer.png'"></img></a>
 				<h1 class = "h1job"> List of Jobs and Applicants </h1>
 				<br>
 
@@ -64,7 +84,7 @@
 								</table>
 					</div>
 				<!-- <ul id = "job-list"></ul> -->
-				<div style = "align-items: center; justify-content: center; display: flex;">
+				<div class="buttons" style = "align-items: center; justify-content: center; display: flex;">
 						<button onClick = "acceptChanges()" class = "accept batch" >Accept</a>
 						<button onClick = "cancelChanges()" class = "cancel batch" >Cancel</a>
 					</div>
@@ -73,7 +93,7 @@
 <footer class="footer-distributed">
 	<div class="footer-left">
 		
-			<img src="./images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='./images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+			<img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
 			<p class="footer-links">
 			<a href="./index.html">Home</a>
 			·
