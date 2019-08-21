@@ -24,6 +24,12 @@ html {
   src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
 }
 
+@font-face{
+  font-family: 'Avenir-H';
+  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
+  font-display: 'Avenir';
+}
+
 #username{
 	color:#ff3300;
 	font-weight:525;
@@ -74,15 +80,16 @@ html {
 
 .title{
     margin-top:4vw;
-   	margin-left:15vw;
-    margin-right:15vw;
+   	padding-left:15vw;
+    width:85vw;
     font-size:3.6em;
     font-weight:600;
-    border-radius:16px;
-    padding:12px;
+    padding-top:3vh;
+    padding-bottom:1vh;
     color:white;
     background-color:#ff3300;
     margin-bottom:3vw;	
+    font-family:'Avenir-H', Helvetica, sans-serif;
 }
 
 .priv-container{
