@@ -21,9 +21,23 @@ html {
     font-weight:525;
   }
 body {
-  background-color:#cccccc;
+  background-color:rgb(250, 250, 250) !important;
 }
 
+nav{
+  display:none;
+}
+
+@media (max-width: 880px) {
+
+  .topnav{
+    display:none;
+  }
+
+  nav{
+    display:block;
+  }
+}
 .topnav {
   position: -webkit-sticky;
   position: sticky;
@@ -64,13 +78,12 @@ body {
 .profile-container{
 	margin-top:4vw;
 	height:auto;
-	width:60vw;
-	margin-left:20vw;
-	background-color:#ffffff;
+	width:80vw;
+	margin-left:10vw;
+  background-color:rgb(250, 250, 250) !important;
  	position:relative;
 	border-radius:8px;
 	margin-bottom:10vw;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 footer{
@@ -87,35 +100,42 @@ footer{
 	color:red;
 	position:absolute;
 	margin-top:0vw;
-    font-weight:600;
-    margin-left:26.5vw;
+  font-weight:600;
+  margin-left:47vw;
 }
 
 .profile-logo img{
-	width:18vw;
-    padding-top:5vw;
-	height:auto;
-	display:block;
-	padding-left:5vw;
- 	position:relative;
- 	z-index:2;
+  width: 10%;
+  display: block;
+  height: auto;
+  position:absolute;
+  margin-top:-21vh;
+  margin-left: 1vw;
+  z-index:10;
+  position:fixed;
 }
 .profile-quote{
-	color:black;
-	padding-left:5vw;
-	padding-bottom:1vw;
+  color:white;
+  background-color:#ff3300;
+  width:85vw;
+	padding-left:20vw;
+  padding-bottom:1vh;
+  padding-top:3vh;
 	text-align: left;
  	font-size:3.6em;
  	font-weight: bold;
- 	margin-top:1vw;	
+ 	margin-top:3vh;	
  	position:relative;
- 	z-index:2;}
+   z-index:1;
+   font-family:'Avenir', Helvetica, sans-serif;
+}
 
 .firstname-label{
 	margin-left:5vw;	
     font-size:1.3em;
     padding-bottom:5px;
     font-weight:550;
+    font-family:'Avenir', Helvetica, sans-serif;
 }
 
 .lastname-label{
@@ -124,107 +144,141 @@ footer{
     font-size:1.3em;
     padding-bottom:5px;
     font-weight:550;
+    font-family:'Avenir', Helvetica, sans-serif;
 }
 
+@font-face{
+  font-family: 'Avenir';
+  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
+  font-display: 'Avenir';
+}
+
+@font-face{
+  font-family: 'Avenir-Light';
+  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
+  font-display: 'Avenir-Light';
+}
 #firstName{
 	margin-left:5vw;	
-    width:18vw;
+  width:18vw;
+  color:rgb(88, 88, 88);
 
 }
 #lastName{
 	width:18vw;
 	float:right;
-	margin-right:5vw;
+  margin-right:5vw;
+  color:rgb(88, 88, 88);
 }
 
 #phoneNumber{
-    width:18vw;
+  width:18vw;
 	float:right;
 	margin-right:5vw;
-	display:block;
+  display:block;
+  color:rgb(88, 88, 88);
 }
 
 
 .email{
 	margin-left:5vw;
 	width:18vw;	
-    font-size:1.3em;
-    padding-bottom:5px;
-    font-weight:550;
+  font-size:1.3em;
+  padding-bottom:5px;
+  font-weight:550;
+  font-family:'Avenir', Helvetica, sans-serif;
+
 }
 .password{
 	margin-left:5vw;	
-    font-size:1.3em;
-    padding-bottom:5px;
-    font-weight:550;}
+  font-size:1.3em;
+  padding-bottom:5px;
+  font-weight:550;
+  font-family:'Avenir', Helvetica, sans-serif;}
 
 #signup-password{
 	margin-left:5vw;
-    width:18vw;			
+  width:18vw;		
+  color:rgb(88, 88, 88);	
 }
 #cnfm-password{
 	margin-left:5vw;	
-    width:18vw;		
+  width:18vw;	
+  color:rgb(88, 88, 88);	
 }
 
 .dob-label{
 	margin-left:5vw;
-    font-size:1.3em;
-    padding-bottom:5px;
-    font-weight:550;}
+  font-size:1.3em;
+  padding-bottom:5px;
+  font-weight:550;
+  font-family:'Avenir', Helvetica, sans-serif;}
 
 .dobfield{
 	margin-left:5vw;	
-    width:18vw;
+  width:18vw;
+  font-family:'Avenir', Helvetica, sans-serif;
+  color:rgb(88, 88, 88);
 }
 
 .address1field{
 	margin-left:5vw;
-	width:18vw;
+  width:18vw;
+  font-family:'Avenir', Helvetica, sans-serif;
+  color:rgb(88, 88, 88);
 }
 #address2field{
 	width:18vw;
 	float:right;
-	margin-right:5vw;
+  margin-right:5vw;
+  font-family:'Avenir', Helvetica, sans-serif;
+  color:rgb(88, 88, 88);
 }
 .address1-label{
 	margin-left:5vw;		
-    font-size:1.3em;
-    padding-bottom:5px;
-    font-weight:550;}
+  font-size:1.3em;
+  padding-bottom:5px;
+  font-family:'Avenir', Helvetica, sans-serif;}
 
 .city-label
 {
 	margin-left:5vw;		
-    font-size:1.3em;
-    padding-bottom:5px;
-    font-weight:550;}
+  font-size:1.3em;
+  padding-bottom:5px;
+  font-weight:550;
+  }
 
 .cityfield
 {
 	margin-left:5vw;	
-	width:18vw;	
+  width:18vw;	
+  font-family:'Avenir', Helvetica, sans-serif;
+  color:rgb(88, 88, 88);
 }
 
 .disable-labels{
 	margin-left:5vw;	
-    font-size:1.3em;
-    padding-bottom:5px;
-    font-weight:550;}
+  font-size:1.3em;
+  padding-bottom:5px;
+  font-weight:550;
+  font-family:'Avenir', Helvetica, sans-serif;}
 
 .disablefield{
 	margin-left:5vw;
-	padding:1vw;
+  padding:1vw;
+  font-family:'Avenir', Helvetica, sans-serif;
+  color:rgb(88, 88, 88);
 }
 
 #fileButton{
-	margin-left:5vw;	
+  margin-left:5vw;
+  font-family:'Avenir', Helvetica, sans-serif;	
 }
 
 #progress-bar, #progress2-bar{
 	margin-left:5vw;
 	height:1vw;
-	width:83%;
+	width:87%;
 	color:#eee;
 	-webkit-appearance: none;
   border-radius: 2px; 
@@ -251,26 +305,30 @@ progress[value]::-webkit-progress-bar {
 }
 
 #signup-form input{
-	height:2.4vw;
+	height:3.9vh;
 	width:23vw;
 	border-radius:4px;
 	border:1px solid rgba(128, 128, 128, 0.25);
-    box-shadow: 1px 1px 3px #cccccc inset;
-    font-size:1.2em;
-    padding-left:5px;
-    margin-top:4px;
-    margin-bottom:1vw;
+  box-shadow: 1px 1px 3px #cccccc inset;
+  font-size:1.2em;
+  padding-left:10px;
+  margin-top:1vh;
+  margin-bottom:1vh;
+  font-family:'Avenir-Light', Helvetica, sans-serif;
+  color:rgb(88, 88, 88);
+  font-weight:900;
 }
 textarea{
-    height:4.4vw;
+  height:4.4vw;
 	width:48vw;
 	border-radius:4px;
 	border:1px solid rgba(128, 128, 128, 0.25);
-    box-shadow: 1px 1px 3px #cccccc inset;
-    font-size:1.2em;
-    padding-left:5px;
-    margin-top:4px;
-    margin-bottom:1vw;
+  box-shadow: 1px 1px 3px #cccccc inset;
+  font-size:1.2em;
+  padding-left:5px;
+  margin-top:4px;
+  margin-bottom:1vw;
+  font-family:'Avenir-Light', Helvetica, sans-serif;
 }
 textarea:focus{
 	outline:none !important;
@@ -280,6 +338,7 @@ textarea:focus{
     font-size:1.3em;
     padding-bottom:5px;
     font-weight:550;
+    font-family:'Avenir', Helvetica, sans-serif;
 }
 
 #signup-forminput:focus {
@@ -456,14 +515,14 @@ body{
   padding-bottom:50px;
 }
 #signup-form .column-one{
-  border: 1px solid red;
+  border: 0px solid red;
   width:45%
 }
 
 
 #signup-form .column-two{
   
-  border: 1px solid red;
+  border: 0px solid red;
   width:45%
 }
 
@@ -473,45 +532,145 @@ body{
 
 #signup-form .file-label {
   position: relative;
-  background-color:none;
+  background-color:#501111;
   display: inline-block;
   border-radius: 4px;
-  border: solid 2px purple;
+  border: none;
   text-align: center;
-  padding: 1vw;
+  vertical-align: middle;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vw;
+  padding-right: 1vw;
   width: 9vw;
   height:100%;
   font-weight: bold;
-  font-family: sans-serif;
+  font-family: 'Avenir', Helvetica, sans-serif;
   font-size: 1.25em;
   cursor: pointer;
   margin-left:1vw;
-  color: purple;
-  box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  transition: 0.5s;
+  color: #ffffff;
+  box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(121, 121, 121, 0.19);
+  transition: 0.2s;
+  overflow:hidden;
 }
 
 #signup-form .file-label:hover {
-  cursor: pointer;
-  color: grey;
-  border: solid 2px grey;
-  border-radius:50px;
-
+  width: 10vw;
+  height:auto;
+  font-size: 1.6em;
+  color: white;
+  background-color:#ff3300;
 }
 
 
 #signup-form .individual-file {
   padding-bottom: 7px;
   padding-top:7px;
-  border: solid red 1px;
+  border: solid red 0px;
 }
 
 #signup-form .file-name{
-  border: solid blue 1px;
+  border: solid blue 0px;
   font-size: 1em;
   font-family: 'Avenir';
 }
 
 #signup-form .reset-file:hover{
   cursor:pointer;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-weight:600;
+  font-family:'Avenir-Light', Helvetica, sans-serif;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-weight:600;
+  font-family:'Avenir-Light', Helvetica, sans-serif;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-weight:600;
+  font-family:'Avenir-Light', Helvetica, sans-serif;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-weight:600;
+  font-family:'Avenir-Light', Helvetica, sans-serif;
+}
+
+#signup-form  .button1{
+  color:white;
+  background-color:#E16036 !important;
+}
+
+#signup-form  .button2{
+  background-color:rgb(123, 179, 231) !important;
+  color:white ;
+}
+
+#signup-form  .button3{
+  background-color:#ECA72C  !important;
+  color:white;
+}
+
+#signup-form  .button4{
+  color:white;
+  background-color:rgb(202, 114, 224)!important;
+}
+
+#signup-form  .button5{
+  background-color:rgb(128, 175, 100) !important;
+  color:white;
+}
+
+#signup-form  .button6{
+  background-color:rgb(235, 139, 139) !important;
+  color:white;
+}
+
+#signup-form  .button7{
+  color:white;
+  background-color:rgb(117, 182, 176)!important;
+}
+
+#signup-form  .button8{
+  background-color:rgb(245, 169, 98) !important;
+  color:white;
+}
+
+#signup-form  .button9{
+  background-color:rgb(136, 135, 182) !important;
+  color: white ;
+}
+
+#signup-form  .button10{
+  background-color:rgb(231, 114, 114) !important;
+  color:white;
+}
+
+#signup-form  .button11{
+  color:white;
+  background-color:rgb(88, 177, 168) !important;
+}
+
+#signup-form  .button12{
+  background-color:#ECA72C  !important;
+  color:white;
+}
+
+#signup-form  .button13{
+  background-color:rgb(115, 112, 182)!important;
+  color:white ;
+}
+
+#signup-form  .button14{
+  background-color:rgb(128, 175, 100) !important;
+  color:white ;
+}
+
+.reset-file{
+  color:rgb(238, 3, 3);
+  padding-top:0.5vh;
+  padding-left:0.5vw;
+  position:absolute;
+  font-size:10px !important;
 }
