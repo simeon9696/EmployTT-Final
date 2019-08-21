@@ -1,6 +1,12 @@
 # Changelog 
 The format is based on Keep a Changelog. Starting at version 1.0.0 ##[Unreleased]
 
+# [1.1.4] - 2019-08-21
+@(github.com/squish9696)
+ 
+# Changed
+- userprofile .html/js/css and userprofileregister .html/css/js to include skeleton functionality to update user profile.
+
 # [1.1.3] - 2019-08-17
 @(github.com/wetcrix)
 
