@@ -236,18 +236,10 @@ logOutBtn.addEventListener("click", e => {
 
 const fileInputIds = ["resume","transcript","birthCert","nationalID","driverLicense","policeCert","videoCharacter","reference-one","reference-two","certificate-one","certificate-two","certificate-three","certificate-four","certificate-five"];
 const fileLabelIds=["resume-label","transcript-label","birthCert-label","nationalID-label","driverLicense-label","policeCert-label","videoCharacter-label","reference-one-label","reference-two-label","certificate-one-label","certificate-two-label","certificate-three-label","certificate-four-label","certificate-five-label"];
-const resumeLabel = document.querySelector('#resume-label')
+const fileResetInputIds = ["resume-reset","transcript-reset","birthCert-reset","nationalID-reset","driverLicense-reset","policeCert-reset","videoCharacter-reset","reference-one-reset","reference-two-reset","certificate-one-reset","certificate-two-reset","certificate-three-reset","certificate-four-reset","certificate-five-reset"];
 
-const transcriptLabel = document.querySelector('#transcript-label')
 
-const resetFile = document.querySelector('#resume-reset');
-resetFile.addEventListener('click',e=>{
-  e.preventDefault();
-  let pot =  document.getElementById('resume');
-  pot.value = ""
-  let label = document.querySelector('#resume-label');
-  label.innerHTML = 'No File Chosen'
-})
+
 
 const testButton = document.querySelector('#updateButton1');
 testButton.addEventListener('click',e=>{
@@ -268,14 +260,25 @@ testButton.addEventListener('click',e=>{
 })
 
 fileInputIds.forEach(inputID=>{
-  queryID = `#${inputID}`;
-  const fileSelector = document.querySelector(queryID);
+  const fileReferenceReset= document.querySelector(`#${inputID}-reset`);
+  console.log(fileReferenceReset);
+  fileReferenceReset.addEventListener('click',e=>{
+    e.preventDefault();
+    let fileChosen =  document.getElementById(inputID);
+    fileChosen.value = "";
+    let fileLabel = document.querySelector(`#${inputID}-label`);
+    fileLabel.innerHTML = 'No File';
+  });
+
+  const fileSelector = document.querySelector(`#${inputID}`);
   fileSelector.addEventListener('change',e=>{
     e.preventDefault();
     const fileReference = document.getElementById(inputID).files[0];
     const fileReferenceLabel = document.querySelector(`#${inputID}-label`);
     fileReferenceLabel.innerHTML = fileReference.name;
-  })
+    console.log(fileReference.name)
+  });
+
 })
 
 
