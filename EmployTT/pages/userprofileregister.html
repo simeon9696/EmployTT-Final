@@ -24,10 +24,12 @@
     <script src="../scripts/userprofile.jquery.js"></script>
     <!--Footer CSS Dependencies-->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"rel="stylesheet" type="text/css">
-		<link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Links to manifest and style files -->
     <link href="../styles/userprofilestyle.css" type="text/css" rel="stylesheet" />	
     <link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
+    <link href="../styles/mobilenavstyle.css" rel="preload" as="style" />	
+		<link rel="stylesheet" href="../styles/mobilenavstyle.css">
 		<!--Link address bar icon file for any browser-->
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -39,7 +41,25 @@
   </head>
 
   <body>
+    <nav role="navigation">
+      <div id="menuToggle">
+          <input type="checkbox" class="menu-clicker"/>
+              <span></span>
+              <span></span>
+              <span></span>
+              <ul id="mobile-menu">
+             <li id="mobile-li"><a href="./userprofileregister.html" style="color:#ff3300;" >Register</a></li>
+              <li id="mobile-li"><a href="./joblist.html" class="active">All Jobs</a></li>
+              <li id="mobile-li"><a href="../index.html"  >Find Jobs</a></li>
+              <li id="mobile-li"><a href="./login.html">Log In</a></li>
+              <li id="mobile-li"><a href="./employers.html">Employers</a></li>
+              <li id="mobile-li"><a href="./termsofservice.html">Terms of Service</a></li>
+              <li id="mobile-li"><a href="./aboutus.html">About Us</a></li>
+              <li id="mobile-li"><a href="./privacypolicy.html" >Privacy Policy</a></li>
 
+              </ul>
+          </div>
+      </nav>
     <!-- Navigation -->
     <div class="topnav">  
         <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>       <!--User's name goes here once logged in--> 
@@ -56,10 +76,10 @@
       </div>
     
 <!-- Page Content -->
-
+<p class="profile-quote">Update Your Profile</p>
+<a class="profile-logo" href="../index.html"><img src="../images/logo.png"></img></a>	<!--Made the logo, local-->	
    	<div class="profile-container">
-   	<a class="profile-logo" href="../index.html"><img src="../images/logo.png"></img></a>	<!--Made the logo, local-->		
-    <p class="profile-quote">Update Your Profile</p>
+	
     <a class="stars" style="margin-left:5vw; font-size:1em;">(* Required)</a><br><br>
     <p id = 'message'></p> <!--This is empty by default do not delete-->
    <form  id="signup-form">
@@ -98,53 +118,58 @@
 
       <div class = "column-one">
 
-          <div class = "individual-file">
-              <label for ="resume" class="file-label">Resume</label>
-
+          <div class = "individual-file " >
+              <label for ="resume" class="file-label button1">Resume</label>
               <span class = "file-name" id="resume-label"></span>
-              <span class = "reset-file" id ="resume-reset">Clear</span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="resume"   class="file-input"  id="resume" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
     
           <div class = "individual-file">
-              <label for ="transcript" class="file-label">Transcript</label>
+              <label for ="transcript" class="file-label button2" >Transcript</label>
               <span class = "file-name" id="transcript-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="transcript"  class="file-input" id="transcript" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
     
-          <div class = "individual-file">
-              <label for ="birthCert" class="file-label">Birth Certificate</label>
+          <div class = "individual-file"  >
+              <label for ="birthCert" class="file-label button3">Birth Certificate</label>
               <span class = "file-name" id="birthCert-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="birthCert"    class="file-input"      id="birthCert" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
     
     
-          <div class = "individual-file">
-              <label for ="nationalID" class="file-label">National ID</label>
+          <div class = "individual-file" >
+              <label for ="nationalID" class="file-label button4">National ID</label>
               <span class = "file-name" id="nationalID-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="nationalID"    class="file-input"     id="nationalID" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
     
-          <div class = "individual-file">
-              <label for ="driverLicense" class="file-label">Driver's License</label>
+          <div class = "individual-file" >
+              <label for ="driverLicense" class="file-label button5" >Driver's License</label>
               <span class = "file-name" id="driverLicense-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="driverLicense"  class="file-input"    id="driverLicense" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
     
-          <div class = "individual-file">
-              <label for ="policeCert" class="file-label">Police Certificate of Character</label>
+          <div class = "individual-file" >
+              <label for ="policeCert" class="file-label button6" >Police Certificate of Character</label>
               <span class = "file-name" id="policeCert-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="policeCert"     class="file-input"    id="policeCert" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
 
-          <div class = "individual-file">
-              <label for ="videoCharacter" class="file-label">Video of Character</label>
+          <div class = "individual-file" >
+              <label for ="videoCharacter" class="file-label button7" >Video of Character</label>
               <span class = "file-name" id="videoCharacter-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="videoCharacter"  class="file-input"   id="videoCharacter" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
@@ -158,56 +183,60 @@
 
     
     
-          <div class = "individual-file">
-              <label for ="reference-one" class="file-label"">Reference</label>
+          <div class = "individual-file" >
+              <label for ="reference-one" class="file-label button8" >Reference</label>
               <span class = "file-name" id="reference-one-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="reference-one"   class="file-input"   id="reference-one" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
 
-          <div class = "individual-file">
-              <label for ="reference-two" class="file-label">Reference</label>
+          <div class = "individual-file" >
+              <label for ="reference-two" class="file-label button9" >Reference</label>
               <span class = "file-name" id="reference-two-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="reference-two"   class="file-input"   id="reference-two" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff"> 
           </div>
     
     
     
-          <div class = "individual-file">
-              <label for ="certificate-one" class="file-label">Certificate</label>
+          <div class = "individual-file" >
+              <label for ="certificate-one" class="file-label button10" >Certificate</label>
               <span class = "file-name" id="certificate-one-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="certificate-one" class="file-input"   id="certificate-one" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
     
     
-          <div class = "individual-file">
-              <label for ="certificate-two" class="file-label">Certificate</label>
+          <div class = "individual-file"  >
+              <label for ="certificate-two" class="file-label button11">Certificate</label>
               <span class = "file-name" id="certificate-two-label"></span>
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="certificate-two" class="file-input"   id="certificate-two" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
     
     
-          <div class = "individual-file">
-              <label for ="certificate-three" class="file-label">Certificate</label>
+          <div class = "individual-file" >
+              <label for ="certificate-three" class="file-label button12">Certificate</label>
               <span class = "file-name" id="certificate-three-label"></span>
-
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="certificate-three" class="file-input"  id="certificate-three" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
     
     
-          <div class = "individual-file">
-              <label for ="certificate-four" class="file-label">Certificate</label>
+          <div class = "individual-file" >
+              <label for ="certificate-four" class="file-label button13" >Certificate</label>
               <span class = "file-name" id="certificate-four-label"></span>
-
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="certificate-four"  class="file-input"  id="certificate-four" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff"> 
           </div>
     
     
-          <div class = "individual-file">
-              <label for ="certificate-five" class="file-label">Certificate</label>
+          <div class = "individual-file" >
+              <label for ="certificate-five" class="file-label button14" >Certificate</label>
               <span class = "file-name" id="certificate-five-label"></span>
-
+              <span class = "reset-file" id ="resume-reset"> <i alt="Reset" style="font-size:24px" class="fa">&#xf00d;</i></span>
               <input type="file" name="certificate-five" class="file-input"   id="certificate-five" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
       </div>
