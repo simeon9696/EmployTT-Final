@@ -16,8 +16,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 @font-face{
   font-family: 'Avenir';
-  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
+  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
   font-display: 'Avenir';
+}
+
+@font-face{
+  font-family: 'Avenir-Light';
+  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Medium.otf')  format('opentype'); /* Safari, Android, iOS */
+  font-display: 'Avenir-Light';
 }
 
 html {
@@ -53,7 +59,8 @@ html {
   padding-bottom:1vw;
   padding-top:15px;
   text-decoration: none;
-  font-size: 18px;}
+  font-size: 18px;
+  font-family: 'Avenir-Light', Helvetica, sans-serif;}
 
 .topnav a:hover {
   display: inline;
@@ -85,19 +92,6 @@ body{
     box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
 }
 
-.h1job{
-    color: #ffffff;
-    background-color:#ff3300;
-    font-size: 3.6em;
-    font-weight: bold; 
-    width:50vw;
-    margin-left:20vw;
-    border-radius:28px;
-    padding-top:10px;
-    padding-left:3vw;
-    padding-right:80px;
-    padding-bottom:10px;
-}
 	
 .quote{
 	 background-color:#ffffff;}
@@ -108,7 +102,7 @@ body{
   display: block;
   height: auto;
   position:absolute;
-  margin-top:-3.5vw;
+  margin-top:-3vw;
   margin-left: 2vw;
   z-index:10;
   position:fixed;
@@ -400,7 +394,7 @@ strong{
 }
 
 .jobTable h1{
-  font-family: "Avenir", serif;
+  font-family: "Avenir", Helvetica, sans-serif;
   position:absolute;
   font-size:3em;
   width:100vw;
@@ -408,9 +402,10 @@ strong{
   padding-left:22vw;
   text-align:left;
   padding-bottom:0.5vw;
-  padding-top:6vw;
-  margin-top:-2vw;
+  padding-top:4vh;
+  margin-top:3vh;
   color:#ff3300;
+  font-weight:600;
   background-color:rgb(241, 241, 241);
 }
 
@@ -432,16 +427,20 @@ strong{
   color:rgb(58, 58, 58);
   border-radius:10px;
   padding-bottom:0.5vw;
-  border:1.5px solid rgb(228, 228, 228);
+  font-family: 'Avenir-Light', Helvetica,sans-serif;
+  background-color:rgb(246, 246, 246);
+
 }
 
 .grid2 p{
   color:rgb(58, 58, 58);
   /*background-color:rgb(248, 248, 248);*/
-  border:1.5px solid rgb(228, 228, 228);
+
   border-radius:10px;
   margin-right:1vw;
   padding-bottom:0.5vw;
+  font-family: 'Avenir-Light', Helvetica, sans-serif;
+  background-color:rgb(246, 246, 246);
 }
 
 div .grid1{
