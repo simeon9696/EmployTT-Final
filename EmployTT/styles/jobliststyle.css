@@ -82,13 +82,14 @@ body{
     background-color:#ff3300;
     font-size: 3.6em;
     font-weight: bold; 
-    width:50vw;
-    margin-left:20vw;
-    border-radius:28px;
+    width:78vw;
+    margin-top:4vh;
+    border-radius:0px;
     padding-top:10px;
-    padding-left:3vw;
-    padding-right:80px;
+    padding-left:22vw;
     padding-bottom:10px;
+    font-family:Avenir, Helvetica, sans-serif;
+    font-weight:600;
 }
 	
 .quote{
@@ -99,9 +100,11 @@ body{
   width: 10%;
   display: block;
   height: auto;
-  position:relative;
-  padding-top:2vw;
-  margin-left: 20vw;
+  position:absolute;
+  margin-top:-6.5vw;
+  margin-left: 2vw;
+  z-index:10;
+  position:fixed;
  }
 
 @media (max-width: 880px) {
@@ -209,8 +212,10 @@ form:after{
 .jobTable {
   font-family: Helvetica, sans-serif;        
   display:block;
+  width:60vw;
   margin-top:-1vw;
-  margin-left:15vw;
+  margin-left:auto;
+  margin-right:auto;
   border-radius:16px;
   -moz-border-radius:16px;
   -webkit-border-radius: 16px;
@@ -225,6 +230,8 @@ form:after{
   padding-right:1vw;
 	font-size:1.2em;
   color:#494949;
+  font-family:Avenir, Helvetica, sans-serif;
+  font-weight:500;
 }
 
 .log-in{
@@ -240,11 +247,13 @@ form:after{
 
 .jobTable h1{
   text-align:left;
+  font-family:Avenir, Helvetica, sans-serif;
+  font-weight:600;
   padding-top:3vw;
   padding-right:1vw;
   padding-left:0vw;
 	padding-bottom:0.5vw;
-	font-size:1.4em;
+	font-size:1.6em;
   color:#ff3300;
 
 }
@@ -300,7 +309,7 @@ form:after{
   padding-top:5px;
   margin-bottom:5px;
   padding-right:1vw;
-	font-size:1.2em;
+	font-size:1.3em;
   color:#494949;
 }
 
@@ -433,18 +442,27 @@ button{
   position:absolute;
   margin-left:34vw;
   margin-top:-3.6vw;
+  font-family:Avenir, Helvetica, sans-serif;
+  font-weight:550;
+  font-size:0.9em;
 }
 
 #pdfButton{
   position:absolute;
   margin-left:41vw;
   margin-top:-3.6vw;
+  font-family:Avenir, Helvetica, sans-serif;
+  font-weight:550;
+  font-size:0.9em;
 }
 
 #shareButton{
   position:absolute;
   margin-left:48vw;
   margin-top:-3.6vw;
+  font-family:Avenir, Helvetica, sans-serif;
+  font-weight:550;
+  font-size:0.9em;
 }
 
 @media (max-width: 880px) {
@@ -502,6 +520,7 @@ hr{
     margin-top:2vw;
   }
 }
+
 .jobTable h1:hover{
   text-decoration: underline;
   cursor: pointer;
@@ -528,94 +547,71 @@ hr{
  .search-bar {
    -webkit-transition: width 0.4s ease-in-out;
    transition: width 0.4s ease-in-out;
-   width: 25vw;
-   padding: 1.25vw 2vw;
-   margin: 1vw 0;
-   margin-top:2vw;
+   width: 15vw;
+   margin-top:8vh;
+   margin-left:-13vw;
    box-sizing: border-box;
    color:black;
    font-size:1.5em;
    /* position:absolute; */
-   left:11vw;
-  
+   position:absolute;
+   height:5vh;
    background-color:#ffffff;
-   border-radius: 15px;
+   border-radius: 10px;
    border: 2px solid #999999;
    box-shadow: 1px 1px 4px #cccccc;}
  
  .location-bar {
    -webkit-transition: width 0.4s ease-in-out;
    transition: width 0.4s ease-in-out;
-   width: 25vw;
-   padding: 1.25vw 2vw;
-   margin: 1vw 0;
-   margin-top:2vw;
+   width: 15vw;
+   margin-top:14.5vh;
+   margin-left:-13vw;
    box-sizing: border-box;
    color:black;
    font-size:1.5em;
-   /* position:absolute; */
-   left:37vw;
- 
+   /* position:absolute; */   
+   position:absolute;
+   height:5vh;
    background-color:#ffffff;
-   border-radius: 15px;
+   border-radius: 10px;
    border: 2px solid #999999;
    box-shadow: 1px 1px 4px #cccccc;}
    
- #locations-list{
-   -webkit-transition: width 0.4s ease-in-out;
-   transition: width 0.4s ease-in-out;
-   width: 25vw;
-   padding: 1.25vw 2vw;
-   margin: 1vw 0;
-   box-sizing: border-box;
-   color:black;
-   font-size:1.5em;
-   /* position:absolute; */
- 
-   left:37vw;
- 
-   background-color:#ffffff;
-   border-radius: 15px;
-   border: 2px solid #999999;
-   box-shadow: 1px 1px 4px #EBEBEB;
- 
- }
- 
- #catgeory-list{
-   -webkit-transition: width 0.4s ease-in-out;
-   transition: width 0.4s ease-in-out;
-   width: 25vw;
-   padding: 1.25vw 2vw;
-   margin: 1vw 0;
-   box-sizing: border-box;
-   color:black;
-   font-size:1.5em;
-   /* position:absolute; */
-   left:63vw;
-   background-color:#ffffff;
-   top:25vw;
-   border-radius: 15px;
-   border: 2px solid #999999;
-   box-shadow: 3px 3px 4px #EBEBEB;
- }
- 
+input::-webkit-input-placeholder {
+    color: rgb(161, 161, 161);
+    font-family:Avenir, Helvetica, sans-serif;
+    font-weight:500;
+    font-size:0.9em;
+  }
+
+.filter-results
+{
+  position:absolute;
+  color:rgb(73, 73, 73);
+  font-size:1.5em;
+  font-family: Avenir, Helvetica, sans-serif;
+  font-weight:600;
+  margin-left:-12vw;
+  margin-top:3vh;
+}
+
  .category-bar {
    -webkit-transition: width 0.4s ease-in-out;
    transition: width 0.4s ease-in-out;
-   width: 25vw;
-   padding: 1.25vw 2vw;
-   margin: 1vw 0;
-   margin-top:2vw;
+   width: 15vw;
+   margin-top:21vh;
+   margin-left:-13vw;
+   position:absolute;
+   height:5vh;
    box-sizing: border-box;
    color:black;
    font-size:1.5em;
    /* position:absolute; */
-   left:63vw;
    background-color:#ffffff;
- 
-   border-radius: 15px;
+   border-radius: 10px;
    border: 2px solid #999999;
-   box-shadow: 3px 3px 4px #cccccc;}
+   box-shadow: 1px 2px 4px #cccccc;}
    
  input[type=text]:focus {
    border: 2px solid #ff3300;
