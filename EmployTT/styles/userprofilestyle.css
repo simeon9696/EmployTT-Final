@@ -13,7 +13,8 @@ html {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   	background-color:#ffffff;
-  background-size: 100vw 100vw;}
+  background-size: 100vw 100vw;
+}
 
   #username{
     color:#ff3300;
@@ -226,7 +227,7 @@ footer{
 	width:83%;
 	color:#eee;
 	-webkit-appearance: none;
-	border-radius: 2px; 
+  border-radius: 2px; 
 }
 
 #progress2-bar{margin-bottom:1vw;}
@@ -329,7 +330,9 @@ body{
   padding-bottom:5vw;
   justify-content: center;
 }
-#submitButton{
+
+  
+#updateButton{
   background-color:#663399;
   display: inline-block;
   border-radius: 4px;
@@ -339,44 +342,7 @@ body{
   font-size: 1.25em;
   padding: 1vw;
   width: 10vw;
-   height:100%;
-  font-weight: bold;
-  position: relative;
-  cursor: pointer;
-  transition: 0.5s;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-#submitButton span:after{
-  content: '\00bb';
-  position: relative;
-  opacity: 0;
-  top: 1vw;
-  left:5vw;
-  right: -4vw;
-  transition: 0.5s;
-  font-size:1.5em;}
-
-#submitButton:hover span {
-  padding-right: 2.5vw;}
-  
-#submitButton:hover {
-  border-radius:29px;}
-  
-#submitButton:hover span:after {
-  opacity: 1;
-  right: 0;}
-  
-#updateButton{
-  background-color:#339933;
-  display: inline-block;
-  border-radius: 4px;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 1.25em;
-  padding: 1vw;
-  width: 10vw;
-    height:100%;
+  height:100%;
   font-weight: bold;
   position: relative;
   cursor: pointer;
@@ -403,44 +369,7 @@ body{
 #updateButton:hover span:after {
   opacity: 1;
   right: 0;}
-  
-#removeButton{
-  background-color:#cc0000;
-  display: inline-block;
-  border-radius: 4px;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 1.25em;
-  padding: 1vw;
-  width: 10vw;
-  height:100%;
-  font-weight: bold;
-  position: relative;
-  cursor: pointer;
-  transition: 0.5s;
-  margin-left:1vw;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
 
-  #removeButton span:after{
-  content: '\00bb';
-  position: relative;
-  opacity: 0;
-  top: 1vw;
-  left:5vw;
-  right: -4vw;
-  transition: 0.5s;
-  font-size:1.5em;}
-
-  #removeButton:hover span {
-  padding-right: 2.5vw;}
- 
-  #removeButton:hover {
-  border-radius:29px;}
-   
-  #removeButton:hover span:after {
-  opacity: 1;
-  right: 0;}
   
  
 .icon {
@@ -517,7 +446,72 @@ body{
   opacity: 1;
   right: 0;}  
 
+#signup-form .file-upload {
+  padding-left: 5vw;
+  padding-top:25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;  
+  padding-bottom:50px;
+}
+#signup-form .column-one{
+  border: 1px solid red;
+  width:45%
+}
 
-#file-names{
-  line-height: 20px;
+
+#signup-form .column-two{
+  
+  border: 1px solid red;
+  width:45%
+}
+
+#signup-form .file-upload input[type="file"] {
+  display: none;
+}
+
+#signup-form .file-label {
+  position: relative;
+  background-color:none;
+  display: inline-block;
+  border-radius: 4px;
+  border: solid 2px purple;
+  text-align: center;
+  padding: 1vw;
+  width: 9vw;
+  height:100%;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 1.25em;
+  cursor: pointer;
+  margin-left:1vw;
+  color: purple;
+  box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  transition: 0.5s;
+}
+
+#signup-form .file-label:hover {
+  cursor: pointer;
+  color: grey;
+  border: solid 2px grey;
+  border-radius:50px;
+
+}
+
+
+#signup-form .individual-file {
+  padding-bottom: 7px;
+  padding-top:7px;
+  border: solid red 1px;
+}
+
+#signup-form .file-name{
+  border: solid blue 1px;
+  font-size: 1em;
+  font-family: 'Avenir';
+}
+
+#signup-form .reset-file:hover{
+  cursor:pointer;
 }

@@ -16,7 +16,6 @@ html {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   background-color:whitesmoke;
-  background-size: 100% 100%;
 }
 
   #username{
@@ -70,10 +69,10 @@ body {
 	
 .profile-container{
 	height:auto;
-	width:100%;
 	background-color:white;
-	margin-left:15vw;
+	margin-left:10vw;
 }
+
 #setup-continue{
 	font-style:italic;
 	font-size:1.2em;
@@ -748,8 +747,10 @@ textarea:focus{
   margin-top:0.5vw;
 }
 
-.jobNames{
-  cursor: pointer;
-  font-weight: 700;
+.file-upload{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
 }
 
