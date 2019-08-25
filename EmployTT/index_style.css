@@ -407,9 +407,6 @@ input::-webkit-input-placeholder {
   display:none;
 }
 
-.blocking-span{
-
-}
 
 .topnav {
   position: -webkit-sticky;
@@ -1055,12 +1052,16 @@ input[type=search]:focus {
   }
 
   #termsAccept{
-    margin-left: 6vw;
+    margin-left: -0.3vw;
     margin-top: -0.8vh;
-    max-width:20px;
-    max-height:20px;
+    max-width:15px;
+    max-height:15px;
     position:absolute;
 
+  }
+  #agreement-clause{
+    margin-left: 10vw;
+    
   }
 }
 
@@ -1112,9 +1113,7 @@ input[type=search]:focus {
 
 }
 
-div #mobile-focus-hide{
 
-}
 
 @media screen and (max-width:880px){
 

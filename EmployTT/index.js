@@ -318,11 +318,6 @@ mobileSubmitButton.addEventListener('click',e=>{
 
 
 
-const googleMobileButton = document.querySelector('#google-mobile-reg-button');
-googleMobileButton.addEventListener('click',e=>{
-  e.preventDefault();
-  googleSignIn();
-})
 
 
 function fadeInRegistrationForm(){
@@ -509,7 +504,6 @@ if (navigator.serviceWorker) {
 
 
 
-console.log(window.performance.now());
 
 /*
 //Check for webp support for browsers that do not support it
