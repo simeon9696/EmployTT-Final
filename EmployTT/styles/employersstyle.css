@@ -34,6 +34,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   z-index: 10;
 }
 
+
+
 .topnav a {
   margin-top:12px;
   position: relative;
@@ -77,7 +79,27 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     padding-top:8vw;
     width:40%;
    }
-  
+   #mobile-menu {
+     height:auto !important;
+     width:350px !important;
+     z-index:10000;
+     padding-top:0vh;
+     position:absolute;
+   }
+
+   #mobile-menu  .mobile-menu-text{
+     padding:0vw;
+     height:1vh !important;
+     border-bottom: none;
+
+   }
+
+   #mobile-menu li {     
+    padding-top:4vh;
+    padding-bottom:4vh;
+    border-bottom: 2px solid rgb(27, 27, 27);
+  }
+
   }
  
 
@@ -100,6 +122,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
   .employer-background{
     opacity:0.35 !important;
+    height:80vh;
+
   }}
    
  .employer-quote{
@@ -306,4 +330,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	position:relative;
 
 }
+
+@media (max-width: 880px) {
+
+  footer{
+    margin-top:50vh !important;
+  }}
 
