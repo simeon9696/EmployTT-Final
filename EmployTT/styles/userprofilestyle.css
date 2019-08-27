@@ -515,14 +515,11 @@ body{
   padding-bottom:50px;
 }
 #signup-form .column-one{
-  border: 0px solid red;
   width:45%
 }
 
 
 #signup-form .column-two{
-  
-  border: 0px solid red;
   width:45%
 }
 
@@ -553,6 +550,7 @@ body{
   box-shadow:  0 4px 4px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(121, 121, 121, 0.19);
   transition: 0.2s;
   overflow:hidden;
+  
 }
 
 #signup-form .file-label:hover {
@@ -574,6 +572,7 @@ body{
   border: solid blue 0px;
   font-size: 1em;
   font-family: 'Avenir';
+  transition: all ease 0.5s
 }
 
 #signup-form .reset-file:hover{
