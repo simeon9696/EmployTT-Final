@@ -14,24 +14,24 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 html {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
-  	background-color:whitesmoke;
+  background-color:whitesmoke;
   background-size: 100vw 100vw;}
 
-  @font-face{
-    font-family: 'Avenir';
-    src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
-    font-display: 'Avenir';
-  }
-  
-  @font-face{
-    font-family: 'Avenir-Light';
-    src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
-    font-display: 'Avenir-Light';
-  }
+@font-face{
+  font-family: 'Avenir';
+  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
+  font-display: 'Avenir';
+}
 
-  #username{
-	color:#ff3300;
-	font-weight:525;
+@font-face{
+  font-family: 'Avenir-Light';
+  src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
+  font-display: 'Avenir-Light';
+}
+
+#username{
+color:#ff3300;
+font-weight:525;
 }
 #menuToggle{
   display:none;
@@ -75,8 +75,8 @@ html {
 
 	
 .about-container{
-	height:40vw;
-	width:100vw;
+  width:100vw;
+
 }	
 
 h1{
@@ -103,9 +103,7 @@ p{
   line-height: 1.4em;
 }
 
-.employTT-email{
-  padding-bottom:12vw;
-}
+
 
 
 .youtube-video { 
@@ -120,12 +118,11 @@ p{
 
 @media (max-width: 880px) {
   .youtube-video { 
-    display: block;
-    position: relative;
+    display: flex;
     max-width:100%;
-    height: auto;
+    
     border: 3px solid rgb(0, 0, 0);
-    bottom:-420px;
+  
   }
 
   #username{
