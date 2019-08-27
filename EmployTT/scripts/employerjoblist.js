@@ -348,7 +348,6 @@ auth.onAuthStateChanged(user => {
     });
   });
 });
-uncheck('1');
 
 // var collapse = document.getElementsByClassName("collapse");
 // var i;
