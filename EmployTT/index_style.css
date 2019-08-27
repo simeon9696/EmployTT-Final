@@ -1191,7 +1191,7 @@ input[type=search]:focus {
 
   .landing-reg-form input{
     border-bottom: 0.05vh solid white;
-    width: 1vw;
+    width: 40vw;
     height: 30px;
    }
 

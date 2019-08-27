@@ -28,7 +28,6 @@ landingFormSubmit.addEventListener('click', e =>{
     makeTextRed();
     setTimeout(makeTextWhite, 500);
   }else if(termAccept.checked===true){
-    console.log("let it through");
     const civilianName = document.querySelector('#fullName');
     const emailAddress = document.querySelector('#emailAddress');
     const origPassword = document.querySelector('#origPassword');
@@ -502,27 +501,3 @@ if (navigator.serviceWorker) {
   });
 }
 
-
-
-
-/*
-//Check for webp support for browsers that do not support it
-
-async function supportsWebp() {
-  if (!self.createImageBitmap) return false;
-  
-  const webpData = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=';
-  const blob = await fetch(webpData).then(r => r.blob());
-  return createImageBitmap(blob).then(() => true, () => false);
-}
-
-(async () => {
-  if(await supportsWebp()) {
-    console.log('does support');
-  }
-  else {
-    console.log('does not support');
-  }
-})();
-
-*/
