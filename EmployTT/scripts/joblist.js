@@ -1,4 +1,5 @@
 const jobTable = document.querySelector('#job-table');
+const url = new URLSearchParams(window.location.search);
 function checkApplied(job_id, userid){
   var user = userid;
   var jobs = job_id
@@ -41,6 +42,24 @@ firestore.collection('Jobs').get().then((snapshot)=>{
         renderJobTable(doc, c, user);
         c++;
     });
+    if(url){
+      let search = url.get("search");
+      let location = url.get("location");
+      let category = url.get("category");
+    
+      let search_bar = document.getElementById("searchBar");
+      let location_bar = document.getElementById("location-filter");
+      let category_bar = document.getElementById("category-filter");
+    
+      if(search != ""){
+       search_bar.value = search;
+      }if(location != ""){
+        location_bar.value = location;
+      }if(category != ""){
+        category_bar.value = category;
+      }
+      searchBarFN();
+    }
   });
 });
 
