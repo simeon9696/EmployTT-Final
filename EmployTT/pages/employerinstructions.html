@@ -40,36 +40,37 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
     </head>
     <body>
-     <nav role="navigation">
-        <div id="menuToggle">
-            <input type="checkbox" class="menu-clicker"/>
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul id="mobile-menu">
-                <li id="mobile-li"><a href="./joblist.html" style="color:#ff3300;"  class="active">All Jobs</a></li>
-                <li id="mobile-li"><a href="../index.html"  >Find Jobs</a></li>
-                <li id="mobile-li"><a href="./login.html">Log In</a></li>
-                <li id="mobile-li"><a href="./employers.html">Employers</a></li>
-                <li id="mobile-li"><a href="./termsofservice.html">Terms of Service</a></li>
-                <li id="mobile-li"><a href="./aboutus.html">About Us</a></li>
-                <li id="mobile-li"><a href="./privacypolicy.html" >Privacy Policy</a></li>
-                <li id="mobile-li"><a href="./userprofileregister.html" >Register</a></li>
-                </ul>
-            </div>
-        </nav>
+        
+        <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox" class="menu-clicker"/>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="mobile-menu">
+                    
+                    <li id="alljobs-li" class = "mobile-menu-item"><a href="./joblist.html" data-page="1" class = "mobile-menu-text">All Jobs</a></li>
+                    <li id="findjobs-li"class = "mobile-menu-item"><a href="../index.html"  data-page="2" class="active"  class = "mobile-menu-text" >Find Jobs</a></li>
+                    <li id="login-li" class = "mobile-menu-item"><a  href="./login.html" data-page="3"  class = "mobile-menu-text">Log In</a></li>
+                    <li id="employers-li" class = "mobile-menu-item"><a href="./employers.html" data-page="4" class = "mobile-menu-text" >Employers</a></li>
+                    <li id="aboutus-li" class = "mobile-menu-item"><a href="./aboutus.html" data-page="5"  class = "mobile-menu-text" style="color:#ff3300;">About Us</a></li>
+                    <li id="terms-li" class = "mobile-menu-item"><a href="./termsofservice.html" data-page="6"  class = "mobile-menu-text">Terms of Service</a></li>
+                    <li id="privacypolicy-li" class = "mobile-menu-item"><a href="./privacypolicy.html" data-page="7" class = "mobile-menu-text">Privacy Policy</a></li>
+                    <li id="faqs-li" class = "mobile-menu-item"><a href="./faqs.html" data-page="8"  class = "mobile-menu-text">FAQs</a></li>
+                    <li id="user-li" class = "mobile-menu-item"><a href="./userprofileinfo.html" data-page="9"  class = "mobile-menu-text">Username</a></li>  
+                    </ul>
+                    </div>
+            </nav>
     <div class="topnav">    
             <!--User's name goes here once logged in-->
             <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
             <a class="nav-word" id="logged-in"  href="#"></a>	
-            <a class="nav-word" id="regBtn" 	href="./userprofileregister.html" >Register</a>
             <a class="nav-word" id="logInBtn" 	href="./login.html" >Log in</a>	
             <a class="nav-word" id="employers" 	href="./employers.html">Employers</a> 
             <a class="nav-word" id="all-jobs"  	href="./joblist.html"  style="color:#ff3300">All Jobs</a>
             <a class="nav-word" id="find-jobs" 	href="../index.html" >Find Jobs</a>
-            <a class="nav-word" id="about-us" 	href="./aboutus.html" >About Us</a>
-            <a class="nav-word" id="terms-of-service" href="./termsofservice.html"  >Terms of Service</a>
-            <a class="nav-word" id="privacy-policy"   href="./privacypolicy.html">Privacy Policy</a>
+            <a class="nav-word" id="privacy-policy" href="./faqs.html">FAQs</a>
+
         </div>
 
 

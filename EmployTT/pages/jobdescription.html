@@ -23,7 +23,6 @@
 		<link href="https://fonts.googleapis.com/css?family=Cookie" 							rel="stylesheet" type="text/css">
 		<!-- Link style files -->
 		<link href="../styles/jobdescription.css" type="text/css" rel="stylesheet" />	
-		<link rel="stylesheet" href="../styles/mobilenavstyle.css">
 		<link href="../styles/footerstyle.css" type="text/css" rel="stylesheet" />	
 		<!--Link address bar icon file for any browser-->
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -36,26 +35,26 @@
 	</head>
 
 	<body>
-			<nav role="navigation">
-					<div id="menuToggle">
-					  <input type="checkbox" class="menu-clicker"/>
-						<span></span>
-						<span></span>
-						<span></span>
-						<ul id="mobile-menu">
-					    <li id="mobile-li"><a href="./pages/employers.html" data-page="4" style="color:#ff3300;" >Employers</a></li>
-						<li id="mobile-li"><a href="./pages/joblist.html" data-page="1" >All Jobs</a></li>
-						<li id="mobile-li"><a href="../index.html"  data-page="2" class="active"  >Find Jobs</a></li>
-						<li id="mobile-li"><a  href="./pages/login.html" data-page="3" >Log In</a></li>
-						<li id="mobile-li"><a href="./pages/aboutus.html" data-page="5" >About Us</a></li>
-						<li id="mobile-li"><a href="./pages/termsofservice.html" data-page="6" >Terms of Service</a></li>
-						<li id="mobile-li"><a href="./pages/privacypolicy.html" data-page="7">Privacy Policy</a></li>
-						<li id="mobile-li"><a href="./pages/userprofileregister.html" data-page="8" >Register</a></li>
-						<li id="mobile-li"><a href="./pages/faqs.html" data-page="9" >FAQs</a></li>
-						
+		<nav role="navigation">
+				<div id="menuToggle">
+					<input type="checkbox" class="menu-clicker"/>
+					<span></span>
+					<span></span>
+					<span></span>
+					<ul id="mobile-menu">
+					
+					<li id="alljobs-li" class = "mobile-menu-item"><a href="./joblist.html" data-page="1" class = "mobile-menu-text">All Jobs</a></li>
+					<li id="findjobs-li"class = "mobile-menu-item"><a href="../index.html"  data-page="2" class="active"  class = "mobile-menu-text" >Find Jobs</a></li>
+					<li id="login-li" class = "mobile-menu-item"><a  href="./login.html" data-page="3"  class = "mobile-menu-text">Log In</a></li>
+					<li id="employers-li" class = "mobile-menu-item"><a href="./employers.html" data-page="4" class = "mobile-menu-text" >Employers</a></li>
+					<li id="aboutus-li" class = "mobile-menu-item"><a href="./aboutus.html" data-page="5"  class = "mobile-menu-text" style="color:#ff3300;">About Us</a></li>
+					<li id="terms-li" class = "mobile-menu-item"><a href="./termsofservice.html" data-page="6"  class = "mobile-menu-text">Terms of Service</a></li>
+					<li id="privacypolicy-li" class = "mobile-menu-item"><a href="./privacypolicy.html" data-page="7" class = "mobile-menu-text">Privacy Policy</a></li>
+					<li id="faqs-li" class = "mobile-menu-item"><a href="./faqs.html" data-page="8"  class = "mobile-menu-text">FAQs</a></li>
+					<li id="user-li" class = "mobile-menu-item"><a href="./userprofileinfo.html" data-page="9"  class = "mobile-menu-text">Username</a></li>  
 					</ul>
-				   </div>
-				  </nav>
+					</div>
+			</nav>
 			<div class="topnav">    
 					<!--User's name goes here once logged in-->
 					<a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>        
@@ -65,9 +64,6 @@
 					<a class="nav-word" id="employers" 	href="./employers.html" style="color:#330099">Employers</a> 
 					<a class="nav-word" id="all-jobs"  	href="./joblist.html" >All Jobs</a>
 					<a class="nav-word" id="find-jobs" 	href="../index.html" ">Find Jobs</a>
-					<a class="nav-word" id="about-us" 	href="./aboutus.html" >About Us</a>
-					<a class="nav-word" id="terms-of-service" href="./termsofservice.html"  >Terms of Service</a>
-					<a class="nav-word" id="privacy-policy"   href="./privacypolicy.html">Privacy Policy</a>
 					<a class="nav-word" id="privacy-policy" href="./faqs.html">FAQs</a>
 				</div>
 			   <div class="employer-container">
@@ -231,7 +227,7 @@
 <footer class="footer-distributed">
 	<div class="footer-left">
 		
-			<img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+			<img src="./images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='./images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
 			<p class="footer-links">
 			<a href="./index.html">Home</a>
 			·

@@ -11,13 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <!-- Scripts are deferred to improve page performance -->
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js" 	   		type="text/javascript"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"	type="text/javascript"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js" 		type="text/javascript"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-auth.js" 			type="text/javascript"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/6.0.2/firebase-functions.js" 	type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0//firebase-app.js" 	   		type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0//firebase-firestore.js"	type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0//firebase-storage.js" 		type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js" 			type="text/javascript"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/6.1.0//firebase-functions.js" 	type="text/javascript"></script>
     <script defer src="../scripts/authui.js" 											type="text/javascript"></script>
-    <script defer src="../scripts/userprofileregister.js" 															type="text/javascript"></script>
+    <script defer src="../scripts/userprofileregister.js" 															type="text/javascript" onload ="showContent()"></script>
     <!-- jQuery Dependencies -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" 			type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"type = "text/javascript"  charset="utf-8"></script>
@@ -40,18 +40,50 @@
 
   <body>
 
+    <div class="sk-cube-grid" id="preloader">
+      <div class="row-one">
+              <div class="sk-cube sk-cube1"></div>
+              <div class="sk-cube sk-cube2"></div>
+          <div class="sk-cube sk-cube3"></div>
+      </div>
+      <div class="row-two"></div>
+          <div class="sk-cube sk-cube4"></div>
+          <div class="sk-cube sk-cube5"></div>
+          <div class="sk-cube sk-cube6"></div>
+      <div class="row-three">
+          <div class="sk-cube sk-cube7"></div>
+          <div class="sk-cube sk-cube8"></div>
+          <div class="sk-cube sk-cube9"></div>
+      </div>
+  </div> 
+  <nav role="navigation">
+      <div id="menuToggle">
+        <input type="checkbox" class="menu-clicker"/>
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="mobile-menu">
+          
+          <li id="alljobs-li" class = "mobile-menu-item"><a href="./joblist.html" data-page="1" class = "mobile-menu-text">All Jobs</a></li>
+          <li id="findjobs-li"class = "mobile-menu-item"><a href="../index.html"  data-page="2" class="active"  class = "mobile-menu-text" >Find Jobs</a></li>
+          <li id="login-li" class = "mobile-menu-item"><a  href="./login.html" data-page="3"  class = "mobile-menu-text">Log In</a></li>
+          <li id="employers-li" class = "mobile-menu-item"><a href="./employers.html" data-page="4" class = "mobile-menu-text" >Employers</a></li>
+          <li id="aboutus-li" class = "mobile-menu-item"><a href="./aboutus.html" data-page="5"  class = "mobile-menu-text" style="color:#ff3300;">About Us</a></li>
+          <li id="terms-li" class = "mobile-menu-item"><a href="./termsofservice.html" data-page="6"  class = "mobile-menu-text">Terms of Service</a></li>
+          <li id="privacypolicy-li" class = "mobile-menu-item"><a href="./privacypolicy.html" data-page="7" class = "mobile-menu-text">Privacy Policy</a></li>
+          <li id="faqs-li" class = "mobile-menu-item"><a href="./faqs.html" data-page="8"  class = "mobile-menu-text">FAQs</a></li>
+          <li id="user-li" class = "mobile-menu-item"><a href="./userprofileinfo.html" data-page="9"  class = "mobile-menu-text">Username</a></li>  
+        </ul>
+       </div>
+  </nav>
     <!-- Navigation -->
     <div class="topnav">  
         <a class="nav-word displayname" id="username" href="./userprofileinfo.html"></a>       <!--User's name goes here once logged in--> 
         <a class="nav-word" id="logged-in"  href="#"></a>	
-        <a class="nav-word" id="regBtn" href="./userprofileregister.html" style="color:#ff3300" >Register</a>
         <a class="nav-word" id="logInBtn" href="./login.html" >Log in</a>	
         <a class="nav-word" id="employers" href="./employers.html">Employers</a> 
       	<a class="nav-word" id="logged-in"  href="./joblist.html">All Jobs</a>
         <a class="nav-word" id="logged-out" href="../index.html">Find Jobs</a>
-        <a class="nav-word" id="logged-out" href="./aboutus.html">About Us</a>
-        <a class="nav-word" id="logged-out" href="./termsofservice.html">Terms of Service</a>
-        <a class="nav-word" id="logged-out" href="./privacypolicy.html">Privacy Policy</a>
         <a class="nav-word" id="privacy-policy" href="./faqs.html">FAQs</a>
       </div>
     
@@ -101,7 +133,7 @@
           <div class = "individual-file">
               <label for ="resume" class="file-label button1">Resume</label>
 
-              <span class = "file-name" id="resume-label">No file</span>
+              <span class = "file-name" id="resume-label">No file selected</span>
               <span class = "reset-file" id ="resume-reset">Clear</span>
               <input type="file" name="resume"   class="file-input"  id="resume" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
@@ -109,7 +141,7 @@
     
           <div class = "individual-file">
               <label for ="transcript" class="file-label button2">Transcript</label>
-              <span class = "file-name" id="transcript-label">No file</span>
+              <span class = "file-name" id="transcript-label">No file selected</span>
               <span class = "reset-file" id ="transcript-reset">Clear</span>
               <input type="file" name="transcript"  class="file-input" id="transcript" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
@@ -117,7 +149,7 @@
     
           <div class = "individual-file">
               <label for ="birthCert" class="file-label button3">Birth Certificate</label>
-              <span class = "file-name" id="birthCert-label">No file</span>
+              <span class = "file-name" id="birthCert-label">No file selected</span>
               <span class = "reset-file" id ="birthCert-reset">Clear</span>
               <input type="file" name="birthCert"    class="file-input"      id="birthCert" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
@@ -126,7 +158,7 @@
     
           <div class = "individual-file">
               <label for ="nationalID" class="file-label button4">National ID</label>
-              <span class = "file-name" id="nationalID-label">No file</span>
+              <span class = "file-name" id="nationalID-label">No file selected</span>
               <span class = "reset-file" id ="nationalID-reset">Clear</span>
               <input type="file" name="nationalID"    class="file-input"     id="nationalID" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
@@ -134,7 +166,7 @@
     
           <div class = "individual-file">
               <label for ="driverLicense" class="file-label button5">Driver's License</label>
-              <span class = "file-name" id="driverLicense-label">No file</span>
+              <span class = "file-name" id="driverLicense-label">No file selected</span>
               <span class = "reset-file" id ="driverLicense-reset">Clear</span>
               <input type="file" name="driverLicense"  class="file-input"    id="driverLicense" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
@@ -142,14 +174,14 @@
     
           <div class = "individual-file">
               <label for ="policeCert" class="file-label button6">Police Certificate of Character</label>
-              <span class = "file-name" id="policeCert-label">No file</span>
+              <span class = "file-name" id="policeCert-label">No file selected</span>
               <span class = "reset-file" id ="policeCert-reset">Clear</span>
               <input type="file" name="policeCert"     class="file-input"    id="policeCert" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
 
           <div class = "individual-file">
               <label for ="videoCharacter" class="file-label button7">Video of Character</label>
-              <span class = "file-name" id="videoCharacter-label">No file</span>
+              <span class = "file-name" id="videoCharacter-label">No file selected</span>
               <span class = "reset-file" id ="videoCharacter-reset">Clear</span>
               <input type="file" name="videoCharacter"  class="file-input"   id="videoCharacter" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
@@ -166,14 +198,14 @@
     
           <div class = "individual-file">
               <label for ="reference-one" class="file-label button8">Reference</label>
-              <span class = "file-name" id="reference-one-label">No file</span>
+              <span class = "file-name" id="reference-one-label">No file selected</span>
               <span class = "reset-file" id ="reference-one-reset">Clear</span>
               <input type="file" name="reference-one"   class="file-input"   id="reference-one" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
 
           <div class = "individual-file">
               <label for ="reference-two" class="file-label button9">Reference</label>
-              <span class = "file-name" id="reference-two-label">No file</span>
+              <span class = "file-name" id="reference-two-label">No file selected</span>
               <span class = "reset-file" id ="reference-two-reset">Clear</span>
               <input type="file" name="reference-two"   class="file-input"   id="reference-two" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff"> 
           </div>
@@ -182,7 +214,7 @@
     
           <div class = "individual-file">
               <label for ="certificate-one" class="file-label button10">Certificate</label>
-              <span class = "file-name" id="certificate-one-label">No file</span>
+              <span class = "file-name" id="certificate-one-label">No file selected</span>
               <span class = "reset-file" id ="certificate-one-reset">Clear</span>
               <input type="file" name="certificate-one" class="file-input"   id="certificate-one" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
           </div>
@@ -191,7 +223,7 @@
     
           <div class = "individual-file">
               <label for ="certificate-two" class="file-label button11">Certificate</label>
-              <span class = "file-name" id="certificate-two-label">No file</span>
+              <span class = "file-name" id="certificate-two-label">No file selected</span>
               <span class = "reset-file" id ="certificate-two-reset">Clear</span>
 
               <input type="file" name="certificate-two" class="file-input"   id="certificate-two" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
@@ -201,7 +233,7 @@
     
           <div class = "individual-file">
               <label for ="certificate-three" class="file-label button12">Certificate</label>
-              <span class = "file-name" id="certificate-three-label">No file</span>
+              <span class = "file-name" id="certificate-three-label">No file selected</span>
               <span class = "reset-file" id ="certificate-three-reset">Clear</span>
 
               <input type="file" name="certificate-three" class="file-input"  id="certificate-three" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
@@ -210,7 +242,7 @@
     
           <div class = "individual-file">
               <label for ="certificate-four" class="file-label button13">Certificate</label>
-              <span class = "file-name" id="certificate-four-label">No file</span>
+              <span class = "file-name" id="certificate-four-label">No file selected</span>
               <span class = "reset-file" id ="certificate-four-reset">Clear</span>
 
               <input type="file" name="certificate-four"  class="file-input"  id="certificate-four" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff"> 
@@ -219,7 +251,7 @@
     
           <div class = "individual-file">
               <label for ="certificate-five" class="file-label button14">Certificate</label>
-              <span class = "file-name" id="certificate-five-label">No file</span>
+              <span class = "file-name" id="certificate-five-label">No file selected</span>
               <span class = "reset-file" id ="certificate-five-reset">Clear</span>
 
               <input type="file" name="certificate-five" class="file-input"   id="certificate-five" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.jpeg,.jpg,.pdf,.png,.tiff">
@@ -231,7 +263,6 @@
 
 
     <!--
-
           <p class="dropzone-label">Upload Files<a class="stars" style="font-size:1.7em;">*</a></p>
     <div id="drop_zone" class="drop">
     <p id ="file-names"> Required Material: <br>
