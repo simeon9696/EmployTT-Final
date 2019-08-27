@@ -816,6 +816,7 @@ input[type=search]:focus {
   font-family: 'Avenir';
   src:url('../fonts/avenir-lt-std-cufonfonts/AvenirLTStd-Heavy.woff')  format('woff'); /* Safari, Android, iOS */
   font-display: 'Avenir';
+  font-weight: bold;
 }
 
 @font-face{
@@ -898,10 +899,10 @@ input[type=search]:focus {
 }
 
 .step-words{
-	font-size:2.5em;
+	font-size:2em;
 	color:#000000;
 	padding-top:4vw;
-  font-weight:500;
+  font-weight:400;
   font-family: 'Avenir','Helvetica' , sans-serif;
 
 }
