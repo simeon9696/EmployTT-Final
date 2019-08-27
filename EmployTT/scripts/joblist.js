@@ -406,7 +406,10 @@ function searchBarFN(){
     }
     if(location == "all"){
       hide_location = 0;
+    }if(category == "all"){
+      hide_category = 0;
     }
+
 
     let p = divs[i].getElementsByTagName('p');
     for(var j = 0; j <p.length; j++){
