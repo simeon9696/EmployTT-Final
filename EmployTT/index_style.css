@@ -75,10 +75,10 @@ span .agree-words{
   display:block;
   font-size: 1em;
   margin-top:-1vh;
-  margin-left:7.5vw;
+  margin-left:0.5vw;
   font-weight:normal;
-  width:19vw;
   text-align:justify;
+  width:220px;
 }
 
 
@@ -145,8 +145,8 @@ font-family: 'Avenir',Arial, sans-serif;
 
 
 .landing-reg-form input[type=checkbox]{
-  width: 1vw;
-  position: absolute;
+  width:15px;
+  position: relative;
   margin-left: 4.1vw;
   margin-top:-42vh;
 }
@@ -305,19 +305,6 @@ input[type="date"]:valid::-webkit-datetime-edit{ color: #ffffff; }
 }
 
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: white;
-}
-::-moz-placeholder { /* Firefox 19+ */
-  color: white;
-}
-:-ms-input-placeholder { /* IE 10+ */
-  color: white;
-}
-:-moz-placeholder { /* Firefox 18- */
-  color: white;
-}
-
 @keyframes autofill{
   to{
     color: #ffffff;
@@ -397,6 +384,7 @@ input:not(:focus):valid ~ .floating-label {
 
 input::-webkit-input-placeholder {
   color: rgb(104, 104, 104);
+  font-family: 'Avenir','Helvetica' , sans-serif;
 }
 
 .nav {
@@ -416,7 +404,7 @@ input::-webkit-input-placeholder {
   height:80px;
   top: 0px;
   z-index: 10;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 8px 0 rgba(49, 49, 49, 0.2), 0 3px 10px 0 rgba(43, 43, 43, 0.19);
 }
 
 .topnav a {
@@ -466,9 +454,12 @@ li a {
  .job-quote{
  text-align: center;
  font-size:4em;
+ padding-top:5vh;
  padding-bottom: 6vw;
  font-weight: bold;
- color:#000000;}
+ color:#000000;
+ letter-spacing: -1px;
+ font-family: 'Avenir','Helvetica' , sans-serif;}
  
  .word-highlight{
  color:#ff3300;
@@ -575,7 +566,7 @@ input[type=search]:focus {
  outline: none !important;}
 
 .findjobs-button {
-  display: inline-block;
+  display: block;
   border-radius: 4px;
   background-color: #ff3300;
   border: none;
@@ -587,12 +578,12 @@ input[type=search]:focus {
   transition: all 0.5s;
   cursor: pointer;
   font-weight: bold;
-  position: absolute;
+  position: relative;
   cursor: pointer;
   transition: 0.5s;
-  margin-top:2vw;
-  left:44vw;
-  top: 10vw;
+  margin-top:17vh;
+  margin-left: auto;
+  margin-right:auto;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
 
 .findjobs-button span:after{
@@ -651,7 +642,7 @@ input[type=search]:focus {
       position:absolute;
       left:11vw; 
       background-color:#ffffff;
-      border-radius: 15px;
+      border-radius: 10px;
       border: 2px solid #999999;
       box-shadow: 1px 1px 4px #cccccc;}
     
@@ -668,7 +659,7 @@ input[type=search]:focus {
       position:absolute;
       left:37vw;
       background-color:#ffffff;
-      border-radius: 15px;
+      border-radius: 10px;
       border: 2px solid #999999;
       box-shadow: 1px 1px 4px #cccccc;}
       
@@ -702,7 +693,7 @@ input[type=search]:focus {
       left:63vw;
       background-color:#ffffff;
       top:25vw;
-      border-radius: 15px;
+      border-radius: 10px;
       border: 2px solid #999999;
       box-shadow: 3px 3px 4px #EBEBEB;
     }
@@ -720,12 +711,12 @@ input[type=search]:focus {
       position:absolute;
       left:63vw;
       background-color:#ffffff;
-      border-radius: 15px;
+      border-radius: 10px;
       border: 2px solid #999999;
       box-shadow: 3px 3px 4px #cccccc;}    
 
       .findjobs-button {
-        display: inline-block;
+        display: block;
         border-radius: 4px;
         background-color: #ff3300;
         border: none;
@@ -733,17 +724,17 @@ input[type=search]:focus {
         text-align: center;
         font-size: 1em;
         padding: 1.9vw;
-        width: 18vw;
+        width: 25vw;
         transition: all 0.5s;
         cursor: pointer;
         font-weight: bold;
-        position: absolute;
+        position: relative;
         cursor: pointer;
         transition: 0.5s;
-        margin-top:6vw;
+        margin-top:10vh;
         margin-bottom:20vw;
-        left:41vw;
-        top: 10vw;
+        margin-left: auto;
+        margin-right:auto;
         box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
       
       .findjobs-button span:after{
@@ -779,9 +770,11 @@ input[type=search]:focus {
 
 .why-quote {
 	color:black;
-	text-align: center;
+  text-align: center;
+  letter-spacing: -1px;
  	font-size:4em;
-   font-weight: bold;}
+   font-weight: bold;
+   font-family: 'Avenir','Helvetica' , sans-serif;}
    
  	@media (max-width: 880px) {
 
@@ -801,7 +794,8 @@ input[type=search]:focus {
  	 font-weight: bold; 
  	 padding-right:3.5vw;
 	padding-left:3.5vw;
-	width:33.33%;
+  width:33.33%;
+  font-family: 'Avenir','Helvetica' , sans-serif;
 	
 }
 
@@ -811,18 +805,30 @@ input[type=search]:focus {
     color:#ff3300;
     text-align: center;
     font-size:2em; 	
-    font-weight: bold; 
+    font-weight: 1000; 
     padding-right:3.5vw;
     padding-left:3.5vw;
     width:33.33%;
    
  }}
 
+ @font-face{
+  font-family: 'Avenir';
+  src:url('../fonts/avenir-lt-std-cufonfonts/AvenirLTStd-Heavy.woff')  format('woff'); /* Safari, Android, iOS */
+  font-display: 'Avenir';
+}
+
+@font-face{
+  font-family: 'Avenir-Light';
+  src:url('../fonts/avenir-lt-std-cufonfonts/AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
+  font-display: 'Avenir-Light';
+}
 
 .why-table{
 	margin-top:4.5vw;
  	table-layout: fixed ;
- 	width: 100% ;
+   width: 100% ;
+   font-family: 'Avenir','Helvetica' , sans-serif;
 }
 
 .why-words{
@@ -833,7 +839,8 @@ input[type=search]:focus {
 	padding-bottom:3vw;
 	padding-right:3.5vw;
 	padding-left:3.5vw;
-	width:33.33%;
+  width:33.33%;
+  font-family: 'Avenir','Helvetica' , sans-serif;
 }
 
 @media (max-width: 880px) {
@@ -856,8 +863,10 @@ input[type=search]:focus {
 .step-quote{
 	color:#000000;
 	text-align: center;
- 	font-size:4em;
- 	font-weight: bold;
+   font-size:4em;
+   letter-spacing: -1px;
+   font-weight: bold;
+   font-family: 'Avenir','Helvetica' , sans-serif;
 }
 
 @media (max-width: 880px) {
@@ -892,7 +901,8 @@ input[type=search]:focus {
 	font-size:2.5em;
 	color:#000000;
 	padding-top:4vw;
-	font-weight:300;
+  font-weight:500;
+  font-family: 'Avenir','Helvetica' , sans-serif;
 
 }
 
@@ -924,7 +934,7 @@ input[type=search]:focus {
     background-color:#ff3300;
     height:6vw;
     width:100%;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) !important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19) !important;
   }}
 
 
@@ -1041,8 +1051,9 @@ input[type=search]:focus {
   }
 
   .agree-words{
-    margin-left:7vw;
+    margin-left:1vw;
     margin-right:5vw;
+
   }
 }
 
@@ -1052,15 +1063,15 @@ input[type=search]:focus {
   }
 
   #termsAccept{
-    margin-left: -0.3vw;
-    margin-top: -0.8vh;
-    max-width:15px;
-    max-height:15px;
+    margin-left: 7vw;
+    margin-top: -1.5vh;
+    max-width:25px;
+    max-height:25px;
     position:absolute;
 
   }
   #agreement-clause{
-    margin-left: 10vw;
+    margin-left:9vw;
     
   }
 }
@@ -1100,6 +1111,7 @@ input[type=search]:focus {
   .agree-words{
     margin-left:6vw;
     margin-right:5vw;
+
   }
 
 
@@ -1158,6 +1170,7 @@ input[type=search]:focus {
     margin-top: -2vh;
     margin-left: 17vw;
     margin-right: 15vw;
+
   }
   .account{
     display: flex;
@@ -1200,8 +1213,8 @@ input[type=search]:focus {
    .landing-reg-form input[type=checkbox] {
      margin-left: 4.5vw;
      margin-top: -2.5vh;
-     width:1vw;
-     display: flex;
+     width:15px;
+
      position: absolute;
      height:1px;
    }
