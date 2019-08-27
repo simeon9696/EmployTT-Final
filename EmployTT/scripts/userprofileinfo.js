@@ -65,9 +65,7 @@ auth.onAuthStateChanged(user => {
       }
     });
 
-    let registerBtn = document.querySelector("#regBtn");
-    registerBtn.innerHTML ="";
-    registerBtn.style.display = "none";
+
 
     const docRef = firestore.collection('Users');
     docRef.doc(user.uid).get().then(doc=> {
@@ -97,12 +95,14 @@ auth.onAuthStateChanged(user => {
           setupAcc.innerHTML= "";
           firstNameLabel.style.display ="block"
           //Get uploaded files
-          let storageRef = firebase.storage().ref(`Users/${user.uid}`);
-          // Now we get the references of these images
+          const fileInputIds = ["resume","transcript","birthCert","nationalID","driverLicense","policeCert","videoCharacter","reference-one","reference-two","certificate-one","certificate-two","certificate-three","certificate-four","certificate-five"];
+          fileInputIds.forEach(fileid=>{
+            let storageRef = storage.ref(`Users/${user.uid}/${fileid}`);
+                      // Now we get the references of these images
           storageRef.listAll().then(result=> {
             result.items.forEach(fileRef=> {
               //And then get the download url
-              firebase.storage().ref(`Users/${user.uid}/${fileRef.name}`).getDownloadURL().then(urlFile=> {
+              storage.ref(`Users/${user.uid}/${fileid}/${fileRef.name}`).getDownloadURL().then(urlFile=> {
                 // This can be downloaded directly:
                 let xhr = new XMLHttpRequest();
                 xhr.responseType = 'blob';
@@ -113,21 +113,62 @@ auth.onAuthStateChanged(user => {
                   fileBlobs.push(blob);
                   fileNames.push(fileRef.name);
                   //console.log(URL.createObjectURL(blob))
-                  let fileListing = document.querySelector("#list-container");
+                  let fileListing = document.querySelector("#list-container-files");
                   let fileName = document.createElement('a');
+                  let dateCreated = document.createElement('p');
+                  let deleteThisFile = document.createElement('p');
                   fileName.href = URL.createObjectURL(blob);
                   fileName.setAttribute("download", fileRef.name);
                   fileName.setAttribute("id",fileRef.name);
                   fileName.setAttribute("class","file-name");
                   fileName.innerHTML = `${fileRef.name} <br>`;
-                  fileListing.appendChild(fileName);
+                  deleteThisFile.setAttribute("id",`${fileid}-delete`);
+                  deleteThisFile.setAttribute("class","file-name-delete");
+                  deleteThisFile.innerHTML = `X`;
+
+                  //get date of creation and attach to listing
+                  storage.ref(`Users/${user.uid}/${fileid}/${fileRef.name}`).getMetadata().then(metadata=>{
+                    dateCreated.setAttribute("id",`${fileRef.name}-metadata`);
+                    dateCreated.setAttribute("class","file-create-date");
+                    dateCreated.innerHTML = `${metadata.timeCreated.split("T")[0]}`;
+                    fileListing.appendChild(fileName);
+                    fileListing.appendChild(dateCreated);
+                    fileListing.appendChild(deleteThisFile);
+
+                    
+                  let fileDelete = document.querySelector(`#${fileid}-delete`);
+                  fileDelete.addEventListener('click',e=>{
+                    e.preventDefault();
+                    var cnfmDelete = confirm(`Are you sure you want to delete ${fileRef.name}`);
+                    if (cnfmDelete == true) {
+                      fileRef.delete().then(()=> {
+                        window.location.href='./userprofileinfo.html';
+                      }).catch(error=>{
+                        alert(error);
+                      })
+                    } else {
+                      alert('Delete operation cancelled')
+                    }
+                  })
+
+                  }).catch(error=> {
+                    // Uh-oh, an error occurred!
+                    console.log(error);
+                  });
+                  
                 };
       
+
+
               }).catch(function(error) {
                 console.log(error);
               });
             })
           });
+          })
+          
+
+
     }).catch(error => {
         console.log("Error getting document:", error);
         firstNameLabel.innerHTML = ""; 

@@ -33,17 +33,15 @@ auth.onAuthStateChanged(user => {
     const passwordLabel = document.querySelector('#profile-labels-password');
     console.log(origPassword.value)
     firestore.collection('Users').doc(user.uid).get().then(snapshot=>{
-      console.log(snapshot.data());
-      firstName.value=snapshot.data().firstName;
-      lastName.value=snapshot.data().lastName;
-      phoneNumber.value=snapshot.data().phoneNumber;
-      email.value=snapshot.data().email;
+      firstName.placeholder=snapshot.data().firstName;
+      lastName.placeholder=snapshot.data().lastName;
+      phoneNumber.placeholder=snapshot.data().phoneNumber;
+      email.placeholder=snapshot.data().email;
       dateOfBirth.value=snapshot.data().dateOfBirth;
-      addressOne.value=snapshot.data().addressOne;
-      addressTwo.value=snapshot.data().addressTwo;
-      cityortown.value=snapshot.data().cityortown;
-      disabilites.value=snapshot.data().disabilites;
-
+      addressOne.placeholder=snapshot.data().addressOne;
+      addressTwo.placeholder=snapshot.data().addressTwo;
+      cityortown.placeholder=snapshot.data().cityortown;
+      disabilites.placeholder=snapshot.data().disabilites;
 
 
     }).catch(error=>{
@@ -56,6 +54,7 @@ auth.onAuthStateChanged(user => {
     document.body ="Unauthorized access to this page!"
   }
 })
+
 
 
 const cnfmPassword = document.querySelector("#cnfm-password");
@@ -79,146 +78,6 @@ cnfmPassword.addEventListener("input", e => {
   e.target.setCustomValidity("");
 });
 
-/*
-fileDrop.addEventListener("drop", dropListener => {
-  console.log("File(s) dropped");
-
-  // Prevent default behavior (Prevent file from being opened)
-  dropListener.preventDefault();
-  fileNames.innerHTML = "Files ready for upload:";
-
-  if (dropListener.dataTransfer.items) {
-    // Use DataTransferItemList interface to access the file(s)
-    for (let i = 0; i < dropListener.dataTransfer.items.length; i++) {
-      // If dropped items aren't files, reject them
-      if (dropListener.dataTransfer.items[i].kind === "file") {
-        let file = dropListener.dataTransfer.items[i].getAsFile();
-
-        fileNameArr[i] = dropListener.dataTransfer.items[i].getAsFile();
-        console.log("... file[" + i + "].name = " + file.name);
-        let droppedFile = document.createElement("p");
-        droppedFile.innerHTML = file.name;
-        fileNames.appendChild(droppedFile);
-      }
-    }
-  } else {
-    // Use DataTransfer interface to access the file(s)
-    for (let i = 0; i < dropListener.dataTransfer.files.length; i++) {
-      console.log(
-        "... file[" + i + "].name = " + dropListener.dataTransfer.files[i].name
-      );
-    }
-  }
-});
-
-fileDrop.addEventListener("dragover", dragListener => {
-  console.log("File(s) in drop zone");
-  // Prevent default behavior (Prevent file from being opened)
-  dragListener.preventDefault();
-});
-*/
-
-
-
-
-
-/*
-const updateButton = document.querySelector("#updateButton");
-updateButton.addEventListener("click", e => {
-  e.preventDefault();
-  let prgBar = document.querySelector("#progress2-bar");
-  let totalUploadSize = 0;
-  let task = 0;
-  let totalBytesTransferred = 0;
-
-  const user = firebase.auth().currentUser;
-  console.log("Update!");
-  firestore.collection("Users").doc(user.uid).update({
-      firstName: signupForm["firstName"].value,
-      lastName: signupForm["lastName"].value,
-      email: signupForm["signup-email"].value,
-      phoneNumber: signupForm["phoneNumber"].value,
-      dateOfBirth: signupForm["dateofbirth"].value,
-      addressOne: signupForm["address1field"].value,
-      addressTwo: signupForm["address2field"].value,
-      cityortown: signupForm["town"].value,
-      disabilites: signupForm["disabilites-field"].value,
-      lastUpDated: new Date(),
-    })
-    .then(() => {
-      //Update firestore
-      console.log("Firestore updated");
-      let user = auth.currentUser;
-      user
-        .updateProfile({
-          // displayName: signupForm['firstName'].value,            //Update profile data
-        })
-        .then(() => {
-          console.log("Profile Updated!");
-          let user = auth.currentUser;
-          user
-            .sendEmailVerification()
-            .then(() => {
-              //send verification email
-              console.log("Verification Email Sent!");
-
-              for (let i = 0; i < fileNameArr.length; i++) {
-                totalUploadSize += fileNameArr[i].size;
-                console.log(totalUploadSize);
-              }
-              console.log(totalUploadSize);
-              for (let i = 0; i < fileNameArr.length; i++) {
-                let user = firebase.auth().currentUser; //Grab current user
-                let storageRef = firebase
-                  .storage()
-                  .ref("Users/" + user.uid + "/" + fileNameArr[i].name); //Create path for new user in database
-                task = storageRef.put(fileNameArr[i]);
-                console.log("Uploading: " + i + totalUploadSize);
-                task.on(
-                  "state_changed",
-                  function progress(snapshot) {
-                    totalBytesTransferred += snapshot.bytesTransferred;
-                    let percentageTransferred =
-                      (totalBytesTransferred / totalUploadSize) * 100;
-                    prgBar.value = percentageTransferred;
-                  },
-                  function(error) {
-                    console.log(error);
-                  },
-                  function complete() {
-                    console.log("File uploaded successfully!");
-                    setTimeout(locate, 500);
-                    function locate() {
-                      window.location = "./userprofileinfo.html";
-                    }
-                  }
-                );
-              }
-            })
-            .catch(error => {
-              console.log(error);
-            });
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  signupForm["firstName"].value = "";
-  signupForm["lastName"].value = "";
-  signupForm["signup-email"].value = "";
-  signupForm["phoneNumber"].value = "";
-  signupForm["dateofbirth"].value = "";
-  signupForm["address1field"].value = "";
-  signupForm["address2field"].value = "";
-  signupForm["town"].value = "";
-  signupForm["disabilites-field"].value = "";
-});
-*/
-
-
 
 logOutBtn.addEventListener("click", e => {
   e.preventDefault();
@@ -237,48 +96,215 @@ logOutBtn.addEventListener("click", e => {
 const fileInputIds = ["resume","transcript","birthCert","nationalID","driverLicense","policeCert","videoCharacter","reference-one","reference-two","certificate-one","certificate-two","certificate-three","certificate-four","certificate-five"];
 const fileLabelIds=["resume-label","transcript-label","birthCert-label","nationalID-label","driverLicense-label","policeCert-label","videoCharacter-label","reference-one-label","reference-two-label","certificate-one-label","certificate-two-label","certificate-three-label","certificate-four-label","certificate-five-label"];
 const fileResetInputIds = ["resume-reset","transcript-reset","birthCert-reset","nationalID-reset","driverLicense-reset","policeCert-reset","videoCharacter-reset","reference-one-reset","reference-two-reset","certificate-one-reset","certificate-two-reset","certificate-three-reset","certificate-four-reset","certificate-five-reset"];
+const fileExtensionWhiteList = ["pdf","doc","docx","jpg","jpeg","mp4","mkv","application/msword","vnd.openxmlformats-officedocument.wordprocessingml.document","png","tiff"]
+const textFieldInputIds = ["firstName","lastName","signup-email","phoneNumber","dateofbirth","address1field","address2field","town","disabilites-field"];
+const documentFields = ["firstName","lastName","email","phoneNumber","dateOfBirth","addressOne","addressTwo","cityortown","disabilites"];
+let changedFiles=[];
+let oldFiles=[];
 
+textFieldParametersChanged =false;
 
-
+textFieldInputIds.forEach(field=>{
+  let textField = document.querySelector(`#${field}`);
+  textField.addEventListener('change',e=>{
+    textFieldParametersChanged=true;
+    e.preventDefault();
+    console.log(textField.value);
+  })
+})
 
 const testButton = document.querySelector('#updateButton1');
 testButton.addEventListener('click',e=>{
   e.preventDefault()
+  let currentFiles=[];
+  let prgBar = document.querySelector("#progress2-bar");
+  let totalUploadSize = 0;
+  let task = 0;
+  let totalBytesTransferred = 0;
 
   fileInputIds.forEach(inputID=>{
     let fileID = document.getElementById(inputID).files[0];
-    //console.log(fileID);
-    if(fileID !== undefined){
-      
-      console.log(fileID.type.split("/")[1]);
+    currentFiles.push(fileID);
+  })
+  let referencesToBeStripped = changedFiles.filter(n=>!currentFiles.includes(n))
+  referencesToBeStripped.forEach(reference=>{
+    var index = changedFiles.indexOf(reference);
+    if (index > -1) {
+      changedFiles.splice(index, 1);
     }
   })
+  changedFiles.forEach(file=>{
+    totalUploadSize += file.size;
+  })
+  console.log(totalUploadSize);
 
+
+ if(totalUploadSize === 0 && textFieldParametersChanged===false){
+  let cnfmRedirect = confirm('No changes detected. No updates made.\nYou will be redirected if you click "ok"');
+  if(cnfmRedirect){
+    window.location = "./userprofileinfo.html";
+  }
+
+
+ }else{
   
+  let textUpdateFinish = false;
+  let fileUpdateFinish = false;
+  if(textFieldParametersChanged){
+    console.log('Ay ay boss man we change')
+    let firebaseObject ={};
+    let user = auth.currentUser;
+
+    textFieldInputIds.forEach(field=>{
+      let textField = document.querySelector(`#${field}`)
+      if(textField.value !== ""){
+        console.log(textField.value);
+        console.log( documentFields[textFieldInputIds.indexOf(field)]);
+        firebaseObject[documentFields[textFieldInputIds.indexOf(field)]] = textField.value;
+        if(providerID === "password"){
+          if(field === "firstName"){
+            user.updateProfile({ displayName : textField.value}).then(()=>console.log('Display name Updated')).catch(error =>console.log(error));
+          }
+        }
+      }
+     
+      firebaseObject["lastUpdated"] = new Date();
+    })
+    firestore.doc(`Users/${user.uid}`).update(firebaseObject).then(()=>{
+      console.log('User document updated');
+      textUpdateFinish = true;
+      if(totalUploadSize===0){fileUpdateFinish = true;}
+      console.log(totalUploadSize)
+      if(fileUpdateFinish){
+        window.location = "./userprofileinfo.html";
+      }
+    }).catch(error =>{
+      console.log(error);
+    });
+  }
+  
+  if(totalUploadSize !== 0){
+    fileInputIds.forEach(inputID=>{
+      let fileID = document.getElementById(inputID).files[0];
+      changedFiles.forEach(file=>{
+        if(file ===fileID){
+          let user = auth.currentUser; //Grab current user
+          let storageRef = storage.ref(`Users/${user.uid}/${inputID}/${file.name}`); //directory of file to be uploaded
+          let deleteRef = storage.ref(`Users/${user.uid}/${inputID}`); //folder in which file would be deleted if file exists
+          // Now we get the references of these files
+          deleteRef.listAll().then( result=>{ //detect if directory is empty or not
+            if(result.items.length === 0){ //if it is empty upload the file
+              task = storageRef.put(file);
+              task.on("state_changed",
+                function progress(snapshot) {
+                  totalBytesTransferred += snapshot.bytesTransferred;
+                  let percentageTransferred =
+                    (totalBytesTransferred / totalUploadSize) * 100;
+                  prgBar.value = percentageTransferred;
+                },
+                function(error) {
+                  console.log(error);
+                  alert(error);
+                },
+                function complete() {
+                  console.log("File uploaded successfully!");
+                  fileUpdateFinish = true;
+                  if(!textFieldParametersChanged){textUpdateFinish = true;}
+                  if(textUpdateFinish){
+                    window.location = "./userprofileinfo.html";
+                  }
+                }
+                );
+            }else{
+              result.items.forEach(fileRef=> {
+                        
+                fileRef.delete().then(()=> { // If it's not, delete the existing files and upload the new file
+                  console.log('Delete successful')
+                  task = storageRef.put(file);
+                  task.on("state_changed",
+                    function progress(snapshot) {
+                      totalBytesTransferred += snapshot.bytesTransferred;
+                      let percentageTransferred =
+                        (totalBytesTransferred / totalUploadSize) * 100;
+                      prgBar.value = percentageTransferred;
+                    },
+                    function(error) {
+                      console.log(error);
+                      alert(error);
+                    },
+                    function complete() {
+                      console.log("File uploaded successfully!");
+                      fileUpdateFinish = true;
+                      if(!textFieldParametersChanged){textUpdateFinish = true;}
+                      console.log(textFieldParametersChanged)
+                      if(textUpdateFinish){
+                        window.location = "./userprofileinfo.html";
+                      }
+                    }
+                    );
+        
+        
+                }).catch(function(error) {
+                  console.log(error);
+                });
+        
+                })
+            }
+    
+          }) 
+        }
+      })
+    })
+  }
+  else{
+    console.log('no file')
+  }
+
+
+
+ }
+
 
  
+
 })
 
 fileInputIds.forEach(inputID=>{
   const fileReferenceReset= document.querySelector(`#${inputID}-reset`);
-  console.log(fileReferenceReset);
   fileReferenceReset.addEventListener('click',e=>{
-    e.preventDefault();
-    let fileChosen =  document.getElementById(inputID);
-    fileChosen.value = "";
-    let fileLabel = document.querySelector(`#${inputID}-label`);
-    fileLabel.innerHTML = 'No File';
-  });
+  e.preventDefault();
+  let fileChosen =  document.getElementById(inputID);
+  var index = changedFiles.indexOf(fileChosen.files[0]);
+  if (index > -1) {
+    changedFiles.splice(index, 1);
+     fileChosen.value = "";
+     let fileLabel = document.querySelector(`#${inputID}-label`);
+     fileLabel.innerHTML = 'No File';
+  }
+});
 
-  const fileSelector = document.querySelector(`#${inputID}`);
-  fileSelector.addEventListener('change',e=>{
-    e.preventDefault();
-    const fileReference = document.getElementById(inputID).files[0];
-    const fileReferenceLabel = document.querySelector(`#${inputID}-label`);
-    fileReferenceLabel.innerHTML = fileReference.name;
-    console.log(fileReference.name)
-  });
+const fileSelector = document.querySelector(`#${inputID}`);
+fileSelector.addEventListener('change',e=>{
+  e.preventDefault();
 
+  const fileReference = document.getElementById(inputID).files[0];
+  let fileReferenceLabel = document.querySelector(`#${inputID}-label`);
+  fileReferenceLabel.innerHTML = fileReference.name;
+  //check to see if file has a valid file extension
+  if (fileExtensionWhiteList.indexOf((fileReference.type.split("/")[1])) > -1){
+   // oldFiles = [...changedFiles];
+    changedFiles.push(fileReference);
+
+  } else {
+    fileReference.value ="";
+    fileReferenceLabel.style.color ="red";
+    fileReferenceLabel.innerHTML = "Unsupported File Type";
+     setTimeout(function(){
+      fileReferenceLabel.style.color ="black";
+      fileReferenceLabel.innerHTML = "No File";
+    },1000)
+  }
+  });
 })
 
 
