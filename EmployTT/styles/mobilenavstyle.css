@@ -149,7 +149,7 @@ nav {
 		
 		}
 		
-		#mobile-li
+		.mobile-menu-text
 		{ background-color: #19191b;
 		padding-top:5vw;
 		padding-bottom:5vw;
@@ -157,14 +157,14 @@ nav {
         border-bottom: 1px solid rgb(31, 31, 31);
 		}
 	
-		#mobile-li a
+		.mobile-menu-text, .mobile-menu-item a
 		{
 		text-decoration: none;
 		color:#acaaaa;
 		text-align:center;
 		}
 	
-		#mobile-li a:hover
+		.mobile-menu-text, .mobile-menu-item a:hover
 		{
 		color:#ff3300;
 		text-decoration:none;
