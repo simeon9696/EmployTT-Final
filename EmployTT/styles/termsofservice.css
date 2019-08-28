@@ -30,6 +30,7 @@ html {
     font-family: 'Avenir';
     src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
     font-display: 'Avenir';
+    font-weight:bold;
   }
   
   @font-face{
@@ -78,6 +79,19 @@ html {
   font-size: 2em;
   font-family:'Avenir-Light', Helvetica, sans-serif;
  }
+
+ @media (max-width: 880px) {
+
+  .title-date-of-writing {
+    padding-top:2vw;
+   margin-left:15vw;
+   margin-right:20vw;
+   position:relative;
+   z-index:1;
+   font-size: 1.5em;
+   font-family:'Avenir-Light', Helvetica, sans-serif;
+  }
+}
  
 .big-list{
 	margin-left:18vw;
@@ -111,6 +125,51 @@ html {
   line-height: 1.4em;
 }
 
+@media (max-width: 880px) {
+
+  .title-date-of-writing {
+    padding-top:2vw;
+   margin-left:15vw;
+   margin-right:20vw;
+   position:relative;
+   z-index:1;
+   font-size: 1.5em;
+   font-family:'Avenir-Light', Helvetica, sans-serif;
+  }
+
+  .big-list{
+    margin-left:18vw;
+    padding-top:2vw;
+    margin-right:20vw;
+    font-size:1.2em;
+    line-height:20px;
+    font-family:'Avenir', Helvetica, sans-serif;
+    line-height: 1.4em;
+   }
+   
+   .big-list li{
+    padding-top:1vw;
+    font-size:1.4em;
+    text-align:justify;
+    font-family:'Avenir-Light', Helvetica, sans-serif;
+    line-height: 1.4em;
+   }
+   
+  .access-use-of-content{
+     text-align:justify;
+     font-family:'Avenir-Light', Helvetica, sans-serif;
+     font-size: 1.2em;
+     line-height: 1.4em;
+   }
+  
+   .age-restrict{
+    text-align:justify;
+    font-family:'Avenir-Light', Helvetica, sans-serif;
+    font-size: 1.2em;
+    line-height: 1.4em;
+  }
+}
+
 .nav-word{
   color:#000000;
 }
@@ -129,6 +188,26 @@ html {
     background-color:#ff3300;
     font-family:'Avenir', Helvetica, sans-serif;
   }
+
+  @media (max-width: 880px) {
+
+    .title-employ-tt{
+      margin-top:4vh;
+      padding-left:15vw;
+      padding-top:3vh;
+      padding-bottom:1vh;
+      width:85vw;
+      margin-right:20vw;
+      font-size:3.0em;
+      font-weight:600;
+      position:relative;
+      z-index:1;
+      color:white;
+      background-color:#ff3300;
+      font-family:'Avenir', Helvetica, sans-serif;
+    }
+  }
+  
 
 .displayname{
   color:#000000;
