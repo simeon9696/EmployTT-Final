@@ -118,8 +118,8 @@ function renderJobTable(doc, c, user){
 
     //!!!!!!!!!!!!!!!!!!!!APPLY BUTTON!!!!!!!!!!!!
     var applyButtonID = jobid + "applybutton";
-    applyButton.setAttribute("id",applyButtonID);
-//     applyButton.setAttribute("id","applyButton");
+//     applyButton.setAttribute("id",applyButtonID);
+    applyButton.setAttribute("id","applyButton");
     applyButton.setAttribute("name",jobid);
     applyButton.setAttribute("onClick","clickedButton(this.id, this.name)");
 
