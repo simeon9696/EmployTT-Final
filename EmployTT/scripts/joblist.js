@@ -118,8 +118,8 @@ function renderJobTable(doc, c, user){
 
     //!!!!!!!!!!!!!!!!!!!!APPLY BUTTON!!!!!!!!!!!!
     var applyButtonID = jobid + "applybutton";
-    //applyButton.setAttribute("id",applyButtonID);
-    applyButton.setAttribute("id","applyButton");
+    applyButton.setAttribute("id",applyButtonID);
+//     applyButton.setAttribute("id","applyButton");
     applyButton.setAttribute("name",jobid);
     applyButton.setAttribute("onClick","clickedButton(this.id, this.name)");
 
@@ -331,7 +331,7 @@ function copyLink(id, name){
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Application Function~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function clickedButton(id, jobid){
-
+  const updateApplicationsandPendingStatus = functions.httpsCallable('updateApplicationAndPending');
     auth.onAuthStateChanged(user => {
         if (user) {
             const docRef = firestore.collection('Users');
@@ -345,6 +345,16 @@ function clickedButton(id, jobid){
                           firestore.collection("Jobs").doc(jobid).collection("applicants").add({
                             applicantID : auth.currentUser.uid,
                             applicationStatus : "Pending"
+                          }).then(()=>{
+                            firestore.collection("Jobs/").doc(jobid).get().then(snapshot=>{
+                              updateApplicationsandPendingStatus({
+                                  employer: snapshot.data().employer
+                                });
+                          }).then(result=>{
+                                console.log(result);
+                          }).catch(error=>{
+                                console.log(error);
+                          });
                           }).catch((error)=>{
                             console.log(error);
                           });
