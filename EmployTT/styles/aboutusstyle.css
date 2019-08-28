@@ -21,6 +21,7 @@ html {
   font-family: 'Avenir';
   src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
   font-display: 'Avenir';
+  font-weight:bold;
 }
 
 @font-face{
@@ -94,9 +95,11 @@ h1{
 }
 
 p{
-	font-size:1.6em;
-	padding-top:1vw;
-	margin-left:17vw;
+	font-size:1.4em;
+  padding-top:1vw;
+  font-weight:400;
+  color:black;
+  margin-left:17vw;
   margin-right:23vw;
   font-family:'Avenir-Light', Helvetica, sans-serif;
   text-align:justify;
