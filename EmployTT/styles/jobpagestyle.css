@@ -18,6 +18,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font-family: 'Avenir';
   src:url('../fonts/avenir-lt-std-cufonfonts//AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
   font-display: 'Avenir';
+  font-weight:bold;
 }
 
 @font-face{
@@ -31,6 +32,7 @@ html {
   font-size: 12px;
   background-size: 100vw 100vw;
   line-height:1.6;
+
 }
 
 
@@ -111,18 +113,14 @@ body{
 @media (max-width: 880px) {
 
   .logo img{
-    width: 40%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top:6vw;}
+    display:none;}
 
   .h1job{
     text-align: center;
-    font-size:8vw;
+    font-size:6vw;
     padding-top: 4vw;
     padding-bottom: 9vw;
+    margin-bottom:3vh;
     font-weight: bold;
     color:#000000;}
 
@@ -185,7 +183,7 @@ button:hover{
   border-radius:16px;
   -moz-border-radius:16px;
   -webkit-border-radius: 16px;
-  width:60%;
+  width:60vw;
 
 }
 
@@ -239,7 +237,7 @@ button:hover{
 
 .jobTable div{
   /*background-color: rgb(233, 233, 233); */
-  width: 750px;
+  width: 60vw;
   /* border: 1px dashed rgb(119, 119, 119); */
   border: 2px;
   padding: 5px;
@@ -329,33 +327,11 @@ button:hover{
 	color:#494949;
 }
 
-table{
-  border-collapse: separate;
-  border:2 px solid black;
-  border-spacing:15px;
-  }
+@media (max-width: 880px) {
 
-table th {
-  /* display:none; */
-  display: block;
+
 }
 
-table td{
-  background-color:red;
-  border:2px solid orange;
-  border-radius:0px 26px 0px 0px;
-}
-
-table tr div p{
-  padding: 0;
-  margin: 0;
-}
-
-
-tr:nth-child(odd) {
-  background-color: white;
-  border:2px solid red;
-}
 
 
 .material-icons{
@@ -369,13 +345,37 @@ tr:nth-child(odd) {
   padding: 10px;
   /* margin-block: 20px; */
   text-align: left;
+  width:auto;
 }
+
+@media (max-width: 880px) {
+
+  div .grid1{
+    font-size:1em !important;
+    width:90vw !important;
+  }
+
+  div{
+    width:400px;
+  }
+}
+
 
 .grid2{
   display:grid;
   grid-template-columns: auto auto auto auto;
   /*background-color:#b9b9b9;*/
   padding: 10px;
+}
+
+
+@media (max-width: 880px) {
+
+  .grid2{
+    font-size:1em !important;
+    width:400px !important;
+    width:90vw !important;
+  }
 }
 
 .grid-items{
@@ -391,13 +391,14 @@ strong{
 }
 
 .job-name{
+  width:auto;
 }
 
 .jobTable h1{
   font-family: "Avenir", Helvetica, sans-serif;
-  position:absolute;
+  position:relative;
   font-size:3em;
-  width:100vw;
+  width:79vw;
   margin-left:-24vw;
   padding-left:22vw;
   text-align:left;
@@ -408,6 +409,34 @@ strong{
   font-weight:600;
   background-color:rgb(241, 241, 241);
 }
+@media (max-width: 880px) {
+
+  .jobTable{
+    justify-content:left;
+    margin-left:0vw;
+    width:97vw;
+  }
+}
+
+@media (max-width: 880px) {
+  .jobTable h1{
+    font-family: "Avenir", Helvetica, sans-serif;
+    position:relative;
+    font-size:2em;
+    display:flex;
+    justify-content: left;
+    width:92vw;
+    margin-left:-7vw;
+    padding-left:10vw;
+    text-align:left;
+    padding-bottom:0.5vw;
+    padding-top:4vh;
+    margin-top:3vh;
+    color:#ff3300;
+    font-weight:600;
+    background-color:rgb(241, 241, 241);
+  }
+}
 
 .grid1 strong{
   font-family: "Avenir", serif;
@@ -417,6 +446,17 @@ strong{
 .grid2 strong{
   font-family: "Avenir", serif;
   color:rgb(34, 34, 34);
+}
+
+@media (max-width: 880px) {
+
+  .grid1 strong{
+    font-family: 0.5em !important;
+  }
+
+  .grid2 strong{
+    font-family: 0.5em !important;
+  }
 }
 
 #skills-heading{
@@ -432,10 +472,21 @@ strong{
 
 }
 
+@media (max-width: 880px) {
+
+  .grid1 p{
+    font-family: 0.5em !important;
+  }
+
+  .grid2 p{
+    font-family: 0.5em !important;
+  }
+}
+
+
 .grid2 p{
   color:rgb(58, 58, 58);
   /*background-color:rgb(248, 248, 248);*/
-
   border-radius:10px;
   margin-right:1vw;
   padding-bottom:0.5vw;
@@ -445,4 +496,14 @@ strong{
 
 div .grid1{
   margin-top:10vw;
+  width:auto;
+}
+
+div .container{
+  width:auto;
+}
+
+html {
+  padding:0;
+  margin:0;
 }
