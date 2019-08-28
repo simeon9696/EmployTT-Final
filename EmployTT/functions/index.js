@@ -29,6 +29,226 @@ function checkYearAndCreateDirectories(months){
     }
 }
 
+function checkEmployersAndCreateDirectoriesForLife(employer){
+        //if there is an existing document for this employer. Needed because it will only update upon posting a job and not updating account to MDA
+    return db.doc(`DatabaseInfo/employers/employersLife/${employer}`).get().then(doc=>{
+        if(!doc.exists){
+            return db.doc(`DatabaseInfo/employers/employersLife/${employer}`).set({
+                jobsPosted : 0,
+                applicationToEmployersJobs : 0,
+                applicationsShortlisted : 0,
+                applicationsDeclined : 0,
+                applicationsPending : 0
+            });
+        }else{
+            return;
+        }
+    }).catch(error=>{
+        console.log(error);
+    });   
+}
+
+function checkEmployersAndCreateDirectoriesOverTime(employer){
+
+//if there is an existing document for this employer. Needed because it will only update upon posting a job and not updating account to MDA
+    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${employer}`).get().then(doc=>{
+        if (!doc.exists){  //if the new year is greater than the old year, all the directories for the new year must be created
+                return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${employer}`).set({
+                    jobsPosted : 0,
+                    applicationToEmployersJobs : 0,
+                    applicationsShortlisted : 0,
+                    applicationsDeclined : 0,
+                    applicationsPending : 0
+                });
+        }else{
+            return;
+        }
+    });   
+}
+
+
+
+exports.incrementApplicationCountForEmployer = functions.https.onCall((data,context)=>{
+    if(context.auth.token.civilian === true){
+        return { error : 'You do not have the required permissions to perform this function'}
+    }else{
+        checkEmployersAndCreateDirectoriesForLife(data.employer);
+        checkEmployersAndCreateDirectoriesOverTime(data.employer);
+        return  db.doc(`DatabaseInfo/employers/employersLife/${data.employer}`).get().then(snapshot=>{
+            let numberofJobsPosted = snapshot.data().jobsPosted + 1;
+            let numberOfPendingApplications = snapshot.data().applicationsPending + 1;
+            return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).update({
+                jobsPosted          : numberofJobsPosted,
+                applicationsPending : numberOfPendingApplications
+            });
+        }).then(()=>{
+                return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).get();
+        }).then(snapshot=>{
+            let numberofJobsPosted = snapshot.data().jobsPosted + 1;
+            let numberOfPendingApplications = snapshot.data().applicationsPending + 1;
+            return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).update({
+                jobsPosted          : numberofJobsPosted,
+                applicationsPending : numberOfPendingApplications
+            });
+        }).catch(error => {
+            console.log(error);
+            return error;
+        });
+    }
+})
+
+exports.updateApplicationAndPending = functions.https.onCall((data,context)=>{
+    checkEmployersAndCreateDirectoriesForLife(data.employer);
+    checkEmployersAndCreateDirectoriesOverTime(data.employer);
+    return  db.doc(`DatabaseInfo/employers/employersLife/${data.employer}`).get().then(snapshot=>{
+        let numberOfapplicationToEmployersJobs = snapshot.data().applicationToEmployersJobs + 1;
+        let numberOfPendingApplications = snapshot.data().applicationsPending + 1;
+        return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).update({
+            applicationToEmployersJobs          : numberOfapplicationToEmployersJobs,
+            applicationsPending                 : numberOfPendingApplications
+        });
+    }).then(()=>{
+        return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).get();
+    }).then(snapshot=>{
+        let numberOfapplicationToEmployersJobs = snapshot.data().applicationToEmployersJobs + 1;
+        let numberOfPendingApplications = snapshot.data().applicationsPending + 1;
+        return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).update({
+            applicationToEmployersJobs          : numberOfapplicationToEmployersJobs,
+            applicationsPending                 : numberOfPendingApplications
+        });
+    }).catch(error => {
+        console.log(error);
+        return error;
+    });
+})
+
+exports.updateApplicationNumbersForEmployers = functions.https.onCall((data,context)=>{
+    if(context.auth.token.civilian === true){
+        return { error : 'You do not have the required permissions to perform this function'}
+    }
+    checkEmployersAndCreateDirectoriesForLife(data.employer);
+    checkEmployersAndCreateDirectoriesOverTime(data.employer);
+
+    return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).get().then(snapshot=>{
+        if(data.statusBefore === "Pending"){ //chang from pending all time
+            let numberOfPendingApplications = snapshot.data().applicationsPending - 1;
+            if(data.statusAfter === "Shortlisted"){
+                let numberOfShortlistedApplications = snapshot.data().applicationsShortlisted + 1;
+                return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).update({
+                    applicationsPending     :  numberOfPendingApplications,
+                    applicationsShortlisted :  numberOfShortlistedApplications
+                }).then(()=>{ //over time
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).get();
+                }).then(snapshot=>{
+                    let numberOfShortlistedApplications = snapshot.data().applicationsShortlisted + 1;
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).update({
+                        applicationsPending     :  numberOfPendingApplications,
+                        applicationsShortlisted :  numberOfShortlistedApplications
+                    });
+                }).catch(error=>{
+                    return error;
+                });
+            }else if(data.statusAfter === "Declined"){
+                let numberOfDeclinedApplications = snapshot.data().applicationsDeclined + 1;
+                return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).update({
+                    applicationsPending     :  numberOfPendingApplications,
+                    applicationsDeclined    :  numberOfDeclinedApplications
+                }).then(()=>{ //over time
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).get();
+                }).then(snapshot=>{
+                    let numberOfDeclinedApplications = snapshot.data().applicationsDeclined + 1;
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).update({
+                        applicationsPending     :  numberOfPendingApplications,
+                        applicationsDeclined    :  numberOfDeclinedApplications
+                    });
+                }).catch(error=>{
+                    return error;
+                });
+            }
+        }else if(data.statusBefore === "Declined"){
+
+            let numberOfDeclinedApplications = snapshot.data().applicationsDeclined - 1;
+            if(data.statusAfter === "Shortlisted"){
+                let numberOfShortlistedApplications = snapshot.data().applicationsShortlisted + 1;
+                return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).update({
+                    applicationsDeclined     :  numberOfDeclinedApplications,
+                    applicationsShortlisted  :  numberOfShortlistedApplications
+                }).then(()=>{ //over time
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).get();
+                }).then(snapshot=>{
+                    let numberOfShortlistedApplications = snapshot.data().applicationsShortlisted + 1;
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).update({
+                        applicationsDeclined     :  numberOfDeclinedApplications,
+                        applicationsShortlisted  :  numberOfShortlistedApplications
+                    });
+                }).catch(error=>{
+                    return error;
+                });
+            }else if(data.statusAfter === "Pending"){
+                let numberOfPendingApplications = snapshot.data().applicationsPending + 1;
+                return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).update({
+                    applicationsPending     :  numberOfPendingApplications,
+                    applicationsDeclined    :  numberOfDeclinedApplications
+                }).then(()=>{ //over time
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).get();
+                }).then(snapshot=>{
+                    let numberOfPendingApplications = snapshot.data().applicationsPending + 1;
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).update({
+                        applicationsPending     :  numberOfPendingApplications,
+                        applicationsDeclined    :  numberOfDeclinedApplications
+                    });
+                }).catch(error=>{
+                    return error;
+                });
+            }
+
+            }else if(data.statusBefore === "Shortlisted"){
+
+            let numberOfShortlistedApplications = snapshot.data().applicationsShortlisted - 1;
+            if(data.statusAfter === "Pending"){
+                let numberOfPendingApplications = snapshot.data().applicationsPending + 1;
+                return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).update({
+                    applicationsPending     :  numberOfPendingApplications,
+                    applicationsShortlisted :  numberOfShortlistedApplications
+                }).then(()=>{ //over time
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).get();
+                }).then(snapshot=>{
+                    let numberOfPendingApplications = snapshot.data().applicationsPending + 1;
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).update({
+                        applicationsPending     :  numberOfPendingApplications,
+                        applicationsShortlisted :  numberOfShortlistedApplications
+                    });
+                }).catch(error=>{
+                    return error;
+                });
+            }else if(data.statusAfter === "Declined"){
+                let numberOfDeclinedApplications = snapshot.data().applicationsDeclined + 1;
+                return db.collection('DatabaseInfo').doc('employers').collection('employersLife').doc(data.employer).update({
+                    applicationsShortlisted     :  numberOfShortlistedApplications,
+                    applicationsDeclined        :  numberOfDeclinedApplications
+                }).then(()=>{ //over time
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).get();
+                }).then(snapshot=>{
+                    let numberOfDeclinedApplications = snapshot.data().applicationsDeclined + 1;
+                    return db.doc(`DatabaseInfo/eventsOverTime/${currentYear}/${currentMonth}/employers/${data.employer}`).update({
+                        applicationsShortlisted     :  numberOfShortlistedApplications,
+                        applicationsDeclined        :  numberOfDeclinedApplications
+                    });
+                }).catch(error=>{
+                    return error;
+                });
+            }
+        }else{
+            return;
+        }
+        return;
+    }).catch(error => {
+        console.log(error);
+        return error;
+    });
+    
+})
+
 exports.addAdminRole = functions.https.onCall((data,context)=>{
     //Check if user is an admin before allowing the creation of custom claim
    if(context.auth.token.admin !== true){
