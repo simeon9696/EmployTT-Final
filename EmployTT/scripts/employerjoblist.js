@@ -232,7 +232,9 @@ auth.onAuthStateChanged(user => {
       var docid = job.id;
       // doc.data().collection('applicants').get().then((snapshot)=>{
       firestore.collection(`Jobs/${docid}/applicants`).get().then((snapshot)=>{
-        if(snapshot.docs.length > 0){
+        if(snapshot.docs.length == 1 && snapshot.docs[0].id == "applicantIDs"){
+          fetchNoUser(job);
+        }else if(snapshot.docs.length > 0){
           let len = snapshot.docs.length;
           //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Create first column
           let node = document.createElement('tr');
