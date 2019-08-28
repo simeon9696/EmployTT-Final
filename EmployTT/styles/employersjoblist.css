@@ -20,19 +20,6 @@ html {
 	font-weight:525;
 }
 
-@font-face{
-  font-family: 'Avenir';
-  src:url('../fonts/avenir-lt-std-cufonfonts/AvenirLTStd-Heavy.otf')  format('opentype'); /* Safari, Android, iOS */
-  font-display: 'Avenir';
-  font-weight: 1000;
-}
-
-@font-face{
-  font-family: 'Avenir-Light';
-  src:url('../fonts/avenir-lt-std-cufonfonts/AvenirLTStd-Light.otf')  format('opentype'); /* Safari, Android, iOS */
-  font-display: 'Avenir-Light';
-}
-
 nav{
   display:none;
 }
@@ -96,13 +83,12 @@ nav{
 }	
 
 .employerjoblist h1{
-    padding-top:4vh;
-    margin-top:2vh;
+    padding-top:10vh;
     font-size:3.6em;
-    font-family: Avenir,Helvetica, sans-serif;
+    font-family:  Avenir,Helvetica, sans-serif;
+    font-weight:600;
     border-radius:0px;
     padding-left:15vw;
-    padding-bottom:2vh;
     color:white;
     width:85vw;
     background-color:#1c0055;
@@ -136,10 +122,13 @@ justify-content: center;
 }
 
 .Table .rowone{
-  width: 50vw;
+  width: 20vw;
   font-family: Avenir, sans-serif;
   font-weight:bold;
   font-size:1.3em;
+}
+.Table .rowtwo{
+  width : 100%;
 }
 
 
@@ -277,7 +266,7 @@ font-family:Avenir, Helvetica, sans-serif;
 }
 
 .jobTable .jobDiv{
-  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,255,255,1) 4.4%, rgba(255,255,255,1) 33.6%, rgba(51,0,153,1) 91.9% );
+  background-image: radial-gradient( circle farthest-corner at 15% 10%,  rgba(255,255,255,1) 1.4%, rgba(255,255,255,0.9) 5.6%, rgba(51,0,153,1) 98.9% );
   background-color:#1c0055;
   padding-bottom:1.5vh;  
   padding-top:1.5vh;
@@ -344,44 +333,22 @@ transition: max-height 0.3s ease-out;
   width: 40vw;
   display: none;
   overflow: hidden;
-  /* background-color: rgb(180, 180, 180); */
+  position: absolute;
   transition: max-height 1.3s ease-out;
   grid-template-columns: auto auto;
-  /* background-color:#b9b9b9; */
   padding: 5px;
   padding-left: 10px;
   border: 2px dotted;
-  margin-left: -20vw;
+  margin-left: 10px;
   text-align:left !important;
   justify-content: left;
   background-color:white;
   border-radius:16px;
   position:absolute;
-  box-shadow: 0 3px 6px 0 rgb(70, 70, 70);
-  }
-
-  @media (max-width: 880px){
-    .users{
-      width: 80vw;
-      display: none;
-      overflow: hidden;
-      /* background-color: rgb(180, 180, 180); */
-      transition: max-height 1.3s ease-out;
-      grid-template-columns: auto auto;
-      /* background-color:#b9b9b9; */
-      padding: 5px;
-      padding-left: 10px;
-      border: 2px dotted;
-      margin-left: -40vw;
-      text-align:left !important;
-      justify-content: left;
-      background-color:rgb(247, 245, 245);
-      border-radius:16px;
-      position:absolute;
-      box-shadow: 0 3px 6px 0 rgb(63, 63, 63);
-      }
+  box-shadow: 0 3px 6px 0 rgb(145, 145, 145);
   }
 .users_head{
+
   font-size: 16px;
   padding: 10px;
 }
@@ -478,9 +445,10 @@ button:active {
 }
 
 .checkbox{
+  /* float: right; */
   list-style:none;
   padding: 10px;
-  display: hidden;
+  display: inline-block;
 }
 .checkbox label{
   display: inline-block;
@@ -648,6 +616,7 @@ label{
   overflow: hidden;
   background-color: inherit;
   transition: max-height 0.3s ease-out;
+  /* background-color:#b9b9b9; */
   padding: 5px;
   /* padding-left: 10px; */
   /* border: 2px dotted; */
@@ -673,7 +642,6 @@ label{
   border-radius:10px;
   padding:5px;
 }
-
 
 #decline_div{
   background-color:inherit;
