@@ -5,16 +5,16 @@ const jobLists = document.querySelector('#job-table');
 function fetchUser(job, user, c, contName, app_doc, status){
   var rowtwo;
   if(status == "Pending"){
-    rowtwo = document.getElementById("pend_div");
+    rowtwo = document.getElementById(job.data().jobName+"pend_div");
   }else if(status == "Declined"){
-    rowtwo = document.getElementById("decline_div");
+    rowtwo = document.getElementById(job.data().jobName+"decline_div");
   }else if(status == "Shortlisted"){
-    rowtwo = document.getElementById("sl_div");
+    rowtwo = document.getElementById(job.data().jobName+"sl_div");
   }
     var userid = user.id;
 
     //~~~~~~~~~~~~~~~~~~~Link to profiles
-    let profile = document.createElement('a');
+    let profile = document.createElement('span');
     let profile_icon = document.createElement('i');
     let profile_text = document.createElement('strong');
     profile.setAttribute("class","button");
@@ -30,7 +30,33 @@ function fetchUser(job, user, c, contName, app_doc, status){
     profile.setAttribute("onClick","clickedProfile(this.id, this.name)");
     profile.appendChild(profile_icon);
     profile.appendChild(profile_text);
-    
+
+
+    // let files = document.createElement('div');
+    // let files_p = document.createElement('p');
+
+    // files.setAttribute("class","file-list-container");
+    // files_p.setAttribute("class","file-list-heading");
+    // files_p.innerHTML = "User's Files: ";
+    // files.appendChild(files_p);
+
+    // const fileInputIds = ["resume","transcript","birthCert","nationalID","driverLicense",
+    // "policeCert","videoCharacter","reference-one","reference-two","certificate-one",
+    // "certificate-two","certificate-three","certificate-four","certificate-five"];
+    // fileInputIds.forEach(fileid=>{
+    //   let storageRef = storage.ref(`Users/${userid}/${fileid}`);
+    //             // Now we get the references of these images
+    // storageRef.listAll().then(result=> {
+    //   result.items.forEach(fileRef=> {
+    //     fileName.setAttribute("download", fileRef.name);
+    //     fileName.setAttribute("id",fileRef.name);
+    //     fileName.setAttribute("class","file-name");
+    //     fileName.innerHTML = `${fileRef.name} <br>`;
+    //     files.appendChild(fileName);
+    //     });
+    //   });
+    // });
+      
     //~~~~~~~~~~~~~~~~~~~Job and user info
 
 
@@ -147,6 +173,7 @@ function fetchUser(job, user, c, contName, app_doc, status){
     user_div.appendChild(email);
     user_div.appendChild(dob);
     user_div.appendChild(profile);
+    // user_div.appendChild(files);
     rowtwo.appendChild(user_div);
     rowtwo.appendChild(option_grid);
     c = c+1;
@@ -198,13 +225,13 @@ let c = 1;
 //~~~~~~~~~~~~~~~~~~~FUNCTION THAT STARTS IT~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 auth.onAuthStateChanged(user => {
+
   firestore.collection('Jobs').where("employerID","==",user.uid).get().then((snapshot)=>{
-    
     // var c = 0;
     snapshot.docs.forEach(job =>{
       var docid = job.id;
       // doc.data().collection('applicants').get().then((snapshot)=>{
-      firestore.collection('Jobs').doc(docid).collection('applicants').get().then((snapshot)=>{
+      firestore.collection(`Jobs/${docid}/applicants`).get().then((snapshot)=>{
         if(snapshot.docs.length > 0){
           let len = snapshot.docs.length;
           //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Create first column
@@ -246,12 +273,16 @@ auth.onAuthStateChanged(user => {
           rowtwo.setAttribute("class","rowtwo");
           rowtwo.setAttribute("id",job.data().jobName+"row2");
 
+          let sl_div_id = job.data().jobName+"sl_div";
+          let decline_div_id = job.data().jobName+"decline_div";
+          let pend_div_id = job.data().jobName+"pend_div";
+
           let sl_table = document.createElement('div');
-          sl_table.setAttribute("id","sl_div");
+          sl_table.setAttribute("id",sl_div_id);
           let pend_table = document.createElement('div');
-          pend_table.setAttribute("id","pend_div");
+          pend_table.setAttribute("id",pend_div_id);
           let decline_table = document.createElement('div');
-          decline_table.setAttribute("id","decline_div");
+          decline_table.setAttribute("id",decline_div_id);
 
           pend_table.setAttribute("class","statusDivs");
           decline_table.setAttribute("class","statusDivs");
@@ -265,17 +296,31 @@ auth.onAuthStateChanged(user => {
           let pend_p = document.createElement('p');
           let decline_p = document.createElement('p');
 
-          sl_p.setAttribute("id","sl_div_p");
-          pend_p.setAttribute("id","pend_div_p");
-          decline_p.setAttribute("id","decline_div_p");
+          sl_p.setAttribute("id",job.data().jobName+"sl_div_p");
+          pend_p.setAttribute("id",job.data().jobName+"pend_div_p");
+          decline_p.setAttribute("id",job.data().jobName+"decline_div_p");
 
           sl_p.setAttribute("class","statuses");
           pend_p.setAttribute("class","statuses");
           decline_p.setAttribute("class","statuses");
 
+
           let sl = document.createElement('span');
           let pend = document.createElement('span');
           let decline = document.createElement('span');
+
+          sl.setAttribute("onClick","clickedStatus(this.id)");
+          pend.setAttribute("onClick","clickedStatus(this.id)");
+          decline.setAttribute("onClick","clickedStatus(this.id)");
+
+
+          let sl_id = job.data().jobName+"sl";
+          let decline_id = job.data().jobName+"decline";
+          let pend_id = job.data().jobName+"pend";
+
+          sl.setAttribute("id",sl_id);
+          pend.setAttribute("id",pend_id);
+          decline.setAttribute("id",decline_id);
           
           let sl_icon = document.createElement('i');
           let pend_icon = document.createElement('i');
@@ -292,9 +337,6 @@ auth.onAuthStateChanged(user => {
           decline_icon.textContent = "add";
 
 
-          sl.setAttribute("onClick","clickedStatus(\"sl_div\")");
-          pend.setAttribute("onClick","clickedStatus(\"pend_div\")");
-          decline.setAttribute("onClick","clickedStatus(\"decline_div\")");
 
           sl.textContent = "Shortlisted  ";
           sl.setAttribute("style","font-size: 18px; font-weight: bold;");
@@ -336,6 +378,7 @@ auth.onAuthStateChanged(user => {
           // var applicant_docid = doc3.id;
             firestore.collection('Users').doc(doc3.data().applicantID).get().then(snapshot=>{
                   fetchUser(job, snapshot, c, contName, doc3.id, doc3.data().applicationStatus);
+                  console.log(doc3.id);
                   c++;
                 // }
                 // });
@@ -351,6 +394,12 @@ auth.onAuthStateChanged(user => {
 
 // var collapse = document.getElementsByClassName("collapse");
 // var i;
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PROFILE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+function clickedProfile(id, name){
+
+}
 
 function clickedButton(name){
     collapse = document.getElementById(name);
@@ -393,29 +442,88 @@ function clickedButton_head(name){
 //~~~~~~~~~~~~~~~~~~ACCEPT CHANGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 async function acceptChanges(){
+  const updateApplicationNumbers = functions.httpsCallable('updateApplicationNumbersForEmployers'); 
   let radio_buttons = document.getElementsByTagName("input");
   var num_of_applicants = radio_buttons.length/3;
-  // var num_of_app = num_of_applicants/3;
+  var employers;
   for(var c = 1;c < num_of_applicants+1; c++){
     var options = document.getElementsByName(c);
+    let optionsParentID = options[1].parentNode.parentNode.parentNode.id;
+    var optionSliced = optionsParentID.slice(-5);
+    if(optionSliced == "l_div"){
+      optionsParentID = "Shortlisted";
+    }else if(optionSliced == "e_div"){
+      optionsParentID = "Declined";
+    }else if(optionSliced == "d_div"){
+      optionsParentID = "Pending";
+    }
+    if(options[0].checked == true && optionsParentID == "Declined"){
+      continue;
+    }
+    if(options[1].checked == true && optionsParentID == "Pending"){
+      continue;
+    }   
+    if(options[2].checked == true && optionsParentID == "Shortlisted"){
+      continue;
+    }
     if(options[0].checked == true){
       var id = options[0].parentNode.parentNode.id;
       var ids = id.split(" ");
       await firestore.collection("Jobs").doc(ids[1]).collection("applicants").doc(ids[0]).update({
         applicationStatus : "Declined"
-      });
+      }).then(()=>{
+        firestore.collection("Jobs").doc(ids[1]).get().then(snapshot=>{
+           employers = snapshot.data().employer;
+           updateApplicationNumbers({
+             employer: employers, 
+             statusBefore : optionsParentID,
+              statusAfter : "Declined"
+             });
+           }).then(result=>{
+             console.log(result);
+           }).catch(error=>{
+             console.log(error);         
+           });
+        });
+
     }else if(options[1].checked == true){
       var id = options[0].parentNode.parentNode.id;
       var ids = id.split(" ");
       await firestore.collection("Jobs").doc(ids[1]).collection("applicants").doc(ids[0]).update({
         applicationStatus : "Pending"
+      }).then(()=>{
+        firestore.collection("Jobs").doc(ids[1]).get().then(snapshot=>{
+          employers = snapshot.data().employer;
+          updateApplicationNumbers({
+            employer: employers,
+             statusBefore : optionsParentID,
+              statusAfter : "Pending"
+            });
+        }).then(result=>{
+          console.log(result);
+        }).catch(error=>{
+          console.log(error);
       });
+    });
     }else if(options[2].checked == true){
       var id = options[0].parentNode.parentNode.id;
       var ids = id.split(" ");
       await firestore.collection("Jobs").doc(ids[1]).collection("applicants").doc(ids[0]).update({
         applicationStatus : "Shortlisted"
+      }).then(()=>{
+        firestore.collection("Jobs").doc(ids[1]).get().then(snapshot=>{
+          employers = snapshot.data().employer;
+          updateApplicationNumbers({
+            employer: employers, 
+            statusBefore : optionsParentID, 
+            statusAfter : "Shortlisted"
+          });
+      }).then(result=>{
+          console.log(result);
+        }).catch(error=>{
+          console.log(error);
       });
+    });
     }
   }
   location.reload();
@@ -426,8 +534,8 @@ function cancelChanges(){
 }
 
 function clickedStatus(id){
-  let collapse = document.getElementById(id);
-  let title = document.getElementById(id+"_p");
+  let collapse = document.getElementById(id+"_div");
+  let title = document.getElementById(id+"_div_p");
 
   if(collapse.style.display == "none"){
     collapse.style.display = "block";
