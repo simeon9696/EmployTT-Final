@@ -1,5 +1,6 @@
 const addJob = document.querySelector('#submitButton');
 const jobDetails = document.querySelector('#job-form');
+const incrementAppCountForEmployer = functions.httpsCallable('incrementApplicationCountForEmployer');
 addJob.addEventListener('click',(e)=>{
     e.preventDefault();
     console.log('Firee..');
@@ -42,14 +43,14 @@ addJob.addEventListener('click',(e)=>{
      }).catch(error=>{
       console.log(error);
      });
-
-
-
-
-    }).catch(function(error) {
-      console.log(error);
-    });
-
+    }).then(()=>{
+      var employers = jobDetails['jobEmployer'].value;
+      incrementAppCountForEmployer({employer : employers});
+    }).then(result=>{
+          console.log(result);
+        }).catch(error=>{
+          console.log(error);
+      });
 });
 
 var user = firebase.auth().currentUser;
