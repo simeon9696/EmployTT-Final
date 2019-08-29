@@ -1,4 +1,15 @@
 /*Sign up form handler */
+auth.onAuthStateChanged(user => {
+  if(user){
+    const landingFormSubmit = document.querySelector('#signupform');
+    landingFormSubmit.style.display="none";
+  }else{
+    const landingFormSubmit = document.querySelector('#signupform');
+    landingFormSubmit.style.display="flex";
+  }
+
+})
+
 const landingFormSubmit = document.querySelector('#landingImgSubmit');
 const fieldValidity=[];
 landingFormSubmit.addEventListener('click', e =>{
