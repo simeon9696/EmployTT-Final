@@ -63,16 +63,16 @@
         <span></span>
         <span></span>
         <ul id="mobile-menu">
-          <li id="user-li" class = "mobile-menu-item"><a href="./userprofileinfo.html" data-page="9"  class = "mobile-menu-text" style="color:#ff3300;" id ="user-li-text">Username</a></li>            
+          
           <li id="alljobs-li" class = "mobile-menu-item"><a href="./joblist.html" data-page="1" class = "mobile-menu-text">All Jobs</a></li>
-          <li id="findjobs-li"class = "mobile-menu-item"><a href="../index.html"  data-page="2" class = "mobile-menu-text" >Find Jobs</a></li>
+          <li id="findjobs-li"class = "mobile-menu-item"><a href="../index.html"  data-page="2" class="active"  class = "mobile-menu-text" >Find Jobs</a></li>
           <li id="login-li" class = "mobile-menu-item"><a  href="./login.html" data-page="3"  class = "mobile-menu-text">Log In</a></li>
           <li id="employers-li" class = "mobile-menu-item"><a href="./employers.html" data-page="4" class = "mobile-menu-text" >Employers</a></li>
-          <li id="aboutus-li" class = "mobile-menu-item"><a href="./aboutus.html" data-page="5"  class = "mobile-menu-text" >About Us</a></li>
+          <li id="aboutus-li" class = "mobile-menu-item"><a href="./aboutus.html" data-page="5"  class = "mobile-menu-text" style="color:#ff3300;">About Us</a></li>
           <li id="terms-li" class = "mobile-menu-item"><a href="./termsofservice.html" data-page="6"  class = "mobile-menu-text">Terms of Service</a></li>
           <li id="privacypolicy-li" class = "mobile-menu-item"><a href="./privacypolicy.html" data-page="7" class = "mobile-menu-text">Privacy Policy</a></li>
           <li id="faqs-li" class = "mobile-menu-item"><a href="./faqs.html" data-page="8"  class = "mobile-menu-text">FAQs</a></li>
-
+          <li id="user-li" class = "mobile-menu-item"><a href="./userprofileinfo.html" data-page="9"  class = "mobile-menu-text" id ="user-li-text">Username</a></li>  
         </ul>
        </div>
   </nav>
@@ -261,6 +261,24 @@
 
     </div>
 
+
+    <label for ="jobsPreferencs" class="disable-labels" id="preference-labels">Update your job preferences here:</label>
+    <div id = "preference-labels-boxes" class = "job-boxes">
+
+      <input type="checkbox" id="checkbox-engineering" value="checked" class="checkboxes"/>
+      <label for="checkbox-engineering">Engineering</label>
+
+      <input type="checkbox" id="checkbox-clerical" value="checked" class="checkboxes"/>
+      <label for="checkbox-clerical">Clerical</label>
+
+
+      <input type="checkbox" id="checkbox-agriculture" value="checked" class="checkboxes"/>
+      <label for="checkbox-agriculture">Agriculture</label>
+
+
+      <input type="checkbox" id="checkbox-machine-learning" value="checked" class="checkboxes"/>
+      <label for="checkbox-machine-learning">Machine Learning</label>
+    </div>
 
     <!--
           <p class="dropzone-label">Upload Files<a class="stars" style="font-size:1.7em;">*</a></p>
