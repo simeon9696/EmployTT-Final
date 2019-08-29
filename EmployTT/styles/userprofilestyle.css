@@ -673,3 +673,26 @@ body{
   position:absolute;
   font-size:10px !important;
 }
+
+
+#signup-form .job-boxes{
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:center;
+  margin-left:6vw;
+  margin-top:1vh;
+  margin-bottom:1vh;
+  
+}
+#signup-form input[type="checkbox"]{
+  color:black;
+  width:1vw;
+  height:1vw;
+
+}
+
+#signup-form .job-boxes label{
+  font-family: 'Avenir', Helvetica, sans-serif;
+  padding-right:20px;
+}
