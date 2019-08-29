@@ -301,3 +301,42 @@ textarea:focus{
 .show{
   display:block;
 }
+
+.datePosted{
+  display: block;
+  padding-top:10px;
+  font-size: 1.2em;
+}
+
+#jobclosed-labels{
+  padding-left:10vw;
+}
+
+.disable-labels{
+  padding-left:10vw;
+}
+#jobClosed{
+  margin-left:10vw;
+}
+
+#job-form .job-boxes{
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:center;
+  padding-left:11vw;
+  padding-top:2vh;
+  padding-bottom:10vh;
+  
+}
+#job-form input[type="checkbox"]{
+  color:black;
+  width:1vw;
+  height:1vw;
+
+}
+
+#job-form .job-boxes label{
+  font-family: 'Avenir', Helvetica, sans-serif;
+  padding-right:20px;
+}
