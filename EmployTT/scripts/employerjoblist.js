@@ -1,4 +1,4 @@
-/////////////START EMPLOYERJOBLIST/////////////////////////
+//////////////START EMPLOYERJOBLIST/////////////////////////
 const jobLists = document.querySelector('#job-table');
 let fileBlobs = [];
 let fileNames = [];
