@@ -10,7 +10,16 @@ let fileButton = document.getElementById('fileButton');
 
 const picDrop          = document.querySelector('#employer-picture');
 const picNames         = document.querySelector('#employer-pic-words');
-
+const fileInputIds = ["resume","transcript","birthCert","nationalID","driverLicense","policeCert","videoCharacter","reference-one","reference-two","certificate-one","certificate-two","certificate-three","certificate-four","certificate-five"];
+const fileLabelIds=["resume-label","transcript-label","birthCert-label","nationalID-label","driverLicense-label","policeCert-label","videoCharacter-label","reference-one-label","reference-two-label","certificate-one-label","certificate-two-label","certificate-three-label","certificate-four-label","certificate-five-label"];
+const fileResetInputIds = ["resume-reset","transcript-reset","birthCert-reset","nationalID-reset","driverLicense-reset","policeCert-reset","videoCharacter-reset","reference-one-reset","reference-two-reset","certificate-one-reset","certificate-two-reset","certificate-three-reset","certificate-four-reset","certificate-five-reset"];
+const fileExtensionWhiteList = ["pdf","doc","docx","jpg","jpeg","mp4","mkv","application/msword","vnd.openxmlformats-officedocument.wordprocessingml.document","png","tiff"]
+const textFieldInputIds = ["firstName","lastName","signup-email","phoneNumber","dateofbirth","address1field","address2field","town","disabilites-field"];
+const documentFields = ["firstName","lastName","email","phoneNumber","dateOfBirth","addressOne","addressTwo","cityortown","disabilites"];
+const checkboxes = ["checkbox-engineering","checkbox-clerical","checkbox-agriculture","checkbox-machine-learning"];
+const checkNames=["engineeering","clerical","agricultture","machine-learning"];
+let changedFiles=[];
+let oldFiles=[];
 
 
 auth.onAuthStateChanged(user => {
@@ -42,6 +51,26 @@ auth.onAuthStateChanged(user => {
       addressTwo.placeholder=snapshot.data().addressTwo;
       cityortown.placeholder=snapshot.data().cityortown;
       disabilites.placeholder=snapshot.data().disabilites;
+      
+      firestore.doc(`Users/${user.uid}/jobPreferences/myPreferences`).get().then(preference=>{
+        if(preference.exists){
+          preference.data().jobPreferences.forEach(preference=>{
+            checkNames.forEach(name=>{
+              if(preference === name){
+                let checkboxValue = document.querySelector(`#${checkboxes[checkNames.indexOf(name)]}`);
+                checkboxValue.checked=true;
+              }
+            })
+          })
+        }else {
+          console.log('No preferences yet')
+        }
+        
+
+      }).catch(error=>{
+        console.log(error);
+      })
+ 
 
 
     }).catch(error=>{
@@ -93,17 +122,10 @@ logOutBtn.addEventListener("click", e => {
 });
 
 
-const fileInputIds = ["resume","transcript","birthCert","nationalID","driverLicense","policeCert","videoCharacter","reference-one","reference-two","certificate-one","certificate-two","certificate-three","certificate-four","certificate-five"];
-const fileLabelIds=["resume-label","transcript-label","birthCert-label","nationalID-label","driverLicense-label","policeCert-label","videoCharacter-label","reference-one-label","reference-two-label","certificate-one-label","certificate-two-label","certificate-three-label","certificate-four-label","certificate-five-label"];
-const fileResetInputIds = ["resume-reset","transcript-reset","birthCert-reset","nationalID-reset","driverLicense-reset","policeCert-reset","videoCharacter-reset","reference-one-reset","reference-two-reset","certificate-one-reset","certificate-two-reset","certificate-three-reset","certificate-four-reset","certificate-five-reset"];
-const fileExtensionWhiteList = ["pdf","doc","docx","jpg","jpeg","mp4","mkv","application/msword","vnd.openxmlformats-officedocument.wordprocessingml.document","png","tiff"]
-const textFieldInputIds = ["firstName","lastName","signup-email","phoneNumber","dateofbirth","address1field","address2field","town","disabilites-field"];
-const documentFields = ["firstName","lastName","email","phoneNumber","dateOfBirth","addressOne","addressTwo","cityortown","disabilites"];
-let changedFiles=[];
-let oldFiles=[];
 
-textFieldParametersChanged =false;
 
+let textFieldParametersChanged =false;
+let checkBoxesChanged = false;
 textFieldInputIds.forEach(field=>{
   let textField = document.querySelector(`#${field}`);
   textField.addEventListener('change',e=>{
@@ -139,7 +161,7 @@ testButton.addEventListener('click',e=>{
   console.log(totalUploadSize);
 
 
- if(totalUploadSize === 0 && textFieldParametersChanged===false){
+ if(totalUploadSize === 0 && textFieldParametersChanged===false && checkBoxesChanged===false){
   let cnfmRedirect = confirm('No changes detected. No updates made.\nYou will be redirected if you click "ok"');
   if(cnfmRedirect){
     window.location = "./userprofileinfo.html";
@@ -150,8 +172,47 @@ testButton.addEventListener('click',e=>{
   
   let textUpdateFinish = false;
   let fileUpdateFinish = false;
+  if(checkBoxesChanged){
+    let firebaseObject ={};
+    let jobPreferences=[];
+    let user = auth.currentUser;
+    checkboxes.forEach(box=>{
+      let checkboxData =document.querySelector(`#${box}`);
+      if(checkboxData.checked ===true){
+        jobPreferences.push(`${checkNames[checkboxes.indexOf(checkboxData.id)]}`); 
+      }
+    })
+    firestore.doc(`Users/${user.uid}/jobPreferences/myPreferences`).get().then(doc=>{
+      if(doc.exists){
+        firestore.doc(`Users/${user.uid}/jobPreferences/myPreferences`).update({
+          jobPreferences : jobPreferences
+      }).then(()=>{
+        console.log('Job Preferences updated');
+  
+      }).catch(error =>{
+        console.log(error);
+      });
+      }else{
+        firestore.doc(`Users/${user.uid}/jobPreferences/myPreferences`).set({
+          jobPreferences : jobPreferences
+      }).then(()=>{
+        console.log('Job Preferences created');
+  
+      }).catch(error =>{
+        console.log(error);
+      });
+      }
+
+  }).catch(error =>{
+    console.log(error);
+  });
+
+
+
+
+
+  }
   if(textFieldParametersChanged){
-    console.log('Ay ay boss man we change')
     let firebaseObject ={};
     let user = auth.currentUser;
 
@@ -308,3 +369,10 @@ fileSelector.addEventListener('change',e=>{
 })
 
 
+checkboxes.forEach(checkbox =>{
+  let boxSelector = document.querySelector(`#${checkbox}`);
+  boxSelector.addEventListener('change',e=>{
+    e.preventDefault();
+    checkBoxesChanged=true;
+  })
+})
