@@ -65,7 +65,7 @@ addJob.addEventListener('click',(e)=>{
       console.log(error);
      });
     }).then(()=>{
-      var employers = jobDetails['jobEmployer'].value;
+      var employers = user.uid;
       incrementAppCountForEmployer({employer : employers});
     }).then(result=>{
           console.log(result);
