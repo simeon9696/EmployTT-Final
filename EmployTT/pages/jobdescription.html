@@ -11,12 +11,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">  
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 		<!-- Scripts are deferred to improve page performance -->
-	    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js" 	   type="text/javascript"></script>
-	    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js" type="text/javascript"></script>
-	    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-storage.js"   type="text/javascript"></script>
-	    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js" 	   type="text/javascript"></script>
-	    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-functions.js" type="text/javascript"></script>
-	    <script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js" 	type="text/javascript"></script>
+		<script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js" 	   		type="text/javascript"></script>
+		<script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-firestore.js"	type="text/javascript"></script>
+		<script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-storage.js" 		type="text/javascript"></script>
+		<script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-auth.js" 			type="text/javascript"></script>
+		<script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-functions.js" 	type="text/javascript"></script>
+		<script defer src="https://www.gstatic.com/firebasejs/6.1.0/firebase-database.js" 	type="text/javascript"></script>
 		<script defer src="../scripts/authui.js" 											type="text/javascript"></script>
 		<script defer src="../scripts/jobdescription.js" 									type="text/javascript"></script>
 		<!--Footer CSS Dependencies-->
@@ -210,14 +210,32 @@
 			<div class="flex-container">
 			<div class="open">
 					<label for ="opened" id="describe-labels">Opened</label><br>
-				<input type="date" name="opened" placeholder="May 31st, 2019" id="jobOpened" required><br><br><br>
+				<text type="text" name="opened"  id="jobOpened" class="datePosted" required contenteditable="false"><br><br><br>
 			</div>
 			 <div class="close">
-			<label for ="deadline" id="describe-labels">Closes</label><br>
-			<input type="date" name="deadline" placeholder="May 31st, 2019" id="jobClosed" required><br><br><br>
+			<label for ="deadline" id="jobclosed-labels">Closes</label><br>
+			<input type="date" name="deadline"  id="jobClosed" required><br><br><br>
 			</div>
 			</div>
 			<!--TODO: Password verification and alert if passwords do not match. Client side. privacy policy-->
+			<label for ="jobsPreferencs" class="disable-labels" id="preference-labels">Select the options that best match your job post</label>
+			<div id = "preference-labels-boxes" class = "job-boxes">
+		
+			  <input type="checkbox" id="checkbox-engineering" value="checked" class="checkboxes"/>
+			  <label for="checkbox-engineering">Engineering</label>
+		
+			  <input type="checkbox" id="checkbox-clerical" value="checked" class="checkboxes"/>
+			  <label for="checkbox-clerical">Clerical</label>
+		
+		
+			  <input type="checkbox" id="checkbox-agriculture" value="checked" class="checkboxes"/>
+			  <label for="checkbox-agriculture">Agriculture</label>
+		
+		
+			  <input type="checkbox" id="checkbox-machine-learning" value="checked" class="checkboxes"/>
+			  <label for="checkbox-machine-learning">Machine Learning</label>
+			</div>
+
 		 </form>
 				 
 		 </div>
@@ -227,7 +245,7 @@
 <footer class="footer-distributed">
 	<div class="footer-left">
 		
-			<img src="./images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='./images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
+			<img src="../images/webpImages/footer-logo.webp" onerror="this.onerror=null; this.src='../images/footer-logo.png'" height="100px" width="auto" style="margin-left:auto;margin-right: auto;">
 			<p class="footer-links">
 			<a href="./index.html">Home</a>
 			·
