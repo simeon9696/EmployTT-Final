@@ -169,6 +169,7 @@ function renderJobTable(doc, c, user){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~Jobname~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     jobName.innerHTML = DOMPurify.sanitize(doc.data().jobName);
     // title.setAttribute("style","clear:all");
+      jobName.setAttribute("name","jobNames");
       jobName.addEventListener("click",function(){
       var fullPath = window.location.pathname;
       var path = fullPath.substring(0,fullPath.lastIndexOf("/"));
@@ -443,6 +444,13 @@ function searchBarFN(){
             hide_keyword = 0;
           }
         }
+      }
+    }
+        let jobNames = divs[i].getElementsByTagName('h1');
+    for(var l = 0; l < jobNames.length; l++){
+      var text_k_j = jobNames[l].innerText;
+      if(text_k_j.toLowerCase().lastIndexOf(search)>-1){
+        hide_keyword = 0;
       }
     }
     if(hide_keyword == 0 && hide_category == 0 && hide_location == 0){
