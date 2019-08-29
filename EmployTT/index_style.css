@@ -994,10 +994,11 @@ input[type=search]:focus {
    width: 20vw;
   }
 
-  .landing-reg-form input[type=checkbox] {
-    margin-left: 4.5vw;
-    margin-top: -42vh;
+.landing-reg-form input[type=checkbox] {
+    margin-left:-6.5vw;
+    margin-top: -0.9vh;
     width:15px;
+    height:15px;
   }
 
 
