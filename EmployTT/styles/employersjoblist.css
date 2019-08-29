@@ -331,7 +331,7 @@ transition: max-height 0.3s ease-out;
 }
 .users{
   width: 40vw;
-  display: none;
+  display: grid;
   overflow: hidden;
   position: absolute;
   transition: max-height 1.3s ease-out;
@@ -347,6 +347,40 @@ transition: max-height 0.3s ease-out;
   position:absolute;
   box-shadow: 0 3px 6px 0 rgb(145, 145, 145);
   }
+.bigger_users{
+  display: none;
+  overflow: hidden;
+  /* position: absolute; */
+  transition: max-height 1.3s ease-out;
+  /* grid-template-columns: auto auto; */
+  /* padding: 5px;
+  padding-left: 10px; */
+  /* border: 2px dotted; */
+  margin-left: 10px;
+  /* text-align:left !important; */
+  justify-content: left;
+  /* background-color:white; */
+  /* border-radius:16px; */
+  /* position:absolute; */
+  /* box-shadow: 0 3px 6px 0 rgb(145, 145, 145); */
+  }
+  .details_users{
+    display: none;
+    overflow: hidden;
+    /* position: absolute; */
+    transition: max-height 1.3s ease-out;
+    grid-template-columns: auto;
+    /* padding: 5px;
+    padding-left: 10px; */
+    /* border: 2px dotted; */
+    margin-left: 10px;
+    /* text-align:left !important; */
+    justify-content: left;
+    /* background-color:white; */
+    /* border-radius:16px; */
+    /* position:absolute; */
+    /* box-shadow: 0 3px 6px 0 rgb(145, 145, 145); */
+    }
 .users_head{
 
   font-size: 16px;
@@ -646,8 +680,15 @@ label{
 #decline_div{
   background-color:inherit;
 }
-
-strong{
-  color:#330099;
-  cursor: pointer;
+.file-name{
+  padding-left: 8px;
+  border: solid blue 0px;
+  font-size: 17px;
+  font-family: 'Avenir';
+  transition: all ease 0.5s
 }
+
+/* .options{
+  display: flex;
+  flex-direction: row;
+} */
