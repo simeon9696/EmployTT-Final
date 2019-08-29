@@ -1,6 +1,7 @@
 /////////////START EMPLOYERJOBLIST/////////////////////////
 const jobLists = document.querySelector('#job-table');
-
+let fileBlobs = [];
+let fileNames = [];
 
 function fetchUser(job, user, c, contName, app_doc, status){
   var rowtwo;
@@ -14,26 +15,85 @@ function fetchUser(job, user, c, contName, app_doc, status){
     var userid = user.id;
 
     //~~~~~~~~~~~~~~~~~~~Link to profiles
-    let profile = document.createElement('span');
-    let profile_icon = document.createElement('i');
-    let profile_text = document.createElement('strong');
-    profile.setAttribute("class","button");
-    profile_icon.setAttribute("class","material-icons");
-    profile_icon.setAttribute("style","font-size:14px;");
-    profile_text.textContent = "More Details";
-    profile_icon.textContent = "assignment";
-    // profile.setAttribute("class","profileButton");
-    // var profileText = document.createTextNode(">> More Details");
-    // profile.appendChild(profileText);
-    profile.setAttribute("id",c);    
-    profile.setAttribute("name",userid );
-    profile.setAttribute("onClick","clickedProfile(this.id, this.name)");
-    profile.appendChild(profile_icon);
-    profile.appendChild(profile_text);
+    // let profile = document.createElement('span');
+    // let profile_icon = document.createElement('i');
+    // let profile_text = document.createElement('strong');
+    // profile.setAttribute("class","button");
+    // profile_icon.setAttribute("class","material-icons");
+    // profile_icon.setAttribute("style","font-size:14px;");
+    // profile_text.textContent = "More Details";
+    // profile_icon.textContent = "assignment";
+    // // profile.setAttribute("class","profileButton");
+    // // var profileText = document.createTextNode(">> More Details");
+    // // profile.appendChild(profileText);
+    // profile.setAttribute("id",c);    
+    // profile.setAttribute("name",userid );
+    // profile.setAttribute("onClick","clickedProfile(this.id, this.name)");
+    // profile.appendChild(profile_icon);
+    // profile.appendChild(profile_text);
+
+  
+
+    let files = document.createElement('div');
+    files.setAttribute("id","files_div");
+    let files_p = document.createElement('p');
+
+    const fileInputIds = ["resume","transcript","birthCert","nationalID","driverLicense",
+    "policeCert","videoCharacter","reference-one","reference-two","certificate-one",
+    "certificate-two","certificate-three","certificate-four","certificate-five"];
+
+    var fileTexts = '{"fields":[{"resume":"View Resume","transcript":"View Transcript","birthCert":"View BirthCertificate","nationalID":"View National ID","driversLicense":"View Drivers Lisence","reference-one":"View Reference"}]}';
+
+    objs = JSON.parse(fileTexts);
+  
+    fileInputIds.forEach(fileid=>{
+      let storageRef = firebase.storage().ref(`Users/${userid}/${fileid}`);
+
+      storageRef.listAll().then(result=> { 
+        result.items.forEach(fileRef=> {
+          console.log(fileRef.name);
+          //And then get the download url
+          storage.ref(`Users/${userid}/${fileid}/${fileRef.name}`).getDownloadURL().then(urlFile=> {
+            console.log("here : ref");
+            // This can be downloaded directly:
+            let xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob';
+            xhr.open('GET', urlFile);
+            xhr.send();
+            xhr.onload = function(event) {
+              let fileName = document.createElement('a');
+              // let fileListing = document.querySelector("#list-container-files");
+              var blob = xhr.response;
+              fileBlobs.push(blob);
+              fileNames.push(fileRef.name);
+              //console.log(URL.createObjectURL(blob))
+
+              fileName.href = URL.createObjectURL(blob);
+              fileName.setAttribute("view", fileRef.name);
+              fileName.target = "_blank";
+              // fileName.setAttribute("rel","noopener noreferrer")
+              // fileName.setAttribute("onclick","window.open(this.href,'_blank');");
+              fileName.setAttribute("id",fileRef.name);
+              fileName.setAttribute("class","file-name");
+              var valueText = objs.fields[0][fileid];
+              if(valueText){
+                fileName.innerHTML = valueText;
+              }else{
+                fileName.innerHTML = fileid;
+              }
+              console.log(`${fileRef.name}`);
+
+              files.appendChild(fileName);
+            };
+          }).catch(function(error) {
+            console.log(error);
+          });
+        });
+      });
+    })
+    // files.appendChild(fileListing)
 
 
-    // let files = document.createElement('div');
-    // let files_p = document.createElement('p');
 
     // files.setAttribute("class","file-list-container");
     // files_p.setAttribute("class","file-list-heading");
@@ -62,7 +122,8 @@ function fetchUser(job, user, c, contName, app_doc, status){
 
 
 
-
+    let bigger_div = document.createElement('div');
+    let user_details_div = document.createElement('div');
     let user_div = document.createElement('div');
     let userfname= document.createElement('p');
     let userlname = document.createElement('p');
@@ -73,7 +134,7 @@ function fetchUser(job, user, c, contName, app_doc, status){
     let applicant_icon_up = document.createElement('i');
     // let applicant_icon_down = document.createElement('i');
 
-
+    files.setAttribute("class","grid-items");
     userfname.setAttribute("class","grid-items");
     userlname.setAttribute("class","grid-items");
     dob.setAttribute("class","grid-items");
@@ -161,9 +222,12 @@ function fetchUser(job, user, c, contName, app_doc, status){
     option_grid.appendChild(option_div_sl);
 
     var name = user.data().firstName + c;
+    bigger_div.setAttribute("id","bigger_div"+name);
+    bigger_div.setAttribute("class","bigger_users");
+    bigger_div.setAttribute("style","display:none;");
     user_div.setAttribute("id","div"+name);
     user_div.setAttribute("class","users");
-    user_div.setAttribute("style","display:none;");
+
     applicant_head.setAttribute("id",name);
     applicant_head.setAttribute("onClick","clickedButton_head(this.id)");
 
@@ -172,9 +236,10 @@ function fetchUser(job, user, c, contName, app_doc, status){
     user_div.appendChild(userlname);
     user_div.appendChild(email);
     user_div.appendChild(dob);
-    user_div.appendChild(profile);
-    // user_div.appendChild(files);
-    rowtwo.appendChild(user_div);
+    // user_div.appendChild(profile);
+    user_div.appendChild(files);
+    bigger_div.appendChild(user_div);
+    rowtwo.appendChild(bigger_div);
     rowtwo.appendChild(option_grid);
     c = c+1;
 }
@@ -380,7 +445,6 @@ auth.onAuthStateChanged(user => {
           // var applicant_docid = doc3.id;
             firestore.collection('Users').doc(doc3.data().applicantID).get().then(snapshot=>{
                   fetchUser(job, snapshot, c, contName, doc3.id, doc3.data().applicationStatus);
-                  console.log(doc3.id);
                   c++;
                 // }
                 // });
@@ -416,7 +480,7 @@ function clickedButton(name){
 }
 
 function clickedButton_head(name){
-  content = document.getElementById("div"+name);
+  content = document.getElementById("bigger_div"+name);
   head = document.getElementById(name);
   if(content.style.display === "none"){
     head.removeChild(head.firstElementChild);
@@ -427,8 +491,8 @@ function clickedButton_head(name){
     applicant_icon_down.setAttribute("id","icon_down");
     // icon = document.getElementById("icon_down");
     head.insertBefore(applicant_icon_down,head.firstElementChild);
-    content.style.display = "grid";
-  }else if(content.style.display === "grid"){
+    content.style.display = "flex";
+  }else if(content.style.display === "flex"){
     head.removeChild(head.firstElementChild);
     let applicant_icon_up = document.createElement('i');
     applicant_icon_up.setAttribute("class","material-icons");  //~~~~~~~~~down
